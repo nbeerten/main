@@ -11,7 +11,7 @@
     <script src="{{ mix('js/app.js') }}"></script>
 
     {{-- AlpineJS --}}
-    <script src="{{ mix('js/alpinejs.js') }}" defer></script>
+    {{-- <script src="{{ mix('js/alpinejs.js') }}" defer></script> --}}
 </head>
 
 <body class="text-white bg-neutral-900 no-scrollbar"> 
