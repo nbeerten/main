@@ -34,10 +34,10 @@
     </div>
 
     <section>
-        <h3 class="block p-3 text-3xl font-bold">Projects</h3>
+        <h3 class="block py-3 text-3xl font-bold">Projects</h3>
         <div class="flex flex-row gap-4 overflow-x-scroll max-w-full no-scrollbar">
             <div class="p-4 rounded-md flex flex-row gap-4 min-w-[30rem] w-fit max-w-[60ch] bg-black">
-                <img loading="lazy" src="https://test.nilsbeerten.nl/homepage/assets/github_logo_light.png" class="aspect-square min-h-full max-h-[8rem]">
+                <img loading="lazy" src="{{ asset('storage/webgbx.svg') }}" class="aspect-square h-full max-h-[10rem] border border-zinc-500 rounded-full">
                 <div class="flex flex-col gap-1">
                     <h4 class="pb-1 text-xl font-bold border-b border-neutral-500">WebGBX</h4>
                     <p class="overflow-ellipsis overflow-hidden leading-tight"><span class="font-semibold">WebGBX</span> is a web application for uploading and viewing .Map.Gbx files.
@@ -45,6 +45,7 @@
                     <a href="#4" class="bg-neutral-800 hover:bg-neutral-700 rounded-md px-3 py-2 w-max">Go to WebGBX</a>
                 </div>
             </div>
+            
         </div>
     </section>
 </x-layout.app>
