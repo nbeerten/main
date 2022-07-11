@@ -19,7 +19,7 @@
                     </svg>
                     <span class="hidden sm:block">GitHub</span>
                 </a>
-            </div>
+            </div> 
         </div>
     </div>
 </nav>
