@@ -1,6 +1,6 @@
 <footer {{ $attributes }}>
     {{-- OPTIMIZE MOBILE VIEW, CURRENT BROKEN --}}
-    <div class="grid grid-cols-4 gap-2 pt-4">
+    <div class="sm:grid sm:grid-cols-2 md:grid-cols-4 gap-2 pt-4">
         <div class="contact">
             <h4 class="font-semibold">Contact</h4>
             <address>
