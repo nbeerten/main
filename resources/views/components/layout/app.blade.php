@@ -8,7 +8,7 @@
     
     {{-- Main JS & CSS from the compiled files --}}
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-    <script src="{{ mix('js/app.js') }}"></script>
+    <script src="{{ mix('js/app.js') }}" defer></script>
 
     {{-- AlpineJS --}}
     {{-- <script src="{{ mix('js/alpinejs.js') }}" defer></script> --}}
