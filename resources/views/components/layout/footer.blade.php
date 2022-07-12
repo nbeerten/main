@@ -1,5 +1,4 @@
 <footer {{ $attributes }}>
-    {{-- OPTIMIZE MOBILE VIEW, CURRENT BROKEN --}}
     <div class="sm:grid sm:grid-cols-2 md:grid-cols-4 gap-2 pt-4">
         <div class="contact">
             <h4 class="font-semibold">Contact</h4>
@@ -31,7 +30,7 @@
             </ul>
         </div>
     </div>
-    <div class="flex flex-row items-center justify-between py-2">
+    <div class="flex flex-row items-center justify-between mb-2 md:m-0 py-2">
         <div>
             <p class="font-medium" x-data="{ year: new Date().getFullYear() }">©️<span x-text="year">2022</span> Nils Beerten</p>
         </div>

@@ -1,6 +1,6 @@
 <x-layout.app title="Home">
     <x-slot:hero>
-        <header class="grid h-screen place-items-center justify-items-start bg-cover bg-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1)),url(storage/hero.webp);">
+        <header class="grid h-screen place-items-center justify-items-start bg-cover bg-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3), rgba(23, 23, 23, 0.6), rgba(23, 23, 23, 1)),url(storage/hero.webp);">
             <div class="w-full px-4 mx-auto max-w-7xl sm:px-5 md:px-6 lg:px-8 drop-shadow-lg">
                 <h2 class="pb-1 text-5xl font-bold border-b border-neutral-500 w-max">Hai, I'm nbert.</h2>
                 <div class="flex flex-row">
