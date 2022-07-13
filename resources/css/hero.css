@@ -2,26 +2,42 @@
     --nb-heroimage: url('/storage/hero_768.avif');
 }
 
-@media screen(sm) {
-    :root {
-        --nb-heroimage: url('/storage/hero_768.avif');
+@media (min-aspect-ratio: 1/1) {
+    @media (min-width: 1366px) {
+        :root {
+            --nb-heroimage: url('/storage/hero_1080.avif');
+        }
+    }
+
+    @media (min-width: 1920px) {
+        :root {
+            --nb-heroimage: url('/storage/hero_1440.avif');
+        }
+    }
+
+    @media (min-width: 2560px) {
+        :root {
+            --nb-heroimage: url('/storage/hero.avif');
+        }
     }
 }
 
-@media screen(lg) {
-    :root {
-        --nb-heroimage: url('/storage/hero_1080.avif');
+@media (max-aspect-ratio: 1/1) {
+    @media (min-height: 768px) {
+        :root {
+            --nb-heroimage: url('/storage/hero_1080.avif');
+        }
     }
-}
-
-@media screen(2xl) {
-    :root {
-        --nb-heroimage: url('/storage/hero_1440.avif');
+    
+    @media (min-height: 1080px) {
+        :root {
+            --nb-heroimage: url('/storage/hero_1440.avif');
+        }
     }
-}
 
-@media (min-width: 2160px) {
-    :root {
-        --nb-heroimage: url('/storage/hero.avif');
+    @media (min-height: 1440px) {
+        :root {
+            --nb-heroimage: url('/storage/hero.avif');
+        }
     }
 }
