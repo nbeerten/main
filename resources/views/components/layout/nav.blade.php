@@ -2,7 +2,7 @@
     <div class="px-4 mx-auto max-w-7xl lg:px-8">
         <div class="flex items-center h-16 ">
             <div class="flex items-center flex-shrink-0">
-                <a href="/"><img height="32" width="32" class="w-auto h-8 pointer-events-none select-none" src="{{ asset('storage/logo_white.svg') }}" alt="NB logo"></a>
+                <a href="/"><img fetchpriority="high" height="32" width="32" class="w-auto h-8 pointer-events-none select-none" src="{{ asset('storage/logo_white.svg') }}" alt="NB logo"></a>
             </div>
             <div class="flex ml-6 space-x-4">
                 <a href="{{ route("home") }}" @class([
