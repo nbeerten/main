@@ -12,9 +12,6 @@
 
     {{-- AlpineJS --}}
     {{-- <script src="{{ mix('js/alpinejs.js') }}" defer></script> --}}
-    
-    {{-- Preload Hero image --}}
-    <link rel="preload" as="image" href="{{ asset('storage/hero.webp') }}" type="image/webp">
 
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">

@@ -1,0 +1,27 @@
+:root {
+    --nb-heroimage: url('/storage/hero_768.webp');
+}
+
+@media screen(sm) {
+    :root {
+        --nb-heroimage: url('/storage/hero_768.webp');
+    }
+}
+
+@media screen(lg) {
+    :root {
+        --nb-heroimage: url('/storage/hero_1080.webp');
+    }
+}
+
+@media screen(2xl) {
+    :root {
+        --nb-heroimage: url('/storage/hero_1440.webp');
+    }
+}
+
+@media (min-width: 2160px) {
+    :root {
+        --nb-heroimage: url('/storage/hero.webp');
+    }
+}

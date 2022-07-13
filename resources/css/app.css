@@ -9,6 +9,8 @@
 
 @import "tooltip.css";
 @import "scrollbar.css";
+@import "hero.css";
+
 
 @layer components {
     .navitem-active {
