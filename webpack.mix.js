@@ -22,4 +22,5 @@ mix.postCss(
             require("tailwindcss/nesting"),
             require("autoprefixer")
         ]
-    );
+    )
+    .version()
