@@ -1,27 +1,27 @@
 :root {
-    --nb-heroimage: url('/storage/hero_768.webp');
+    --nb-heroimage: url('/storage/hero_768.avif');
 }
 
 @media screen(sm) {
     :root {
-        --nb-heroimage: url('/storage/hero_768.webp');
+        --nb-heroimage: url('/storage/hero_768.avif');
     }
 }
 
 @media screen(lg) {
     :root {
-        --nb-heroimage: url('/storage/hero_1080.webp');
+        --nb-heroimage: url('/storage/hero_1080.avif');
     }
 }
 
 @media screen(2xl) {
     :root {
-        --nb-heroimage: url('/storage/hero_1440.webp');
+        --nb-heroimage: url('/storage/hero_1440.avif');
     }
 }
 
 @media (min-width: 2160px) {
     :root {
-        --nb-heroimage: url('/storage/hero.webp');
+        --nb-heroimage: url('/storage/hero.avif');
     }
 }
