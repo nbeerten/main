@@ -2,7 +2,7 @@
     <x-slot:hero>
         <header class="grid h-screen place-items-center justify-items-start bg-cover bg-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3), rgba(23, 23, 23, 0.6), rgba(23, 23, 23, 1)), var(--nb-heroimage);">
             <div class="w-full px-4 mx-auto max-w-7xl sm:px-5 md:px-6 lg:px-8 drop-shadow-lg">
-                <h2 class="pb-1 text-5xl font-bold border-b border-neutral-500 w-max">Hai, I'm nbert!</h2>
+                <h2 class="pb-1 text-5xl font-bold border-b border-neutral-500 w-max">Hai, I'm nbert.</h2>
                 <div class="flex flex-row">
                     <a class="relative block p-2 -ml-2 tooltip" href="https://twitter.com/nbertn" target="_blank" data-popup="@nbertn">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="h-5 w-5" viewBox="0 0 16 16">
