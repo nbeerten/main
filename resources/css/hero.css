@@ -1,0 +1,43 @@
+:root {
+    --nb-heroimage: url('/assets/hero_768.avif');
+}
+
+@media (min-aspect-ratio: 16/9) {
+    @media (min-width: 1366px) {
+        :root {
+            --nb-heroimage: url('/assets/hero_1080.avif');
+        }
+    }
+
+    @media (min-width: 1920px) {
+        :root {
+            --nb-heroimage: url('/assets/hero_1440.avif');
+        }
+    }
+
+    @media (min-width: 2560px) {
+        :root {
+            --nb-heroimage: url('/assets/hero.avif');
+        }
+    }
+}
+
+@media (max-aspect-ratio: 16/9) {
+    @media (min-height: 768px) {
+        :root {
+            --nb-heroimage: url('/assets/hero_1080.avif');
+        }
+    }
+    
+    @media (min-height: 1080px) {
+        :root {
+            --nb-heroimage: url('/assets/hero_1440.avif');
+        }
+    }
+
+    @media (min-height: 1440px) {
+        :root {
+            --nb-heroimage: url('/assets/hero.avif');
+        }
+    }
+}
