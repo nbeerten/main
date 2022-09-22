@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: ./docker/app/Dockerfile
-    image: app
+    image: nbeerten/main:latest
     container_name: app
     restart: unless-stopped
     tty: true

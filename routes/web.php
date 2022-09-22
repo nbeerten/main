@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('/tmasigns/preview/{size}/{text}/', [ImageHandler::class, 'PreviewHandler']);
-Route::get('/tmasigns/zip/{size}/{text}/', [ImageHandler::class, 'ZipHandler']);
+Route::get('/tmasigns/jpg/{size}/{text}/', [ImageHandler::class, 'jpg']);
+Route::get('/tmasigns/zip/{size}/{text}/', [ImageHandler::class, 'zip']);
 
 Route::get('/phpinfo', function () { phpinfo();});

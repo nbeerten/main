@@ -18,8 +18,7 @@ mix.postCss(
         "public/css",
         [
             require("tailwindcss"),
-            require("tailwindcss/nesting"),
-            require("autoprefixer")
+            require("tailwindcss/nesting")
         ]
     )
     .version()
