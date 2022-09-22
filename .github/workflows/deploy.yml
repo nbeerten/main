@@ -48,8 +48,9 @@ jobs:
         KEY: ${{ secrets.SSHKEY }}
         script: >
           cd ~/main && 
+          docker compose down &&
           docker compose pull app && 
-          docker compose restart app
+          docker compose up -d
 
     - name: Migrate and cache config, route and views
       uses: appleboy/ssh-action@master
@@ -65,5 +66,4 @@ jobs:
           php artisan migrate && 
           php artisan config:cache && 
           php artisan route:cache && 
-          php artisan view:cache && 
-          php artisan up'
+          php artisan view:cache'
