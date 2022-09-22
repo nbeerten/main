@@ -27,8 +27,6 @@ RUN docker-php-ext-install pdo_mysql mbstring zip exif pcntl bcmath gd
 RUN pecl install redis imagick \
 	&& docker-php-ext-enable redis imagick
 
-COPY .env /var/www/
-
 # Copy composer.lock and composer.json
 COPY composer.lock composer.json /var/www/
 # Install composer
