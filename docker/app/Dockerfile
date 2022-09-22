@@ -32,7 +32,7 @@ COPY composer.lock composer.json /var/www/
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 # Install composer dependencies
-RUN composer update
+RUN composer install --no-dev --ansi --no-scripts --no-interaction
 
 # Copy package.lock
 COPY package.json package-lock.json /var/www/
@@ -40,7 +40,7 @@ COPY package.json package-lock.json /var/www/
 RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && \
     apt-get install -y nodejs
 # Install NPM dependencies
-RUN npm install
+RUN npm ci
 
 # Add user for laravel application
 RUN groupadd -g 1000 www
