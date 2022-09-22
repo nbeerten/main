@@ -6,11 +6,11 @@ on:
       - 'main'
 
 jobs:
-  build:
+  Build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         
       - name: Login to Docker Hub
         uses: docker/login-action@v1
@@ -31,3 +31,38 @@ jobs:
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/main:latest
           cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/main:buildcache
           cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/main:buildcache,mode=max
+
+  Deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout 
+      uses: actions/checkout@v3
+
+    - name: Pull image and restart container
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        USERNAME: ${{ secrets.USERNAME }}
+        PORT: ${{ secrets.PORT }}
+        KEY: ${{ secrets.SSHKEY }}
+        script: >
+          cd ~/main && 
+          docker compose pull app && 
+          docker compose restart app
+
+    - name: Migrate and cache config, route and views
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        USERNAME: ${{ secrets.USERNAME }}
+        PORT: ${{ secrets.PORT }}
+        KEY: ${{ secrets.SSHKEY }}
+        script: >
+          cd ~/main && 
+          docker compose exec app bash -c 
+          'php artisan down && 
+          php artisan migrate && 
+          php artisan config:cache && 
+          php artisan route:cache && 
+          php artisan view:cache && 
+          php artisan up'
