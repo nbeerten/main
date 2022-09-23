@@ -7,20 +7,36 @@ use \Imagick as Imagick;
 use \ImagickDraw as ImagickDraw;
 use ZipStream;
 
-class TMASigns {
+class TMASigns
+{
     private const fontsize = [
-        2 => 150
+        2 => 150,
+        4 => 200,
+        6 => 100
     ];
-    private const font = "../storage/app/TMASigns/Montserrat-Black.ttf";
+    private const font = "../assets/TMASigns/Montserrat-Black.ttf";
     private const textcolor = '#f37520';
     private const base = [
-        2 => '../storage/app/TMASigns/2x1.tga'
+        2 => '../assets/TMASigns/2x1.tga',
+        4 => '../assets/TMASigns/4x1.tga',
+        6 => '../assets/TMASigns/6x1.tga'
     ];
     private const margins = [
-        2 => 800
+        2 => 800,
+        4 => 1800,
+        6 => 1300
     ];
     private const allowedfiletypes = ["jpg", "tga"];
-    private const allowedsizes = [1, 2, 4, 6];
+    private const allowedsizes = [2, 4, 6];
+
+    protected int $size;
+    protected string $text;
+
+    public function __construct(int $size, string $text)
+    {
+        $this->size = $size;
+        $this->text = $text;
+    }
 
     /**
      * Base function for creation of sign
@@ -30,44 +46,67 @@ class TMASigns {
      * @param string $text Text input to put on the sign
      * @return string Sign, idk which type it is
      */
-    private function base(string $format, int $size, string $text) {
-        if(!in_array($format, self::allowedfiletypes)) throw new Exception("Invalid format: $format");
-        if(!in_array($size, self::allowedsizes)) throw new Exception("Invalid size: $size");
+    private function base(string $format)
+    {
+        if (!in_array($format, self::allowedfiletypes)) throw new Exception("Invalid format: $format");
+        if (!in_array($this->size, self::allowedsizes)) throw new Exception("Invalid size: $this->size");
+
         $draw = new ImagickDraw();
-        $draw->setFontSize(self::fontsize[$size]);
+        $draw->setFontSize(self::fontsize[$this->size]);
         $draw->setGravity(Imagick::GRAVITY_CENTER);
         $draw->setFont(self::font);
         $draw->setFillColor(self::textcolor);
         $draw->setTextAntialias(true);
-        $canvas = new Imagick(self::base[$size]);
+
+        $canvas = new Imagick(self::base[$this->size]);
         $canvas->flipImage();
 
-        $metrics = $canvas->queryFontMetrics($draw, $text, false);
-        $CalculatedFontSize = floor($metrics["characterWidth"] * self::margins[2] / $metrics["textWidth"]);
-        $NewFontSize = $CalculatedFontSize < self::fontsize[2] ? $CalculatedFontSize : self::fontsize[2];
-        $draw->setFontSize($NewFontSize);
-        
-        $canvas->annotateImage($draw, 0, 0, 0, $text);
+        $draw = $this->newfontsize($canvas, $draw);
+
+        $canvas->annotateImage($draw, 0, 0, 0, $this->text);
 
         $format = in_array($format, self::allowedfiletypes) ? $format : "jpg";
         $canvas->setImageFormat($format);
-        if($format === "tga") $canvas->flipImage();
-        
+        if ($format === "tga") $canvas->flipImage();
+
         $sign = $canvas->getImageBlob();
-        
+
         return $sign;
     }
 
-    private function createzip(string $format = "tga", int $size, string $text) {
-        $sign = $this->base($format, $size, $text);
+    /**
+     * Calculate fontsize based on total width of image, to scale it down automatically so it won't cause overflow
+     *
+     * @param Imagick $canvas
+     * @param ImagickDraw $draw
+     * @return ImagickDraw Same object as the input parameter `$draw`
+     */
+    private function newfontsize(Imagick $canvas, ImagickDraw $draw)
+    {
+        $metrics = $canvas->queryFontMetrics($draw, $this->text, false);
+        $CalculatedFontSize = floor($metrics["characterWidth"] * self::margins[$this->size] / $metrics["textWidth"]);
+        $NewFontSize = $CalculatedFontSize < self::fontsize[$this->size] ? $CalculatedFontSize : self::fontsize[$this->size];
+        $draw->setFontSize($NewFontSize);
+        return $draw;
+    }
+
+    /**
+     * Create ZipStream with a sign inside
+     *
+     * @param string $format
+     * @return ZipStream
+     */
+    private function createzip(string $format = "tga")
+    {
+        $sign = $this->base($format);
 
         // enable output of HTTP headers
         $options = new ZipStream\Option\Archive();
         $options->setSendHttpHeaders(true);
 
-        $zip = new ZipStream\ZipStream("tma_sign{$size}x1_{$text}.zip", $options);
+        $zip = new ZipStream\ZipStream("tma_sign{$this->size}x1_{$this->text}.zip", $options);
         $zip->addFile("sign.$format", $sign);
-        
+
         return $zip->finish();
     }
 
@@ -78,8 +117,9 @@ class TMASigns {
      * @param string $text
      * @return string ZIP file blob
      */
-    public function zip(int $size, string $text) {
-        return $this->createzip("tga", $size, $text);
+    public function zip()
+    {
+        return $this->createzip("tga");
     }
 
     /**
@@ -88,7 +128,21 @@ class TMASigns {
      * @param string $text
      * @return string JPG blob
      */
-    public function jpg(int $size, string $text) {
-        return $this->base("jpg", $size, $text);
+    public function jpg()
+    {
+        return $this->base("jpg");
+    }
+
+    /**
+     * Dynamic file return
+     *
+     * @param string $text
+     * @return string something
+     */
+    public function dynformat($format)
+    {
+        if($format == "jpg") return $this->jpg();
+        if($format == "zip") return $this->zip();
+        else return null;
     }
 }
