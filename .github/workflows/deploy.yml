@@ -47,7 +47,7 @@ jobs:
         PORT: ${{ secrets.PORT }}
         KEY: ${{ secrets.SSHKEY }}
       with:
-        source: "docker"
+        source: "docker/"
         target: "/home/nbeerten/main"
 
     - name: Pull image and restart container
@@ -59,9 +59,9 @@ jobs:
         KEY: ${{ secrets.SSHKEY }}
         script: >
           cd ~/main && 
-          docker compose down &&
-          docker compose pull app && 
-          docker compose up -d
+          docker compose -f docker-compose.prod.yml down &&
+          docker compose -f docker-compose.prod.yml pull app && 
+          docker compose -f docker-compose.prod.yml up -d
 
     - name: Migrate and cache config, route and views
       uses: appleboy/ssh-action@master
@@ -72,7 +72,7 @@ jobs:
         KEY: ${{ secrets.SSHKEY }}
         script: >
           cd ~/main && 
-          docker compose exec app bash -c 
+          docker compose -f docker-compose.prod.yml exec app bash -c 
           'php artisan down && 
           php artisan migrate && 
           php artisan config:cache && 
