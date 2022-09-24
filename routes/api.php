@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\ImageHandler;
+use App\Http\Controllers\TMASignsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,4 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/tmasigns', [ImageHandler::class, 'json']);
+Route::post('/tmasigns', [TMASignsController::class, 'json']);

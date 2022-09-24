@@ -10,24 +10,35 @@ use ZipStream;
 class TMASigns
 {
     private const fontsize = [
+        1 => 100,
         2 => 150,
         4 => 200,
-        6 => 100
+        6 => 125
     ];
     private const font = "../assets/TMASigns/Montserrat-Black.ttf";
     private const textcolor = '#f37520';
+    private const outlinewidth = [
+        1 => 2,
+        2 => 3,
+        4 => 4,
+        6 => 3
+    ];
+    private const outlinecolor = "#ffffff";
     private const base = [
+        1 => '../assets/TMASigns/1x1.tga',
         2 => '../assets/TMASigns/2x1.tga',
         4 => '../assets/TMASigns/4x1.tga',
         6 => '../assets/TMASigns/6x1.tga'
     ];
     private const margins = [
+        1 => 400,
         2 => 800,
         4 => 1800,
         6 => 1300
     ];
     private const allowedfiletypes = ["jpg", "tga"];
-    private const allowedsizes = [2, 4, 6];
+    private const allowedsizes = [1, 2, 4, 6];
+    private const skinjsonpath = "../assets/TMASigns/Skin.json";
 
     protected int $size;
     protected string $text;
@@ -57,6 +68,10 @@ class TMASigns
         $draw->setFont(self::font);
         $draw->setFillColor(self::textcolor);
         $draw->setTextAntialias(true);
+        
+        $draw->setStrokeWidth(self::outlinewidth[$this->size]);
+        $draw->setStrokeColor(self::outlinecolor);
+        $draw->setStrokeAntialias(true);
 
         $canvas = new Imagick(self::base[$this->size]);
         $canvas->flipImage();
@@ -106,6 +121,7 @@ class TMASigns
 
         $zip = new ZipStream\ZipStream("tma_sign{$this->size}x1_{$this->text}.zip", $options);
         $zip->addFile("sign.$format", $sign);
+        $zip->addFileFromPath("Skin.json", self::skinjsonpath);
 
         return $zip->finish();
     }
@@ -131,18 +147,5 @@ class TMASigns
     public function jpg()
     {
         return $this->base("jpg");
-    }
-
-    /**
-     * Dynamic file return
-     *
-     * @param string $text
-     * @return string something
-     */
-    public function dynformat($format)
-    {
-        if($format == "jpg") return $this->jpg();
-        if($format == "zip") return $this->zip();
-        else return null;
     }
 }

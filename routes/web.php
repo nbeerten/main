@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\ImageHandler;
+use App\Http\Controllers\TMASignsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('/tmasigns/jpg/{size}/{text}/', [ImageHandler::class, 'jpg']);
-Route::get('/tmasigns/zip/{size}/{text}/', [ImageHandler::class, 'zip']);
+Route::get('/tmasigns/jpg/{size}/{text}/', [TMASignsController::class, 'jpg']);
+Route::get('/tmasigns/zip/{size}/{text}/', [TMASignsController::class, 'zip']);
 
 Route::get('/phpinfo', function () { phpinfo();});

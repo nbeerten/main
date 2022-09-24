@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Classes\TMASigns\TMASigns;
 
-class ImageHandler extends Controller
+class TMASignsController extends Controller
 {
     public function jpg($size, $text) {
         $TMASigns = new TMASigns($size, $text);
