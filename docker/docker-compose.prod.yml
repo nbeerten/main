@@ -4,7 +4,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: ./docker/app/Dockerfile
+      dockerfile: ./app/Dockerfile
     image: nbeerten/main:latest
     container_name: app
     restart: unless-stopped
@@ -16,6 +16,7 @@ services:
     working_dir: /var/www/
     volumes:
       - app:/var/www
+      - ./php.ini:/usr/local/etc/php/conf.d/local.ini
     networks:
       - main
     depends_on:
@@ -31,7 +32,7 @@ services:
       - "443:443"
     volumes:
       - app:/var/www
-      - ./docker/nginx/:/etc/nginx/conf.d/
+      - ./nginx/:/etc/nginx/conf.d/
     networks:
       - main
 
@@ -49,7 +50,7 @@ services:
       MYSQL_USER: ${DB_USERNAME}
     volumes:
       - mysql:/var/lib/mysql
-      - ./docker/mysql/my.cnf:/etc/mysql/my.cnf
+      - ./mysql/my.cnf:/etc/mysql/my.cnf
     networks:
       - main
     healthcheck:
