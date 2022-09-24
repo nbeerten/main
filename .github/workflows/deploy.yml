@@ -75,7 +75,6 @@ jobs:
           cd ~/main && 
           docker compose -f docker-compose.prod.yml exec app bash -c 
           'php artisan down && 
-          php artisan migrate && 
           php artisan config:cache && 
           php artisan route:cache && 
           php artisan view:cache && 
