@@ -47,9 +47,8 @@ jobs:
         PORT: ${{ secrets.PORT }}
         KEY: ${{ secrets.SSHKEY }}
       with:
-        source: "./docker,docker-compose.yml"
-        target: "/home/nbeerten/maindocker"
-        rm: true
+        source: "docker"
+        target: "/home/nbeerten/main"
 
     - name: Pull image and restart container
       uses: appleboy/ssh-action@master
