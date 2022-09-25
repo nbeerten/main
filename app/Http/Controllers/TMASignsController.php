@@ -9,13 +9,13 @@ use App\Classes\TMASigns\TMASigns;
 class TMASignsController extends Controller
 {
     public function jpg($size, $text) {
-        $TMASigns = new TMASigns($size, $text);
+        $TMASigns = new TMASigns("jpg", $size, $text);
         return response($TMASigns->jpg())
                 ->header('Content-Type', 'image/jpg');
     }
 
     public function zip($size, $text) {
-        $TMASigns = new TMASigns($size, $text);
+        $TMASigns = new TMASigns("zip", $size, $text);
         return response($TMASigns->zip());
     }
 
