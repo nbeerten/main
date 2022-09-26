@@ -47,7 +47,7 @@ jobs:
         PORT: ${{ secrets.PORT }}
         KEY: ${{ secrets.SSHKEY }}
       with:
-        source: "docker/"
+        source: "docker/prod/"
         target: "/home/nbeerten/main"
         strip_components: 1
 
@@ -60,9 +60,9 @@ jobs:
         KEY: ${{ secrets.SSHKEY }}
         script: >
           cd ~/main && 
-          docker compose -f docker-compose.prod.yml down -v &&
-          docker compose -f docker-compose.prod.yml pull app && 
-          docker compose -f docker-compose.prod.yml up -d
+          docker compose down -v &&
+          docker compose pull app && 
+          docker compose up -d
 
     - name: Migrate and cache config, route and views
       uses: appleboy/ssh-action@master
@@ -73,7 +73,7 @@ jobs:
         KEY: ${{ secrets.SSHKEY }}
         script: >
           cd ~/main && 
-          docker compose -f docker-compose.prod.yml exec app bash -c 
+          docker compose exec app bash -c 
           'php artisan down && 
           php artisan config:cache && 
           php artisan route:cache && 

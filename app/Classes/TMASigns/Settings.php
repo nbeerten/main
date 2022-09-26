@@ -13,6 +13,12 @@ class Settings
         4 => 200,
         6 => 125
     ];
+    public const subfontsize = [
+        1 => 50,
+        2 => 50,
+        4 => 100,
+        6 => 75
+    ];
     public const font = "../assets/TMASigns/Montserrat-Black.ttf";
     public const textcolor = '#f37520';
     public const outlinewidth = [
@@ -29,10 +35,10 @@ class Settings
         6 => '../assets/TMASigns/6x1.tga'
     ];
     public const margins = [
-        1 => 400,
-        2 => 800,
-        4 => 1800,
-        6 => 1300
+        1 => 425,
+        2 => 900,
+        4 => 1900,
+        6 => 1400
     ];
     public const allowedfiletypes = ["jpg", "tga"];
     public const allowedsizes = [1, 2, 4, 6];

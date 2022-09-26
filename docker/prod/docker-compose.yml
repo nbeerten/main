@@ -4,7 +4,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: ./app/Dockerfile
+      dockerfile: ../app/Dockerfile
     image: nbeerten/main:latest
     container_name: app
     restart: unless-stopped
@@ -32,7 +32,8 @@ services:
       - "443:443"
     volumes:
       - app:/var/www:ro
-      - ./nginx/:/etc/nginx/conf.d/
+      - ./:/etc/nginx/conf.d/
+      - ./ssl/:/etc/ssl/
     networks:
       - main
 
@@ -50,7 +51,7 @@ services:
       MYSQL_USER: ${DB_USERNAME}
     volumes:
       - mysql:/var/lib/mysql
-      - ./mysql/my.cnf:/etc/mysql/my.cnf
+      - ./mysql.cnf:/etc/mysql/my.cnf
     networks:
       - main
     healthcheck:

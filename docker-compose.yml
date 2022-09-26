@@ -15,7 +15,7 @@ services:
     working_dir: /var/www/
     volumes:
       - ./:/var/www
-      - ./docker/php.ini:/usr/local/etc/php/conf.d/local.ini
+      - ./docker/dev/php.ini:/usr/local/etc/php/conf.d/local.ini
     networks:
       - main
     depends_on:
@@ -31,7 +31,7 @@ services:
       - "443:443"
     volumes:
       - ./:/var/www
-      - ./docker/nginx/:/etc/nginx/conf.d/
+      - ./docker/dev/:/etc/nginx/conf.d/
     networks:
       - main
   
@@ -49,7 +49,7 @@ services:
       MYSQL_USER: ${DB_USERNAME}
     volumes:
       - mysql:/var/lib/mysql
-      - ./docker/mysql/my.cnf:/etc/mysql/my.cnf
+      - ./docker/dev/mysql.cnf:/etc/mysql/my.cnf
     networks:
       - main
     healthcheck:

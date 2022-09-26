@@ -8,7 +8,7 @@ use App\Classes\TMASigns\Settings;
 
 class TMASigns extends Base
 {
-    public function __construct(string $format, int $size, string $text)
+    public function __construct(string $format, int $size, string $text, string $subtext)
     {
         if (!in_array($format, Settings::allowedfiletypes)) throw new Exception("Invalid format: $format");
         if (!in_array($size, Settings::allowedsizes)) throw new Exception("Invalid size: $size");
@@ -16,6 +16,7 @@ class TMASigns extends Base
         $this->format = $format;
         $this->size = $size;
         $this->text = $text;
+        $this->subtext = $subtext;
     }
 
     /**
