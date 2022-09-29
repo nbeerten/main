@@ -15,8 +15,8 @@ class Settings
     ];
     public const subfontsize = [
         1 => 50,
-        2 => 50,
-        4 => 100,
+        2 => 75,
+        4 => 80,
         6 => 75
     ];
     public const font = "../assets/TMASigns/Montserrat-Black.ttf";

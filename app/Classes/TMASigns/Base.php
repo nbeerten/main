@@ -42,7 +42,7 @@ class Base
         $this->textStyling = $this->Text();
         $this->subTextStyling = $this->SubText();
 
-        $this->baseCanvas->annotateImage($this->textStyling, 0, 0, 0, $this->text);
+        $this->baseCanvas->annotateImage($this->textStyling, 0, -40, 0, $this->text);
         $this->baseCanvas->annotateImage($this->subTextStyling, 0, 125, 0, $this->subtext);
 
         $this->baseCanvas->setImageFormat($this->format);
@@ -82,7 +82,7 @@ class Base
         $draw = new ImagickDraw();
 
         $metrics = $this->baseCanvas->queryFontMetrics($draw, $this->text, false);
-        $calculatedFontSize = floor($metrics["characterWidth"] * (Settings::margins[$this->size] * 0.8 ) / $metrics["textWidth"]);
+        $calculatedFontSize = floor($metrics["characterWidth"] * Settings::margins[$this->size] / $metrics["textWidth"]);
         $newFontSize = $calculatedFontSize < Settings::subfontsize[$this->size] ? $calculatedFontSize : Settings::subfontsize[$this->size];
         $draw->setFontSize($newFontSize);
         
@@ -99,6 +99,7 @@ class Base
     }
 
     public function get() {
-        return $this->MultiLine();
+        if($this->subtext != null && $this->size != 6) return $this->MultiLine();
+        else if($this->text != null) return $this->SingleLine();
     }
 }
