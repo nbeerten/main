@@ -12,6 +12,7 @@ const mix = require("laravel-mix");
  */
 
 mix.js("resources/js/app.js", "public/js")
+mix.js("resources/js/pages/TMASigns.js", "public/js/pages")
     
 mix.postCss(
         "resources/css/app.css",

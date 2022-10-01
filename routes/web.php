@@ -19,11 +19,6 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::middleware(['throttle:tmasigns'])->group(function () {
-    Route::get('/tmasigns/jpg/{size}/{text}/{subtext?}', [TMASignsController::class, 'jpg']);
-    Route::get('/tmasigns/zip/{size}/{text}/{subtext?}', [TMASignsController::class, 'zip']);
-
-    Route::get('/tmasigns', function () {
-        return view('pages.tmasigns');
-    })->name('tmasigns');
-});
+Route::get('/tmasigns', function () {
+    return view('pages.tmasigns');
+})->name('tmasigns');

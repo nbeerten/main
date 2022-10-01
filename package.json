@@ -20,6 +20,7 @@
     "dependencies": {
         "@fontsource/fira-code": "^4.5.10",
         "@fontsource/montserrat": "^4.5.11",
+        "alpinejs": "^3.10.3",
         "npm": "^8.19.1"
     }
 }

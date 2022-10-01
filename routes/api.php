@@ -20,4 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/tmasigns', [TMASignsController::class, 'json']);
+Route::middleware(['throttle:tmasigns'])->group(function () {
+    Route::post('/tmasigns', [TMASignsController::class, 'json']);
+});

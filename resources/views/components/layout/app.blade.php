@@ -25,34 +25,39 @@
 </head>
 
 <body class="text-white bg-neutral-900 no-scrollbar">
-    {{-- Navbar and hero sections --}}
-    <header>
-        {{-- Main navigation bar --}}
-        <x-layout.nav />
+    <div class="min-h-screen">
+        {{-- Navbar and hero sections --}}
+        <header>
+            {{-- Main navigation bar --}}
+            <x-layout.nav />
 
-        {{-- 
-        Hero section: Map screenshot with a set height. Overwritable:
-        <x-slot:hero>
-            <div> (Your content here) </div>
-        </x-slot:hero>
-        --}}
-        @isset($hero)
-            {!! $hero !!}
-        @else
-            <x-layout.hero />
-        @endisset
+            {{-- 
+            Hero section: Map screenshot with a set height. Overwritable:
+            <x-slot:hero>
+                <div> (Your content here) </div>
+            </x-slot:hero>
+            --}}
+            @isset($hero)
+                {!! $hero !!}
+            @else
+                <x-layout.hero />
+            @endisset
 
-    </header>
+        </header>
 
-    {{-- Main content --}}
-    <main class="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8">
-        {{ $slot }}
-    </main>
+        {{-- Main content --}}
+        <main class="max-w-7xl mx-auto pb-4 px-4 sm:px-5 md:px-6 lg:px-8">
+            {{ $slot }}
+        </main>
+    </div>
 
     {{-- Footer --}}
-    <span class="block border-t border-zinc-500 w-full h-px mt-4"></span>
+    <span class="block border-t border-zinc-500 w-full h-px"></span>
     <x-layout.footer class="px-4 mx-auto max-w-7xl sm:px-5 md:px-6 lg:px-8" />
 
+    @isset($bodyscripts)
+            {!! $bodyscripts !!}
+    @endisset
     @isset($livewire) @if ($livewire)
         @livewireScripts
     @endif @endif

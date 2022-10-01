@@ -3,12 +3,13 @@
 namespace App\Classes\TMASigns;
 
 use ZipStream;
+use Exception;
 
 use App\Classes\TMASigns\Settings;
 
 class TMASigns extends Base
 {
-    public function __construct(string $format, int $size, string $text, string $subtext)
+    public function __construct(string $format, int $size, $text, $subtext)
     {
         if (!in_array($format, Settings::allowedfiletypes)) throw new Exception("Invalid format: $format");
         if (!in_array($size, Settings::allowedsizes)) throw new Exception("Invalid size: $size");
@@ -47,7 +48,7 @@ class TMASigns extends Base
      * @param string $text
      * @return string ZIP file blob
      */
-    public function zip()
+    public function tga()
     {
         return $this->createzip("tga");
     }

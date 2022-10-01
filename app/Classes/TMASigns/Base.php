@@ -14,8 +14,8 @@ class Base
 {
     protected string $format;
     protected int $size;
-    protected string $text;
-    protected string $subtext;
+    protected $text;
+    protected $subtext;
 
     private Imagick $baseCanvas;
     private ImagickDraw $textStyling;
@@ -99,7 +99,8 @@ class Base
     }
 
     public function get() {
-        if($this->subtext != null && $this->size != 6) return $this->MultiLine();
-        else if($this->text != null) return $this->SingleLine();
+        if(!empty($this->subtext) && $this->size != 6) return $this->MultiLine();
+        else if(!empty($this->text)) return $this->SingleLine();
+        else return abort(422);
     }
 }
