@@ -1,0 +1,39 @@
+body {
+    color: var(--text-color-heading);
+    font-family: var(--font-sans);
+    background-color: var(--bg-body);
+
+    .main-wrapper {
+        min-height: 100vh;
+    }
+
+    main {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 80rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-bottom: 1rem;
+        
+        @media (min-width: 640px) {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem
+        }
+        
+        @media (min-width: 768px) {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem
+        }
+        
+        @media (min-width: 1024px) {
+        padding-left: 2rem;
+        padding-right: 2rem
+        }
+    }
+      
+      
+}
+
+p {
+    color: var(--text-color-paragraph);
+}

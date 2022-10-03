@@ -7,7 +7,7 @@
     <title>{{ $title }}</title>
     
     {{-- Main JS & CSS from the compiled files --}}
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <link rel="stylesheet" href="{{ mix('css/scss.css') }}">
     <script src="{{ mix('js/app.js') }}" defer></script>
 
     <link rel="icon" href="/favicon.ico" sizes="any">
@@ -24,8 +24,8 @@
     @endif @endif
 </head>
 
-<body class="text-white bg-neutral-900 no-scrollbar">
-    <div class="min-h-screen">
+<body class="no-scrollbar">
+    <div class="main-wrapper">
         {{-- Navbar and hero sections --}}
         <header>
             {{-- Main navigation bar --}}
@@ -46,17 +46,17 @@
         </header>
 
         {{-- Main content --}}
-        <main class="max-w-7xl mx-auto pb-4 px-4 sm:px-5 md:px-6 lg:px-8">
+        <main>
             {{ $slot }}
         </main>
     </div>
 
     {{-- Footer --}}
-    <span class="block border-t border-zinc-500 w-full h-px"></span>
-    <x-layout.footer class="px-4 mx-auto max-w-7xl sm:px-5 md:px-6 lg:px-8" />
+    <span class="footer-divider"></span>
+    <x-layout.footer />
 
     @isset($bodyscripts)
-            {!! $bodyscripts !!}
+        {!! $bodyscripts !!}
     @endisset
     @isset($livewire) @if ($livewire)
         @livewireScripts

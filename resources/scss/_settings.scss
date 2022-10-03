@@ -1,0 +1,72 @@
+// Colors
+:root {
+    --text-color-heading: #ffffff;
+    --text-color-paragraph: #d1d5db;
+
+    --text-color-primary: #ffffff;
+    --text-color-secondary: #d1d5db;
+
+    --font-sans: "MontserratVariable", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-mono: "Fira CodeVariable", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+    --bg-body: #171717;
+    --bg-cards: #000000;
+    --bg-secondary: #000000;
+
+    --border-color: rgb(113 113 122);
+
+    --outline-color: #0000ff;
+}
+
+// Component specific variables
+// Navbar
+:root {
+    --nav-bg: rgba(24, 24, 27, 0.5);
+}
+
+// Hero
+:root {
+    --nb-heroimage: url('/assets/hero_768.avif');
+
+    @media (min-aspect-ratio: 16/9) {
+        @media (min-width: 1367px) {
+            --nb-heroimage: url('/assets/hero_1080.avif');
+        }
+    
+        @media (min-width: 1921px) {
+            --nb-heroimage: url('/assets/hero_1440.avif');
+        }
+    
+        @media (min-width: 2561px) {
+            --nb-heroimage: url('/assets/hero.avif');
+        }
+    }
+    
+    @media (max-aspect-ratio: 16/9) {
+        @media (min-height: 769px) {
+            --nb-heroimage: url('/assets/hero_1080.avif');
+        }
+        
+        @media (min-height: 1081px) {
+            --nb-heroimage: url('/assets/hero_1440.avif');
+        }
+    
+        @media (min-height: 1441px) {
+            --nb-heroimage: url('/assets/hero.avif');
+        }
+    }
+}
+
+// Button
+:root {
+    --button-background: #262626;
+    --button-background-hover: #404040;
+    --button-background-active: #171717;
+}
+
+// Input 
+:root {
+    --input-background: #262626;
+    --input-background-hover: #404040;
+    --input-outline: rgb(113 113 122);
+}

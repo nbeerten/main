@@ -1,0 +1,12 @@
+.hero {
+    position: relative;
+    width: 100%;
+    -webkit-user-select: none;
+            user-select: none;
+    background-size: cover;
+    background-position: top;
+
+    height: 20vh;
+    min-height: 20vh;
+    background-image: var(--nb-heroimage);
+}

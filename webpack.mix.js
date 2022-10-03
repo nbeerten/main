@@ -23,3 +23,9 @@ mix.postCss(
         ]
     )
     .version()
+
+mix.sass(
+        "resources/scss/app.scss",
+        "public/css/scss.css"
+    )
+    .version()
