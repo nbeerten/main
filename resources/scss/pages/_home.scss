@@ -4,7 +4,7 @@
     place-items: center;
     justify-items: start;
     background-size: cover;
-    background-position: center;
+    background-position: top;
     background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3), rgba(23, 23, 23, 0.6), rgba(23, 23, 23, 1)), var(--nb-heroimage);
 
     > div {
@@ -36,7 +36,7 @@
             border-bottom-width: 1px;
             border-color: var(--border-color);
             padding-bottom: 0.25rem;
-            font-size: 3rem;
+            font-size: min(3rem, 12vw);
             line-height: 1;
             font-weight: 700;
         }

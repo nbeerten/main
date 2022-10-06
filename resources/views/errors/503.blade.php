@@ -1,5 +1,2 @@
-@extends('errors::minimal')
+<x-errorpage :title="__('Service unavailable')" code="503" :message="__('Service unavailable')" />
 
-@section('title', __('Service Unavailable'))
-@section('code', '503')
-@section('message', __('Service Unavailable'))

@@ -1,5 +1,1 @@
-@extends('errors::minimal')
-
-@section('title', __('Too Many Requests'))
-@section('code', '429')
-@section('message', __('Too Many Requests'))
+<x-errorpage :title="__('Too Many Requests')" code="429" :message="__('Too Many Requests')" />

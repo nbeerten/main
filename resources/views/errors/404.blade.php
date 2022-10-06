@@ -1,5 +1,1 @@
-@extends('errors::minimal')
-
-@section('title', __('Not Found'))
-@section('code', '404')
-@section('message', __('Page not Found'))
+<x-errorpage :title="__('Not found')" code="404" :message="__('Page not found')" />
