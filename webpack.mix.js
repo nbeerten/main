@@ -13,19 +13,9 @@ const mix = require("laravel-mix");
 
 mix.js("resources/js/app.js", "public/js")
 mix.js("resources/js/pages/TMASigns.js", "public/js/pages")
-    
-mix.postCss(
-        "resources/css/app.css",
-        "public/css",
-        [
-            require("tailwindcss"),
-            require("tailwindcss/nesting")
-        ]
-    )
-    .version()
 
 mix.sass(
         "resources/scss/app.scss",
-        "public/css/scss.css"
+        "public/css/app.css"
     )
     .version()
