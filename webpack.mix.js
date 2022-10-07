@@ -11,11 +11,12 @@ const mix = require("laravel-mix");
  |
  */
 
-mix.js("resources/js/app.js", "public/js")
-mix.js("resources/js/pages/TMASigns.js", "public/js/pages")
+mix.js("resources/js/app.js", "public/js");
+mix.js("resources/js/pages/TMASigns.js", "public/js/pages");
 
 mix.sass(
         "resources/scss/app.scss",
         "public/css/app.css"
     )
     .version()
+    .sourceMaps(false, 'source-map');

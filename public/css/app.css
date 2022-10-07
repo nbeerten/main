@@ -564,8 +564,8 @@ p {
   height: 2rem;
   width: auto;
   -webkit-user-select: none;
-  -moz-user-select: none;
-       user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 .nav > div > div .navitem {
   margin-left: 1.5rem;
@@ -951,6 +951,7 @@ footer .bottom .socials a svg {
   aspect-ratio: 1/1;
   height: 100%;
   max-height: 10rem;
+  border-radius: 0.5rem;
 }
 .home__projects > .cards > .card > .content {
   display: flex;
@@ -1107,3 +1108,5 @@ footer .bottom .socials a svg {
 .error__card > .main .info .description {
   font-size: 1.75rem;
 }
+
+/*# sourceMappingURL=app.css.map*/

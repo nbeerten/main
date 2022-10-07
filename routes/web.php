@@ -22,4 +22,3 @@ Route::get('/', function () {
 Route::get('/tmasigns', function () {
     return view('pages.tmasigns');
 })->name('tmasigns');
-

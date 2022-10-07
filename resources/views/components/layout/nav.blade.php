@@ -2,7 +2,7 @@
     <div>
         <div>
             <div class="logo">
-                <a href="/"><img fetchpriority="high" height="32" width="32" src="{{ asset('assets/logo_white.svg') }}" alt="NB logo"></a>
+                <a href="/"><img fetchpriority="high" height="32" width="32" src="{{ asset('assets/logo_white.svg') }}" aria-hidden="true"></a>
             </div>
             <div class="navitem">
                 <a href="{{ route("home") }}" @class([
