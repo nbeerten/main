@@ -9,13 +9,14 @@ use App\Classes\TMASigns\Settings;
 
 class TMASigns extends Base
 {
-    public function __construct(string $format, int $size, $text, $subtext)
+    public function __construct(string $format, int $size, array $options, $text, $subtext)
     {
         if (!in_array($format, Settings::allowedfiletypes)) throw new Exception("Invalid format: $format");
         if (!in_array($size, Settings::allowedsizes)) throw new Exception("Invalid size: $size");
 
         $this->format = $format;
         $this->size = $size;
+        $this->options = $options;
         $this->text = $text;
         $this->subtext = $subtext;
     }

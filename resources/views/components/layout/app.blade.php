@@ -7,8 +7,8 @@
     <title>{{ $title }}</title>
     
     {{-- Main JS & CSS from the compiled files --}}
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-    <script src="{{ mix('js/app.js') }}" defer></script>
+    <link rel="stylesheet" href="{{ mix('/css/app.css', 'dist') }}">
+    <script src="{{ mix('/js/app.js', 'dist') }}" defer></script>
 
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">

@@ -11,12 +11,22 @@ const mix = require("laravel-mix");
  |
  */
 
-mix.js("resources/js/app.js", "public/js");
-mix.js("resources/js/pages/TMASigns.js", "public/js/pages");
+mix.js("resources/js/app.js", "js")
+   .js("resources/js/pages/TMASigns.js", "js")
 
-mix.sass(
-        "resources/scss/app.scss",
-        "public/css/app.css"
-    )
-    .version()
-    .sourceMaps(false, 'source-map');
+   .sass("resources/scss/app.scss", "css")
+   .sourceMaps(false, 'source-map')
+
+   .setPublicPath('public/dist/')
+   .setResourceRoot('/dist');
+
+if (mix.inProduction()) {
+    mix.version();
+    mix.then(() => {
+        const convertToFileHash = require("laravel-mix-make-file-hash");
+        convertToFileHash({
+        publicPath: "public/dist",
+        manifestFilePath: "public/dist/mix-manifest.json"
+        });
+    });
+    };

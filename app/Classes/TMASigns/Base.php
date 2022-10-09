@@ -14,6 +14,11 @@ class Base
 {
     protected string $format;
     protected int $size;
+    protected $options;
+    protected function colors($color, $default = "white") {
+        if(!empty(Settings::colors[$color])) { return Settings::colors[$color]; }
+        else return $default;
+    }
     protected $text;
     protected $subtext;
 
@@ -42,8 +47,8 @@ class Base
         $this->textStyling = $this->Text();
         $this->subTextStyling = $this->SubText();
 
-        $this->baseCanvas->annotateImage($this->textStyling, 0, -40, 0, $this->text);
-        $this->baseCanvas->annotateImage($this->subTextStyling, 0, 125, 0, $this->subtext);
+        $this->baseCanvas->annotateImage($this->textStyling, 0, Settings::offset[$this->size][0], 0, $this->text);
+        $this->baseCanvas->annotateImage($this->subTextStyling, 0, Settings::offset[$this->size][1], 0, $this->subtext);
 
         $this->baseCanvas->setImageFormat($this->format);
         if ($this->format === "tga") $this->baseCanvas->flipImage();
@@ -64,10 +69,11 @@ class Base
         
         $draw->setGravity(Imagick::GRAVITY_CENTER);
         $draw->setFont(Settings::font);
-        $draw->setFillColor(Settings::textcolor);
+        $draw->setFillColor($this->colors($this->options["color"], Settings::textcolor));
         $draw->setTextAntialias(true);
 
-        $draw->setStrokeWidth(Settings::outlinewidth[$this->size]);
+        $newStrokeWidth = ($this->size === 1 && strlen($this->text) <= 3) ? Settings::outlinewidth[$this->size] * 2 : Settings::outlinewidth[$this->size];
+        $draw->setStrokeWidth($newStrokeWidth);
         $draw->setStrokeColor(Settings::outlinecolor);
         $draw->setStrokeAntialias(true);
 
@@ -80,20 +86,16 @@ class Base
     }
     private function SubText() {
         $draw = new ImagickDraw();
-
-        $metrics = $this->baseCanvas->queryFontMetrics($draw, $this->text, false);
-        $calculatedFontSize = floor($metrics["characterWidth"] * Settings::margins[$this->size] / $metrics["textWidth"]);
-        $newFontSize = $calculatedFontSize < Settings::subfontsize[$this->size] ? $calculatedFontSize : Settings::subfontsize[$this->size];
-        $draw->setFontSize($newFontSize);
         
         $draw->setGravity(Imagick::GRAVITY_CENTER);
         $draw->setFont(Settings::font);
-        $draw->setFillColor(Settings::textcolor);
+        $draw->setFillColor(Settings::subtextcolor);
         $draw->setTextAntialias(true);
 
-        $draw->setStrokeWidth(Settings::outlinewidth[$this->size]);
-        $draw->setStrokeColor(Settings::outlinecolor);
-        $draw->setStrokeAntialias(true);
+        $metrics = $this->baseCanvas->queryFontMetrics($draw, $this->subtext, false);
+        $calculatedFontSize = floor($metrics["characterWidth"] * Settings::margins[$this->size] / $metrics["textWidth"]);
+        $newFontSize = $calculatedFontSize < Settings::subfontsize[$this->size] ? $calculatedFontSize : Settings::subfontsize[$this->size];
+        $draw->setFontSize($newFontSize);
         
         return $draw;
     }

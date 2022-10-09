@@ -55,6 +55,9 @@ COPY --chown=www:www . /var/www
 # Change current user to www
 USER www
 
+# Compile CSS, JS, etc.
+RUN npm run prod
+
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000
 CMD ["php-fpm"]

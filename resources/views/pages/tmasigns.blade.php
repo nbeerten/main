@@ -1,4 +1,4 @@
-<x-layout.app title="Home" bodyscripts="<script defer src='/js/pages/TMASigns.js'></script>">
+<x-layout.app title="Home" bodyscripts="<script defer src='{{ mix('/js/TMASigns.js', 'dist') }}'></script>">
     <section class="default-page tmasigns">
         <h3 class="heading">TMASigns</h3>
         <div class="two-col no-scrollbar"

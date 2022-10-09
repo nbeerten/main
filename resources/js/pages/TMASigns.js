@@ -7,6 +7,9 @@ window.TMASigns = {
 `{ 
     "format": "jpg", 
     "size": ${size}, 
+    "options": {
+        "color": "orange"
+    },
     "text": "${text}", 
     "subtext": "${subtext}" 
 }`;
