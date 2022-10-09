@@ -1,5 +1,5 @@
 window.TMASigns = {
-    updatePreview: function({text, subtext, size}) {
+    updatePreview: function({text, subtext, size, subtextlocation}) {
         if(text == '' || size == '') return;
 
 // Not indented for better code syntax for jsondebug card
@@ -8,7 +8,7 @@ window.TMASigns = {
     "format": "jpg", 
     "size": ${size}, 
     "options": {
-        "color": "orange"
+        "subtextlocation": "${subtextlocation}"
     },
     "text": "${text}", 
     "subtext": "${subtext}" 
@@ -25,6 +25,7 @@ window.TMASigns = {
         fetch('/api/tmasigns', {method: 'POST', headers: Headers, body: postData})
             .then((response) => response.blob())
             .then((imageBlob) => {
+                if(imageBlob.type !== "image/jpg") return previewImage.src = '';
                 const objectURL = URL.createObjectURL(imageBlob);
                 previewImage.src = objectURL;
             });
@@ -39,7 +40,10 @@ window.TMASigns = {
         var postData = 
         `{ 
             "format": "tga", 
-            "size": ${size}, 
+            "size": ${size},
+            "options": {
+                "subtextlocation": "${subtextlocation}"
+            },
             "text": "${text}", 
             "subtext": "${subtext}" 
         }`;

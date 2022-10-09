@@ -16,7 +16,7 @@ class TMASigns extends Base
 
         $this->format = $format;
         $this->size = $size;
-        $this->options = $options;
+        $this->options = array_merge(Settings::options, $options);
         $this->text = $text;
         $this->subtext = $subtext;
     }
@@ -45,8 +45,6 @@ class TMASigns extends Base
     /**
      * Returns zip file of .tga file
      *
-     * @param integer $size
-     * @param string $text
      * @return string ZIP file blob
      */
     public function tga()
@@ -55,9 +53,18 @@ class TMASigns extends Base
     }
 
     /**
+     * Returns zip file of .tga file
+     *
+     * @return string ZIP file blob
+     */
+    public function tgaraw()
+    {
+        return Base::get();
+    }
+
+    /**
      * Returns JPG output of 2x1 sized sign
      *
-     * @param string $text
      * @return string JPG blob
      */
     public function jpg()

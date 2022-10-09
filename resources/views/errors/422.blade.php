@@ -1,0 +1,1 @@
+<x-errorpage :title="__('Unprocessable Entity')" code="422" :message="__('Unprocessable Entity')" />

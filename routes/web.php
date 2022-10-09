@@ -22,3 +22,5 @@ Route::get('/', function () {
 Route::get('/tmasigns', function () {
     return view('pages.tmasigns');
 })->name('tmasigns');
+
+// Route::get('tmasigns/batch/{size}', [TMASignsController::class, 'batch']);

@@ -55,12 +55,25 @@ class Settings
         6 => 1400
     ];
     public const offset = [
-        1 => [-20, 120],
-        2 => [-20, 100],
-        4 => [-50, 110],
-        6 => [0, 0] // Not needed
+        'bottom' => [
+            1 => [-20, 120],
+            2 => [-20, 100],
+            4 => [-50, 110],
+            6 => [0, 0] // Not needed
+        ],
+        'top'=> [
+            1 => [10, -120],
+            2 => [10, -100],
+            4 => [30, -110],
+            6 => [0, 0] // Not needed
+        ]
     ];
     public const allowedfiletypes = ["jpg", "tga"];
     public const allowedsizes = [1, 2, 4, 6];
     public const skinjsonpath = "../assets/TMASigns/Skin.json";
+
+    public const options = [
+        "color" => "orange",
+        "subtextlocation" => "bottom"
+    ];
 }

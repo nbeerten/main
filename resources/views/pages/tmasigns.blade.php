@@ -2,7 +2,7 @@
     <section class="default-page tmasigns">
         <h3 class="heading">TMASigns</h3>
         <div class="two-col no-scrollbar"
-             x-data="{ text: '', subtext: '', size: '2' }"
+             x-data="{ text: '', subtext: '', size: '2', subtextlocation: 'bottom' }"
              @@input.debounce.500ms="TMASigns.updatePreview($data)">
             
              <section class="left-col">
@@ -25,21 +25,53 @@
                         <option value="6">6x1</option>
                     </select>
                 </div>
+
+                <details class="options">
+                    <summary>Options</summary>
+                    <div class="input">
+                        <label for="subtextlocation">Subtext Location</label>
+                        <select x-model="subtextlocation" id="subtextlocation">
+                            <option value="bottom" selected>Bottom</option>
+                            <option value="top">Top</option>
+                        </select>
+                    </div>
+                </details>
+
                 <div class="wrapper-button-align-right">
                     <a id="downloadButton" href="" @@click.prevent.throttle.500ms="TMASigns.downloadTGA($data)" download="tma_sign2x1_text.zip" class="button">Download TGA</a>
                 </div>
             </section>
             <section class="right-col">
                 <div class="preview-image">
-                    <img id="previewImage" src="">
+                    <img id="previewImage" src="" onclick="window.open(this.getAttribute('src'));">
                 </div>
-
-                <div class="json-debug">
-                    <h6 class="heading">JSON Data</h6>
+                
+                <details class="json-debug">
+                    <summary class="heading">JSON Data</summary>
                     <p class="description">Send POST requests to <span class="inline-code">/api/tmasigns</span></p>
                     <code id="jsondebug" class="code"></code>
-                <div>
+                </details>
             </section>
+        </div>
+        <hr>
+        <h4>Pre-made Packages</h4>
+        <div class="premade-packages no-scrollbar">
+            <div class="card">
+                <img loading="lazy" src="{{ asset('assets/tmasigns_Checkpoint_3.jpg') }}" alt="Sign preview">
+                <div class="content">
+                    <h4 class="heading">Checkpoint numbers</h4>
+                    <p class="long-text">A pre-made package containing numbered checkpoint signs from 1 to 25.</p>
+                </div>
+                <a href="https://github.com/nbeerten/tmasigns" class="button">Download package</a>
+            </div>
+            <div class="card">
+                <img loading="lazy" src="{{ asset('assets/tmasigns_start.jpg') }}" alt="Sign preview">
+                <div class="content">
+                    <h4 class="heading">Common signs</h4>
+                    <p class="long-text">A pre-made package containing signs in all formats, with texts like "GPS", "Start", "Finish", "Multilap", "Checkpoint" and much more.</p>
+                </div>
+                <a href="https://github.com/nbeerten/tmasigns" class="button">Download package</a>
+            </div>
         </div>
     </section>
 </x-layout.app>

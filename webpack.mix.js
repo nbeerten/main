@@ -18,7 +18,8 @@ mix.js("resources/js/app.js", "js")
    .sourceMaps(false, 'source-map')
 
    .setPublicPath('public/dist/')
-   .setResourceRoot('/dist');
+   .setResourceRoot('/dist')
+   .version();
 
 if (mix.inProduction()) {
     mix.version();

@@ -47,8 +47,8 @@ class Base
         $this->textStyling = $this->Text();
         $this->subTextStyling = $this->SubText();
 
-        $this->baseCanvas->annotateImage($this->textStyling, 0, Settings::offset[$this->size][0], 0, $this->text);
-        $this->baseCanvas->annotateImage($this->subTextStyling, 0, Settings::offset[$this->size][1], 0, $this->subtext);
+        $this->baseCanvas->annotateImage($this->textStyling, 0, Settings::offset[$this->options["subtextlocation"]][$this->size][0], 0, $this->text);
+        $this->baseCanvas->annotateImage($this->subTextStyling, 0, Settings::offset[$this->options["subtextlocation"]][$this->size][1], 0, $this->subtext);
 
         $this->baseCanvas->setImageFormat($this->format);
         if ($this->format === "tga") $this->baseCanvas->flipImage();
