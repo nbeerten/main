@@ -1,6 +1,6 @@
 <x-layout.app title="Home" bodyscripts="<script defer src='{{ mix('/js/TMASigns.js', 'dist') }}'></script>">
     <section class="default-page tmasigns">
-        <h3 class="heading">TMASigns</h3>
+        <h3 class="heading">TMA Sign Generator</h3>
         <div class="two-col no-scrollbar"
              x-data="{ text: '', subtext: '', size: '2', subtextlocation: 'bottom' }"
              @@input.debounce.500ms="TMASigns.updatePreview($data)">
@@ -57,7 +57,7 @@
         <h4>Pre-made Packages</h4>
         <div class="premade-packages no-scrollbar">
             <div class="card">
-                <img loading="lazy" src="{{ asset('assets/tmasigns_Checkpoint_3.jpg') }}" alt="Sign preview">
+                <img loading="lazy" src="{{ asset('assets/tmasigns_checkpointpack.jpg') }}" alt="Sign preview">
                 <div class="content">
                     <h4 class="heading">Checkpoint numbers</h4>
                     <p class="long-text">A pre-made package containing numbered checkpoint signs from 1 to 25.</p>
