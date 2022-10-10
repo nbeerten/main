@@ -74,6 +74,7 @@ class Settings
 
     public const options = [
         "color" => "orange",
-        "subtextlocation" => "bottom"
+        "subtextlocation" => "bottom",
+        "compressionquality" => 100
     ];
 }

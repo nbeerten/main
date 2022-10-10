@@ -47,7 +47,7 @@ class TMASigns extends Base
      *
      * @return string ZIP file blob
      */
-    public function tga()
+    public function tga_zip()
     {
         return $this->createzip("tga");
     }
@@ -55,9 +55,9 @@ class TMASigns extends Base
     /**
      * Returns zip file of .tga file
      *
-     * @return string ZIP file blob
+     * @return string Raw TGA file blob
      */
-    public function tgaraw()
+    public function tga_raw()
     {
         return Base::get();
     }

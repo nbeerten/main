@@ -15,9 +15,14 @@ class TMASignsController extends Controller
                 ->header('Content-Type', 'image/jpg');
     }
 
-    public function tga($size, $options, $text, $subtext) {
+    public function tga_zip($size, $options, $text, $subtext) {
         $TMASigns = new TMASigns("tga", $size, $options, $text, $subtext);
-        return response($TMASigns->tga());
+        return response($TMASigns->tga_zip());
+    }
+
+    public function tga_raw($size, $options, $text, $subtext) {
+        $TMASigns = new TMASigns("tga", $size, $options, $text, $subtext);
+        return response($TMASigns->tga_raw());
     }
 
     public function json(Request $request) {
@@ -27,7 +32,10 @@ class TMASignsController extends Controller
         $text = $request->input('text', '');
         $subtext = $request->input('subtext', '');
         if($format == "jpg") return $this->jpg($size, $options, $text, $subtext);
-        if($format == "tga") return $this->tga($size, $options, $text, $subtext);
+        if($format == "tga") {
+            if($size != 6) return $this->tga_zip($size, $options, $text, $subtext);
+            else if($size = 6) return $this->tga_raw($size, $options, $text, $subtext);
+        }
     }
 
     public function batch(Request $request, $size) {
@@ -41,7 +49,7 @@ class TMASignsController extends Controller
         for ($x = 1; $x <= 25; $x++) {
             $TMASigns = new TMASigns("tga", $size, [], "Checkpoint {$x}", '');
             
-            $zip->addFile("Checkpoint_{$x}.tga", $TMASigns->tgaraw());
+            $zip->addFile("Checkpoint_{$x}.tga", $TMASigns->tga_raw());
         }
 
         return $zip->finish();

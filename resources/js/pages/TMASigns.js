@@ -31,11 +31,12 @@ window.TMASigns = {
             });
     },
 
-    downloadTGA: function({text, subtext, size}) {
+    downloadTGA: function({text, subtext, size, subtextlocation}) {
         if(text == '' || size == '') return;
 
         const downloadButton = document.querySelector('#downloadButton');
-        downloadButton.download = `tma_sign${size}x1_${text}.zip`
+        if(size == 6) downloadButton.download = `tma_sign${size}x1_${text}.tga`
+        else downloadButton.download = `tma_sign${size}x1_${text}.zip`;
         
         var postData = 
         `{ 
