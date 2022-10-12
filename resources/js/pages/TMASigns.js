@@ -53,12 +53,41 @@ window.TMASigns = {
         };
 
         fetch('/api/tmasigns', {method: 'POST', headers: Headers, body: postData})
-            .then((response) => response.blob())
-            .then((imageBlob) => {
-                const objectURL = URL.createObjectURL(imageBlob);
-                downloadButton.href = objectURL;
-                downloadButton.click();
-                URL.revokeObjectURL(objectURL);
+            .then((response) => {
+                if(response.ok) {
+                response.blob()
+                    .then((imageBlob) => {
+                        const objectURL = URL.createObjectURL(imageBlob);
+                        downloadButton.href = objectURL;
+                        downloadButton.click();
+                        URL.revokeObjectURL(objectURL);
+                    });
+                } else downloadButton.href = "";
+            });
+    },
+
+    downloadLocators: function() {
+
+        const locatorToolDownloadButton = document.querySelector('#locatorToolDownloadButton');
+
+        const data = JSON.stringify(Alpine.store('locatorTool').urls);
+        const postData = `{ "urls": ${data} }`;
+    
+        const Headers = {
+            'Content-Type': 'application/json'
+        };
+
+        fetch('/api/tmasigns/locatortool', {method: 'POST', headers: Headers, body: postData})
+            .then((response) => {
+                if(response.ok) {
+                    response.blob()
+                    .then((responseBlob) => {
+                        const objectURL = URL.createObjectURL(responseBlob);
+                        locatorToolDownloadButton.href = objectURL;
+                        locatorToolDownloadButton.click();
+                        URL.revokeObjectURL(objectURL);
+                    });
+                } else locatorToolDownloadButton.href = "";
             });
     }
 };

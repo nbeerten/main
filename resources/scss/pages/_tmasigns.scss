@@ -125,7 +125,7 @@
         padding: 0.5rem 0;
     }
 
-    > .premade-packages {
+    > .card-row {
         display: flex;
         flex-direction: column;
         @media (min-width: 1024px) {
@@ -177,6 +177,61 @@
             
             > .button {
                 align-self: flex-end;
+            }
+        }
+    }
+
+    .locatortool {
+        .card {
+            @media (min-width: 1024px) {
+                width: 90ch;
+            }
+
+            > .input > textarea {
+                font-size: 0.8rem;
+                font-family: var(--font-mono);
+                line-height: 2rem;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            > .wrapper-button-align-right {
+                display: flex;
+                width: 100%;
+                justify-content: flex-end;
+            }
+        }
+
+        // Not directly under this div, dont add `>`
+        .urllist {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+
+            > li {
+                display: flex;
+                gap: 0.5rem;
+                align-items: center;
+                justify-content:space-between;
+                background-color: var(--bg-primary);
+                padding: 0.2rem 0.75rem;
+                border-radius: 9999px;
+                font-family: var(--font-mono);
+                letter-spacing: -1.25px;
+                font-size: 1rem;
+                max-width: 100%;
+
+                span {
+                    max-width: 95%;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+                svg {
+                    width: 1rem;
+                    height: 1rem;
+                }
             }
         }
     }

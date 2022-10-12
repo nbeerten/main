@@ -55,7 +55,7 @@
         </div>
         <hr>
         <h4>Pre-made Packages</h4>
-        <div class="premade-packages no-scrollbar">
+        <div class="card-row no-scrollbar">
             <div class="card">
                 <img loading="lazy" src="{{ asset('assets/tmasigns_checkpointpack.jpg') }}" alt="Sign preview">
                 <div class="content">
@@ -73,5 +73,65 @@
                 <a href="https://github.com/nbeerten/tmasigns" class="button">Download package</a>
             </div>
         </div>
+        <hr>
+        <h4>Tools</h4>
+        <div class="card-row no-scrollbar locatortool">
+            
+             <section class="card" x-data="{ input: '' , data: ['A'] }">
+                <div class="content">
+                    <h4 class="heading">Locator Tool</h4>
+                    <p class="long-text">Will automatically create locator files for you. One URL per line. Must have filename and extension as the last part of the url. For example: <span class="inline-code">https://domain.example/filename.zip</span>. Invalid URLs will be skipped. Locator files will be in the <span class="inline-code">.zip</span> file.</p>
+                </div>
+                <div class="input">
+                    <div class="row">
+                        <input x-model="$store.locatorTool.newUrl" id="locatortool" type="url" placeholder="URL" @@keyup.enter.prevent="$store.locatorTool.addUrl($store.locatorTool.newUrl)">
+                        <button class="action button" @@click.prevent="$store.locatorTool.addUrl($store.locatorTool.newUrl)">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+                                <path fill-rule="evenodd" d="M12 3.75a.75.75 0 01.75.75v6.75h6.75a.75.75 0 010 1.5h-6.75v6.75a.75.75 0 01-1.5 0v-6.75H4.5a.75.75 0 010-1.5h6.75V4.5a.75.75 0 01.75-.75z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <ul class="urllist">
+                    <template x-for="url, index in $store.locatorTool.urls">
+                        <li><span x-text="url" x-bind:title="url"></span>
+                            <div class="deletebutton">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" @@click.throttle.500ms="$store.locatorTool.deleteUrl(url)">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </div>
+                        </li>
+                    </template>
+                </ul>
+
+                <div class="wrapper-button-align-right">
+                    <a id="locatorToolDownloadButton" href="" @@click.prevent.throttle.500ms="TMASigns.downloadLocators()" download="locators.zip" class="button">Download locators</a>
+                </div>
+            </section>
+        </div>
     </section>
+
+    <script>
+        document.addEventListener("alpine:init", () => {
+            Alpine.store("locatorTool", {
+                // The array of all messages
+                urls: [],
+
+                // The next message to add, its value is bound to the textarea field
+                newUrl: "",
+
+                // Adds the current value of `newMessage` to the array of messages
+                addUrl(url) {
+                    if(url == '') return;
+                    this.urls.push(url);
+                    this.newUrl = "";
+                },
+
+                // Given an index, removes the message from the array
+                deleteUrl(index) {
+                    this.urls = this.urls.filter(i => i !== index);
+                },
+            });
+        });
+</script>
 </x-layout.app>

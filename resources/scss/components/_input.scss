@@ -1,12 +1,12 @@
 .input {
-    > label {
+    label {
         display: block;
         font-size: 0.875rem;
         line-height: 1.25rem;
         color: var(--text-color-secondary);
     }
 
-    > input {
+    input {
         margin-top: 0.25rem;
         display: block;
         width: 100%;
@@ -18,20 +18,45 @@
         padding-bottom: 0.5rem
     }
 
-    > input:hover {
+    input:hover {
         background-color: var(--input-background-hover);
     }
 
-    > input:focus {
+    input:focus {
         background-color: var(--input-background-hover);
         outline: 1px solid transparent;
     }
 
-    > input:focus-visible {
+    input:focus-visible {
         outline: 1px solid var(--input-outline);
     }
 
-    > select {
+    textarea {
+        display: block;
+        margin-top: 0.25rem;
+        width: 100%;
+        border-radius: 0.375rem;
+        background-color: var(--input-background);
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+
+    textarea:hover {
+        background-color: var(--input-background-hover);
+    }
+
+    textarea:focus {
+        background-color: var(--input-background-hover);
+        outline: 1px solid transparent;
+    }
+
+    textarea:focus-visible {
+        outline: 1px solid var(--input-outline);
+    }
+
+    select {
         margin-top: 0.25rem;
         display: block;
         width: 100%;
@@ -43,16 +68,35 @@
         padding-right: 0.75rem
     }
 
-    > select:hover {
+    select:hover {
         background-color: var(--input-background-hover);
     }
 
-    > select:focus {
+    select:focus {
         background-color: var(--input-background-hover);
         outline: 1px solid transparent;
     }
 
-    > select:focus-visible {
+    select:focus-visible {
         outline: 1px solid var(--input-outline);
+    }
+
+    .row {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+
+        *:not(button.action) {
+            flex-grow: 1;
+        }
+    }
+
+    button.action {
+        margin-top: 0.25rem;
+
+        svg {
+            width: 1rem;
+            height: 1rem;
+        }
     }
 }
