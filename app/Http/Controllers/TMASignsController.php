@@ -4,42 +4,59 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Validation\Rule;
+
 use App\Classes\TMASigns\TMASigns;
+use App\Classes\TMASigns\Settings;
 use ZipStream;
 
 class TMASignsController extends Controller
 {
-    public function jpg($size, $options, $text, $subtext)
-    {
+    public function jpg($size, $options, $text, $subtext) {
         $TMASigns = new TMASigns("jpg", $size, $options, $text, $subtext);
-        return response($TMASigns->jpg())
-            ->header('Content-Type', 'image/jpg');
+        return response($TMASigns->jpg())->header('Content-Type', 'image/jpg');
     }
 
-    public function tga_zip($size, $options, $text, $subtext)
-    {
-        $TMASigns = new TMASigns("tga", $size, $options, $text, $subtext);
-        return response($TMASigns->tga_zip());
+    public function webp($size, $options, $text, $subtext) {
+        $TMASigns = new TMASigns("webp", $size, $options, $text, $subtext);
+        return response($TMASigns->webp())->header('Content-Type', 'image/webp');
     }
 
-    public function tga_raw($size, $options, $text, $subtext)
-    {
+    public function tga_zip($size, $options, $text, $subtext) {
         $TMASigns = new TMASigns("tga", $size, $options, $text, $subtext);
-        return response($TMASigns->tga_raw());
+        return response($TMASigns->tga_zip())->header('Content-Type', 'application/zip');
+    }
+
+    public function tga_raw($size, $options, $text, $subtext) {
+        $TMASigns = new TMASigns("tga", $size, $options, $text, $subtext);
+        return response($TMASigns->tga_raw())->header('Content-Type', 'image/tga');
     }
 
     public function json(Request $request)
     {
-        $format = $request->input('format', '');
-        $size = $request->input('size', 2);
-        $options = $request->input('options', []);
-        $text = $request->input('text', '');
-        $subtext = $request->input('subtext', '');
-        if ($format == "jpg") return $this->jpg($size, $options, $text, $subtext);
-        if ($format == "tga") {
-            if ($size != 6) return $this->tga_zip($size, $options, $text, $subtext);
-            else if ($size = 6) return $this->tga_raw($size, $options, $text, $subtext);
-        }
+        $validated = $request->validate([
+            'format' => ['required', 'string', Rule::in(Settings::allowedfiletypes)],
+            'size' => ['required', 'numeric', Rule::in(Settings::allowedsizes)],
+            'options' => ['sometimes', 'array'],
+            'text' => ['bail', 'required', 'string', 'max:32'],
+            'subtext' => ['sometimes', 'nullable', 'string', 'max:64']
+        ]);
+
+        $format = $validated['format'];
+        $size = $validated['size'];
+        $options = $validated['options'] ?? [];
+        $text = $validated['text'];
+        $subtext = $validated['subtext'] ?? null;
+
+        
+        if ($format == "tga" && $size != 6)
+            return $this->tga_zip($size, $options, $text, $subtext);
+        if ($format == "tga" && $size = 6)
+            return $this->tga_raw($size, $options, $text, $subtext);
+        if ($format == "webp")
+            return $this->webp($size, $options, $text, $subtext);
+        else
+            return $this->jpg($size, $options, $text, $subtext);
     }
 
     public function batch(Request $request, $size)

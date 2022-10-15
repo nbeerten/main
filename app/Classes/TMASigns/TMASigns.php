@@ -71,4 +71,14 @@ class TMASigns extends Base
     {
         return Base::get();
     }
+
+    /**
+     * Returns WEBP output of 2x1 sized sign
+     *
+     * @return string JPG blob
+     */
+    public function webp()
+    {
+        return Base::get();
+    }
 }

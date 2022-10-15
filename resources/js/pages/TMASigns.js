@@ -16,19 +16,34 @@ window.TMASigns = {
         const jsondebug = document.querySelector("#jsondebug");
         jsondebug.textContent = postData;
 
+        const previewImageParent = document.querySelector(':has(> #previewImage)');
         const previewImage = document.querySelector('#previewImage');
 
         const Headers = {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Accept': 'application/json, image/jpg'
         };
 
         fetch('/api/tmasigns', {method: 'POST', headers: Headers, body: postData})
-            .then((response) => response.blob())
-            .then((imageBlob) => {
-                if(imageBlob.type !== "image/jpg") return previewImage.src = '';
-                const objectURL = URL.createObjectURL(imageBlob);
-                previewImage.src = objectURL;
-            });
+            .then((response) => {
+                previewImageParent.setAttribute("data-status", response.status)
+                previewImageParent.setAttribute("data-status-message", response.statusText)
+                if(response.ok) {
+                    response.blob()
+                    .then((imageBlob) => {
+                        if(imageBlob.type !== "image/jpg") return previewImage.src = '';
+                        const objectURL = URL.createObjectURL(imageBlob);
+                        previewImage.src = objectURL;
+                    });
+                }
+                else {
+                    response.json()
+                    .then((data) => {
+                        previewImage.src = ' ';
+                        previewImageParent.setAttribute("data-status-message", data['message']);
+                    });
+                }
+            })
     },
 
     downloadTGA: function({text, subtext, size, subtextlocation}) {

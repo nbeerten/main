@@ -17,7 +17,7 @@ class Settings
         1 => 50,
         2 => 50,
         4 => 80,
-        6 => 75
+        6 => 70
     ];
     public const font = "../assets/TMASigns/Montserrat-Black.ttf";
     public const colors = [
@@ -52,14 +52,14 @@ class Settings
         1 => 425,
         2 => 900,
         4 => 1900,
-        6 => 1400
+        6 => 1200
     ];
     public const offset = [
         'bottom' => [
             1 => [-20, 120],
             2 => [-20, 100],
             4 => [-50, 110],
-            6 => [0, 0] // Not needed
+            6 => [0, 0]
         ],
         'top'=> [
             1 => [10, -120],
@@ -68,7 +68,7 @@ class Settings
             6 => [0, 0] // Not needed
         ]
     ];
-    public const allowedfiletypes = ["jpg", "tga"];
+    public const allowedfiletypes = ["jpg", "webp", "tga"];
     public const allowedsizes = [1, 2, 4, 6];
     public const skinjsonpath = "../assets/TMASigns/Skin.json";
 
