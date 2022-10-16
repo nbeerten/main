@@ -15,10 +15,6 @@ class Base
     protected string $format;
     protected int $size;
     protected $options;
-    protected function colors($color, $default = "white") {
-        if(!empty(Settings::colors[$color])) { return Settings::colors[$color]; }
-        else return $default;
-    }
     protected $text;
     protected $subtext;
 
@@ -72,8 +68,8 @@ class Base
         $this->textStyling = $this->Text();
         $this->subTextStyling = $this->SubText();
 
-        $this->baseCanvas->annotateImage($this->textStyling, 0, Settings::offset[$this->options["subtextlocation"]][$this->size][0], 0, $this->text);
         $this->baseCanvas->annotateImage($this->subTextStyling, 0, Settings::offset[$this->options["subtextlocation"]][$this->size][1], 0, $this->subtext);
+        $this->baseCanvas->annotateImage($this->textStyling, 0, Settings::offset[$this->options["subtextlocation"]][$this->size][0], 0, $this->text);
 
         // Set all image-specific settings
         $this->ImageSettings();
@@ -94,10 +90,10 @@ class Base
         
         $draw->setGravity(Imagick::GRAVITY_CENTER);
         $draw->setFont(Settings::font);
-        $draw->setFillColor($this->colors($this->options["color"], Settings::textcolor));
+        $draw->setFillColor(Settings::textcolor);
         $draw->setTextAntialias(true);
 
-        $newStrokeWidth = ($this->size === 1 && strlen($this->text) <= 3) ? Settings::outlinewidth[$this->size] * 2 : Settings::outlinewidth[$this->size];
+        $newStrokeWidth = ($this->size === 1 && strlen($this->text) <= 4) ? Settings::outlinewidth[$this->size] * 2 : Settings::outlinewidth[$this->size];
         $draw->setStrokeWidth($newStrokeWidth);
         $draw->setStrokeColor(Settings::outlinecolor);
         $draw->setStrokeAntialias(true);

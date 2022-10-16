@@ -4,17 +4,15 @@
     }
     
     :disabled {
-        filter: grayscale(80%) brightness(0.85);
+        filter: brightness(0.85);
         cursor: not-allowed;
-        pointer-events: none;
         user-select: none;
     }
 
     @supports selector(:has(:disabled)) {
         &:has(:disabled), &:has(:disabled) *  {
-            filter: grayscale(80%) brightness(0.85);
+            filter: brightness(0.85);
             cursor: not-allowed;
-            pointer-events: none;
             user-select: none;
         }
     }
@@ -36,7 +34,7 @@
         padding-left: 0.75rem;
         padding-right: 0.75rem;
         padding-top: 0.5rem;
-        padding-bottom: 0.5rem
+        padding-bottom: 0.5rem;
     }
 
     input:hover {
@@ -108,6 +106,10 @@
 
         *:not(button.action) {
             flex-grow: 1;
+        }
+
+        :last-child:is(select, button, [type="button"]) {
+            width:max-content;
         }
     }
 

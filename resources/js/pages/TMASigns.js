@@ -3,15 +3,15 @@ window.TMASigns = {
         if(text == '' || size == '') return;
 
 // Not indented for better code syntax for jsondebug card
-        var postData = 
-`{ 
-    "format": "jpg", 
-    "size": ${size}, 
+        var postData =
+`{
+    "format": "jpg",
+    "size": ${size},
     "options": {
         "subtextlocation": "${subtextlocation}"
     },
-    "text": "${text}", 
-    "subtext": "${subtext}" 
+    "text": "${text}",
+    "subtext": "${subtext}"
 }`;
         const jsondebug = document.querySelector("#jsondebug");
         jsondebug.textContent = postData;
@@ -52,16 +52,16 @@ window.TMASigns = {
         const downloadButton = document.querySelector('#downloadButton');
         if(size == 6) downloadButton.download = `tma_sign${size}x1_${text}.tga`
         else downloadButton.download = `tma_sign${size}x1_${text}.zip`;
-        
-        var postData = 
-        `{ 
-            "format": "tga", 
+
+        var postData =
+        `{
+            "format": "tga",
             "size": ${size},
             "options": {
                 "subtextlocation": "${subtextlocation}"
             },
-            "text": "${text}", 
-            "subtext": "${subtext}" 
+            "text": "${text}",
+            "subtext": "${subtext}"
         }`;
         const Headers = {
             'Content-Type': 'application/json'
@@ -87,7 +87,7 @@ window.TMASigns = {
 
         const data = JSON.stringify(Alpine.store('locatorTool').urls);
         const postData = `{ "urls": ${data} }`;
-    
+
         const Headers = {
             'Content-Type': 'application/json'
         };

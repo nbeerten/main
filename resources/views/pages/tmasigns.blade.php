@@ -32,12 +32,18 @@
                 <section class="left-col">
                     <div class="input">
                         <label for="text">Text</label>
-                        <input x-model="text" id="text" type="text" placeholder="Big text">
+                            <input x-model="text" id="text" type="text" placeholder="Big text">
                     </div>
 
                     <div class="input">
                         <label for="subtext">Subtext (Optional)</label>
-                        <input x-model="subtext" id="subtext" type="text" placeholder="Subtext" x-bind:disabled="size == 6 ? true : false">
+                        <div class="row">
+                            <input x-model="subtext" id="subtext" type="text" placeholder="Subtext" x-bind:disabled="size == 6 ? true : false">
+                            <select x-model="subtextlocation" id="subtextlocation" x-bind:disabled="size == 6 ? true : false">
+                                <option value="bottom" selected>Bottom</option>
+                                <option value="top">Top</option>
+                            </select>
+                        </div>
                     </div>
                         
                     <div class="input">
@@ -50,16 +56,9 @@
                         </select>
                     </div>
 
-                    <details class="options">
+                    {{-- <details class="options">
                         <summary>Options</summary>
-                        <div class="input">
-                            <label for="subtextlocation">Subtext Location</label>
-                            <select x-model="subtextlocation" id="subtextlocation" x-bind:disabled="size == 6 ? true : false">
-                                <option value="bottom" selected>Bottom</option>
-                                <option value="top">Top</option>
-                            </select>
-                        </div>
-                    </details>
+                    </details> --}}
 
                     <div class="wrapper-button-align-right">
                         <a id="downloadButton" href="" @@click.prevent.throttle.500ms="TMASigns.downloadTGA($data)" download="tma_sign2x1_text.zip" class="button" >Download TGA</a>

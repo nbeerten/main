@@ -56,15 +56,15 @@ class Settings
     ];
     public const offset = [
         'bottom' => [
-            1 => [-20, 120],
+            1 => [-40, 140],
             2 => [-20, 100],
             4 => [-50, 110],
             6 => [0, 0]
         ],
         'top'=> [
-            1 => [10, -120],
+            1 => [10, -140],
             2 => [10, -100],
-            4 => [30, -110],
+            4 => [30, -115],
             6 => [0, 0] // Not needed
         ]
     ];
@@ -73,8 +73,6 @@ class Settings
     public const skinjsonpath = "../assets/TMASigns/Skin.json";
 
     public const options = [
-        "color" => "orange",
-        "subtextlocation" => "bottom",
-        "compressionquality" => 100
+        "subtextlocation" => "bottom"
     ];
 }
