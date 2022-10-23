@@ -1,38 +1,54 @@
-<x-layout.app title="Home" bodyscripts="<script defer src='{{ mix('/js/TMASigns.js', 'dist') }}'></script>">
+@push('scripts')
+    <script defer src='{{ mix('/js/TMASigns.js', 'dist') }}'></script>
+@endpush
+
+<x-layout.app title="TMA Signs" ogimage="{{ asset('assets/tmasigns_1x1example.webp') }}">
+    <x-slot:ogdescription>
+        Small web application to create signs for the game Trackmania with user input as text on the image, styled to fit in with the TMA signpack.
+    </x-slot:ogdescription>
+
     <section class="default-page tmasigns">
-        <h3 class="heading">TMA Text Signs</h3>
-        <details open>
-            <summary>Pre-made Packages</summary>
+        <h3 class="heading">TMA Signs</h3>
+        <details open id="packages">
+            <summary>
+                <x-heroicon-s-archive-box /> Pre-made Packages
+            </summary>
             <div class="card-row no-scrollbar">
                 <div class="card">
                     <img loading="lazy" src="{{ asset('assets/tma_sign6x1_Checkpoint 7.jpg') }}" alt="Sign preview">
                     <div class="content">
                         <h4 class="heading">Checkpoint numbers</h4>
-                        <p class="long-text">A pre-made package containing numbered checkpoint signs from 1 to 25. Only in the <span class="inline-code">6x1</span> size (sign size used on checkpoints, start and finish).</p>
+                        <p class="long-text">A pre-made package containing numbered checkpoint signs from 1 to 25. Only in the <span class="inline-code">6x1</span> size
+                            (sign size used on checkpoints, start and finish).</p>
                     </div>
-                    <a href="https://github.com/nbeerten/tmasigns" class="button">Download package</a>
+                    <a href="https://github.com/nbeerten/tmasigns" class="button">
+                        <x-heroicon-s-archive-box-arrow-down defer /> Download package
+                    </a>
                 </div>
                 <div class="card">
                     <img loading="lazy" src="{{ asset('assets/tma_sign6x1_start.jpg') }}" alt="Sign preview">
                     <div class="content">
                         <h4 class="heading">Common signs</h4>
-                        <p class="long-text">A pre-made package containing signs in all formats, with texts like "GPS", "Start", "Finish", "Multilap", "Checkpoint" and much more.</p>
+                        <p class="long-text">A pre-made package containing signs in all formats, with texts like "GPS", "Start", "Finish", "Multilap", "Checkpoint" and
+                            much more.</p>
                     </div>
-                    <a href="https://github.com/nbeerten/tmasigns" class="button">Download package</a>
+                    <a href="https://github.com/nbeerten/tmasigns" class="button">
+                        <x-heroicon-s-archive-box-arrow-down defer /> Download package
+                    </a>
                 </div>
             </div>
         </details>
         <hr>
-        <details open>
-            <summary>Sign Generator</summary>
-            <div class="two-col no-scrollbar"
-                x-data="{ text: '', subtext: '', size: '2', subtextlocation: 'bottom' }"
-                @@input.debounce.500ms="TMASigns.updatePreview($data)">
-                
+        <details open id="generator">
+            <summary>
+                <x-heroicon-s-beaker /> Sign Generator
+            </summary>
+            <div class="two-col no-scrollbar" x-data="{ text: '', subtext: '', size: '2', subtextlocation: 'bottom' }" @@input.debounce.500ms="TMASigns.updatePreview($data)">
+
                 <section class="left-col">
                     <div class="input">
                         <label for="text">Text</label>
-                            <input x-model="text" id="text" type="text" placeholder="Big text">
+                        <input x-model="text" id="text" type="text" placeholder="Big text">
                     </div>
 
                     <div class="input">
@@ -45,7 +61,7 @@
                             </select>
                         </div>
                     </div>
-                        
+
                     <div class="input">
                         <label for="size">Sign size</label>
                         <select x-model="size" id="size" class="font-mono">
@@ -61,16 +77,21 @@
                     </details> --}}
 
                     <div class="wrapper-button-align-right">
-                        <a id="downloadButton" href="" @@click.prevent.throttle.500ms="TMASigns.downloadTGA($data)" download="tma_sign2x1_text.zip" class="button" >Download TGA</a>
+                        <a id="downloadButton" href="" @@click.prevent.throttle.500ms="TMASigns.downloadTGA($data)"
+                            download="tma_sign2x1_text.zip" class="button">
+                            <x-heroicon-m-arrow-down-tray /> Download TGA
+                        </a>
                     </div>
                 </section>
                 <section class="right-col">
                     <div class="preview-image" data-status="" data-status-message="">
                         <img id="previewImage" src="{{ asset('assets/default_sign.jpg') }}" onclick="window.open(this.getAttribute('src'));">
                     </div>
-                    
+
                     <details class="json-debug">
-                        <summary class="heading">JSON Data</summary>
+                        <summary class="heading">
+                            <x-heroicon-m-code-bracket />JSON Data
+                        </summary>
                         <p class="description">Send POST requests to <span class="inline-code">/api/tmasigns</span></p>
                         <code id="jsondebug" class="code"></code>
                     </details>
@@ -78,21 +99,28 @@
             </div>
         </details>
         <hr>
-        <details>
-            <summary>Tools</summary>
+        <details id="tools">
+            <summary>
+                <x-heroicon-s-wrench /> Tools
+            </summary>
             <div class="card-row no-scrollbar locatortool">
-                
-                <section class="card" x-data="{ input: '' , data: ['A'] }">
+
+                <section class="card" x-data="{ input: '', data: ['A'] }">
                     <div class="content">
                         <h4 class="heading">Locator Tool</h4>
-                        <p class="long-text">Will automatically create locator files for you. One URL per line. Must have filename and extension as the last part of the url. For example: <span class="inline-code">https://domain.example/filename.zip</span>. Invalid URLs will be skipped. Locator files will be in the <span class="inline-code">.zip</span> file.</p>
+                        <p class="long-text">Will automatically create locator files for you. One URL per line. Must have filename and extension as the last part of the
+                            url. For example: <span class="inline-code">https://domain.example/filename.zip</span>. Invalid URLs will be skipped. Locator files will be in
+                            the <span class="inline-code">.zip</span> file.</p>
                     </div>
                     <div class="input">
                         <div class="row">
-                            <input x-model="$store.locatorTool.newUrl" id="locatortool" type="url" placeholder="URL" @@keyup.enter.prevent="$store.locatorTool.addUrl($store.locatorTool.newUrl)">
+                            <input x-model="$store.locatorTool.newUrl" id="locatortool" type="url" placeholder="URL"
+                                @@keyup.enter.prevent="$store.locatorTool.addUrl($store.locatorTool.newUrl)">
                             <button class="action button" @@click.prevent="$store.locatorTool.addUrl($store.locatorTool.newUrl)">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
-                                    <path fill-rule="evenodd" d="M12 3.75a.75.75 0 01.75.75v6.75h6.75a.75.75 0 010 1.5h-6.75v6.75a.75.75 0 01-1.5 0v-6.75H4.5a.75.75 0 010-1.5h6.75V4.5a.75.75 0 01.75-.75z" clip-rule="evenodd" />
+                                    <path fill-rule="evenodd"
+                                        d="M12 3.75a.75.75 0 01.75.75v6.75h6.75a.75.75 0 010 1.5h-6.75v6.75a.75.75 0 01-1.5 0v-6.75H4.5a.75.75 0 010-1.5h6.75V4.5a.75.75 0 01.75-.75z"
+                                        clip-rule="evenodd" />
                                 </svg>
                             </button>
                         </div>
@@ -101,7 +129,8 @@
                         <template x-for="url, index in $store.locatorTool.urls">
                             <li><span x-text="url" x-bind:title="url"></span>
                                 <div class="deletebutton">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" @@click.throttle.500ms="$store.locatorTool.deleteUrl(url)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"
+                                        @@click.throttle.500ms="$store.locatorTool.deleteUrl(url)">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                                     </svg>
                                 </div>
@@ -110,7 +139,8 @@
                     </ul>
 
                     <div class="wrapper-button-align-right">
-                        <a id="locatorToolDownloadButton" href="" @@click.prevent.throttle.500ms="TMASigns.downloadLocators()" download="locators.zip" class="button">Download locators</a>
+                        <a id="locatorToolDownloadButton" href="" @@click.prevent.throttle.500ms="TMASigns.downloadLocators()"
+                            download="locators.zip" class="button">Download locators</a>
                     </div>
                 </section>
             </div>
@@ -128,7 +158,7 @@
 
                 // Adds the current value of `newMessage` to the array of messages
                 addUrl(url) {
-                    if(url == '') return;
+                    if (url == '') return;
                     this.urls.push(url);
                     this.newUrl = "";
                 },

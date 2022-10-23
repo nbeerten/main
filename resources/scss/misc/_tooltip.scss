@@ -1,24 +1,5 @@
-.tooltip:after {
-    content: "";
-    opacity: 0;
-    display: block;
-    position: absolute;
-    top: -50%;
-    left: 50%;
-
-    transform: translate(-50%, -50%) scale(0);
-    transform-origin: bottom;
-    transition: opacity 0.2s ease-in-out, transform 0.1s ease-in-out;
-}
-
-.tooltip:hover::after {
-    content: attr(data-popup);
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-
-    background-color: #000;
-    padding: 0.4rem 1rem;
-    border-radius: 0.25rem;
+[data-popup], [data-popup-bottom], [data-popup-left], [data-popup-right] {
+    cursor: pointer;
 }
 
 [data-popup]:after {
@@ -36,6 +17,9 @@
 
 [data-popup]:hover::after {
     content: attr(data-popup);
+    color: var(--text-color-paragraph);
+    font-weight: 500;
+    width: max-content;
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
 
@@ -43,3 +27,57 @@
     padding: 0.4rem 1rem;
     border-radius: 0.25rem;
 }
+
+[data-popup-bottom]:after {
+    content: "";
+    opacity: 0;
+    display: block;
+    position: absolute;
+    z-index: 1;
+    bottom: -50%;
+    left: 50%;
+
+    transform: translate(-50%, 70%) scale(0);
+    transform-origin: top;
+    transition: opacity 0.2s ease-in-out, transform 0.1s ease-in-out;
+}
+
+[data-popup-bottom]:hover::after {
+    content: attr(data-popup-bottom);
+    color: var(--text-color-paragraph);
+    font-weight: 500;
+    width: max-content;
+    opacity: 1;
+    transform: translate(-50%, 70%) scale(1);
+
+    background-color: #000;
+    padding: 0.4rem 1rem;
+    border-radius: 0.25rem;
+}
+
+// [data-popup-right]:after {
+//     content: "";
+//     opacity: 0;
+//     display: block;
+//     position: absolute;
+//     z-index: 1;
+//     top: 50%;
+//     right: -5%;
+
+//     transform: translate(100%, -50%) scale(0);
+//     transform-origin: right;
+//     transition: opacity 0.2s ease-in-out, transform 0.1s ease-in-out;
+// }
+
+// [data-popup-right]:hover::after {
+//     content: attr(data-popup-right);
+//     color: var(--text-color-paragraph);
+//     font-weight: 500;
+//     width: max-content;
+//     opacity: 1;
+//     transform: translate(100%, -50%) scale(1);
+
+//     background-color: #000;
+//     padding: 0.4rem 1rem;
+//     border-radius: 0.25rem;
+// }

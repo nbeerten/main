@@ -50,8 +50,13 @@ window.TMASigns = {
         if(text == '' || size == '') return;
 
         const downloadButton = document.querySelector('#downloadButton');
-        if(size == 6) downloadButton.download = `tma_sign${size}x1_${text}.tga`
-        else downloadButton.download = `tma_sign${size}x1_${text}.zip`;
+        var filename = 'tma_sign';
+        filename += `${size}x1`;
+        filename += `_${text}`;
+        filename += (subtext !== "" ? `_${subtext}` : '');
+
+        if(size == 6) downloadButton.download = `${filename}.tga`
+        else downloadButton.download = `${filename}.zip`;
 
         var postData =
         `{

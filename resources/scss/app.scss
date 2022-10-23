@@ -1,21 +1,15 @@
-@use 'misc/font';
-@use 'misc/reset';
-
 @use 'settings';
+@use 'base';
 
-@use 'misc/base';
+@use 'misc';
 
-@use 'misc/no-scrollbar';
-@use 'misc/tooltip';
-@use 'misc/text';
-
-@use 'components/nav';
-@use 'components/hero';
-@use 'components/footer';
-@use 'components/default-page';
-@use 'components/input';
 @use 'components/button';
+@use 'components/default-page';
+@use 'components/footer';
+@use 'components/hero';
+@use 'components/input';
+@use 'components/nav';
 
+@use 'pages/error';
 @use 'pages/home';
 @use 'pages/tmasigns';
-@use 'pages/error';

@@ -35,7 +35,12 @@ class TMASigns extends Base
         $options = new ZipStream\Option\Archive();
         $options->setSendHttpHeaders(true);
 
-        $zip = new ZipStream\ZipStream("tma_sign{$this->size}x1_{$this->text}.zip", $options);
+        $filename = 'tma_sign';
+        $filename .= "{$this->size}x1";
+        $filename .= "_{$this->text}";
+        $filename .= (!empty($this->subtext) ? "_{$this->subtext}" : '');
+
+        $zip = new ZipStream\ZipStream($filename, $options);
         $zip->addFile("sign.$format", $sign);
         $zip->addFileFromPath("Skin.json", Settings::skinjsonpath);
 

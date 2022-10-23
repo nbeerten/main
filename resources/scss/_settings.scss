@@ -1,4 +1,4 @@
-// Colors
+// Colors && fonts
 :root {
     --text-color-heading: #ffffff;
     --text-color-paragraph: #d1d5db;
@@ -8,6 +8,8 @@
 
     --font-sans: "MontserratVariable", "Montserrat", ui-sans-serif, sans-serif, system-ui;
     --font-mono: "Fira CodeVariable", "Fira Code", ui-monospace, monospace;
+
+    --brand-color: #ffdf00;
 
     --bg-body: #171717;
     --bg-cards: #0a0a0a;
@@ -22,7 +24,20 @@
     --outline-color: #0000ff;
 }
 
+// Breakpoints
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+$breakpoint-2xl: 1536px;
+
 // Component specific variables
+// Scrollbar
+:root {
+    --scrollbar-background: #d1d5db;
+    --scrollbar-background-hover: #ffffff;
+}
+
 // Navbar
 :root {
     --nav-bg: rgba(24, 24, 27, 0.5);
