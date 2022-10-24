@@ -5,7 +5,10 @@
     place-items: end;
     background-size: cover;
     background-position: top;
-    background-attachment: scroll, fixed;
+    background-attachment: scroll, scroll;
+    @media (min-width: $breakpoint-sm) {
+        background-attachment: scroll, fixed;
+    }
     background-image: linear-gradient(to bottom, hsla(0, 0, 0, 0) 88%, hsl(0, 0, 9)), var(--nb-heroimage);
     
     height: 60vh;
@@ -18,6 +21,20 @@
 
     @media (min-width: $breakpoint-lg) {
         height: 73vh;
+    }
+
+    @supports (height: 60svh) {
+        height: 60svh;
+        @media (min-width: $breakpoint-md) {
+            height: 65svh;
+        }
+        @media (min-width: $breakpoint-md) {
+            height: 70svh;
+        }
+
+        @media (min-width: $breakpoint-lg) {
+            height: 73svh;
+        }
     }
 
     > div {
