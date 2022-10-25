@@ -109,15 +109,15 @@
         }
 
         :last-child:is(select, button, [type="button"]) {
-            width:max-content;
+            width: max-content;
         }
     }
 
     button.action {
-
         svg {
             width: 1rem;
             height: 1rem;
+            align-self: center;
         }
     }
 }

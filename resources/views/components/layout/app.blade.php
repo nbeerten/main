@@ -13,21 +13,23 @@
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 
-    <!-- Facebook Meta Tags -->
-    <meta property="og:url" content="{{ Request::fullUrl() }}">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="{{ $title ?? Request::path() }} - Nils Beerten">
-    <meta property="og:description" content="{{ $ogdescription ?? '' }}">
-    <meta property="og:image" content="{{ $ogimage ?? '' }}">
+    @isset($opengraph)
+        <!-- Facebook Meta Tags -->
+        <meta property="og:url" content="{{ Request::fullUrl() }}">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="{{ $title ?? Request::path() }} - Nils Beerten">
+        <meta property="og:description" content="{{ $opengraph ?? '' }}">
+        <meta property="og:image" content="{{ $opengraph->attributes->get('img') ?? '' }}">
 
-    <!-- Twitter Meta Tags -->
-    <meta name="twitter:card" content="summary">
-    <meta property="twitter:domain" content="nilsbeerten.nl">
-    <meta property="twitter:url" content="{{ Request::fullUrl() }}">
-    <meta name="twitter:creator" content="@nbertn">
-    <meta name="twitter:title" content="{{ $title ?? Request::path() }} - Nils Beerten">
-    <meta name="twitter:description" content="{{ $ogdescription ?? '' }}">
-    <meta name="twitter:image" content="{{ $ogimage ?? '' }}">
+        <!-- Twitter Meta Tags -->
+        <meta name="twitter:card" content="summary">
+        <meta property="twitter:domain" content="nilsbeerten.nl">
+        <meta property="twitter:url" content="{{ Request::fullUrl() }}">
+        <meta name="twitter:creator" content="@nbertn">
+        <meta name="twitter:title" content="{{ $title ?? Request::path() }} - Nils Beerten">
+        <meta name="twitter:description" content="{{ $opengraph ?? '' }}">
+        <meta name="twitter:image" content="{{ $opengraph->attributes->get('img') ?? '' }}">
+    @endisset
 
     <link rel="apple-touch-icon" sizes="180x180" href="/ico/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/ico/favicon-32x32.png">
@@ -41,26 +43,15 @@
 
 <body>
     <div class="main-wrapper">
-        {{-- Navbar and hero sections --}}
-        <header>
-            {{-- Main navigation bar --}}
-            <x-layout.nav />
+        <x-layout.nav />
 
-            {{-- 
-            Hero section: Map screenshot with a set height. Overwritable:
-            <x-slot:hero>
-                <div> (Your content here) </div>
-            </x-slot:hero>
-            --}}
-            @isset($hero)
-                @if($hero)
-                {!! $hero !!}
-                @endif
-            @else
-                <x-layout.hero />
-            @endisset
-
-        </header>
+        @isset($hero)
+            @if($hero)
+            {!! $hero !!}
+            @endif
+        @else
+            <x-layout.hero />
+        @endisset
 
         {{-- Main content --}}
         <main>

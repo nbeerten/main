@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\TMASignsController;
+// use App\Http\Controllers\TMASignsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +16,7 @@ use App\Http\Controllers\TMASignsController;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('pages.home');
 })->name('home');
 
 Route::get('/tmasigns', function () {

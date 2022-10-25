@@ -1,0 +1,93 @@
+@use "../settings" as *;
+
+.card {
+    display: flex;
+    max-width: 100%;
+    gap: 1rem;
+    flex-direction: column;
+    
+    border-radius: 0.375rem;
+    background-color: var(--bg-cards);
+    padding: 1rem;
+    
+    @media (min-width: $breakpoint-sm) {
+        flex-direction: row;
+    }
+
+    @media (min-width: $breakpoint-lg) {
+        min-width: 37.5rem;
+    }
+
+    > img {
+        height: 100%;
+        max-height: 10rem;
+        width: auto;
+        max-width: 100%;
+        align-self: center;
+
+        @media (min-width: $breakpoint-sm) {
+            max-height: 15vh;
+        }
+
+        @media (min-width: $breakpoint-md) {
+            max-height: 12.5vh;
+        }
+
+        @media (min-width: $breakpoint-lg) {
+            max-height: 10rem;
+        }
+
+        border-radius: 0.5rem;
+    }
+
+    > div {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        flex-grow: 1 0;
+        min-width: 0;
+
+        > h4 {
+            border-bottom-width: 1px;
+            border-color: var(--border-color);
+            padding-bottom: 0.25rem;
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+            font-weight: 700
+        }
+
+        > p {
+            line-height: 1.25;
+
+            @supports not (line-clamp: 3) {
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+
+            code {
+                border-radius: 0.375rem;
+                background-color: var(--bg-primary);
+                padding-left: 0.25rem;
+                padding-right: 0.25rem;
+                font-family: var(--font-mono);
+            }
+        }
+    }
+}
+
+.card.card-top {
+    @media (min-width: $breakpoint-sm) {
+        flex-direction: column;
+    }
+    
+    @media (min-width: $breakpoint-lg) {
+        min-width: 40%;
+    }
+
+    > div > a {
+        align-self: flex-end;
+    }
+}

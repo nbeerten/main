@@ -1,46 +1,66 @@
 @push('scripts')
     <script defer src='{{ mix('/js/TMASigns.js', 'dist') }}'></script>
+
+    <script>
+        document.addEventListener("alpine:init", () => {
+            Alpine.store("locatorTool", {
+                // The array of all messages
+                urls: [],
+
+                // The next message to add, its value is bound to the textarea field
+                newUrl: "",
+
+                // Adds the current value of `newMessage` to the array of messages
+                addUrl(url) {
+                    if (url == '') return;
+                    this.urls.push(url);
+                    this.newUrl = "";
+                },
+
+                // Given an index, removes the message from the array
+                deleteUrl(index) {
+                    this.urls = this.urls.filter(i => i !== index);
+                },
+            });
+        });
+    </script>
 @endpush
 
-<x-layout.app title="TMA Signs" ogimage="{{ asset('assets/tmasigns_1x1example.webp') }}">
-    <x-slot:ogdescription>
+<x-layout.app title="TMA Signs">
+    <x-slot:opengraph img="{{ asset('assets/og/tmasigns@630.jpg') }}">
         Small web application to create signs for the game Trackmania with user input as text on the image, styled to fit in with the TMA signpack.
-    </x-slot:ogdescription>
+    </x-slot:opengraph>
 
     <section class="default-page tmasigns">
         <h3 class="heading">TMA Signs</h3>
-        <details open id="packages">
-            <summary>
+        <details open>
+            <summary id="packages">
                 <x-heroicon-s-archive-box /> Pre-made Packages
             </summary>
-            <div class="card-row no-scrollbar">
-                <div class="card">
-                    <img loading="lazy" src="{{ asset('assets/tma_sign6x1_Checkpoint 7.jpg') }}" alt="Sign preview">
-                    <div class="content">
-                        <h4 class="heading">Checkpoint numbers</h4>
-                        <p class="long-text">A pre-made package containing numbered checkpoint signs from 1 to 25. Only in the <span class="inline-code">6x1</span> size
-                            (sign size used on checkpoints, start and finish).</p>
-                    </div>
-                    <a href="https://github.com/nbeerten/tmasigns" class="button">
+            <div class="card-row">
+                <x-card class="card-top">
+                    <x-slot:img src="{{ asset('assets/tma_sign6x1_Checkpoint 7.jpg') }}" alt="Sign preview"></x-slot:img>
+                    <x-slot:title>Checkpoint numbers</x-slot:title>
+                    A pre-made package containing numbered checkpoint signs from 1 to 25. Only in the `6x1` size (sign size used on checkpoints, start and finish).
+    
+                    <x-slot:button href="https://github.com/nbeerten/tmasigns">
                         <x-heroicon-s-archive-box-arrow-down defer /> Download package
-                    </a>
-                </div>
-                <div class="card">
-                    <img loading="lazy" src="{{ asset('assets/tma_sign6x1_start.jpg') }}" alt="Sign preview">
-                    <div class="content">
-                        <h4 class="heading">Common signs</h4>
-                        <p class="long-text">A pre-made package containing signs in all formats, with texts like "GPS", "Start", "Finish", "Multilap", "Checkpoint" and
-                            much more.</p>
-                    </div>
-                    <a href="https://github.com/nbeerten/tmasigns" class="button">
+                    </x-slot:button>
+                </x-card>
+                <x-card class="card-top">
+                    <x-slot:img src="{{ asset('assets/tma_sign6x1_start.jpg') }}" alt="Example of sign"></x-slot:img>
+                    <x-slot:title>Common signs</x-slot:title>
+                    A pre-made package containing signs in all formats, with texts like "GPS", "Start", "Finish", "Multilap", "Checkpoint" and much more.
+    
+                    <x-slot:button href="https://github.com/nbeerten/tmasigns">
                         <x-heroicon-s-archive-box-arrow-down defer /> Download package
-                    </a>
-                </div>
+                    </x-slot:button>
+                </x-card>
             </div>
         </details>
         <hr>
-        <details open id="generator">
-            <summary>
+        <details open>
+            <summary id="generator">
                 <x-heroicon-s-beaker /> Sign Generator
             </summary>
             <div class="two-col no-scrollbar" x-data="{ text: '', subtext: '', size: '2', subtextlocation: 'bottom' }" @@input.debounce.500ms="TMASigns.updatePreview($data)">
@@ -99,13 +119,12 @@
             </div>
         </details>
         <hr>
-        <details id="tools">
-            <summary>
+        <details>
+            <summary id="tools">
                 <x-heroicon-s-wrench /> Tools
             </summary>
-            <div class="card-row no-scrollbar locatortool">
-
-                <section class="card" x-data="{ input: '', data: ['A'] }">
+            <div class="card-row locatortool">
+                <section class="locatortoolcard" x-data="{ input: '', data: ['A'] }">
                     <div class="content">
                         <h4 class="heading">Locator Tool</h4>
                         <p class="long-text">Will automatically create locator files for you. One URL per line. Must have filename and extension as the last part of the
@@ -146,28 +165,4 @@
             </div>
         </details>
     </section>
-
-    <script>
-        document.addEventListener("alpine:init", () => {
-            Alpine.store("locatorTool", {
-                // The array of all messages
-                urls: [],
-
-                // The next message to add, its value is bound to the textarea field
-                newUrl: "",
-
-                // Adds the current value of `newMessage` to the array of messages
-                addUrl(url) {
-                    if (url == '') return;
-                    this.urls.push(url);
-                    this.newUrl = "";
-                },
-
-                // Given an index, removes the message from the array
-                deleteUrl(index) {
-                    this.urls = this.urls.filter(i => i !== index);
-                },
-            });
-        });
-    </script>
 </x-layout.app>
