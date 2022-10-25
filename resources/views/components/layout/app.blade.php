@@ -14,18 +14,23 @@
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 
     @isset($opengraph)
+        <!-- Description for crawlers -->
+        <meta name="description" content="{{ $opengraph ?? '' }}">
+
         <!-- Facebook Meta Tags -->
         <meta property="og:url" content="{{ Request::fullUrl() }}">
+        <meta property="og:og:site_name" content="nilsbeerten.nl">
         <meta property="og:type" content="website">
         <meta property="og:title" content="{{ $title ?? Request::path() }} - Nils Beerten">
         <meta property="og:description" content="{{ $opengraph ?? '' }}">
         <meta property="og:image" content="{{ $opengraph->attributes->get('img') ?? '' }}">
 
         <!-- Twitter Meta Tags -->
-        <meta name="twitter:card" content="summary">
+        <meta name="twitter:card" content="summary_large_image">
         <meta property="twitter:domain" content="nilsbeerten.nl">
         <meta property="twitter:url" content="{{ Request::fullUrl() }}">
         <meta name="twitter:creator" content="@nbertn">
+        <meta name="twitter:site" content="@nbertn">
         <meta name="twitter:title" content="{{ $title ?? Request::path() }} - Nils Beerten">
         <meta name="twitter:description" content="{{ $opengraph ?? '' }}">
         <meta name="twitter:image" content="{{ $opengraph->attributes->get('img') ?? '' }}">
@@ -35,7 +40,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/ico/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/ico/favicon-16x16.png">
     <link rel="mask-icon" href="/ico/safari-pinned-tab.svg" color="#fff">
-    <meta name="theme-color" content="#171717">
+    <meta name="theme-color" content="#ffdf00">
     
     <!-- Style Stack -->
     @stack('style')

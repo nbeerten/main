@@ -4,7 +4,7 @@
 
 <x-layout.app title="Home">
     <x-slot:opengraph img="{{ asset('assets/og/home@768.jpg') }}">
-        Hai, I'm Nils. Also known as nbeerten or nbert. Projects of mine include Refresh Leaderboard and the rewrite of nilsbeerten.nl
+        Website of Nils, also known as nbeerten or nbert. Projects of mine include Refresh Leaderboard and the rewrite of nilsbeerten.nl
     </x-slot:opengraph>
 
     <x-slot:hero>
