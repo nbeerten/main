@@ -59,7 +59,7 @@
         <h3 class="heading">Projects</h3>
         <div class="cards">
             <x-card>
-                <x-slot:img src="{{ asset('assets/RefreshLeaderboard.webp') }}" alt="Logo of RefreshLeaderboard plugin"></x-slot:img>
+                <x-slot:img src="{{ asset('assets/RefreshLeaderboard.webp') }}" alt="Logo of RefreshLeaderboard plugin" width="160" height="160"></x-slot:img>
                 <x-slot:title>Refresh Leaderboard</x-slot:title>
                 A plugin for the Trackmania scripting platform Openplanet, which provides a button to refresh the leaderboard widget in the in-game UI.
 
@@ -68,7 +68,7 @@
                 </x-slot:button>
             </x-card>
             <x-card>
-                <x-slot:img src="{{ asset('assets/logo_white.svg') }}" alt="Logo of nilsbeerten.nl"></x-slot:img>
+                <x-slot:img src="{{ asset('assets/logo_white.svg') }}" alt="Logo of nilsbeerten.nl" width="160" height="160"></x-slot:img>
                 <x-slot:title>Website Rewrite</x-slot:title>
                 Website rewrite: Now using Laravel on the backend, together with SCSS for styling and AlpineJS & vanilla JS for frontend functionality.
                 

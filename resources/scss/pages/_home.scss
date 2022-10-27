@@ -9,7 +9,7 @@
     @media (min-width: $breakpoint-sm) {
         background-attachment: scroll, fixed;
     }
-    background-image: linear-gradient(to bottom, hsla(0, 0, 0, 0) 88%, hsl(0, 0, 9)), var(--nb-heroimage);
+    background-image: linear-gradient(to bottom, hsla(0deg, 0%, 0%, 0) 88%, hsl(0deg, 0%, 9%)), var(--nb-heroimage);
     
     height: 60vh;
     @media (min-width: $breakpoint-md) {
@@ -44,7 +44,7 @@
         max-width: 80rem;
         padding-left: 1rem;
         padding-right: 1rem;
-        filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.08)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.2));
+        filter: drop-shadow(0px 10px 8px rgb(0 0 0 / 0.08)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.2));
 
         margin-bottom: 3rem;
 

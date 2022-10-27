@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>{{ $title ?? Request::path() }} - Nils Beerten</title>
-    
+    @isset($opengraph)
+        <meta name="description" content="{{ $opengraph ?? '' }}">
+    @endisset
+
     {{-- Main JS & CSS from the compiled files --}}
     <link rel="stylesheet" href="{{ mix('/css/app.css', 'dist') }}">
     <script src="{{ mix('/js/app.js', 'dist') }}" defer></script>
@@ -13,10 +16,13 @@
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 
-    @isset($opengraph)
-        <!-- Description for crawlers -->
-        <meta name="description" content="{{ $opengraph ?? '' }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="/ico/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/ico/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/ico/favicon-16x16.png">
+    <link rel="mask-icon" href="/ico/safari-pinned-tab.svg" color="#fff">
+    <meta name="theme-color" content="#ffdf00">
 
+    @isset($opengraph)
         <!-- Facebook Meta Tags -->
         <meta property="og:url" content="{{ Request::fullUrl() }}">
         <meta property="og:og:site_name" content="nilsbeerten.nl">
@@ -35,12 +41,6 @@
         <meta name="twitter:description" content="{{ $opengraph ?? '' }}">
         <meta name="twitter:image" content="{{ $opengraph->attributes->get('img') ?? '' }}">
     @endisset
-
-    <link rel="apple-touch-icon" sizes="180x180" href="/ico/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/ico/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/ico/favicon-16x16.png">
-    <link rel="mask-icon" href="/ico/safari-pinned-tab.svg" color="#fff">
-    <meta name="theme-color" content="#ffdf00">
     
     <!-- Style Stack -->
     @stack('style')

@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-// use App\Http\Controllers\TMASignsController;
+use App\Http\Controllers\TMASignsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,4 +23,25 @@ Route::get('/tmasigns', function () {
     return view('pages.tmasigns');
 })->name('tmasigns');
 
-// Route::get('tmasigns/batch/{size}', [TMASignsController::class, 'batch']);
+Route::get('/login', function () {
+    if(Auth::check()) return redirect(route('auth.dashboard'));
+    else return view('auth.login');
+})->name('auth.login');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('auth.dashboard');
+    })->name('auth.dashboard');
+
+    Route::get('/logout', function () {
+        Auth::logout();
+        Request::session()->invalidate();
+        Request::session()->regenerateToken();
+        return redirect(route('auth.login'));
+    })->name('auth.logout');
+});
+
+// Routes which need authentication
+Route::middleware('auth')->group(function () {
+    Route::get('tmasigns/batch/{size}', [TMASignsController::class, 'batch']);
+});
