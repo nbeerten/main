@@ -1,3 +1,9 @@
 .helper_grow {
     flex-grow: 1;
 }
+
+.helper_row {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}

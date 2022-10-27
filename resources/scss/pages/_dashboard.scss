@@ -1,0 +1,12 @@
+@use "../settings" as *;
+
+.dashboard {
+    .card-row {
+        display: flex;
+        flex-direction: column;
+        @media (min-width: $breakpoint-lg) {
+            flex-direction: row;
+        }
+        gap: 1rem;
+    }
+}

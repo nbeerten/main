@@ -3,37 +3,30 @@
     <section class="default-page">
         <h3 class="heading">Login</h3>
         <div class="login__form">
+        
+        @if($errors->any())
+            <div class="loginerror">
+                <x-heroicon-s-exclamation-circle/>
+                <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+                </ul>
+            </div>
+        @endif
         <form method="POST" action="/login">
             @csrf
 
             <!-- Email Address -->
             <div class="input">
                 <label for="email">Email</label>
-
-                <input id="email" type="email" name="email" :value="old('email')" required autofocus>
-
-                @if($errors->get('email'))
-                <label for="email">
-                    @foreach ($errors->get('email') as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </label>
-                @endif
+                <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus>
             </div>
 
             <!-- Password -->
             <div class="input">
                 <label for="password">Password</label>
-
                 <input id="password" type="password" name="password" required autocomplete="current-password">
-
-                @if($errors->get('password'))
-                    <label for="password">
-                        @foreach ($errors->get('password') as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </label>
-                @endif
             </div>
 
             <!-- Remember Me -->

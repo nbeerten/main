@@ -5,6 +5,10 @@ use Laravel\Telescope\Watchers;
 
 return [
 
+    // Custom added
+    'allowed_email' => env('EMAIL_WHITELIST', 'null'),
+
+
     /*
     |--------------------------------------------------------------------------
     | Telescope Domain

@@ -8,5 +8,6 @@
 /vendor
 .env
 .env.backup
+.env.prod
 npm-debug.log
 yarn-error.log
