@@ -77,7 +77,7 @@ jobs:
           docker compose exec app bash -c 
           'php artisan down --no-interaction && 
           php artisan package:discover --no-interaction &&
-          php artisan migrate --no-interaction && 
+          php artisan migrate --no-interaction --force && 
           php artisan config:cache --no-interaction && 
           php artisan route:cache --no-interaction && 
           php artisan view:cache --no-interaction && 
