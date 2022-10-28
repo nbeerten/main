@@ -8,10 +8,14 @@
 @use 'components/button';
 @use 'components/card';
 @use 'components/default-page';
+@use 'components/details';
 @use 'components/footer';
 @use 'components/hero';
 @use 'components/input';
 @use 'components/nav';
+
+
+@use 'prism';
 
 @use 'pages/dashboard';
 @use 'pages/error';

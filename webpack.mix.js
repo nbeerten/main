@@ -13,6 +13,7 @@ require('laravel-mix-purgecss');
  */
 
 mix.js("resources/js/app.js", "js")
+   .js("resources/js/prism.js", "js")
    .js("resources/js/pages/TMASigns.js", "js")
    .js("resources/js/pages/home.js", "js")
 

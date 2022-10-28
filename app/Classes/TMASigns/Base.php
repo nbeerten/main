@@ -12,12 +12,6 @@ use App\Classes\TMASigns\Settings;
  */
 class Base
 {
-    protected string $format;
-    protected int $size;
-    protected $options;
-    protected $text;
-    protected $subtext;
-
     private Imagick $baseCanvas;
     private ImagickDraw $textStyling;
     private ImagickDraw $subTextStyling;

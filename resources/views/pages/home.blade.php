@@ -63,25 +63,31 @@
                 <x-slot:title>Refresh Leaderboard</x-slot:title>
                 A plugin for the Trackmania scripting platform Openplanet, which provides a button to refresh the leaderboard widget in the in-game UI.
 
-                <x-slot:button href="https://github.com/nbeerten/tm-refresh-leaderboard">
-                    <x-heroicon-m-arrow-top-right-on-square /> Visit github repository
-                </x-slot:button>
+                <x-slot:action>
+                    <a href="https://github.com/nbeerten/tm-refresh-leaderboard" class="button">
+                        <x-heroicon-m-arrow-top-right-on-square /> Visit github repository
+                    </a>
+                </x-slot:action>
             </x-card>
             <x-card>
                 <x-slot:img src="{{ asset('assets/logo_white.svg') }}" alt="Logo of nilsbeerten.nl" width="160" height="160"></x-slot:img>
                 <x-slot:title>Website Rewrite</x-slot:title>
                 Website rewrite: Now using Laravel on the backend, together with SCSS for styling and AlpineJS & vanilla JS for frontend functionality.
                 
-                <x-slot:button href="" disabled onclick="event.preventDefault()">
-                    <x-heroicon-m-arrow-top-right-on-square /> Visit github repository
-                </x-slot:button>
+                <x-slot:action>
+                    <a href="" disabled onclick="event.preventDefault()" class="button">
+                        <x-heroicon-m-arrow-top-right-on-square /> Visit github repository
+                    </a>
+                </x-slot:action>
             </x-card>
             {{-- <x-card>
                 <x-slot:img src="{{ asset('assets/tmasigns_1x1example.webp') }}" alt="Example of a one by one sized sign"></x-slot:img>
                 <x-slot:title>TMA Signs Generator</x-slot:title>
                 Small web application to create signs for the game Trackmania with user input as text on the image, styled to fit in with the TMA signpack.
                 
-                <x-slot:button href="/tmasigns">Go to page</x-slot:button>
+                <x-slot:action>
+                    <a href="/tmasigns" class="button">Go to page</a>
+                </x-slot:action>
             </x-card> --}}
         </div>
     </section>

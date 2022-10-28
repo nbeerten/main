@@ -11,7 +11,6 @@
 
     {{-- Main JS & CSS from the compiled files --}}
     <link rel="stylesheet" href="{{ mix('/css/app.css', 'dist') }}">
-    <script src="{{ mix('/js/app.js', 'dist') }}" defer></script>
 
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -74,6 +73,12 @@
     </svg>
 
     <!-- Script Stack -->
+    <script src="{{ mix('/js/app.js', 'dist') }}" defer></script>
     @stack('scripts')
+    @production
+        <!-- Cloudflare Web Analytics -->
+        <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d7046c97f3134ce3ba2831d8ccdb239a"}'></script>
+        <!-- End Cloudflare Web Analytics -->
+    @endproduction
 </body>
 </html>

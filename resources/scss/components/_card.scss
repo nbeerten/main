@@ -15,7 +15,7 @@
     }
 
     @media (min-width: $breakpoint-lg) {
-        min-width: 37.5rem;
+        min-width: 35rem;
     }
 
     > img {
@@ -24,6 +24,10 @@
         width: auto;
         max-width: 100%;
         align-self: center;
+
+        @media (min-width: $breakpoint-sm) {
+            align-self: flex-start;
+        }
 
         @media (min-width: $breakpoint-sm) {
             max-height: 15vh;
@@ -60,21 +64,20 @@
         > p {
             line-height: 1.25;
 
-            @supports not (line-clamp: 3) {
+            @supports (-webkit-line-clamp: 6) {
                 display: -webkit-box;
-                -webkit-line-clamp: 3;
+                -webkit-line-clamp: 6;
                 -webkit-box-orient: vertical;
                 text-overflow: ellipsis;
                 overflow: hidden;
             }
 
-            code {
-                border-radius: 0.375rem;
-                background-color: var(--bg-primary);
-                padding-left: 0.25rem;
-                padding-right: 0.25rem;
-                font-family: var(--font-mono);
+            
+        @media (min-width: $breakpoint-xl) {
+            @supports (-webkit-line-clamp: 3) {
+                -webkit-line-clamp: 3;
             }
+        }
         }
     }
 }

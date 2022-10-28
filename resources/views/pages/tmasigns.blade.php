@@ -1,5 +1,6 @@
 @push('scripts')
     <script defer src='{{ mix('/js/TMASigns.js', 'dist') }}'></script>
+    <script defer src='{{ mix('/js/prism.js', 'dist') }}'></script>
 
     <script>
         document.addEventListener("alpine:init", () => {
@@ -33,16 +34,18 @@
 
     <section class="default-page tmasigns">
         <h3 class="heading">TMA Signs</h3>
-        <details open>
-            <summary id="packages">
+        <x-details open>
+            <x-slot:summary id="packages">
                 <x-heroicon-s-archive-box /> Pre-made Packages
-            </summary>
+            </x-slot:summary>
             <div class="card-row">
                 <x-card class="card-top">
                     <x-slot:img src="{{ asset('assets/tma_sign6x1_Checkpoint 7.jpg') }}" alt="Sign preview"></x-slot:img>
                     <x-slot:title>Checkpoint numbers</x-slot:title>
-                    A pre-made package containing numbered checkpoint signs from 1 to 25. Only in the `6x1` size (sign size used on checkpoints, start and finish).
-    
+                    <x-md>
+                        A pre-made package containing numbered checkpoint signs from 1 to 25. Only in the `6x1` size (sign size used on checkpoints, start and finish).
+                    </x-md>
+
                     <x-slot:button href="https://github.com/nbeerten/tmasigns">
                         <x-heroicon-s-archive-box-arrow-down defer /> Download package
                     </x-slot:button>
@@ -50,19 +53,19 @@
                 <x-card class="card-top">
                     <x-slot:img src="{{ asset('assets/tma_sign6x1_start.jpg') }}" alt="Example of sign"></x-slot:img>
                     <x-slot:title>Common signs</x-slot:title>
-                    A pre-made package containing signs in all formats, with texts like "GPS", "Start", "Finish", "Multilap", "Checkpoint" and much more.
-    
+                    <x-md>A pre-made package containing signs in all formats, with texts like "GPS", "Start", "Finish", "Multilap", "Checkpoint" and much more.</x-md>
+
                     <x-slot:button href="https://github.com/nbeerten/tmasigns">
                         <x-heroicon-s-archive-box-arrow-down defer /> Download package
                     </x-slot:button>
                 </x-card>
             </div>
-        </details>
+        </x-details>
         <hr>
-        <details open>
-            <summary id="generator">
+        <x-details open>
+            <x-slot:summary id="generator">
                 <x-heroicon-s-beaker /> Sign Generator
-            </summary>
+            </x-slot:summary>
             <div class="two-col no-scrollbar" x-data="{ text: '', subtext: '', size: '2', subtextlocation: 'bottom' }" @@input.debounce.500ms="TMASigns.updatePreview($data)">
 
                 <section class="left-col">
@@ -108,28 +111,30 @@
                         <img id="previewImage" src="{{ asset('assets/default_sign.jpg') }}" onclick="window.open(this.getAttribute('src'));">
                     </div>
 
-                    <details class="json-debug">
-                        <summary class="heading">
+                    <x-details-card>
+                        <x-slot:summary>
                             <x-heroicon-m-code-bracket />JSON Data
-                        </summary>
-                        <p class="description">Send POST requests to <span class="inline-code">/api/tmasigns</span></p>
-                        <code id="jsondebug" class="code"></code>
-                    </details>
+                        </x-slot:summary>
+                        <p><x-md>Send POST requests to `/api/tmasigns`</x-md></p>
+                        <pre><code id="jsondebug" class="language-json"></code></pre>
+                    </x-details-card>
                 </section>
             </div>
-        </details>
+        </x-details>
         <hr>
-        <details>
-            <summary id="tools">
+        <x-details>
+            <x-slot:summary id="tools">
                 <x-heroicon-s-wrench /> Tools
-            </summary>
+            </x-slot:summary>
             <div class="card-row locatortool">
                 <section class="locatortoolcard" x-data="{ input: '', data: ['A'] }">
                     <div class="content">
                         <h4 class="heading">Locator Tool</h4>
-                        <p class="long-text">Will automatically create locator files for you. One URL per line. Must have filename and extension as the last part of the
-                            url. For example: <span class="inline-code">https://domain.example/filename.zip</span>. Invalid URLs will be skipped. Locator files will be in
-                            the <span class="inline-code">.zip</span> file.</p>
+                        <p class="long-text"><x-md>
+                            Will automatically create locator files for you. One URL per line. Must have filename and extension as the last part of the
+                            url. For example: `https://domain.example/filename.zip`. Invalid URLs will be skipped. Locator files will be in
+                            the `.zip` file.
+                        </x-md></p>
                     </div>
                     <div class="input">
                         <div class="row">
@@ -163,6 +168,6 @@
                     </div>
                 </section>
             </div>
-        </details>
+        </x-details>
     </section>
 </x-layout.app>

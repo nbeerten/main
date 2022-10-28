@@ -1,54 +1,11 @@
 @use "../settings" as *;
 
 .tmasigns {
-    > details {
-        > summary {
-            font-size: 1.5rem;
-            color: var(--text-color-heading);
-            font-weight: 600;
-            padding: 0.5rem 0;
-            cursor: pointer;
-            position: relative;
-
-            &::marker {
-                content: none;
-                display: none;
-            }
-        }
-
-        > summary::after {
-            content: "";
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='2' stroke='white'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M15.75 19.5L8.25 12l7.5-7.5' /%3E%3C/svg%3E%0A");
-            position: absolute;
-            top: 50%;
-            right: 0;
-            transform: translate(0, -50%) rotate(0deg);
-            transform-origin: 50% 50%;
-            display: block;
-            height: 1.5rem;
-            width: 1.5rem;
-
-            transition: transform 0.1s ease-in-out;
-        }
-
-        &[open] > summary::after {
-            // content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='2' stroke='white'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5' /%3E%3C/svg%3E%0A");
-            transform: translate(0, -50%) rotate(-90deg);
-        }
-
-        transition: all 0.2s ease-in-out;
-    }
-
     > h4 {
         font-size: 1.5rem;
         color: var(--text-color-heading);
         font-weight: 600;
         padding: 0.5rem 0;
-    }
-
-    > hr {
-        border-color: var(--border-color);
-        margin: 0.5rem 0rem;
     }
 
     .card-row {

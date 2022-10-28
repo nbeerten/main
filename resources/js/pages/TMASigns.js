@@ -15,6 +15,7 @@ window.TMASigns = {
 }`;
         const jsondebug = document.querySelector("#jsondebug");
         jsondebug.textContent = postData;
+        Prism.highlightAll();
 
         const previewImageParent = document.querySelector(':has(> #previewImage)');
         const previewImage = document.querySelector('#previewImage');
