@@ -1,1 +1,1 @@
-{!! Str::markdown($slot) !!}
+{!! Str::inlineMarkdown($slot) !!}

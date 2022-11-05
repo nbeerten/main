@@ -1,6 +1,5 @@
 <x-layout.app title="{{ $title }}">
     <section class="default-page">
-        <h3 class="heading"></h3>
         <div class="error__card">
             <p class="code">{{ $code }}</p>
             <div class="main">

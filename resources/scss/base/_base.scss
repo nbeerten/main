@@ -44,6 +44,25 @@ body {
     }
 }
 
-p {
+p:not(.no-standard), li:not(.no-standard) {
     color: var(--text-color-paragraph);
+}
+
+ul:not(.no-standard) {
+    list-style-type: "- ";
+    list-style-position: inside;
+}
+
+code:not([class*=language-], .no-standard) {
+    border-radius: 0.375em;
+    background-color: var(--bg-primary);
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+    font-family: var(--font-mono);
+    letter-spacing: -0.05em;
+}
+
+hr:not(.no-standard) {
+    border-color: var(--border-color);
+    margin: 0.5rem 0rem;
 }

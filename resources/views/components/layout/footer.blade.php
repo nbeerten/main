@@ -3,7 +3,7 @@
         <div>
             <h4>Contact</h4>
             <address>
-                <ul>
+                <ul class="no-standard">
                     <li><a href="https://twitter.com/nbertn">Twitter</a></li>
                     <li><a href="https://discord.com/invite/TdRSgYjJ7S">Discord Server</a></li>
                 </ul>
@@ -11,19 +11,19 @@
         </div>
         <div>
             <h4>Pages</h4>
-            <ul>
+            <ul class="no-standard">
                 <li><a href="/">Homepage</a></li>
             </ul>
         </div>
         <div>
             <h4>Github</h4>
-            <ul>
+            <ul class="no-standard">
                 <li><a href="https://github.com/nbeerten/tm-refresh-leaderboard">Refresh Leaderboard</a></li>
             </ul>
         </div>
         <div>
             <h4>Miscellaneous</h4>
-            <ul>
+            <ul class="no-standard">
                 <li><a href="https://trackmania.exchange/ms?authorid=41263">Trackmania Maps</a></li>
             </ul>
         </div>

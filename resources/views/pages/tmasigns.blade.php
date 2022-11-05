@@ -34,6 +34,41 @@
 
     <section class="default-page tmasigns">
         <h3 class="heading">TMA Signs</h3>
+
+        <x-information-card>
+            <x-md>Did you find a bug, need help or have feedback?</x-md>
+            <x-slot:more>
+                Feel free to report, ask or share it with me by sending me a DM on discord, or by sending a message in my discord server. Alternatively you can also
+                create a github issue in this project's repository.
+            </x-slot:more>
+            <x-slot:action>
+            <button x-data x-on:click="$dispatch('open-faq')" class="button">Frequently Asked Questions</button>
+            </x-slot:action>
+        </x-information-card>
+
+        <x-modal data-id="faq">
+            <x-slot:title>
+                <x-heroicon-m-question-mark-circle /> FAQ
+            </x-slot:title>
+            <x-details>
+                <x-slot:summary>What do I do with the file?</x-slot:summary>
+                <p>
+                    <x-md>
+                        After downloading the file you'll need to host it somewhere. This website intentionally never allows you to use it as a host for the signs,
+                        because signs need to be hosted on servers that are able to handle thousands of requests at the same moment for events such as cup of the day.
+                        Currently the best option is to host signs on Discord.
+                        <br><br>
+                        Hosting a sign on Discord is relatively easy. The first step is to send the file(s) in a channel in **any** Discord server. All Discord
+                        servers are "public", so even your own server with only you as member will work. After uploading the file(s), you have to copy the url to
+                        them. This is not the same as copying the URL of the message, so pay attention to that. The URL should end with `.tga` or `.zip`.
+                        <br><br>
+                        After copying the URL, you can go to the map editor and select the skinning tool (the bucket icon). Then click the "Custom URL" button and paste
+                        the URL to the sign there. Then click "OK", and if you did it correctly, it should now show up!
+                    </x-md>
+                </p>
+            </x-details>
+        </x-modal>
+
         <x-details open>
             <x-slot:summary id="packages">
                 <x-heroicon-s-archive-box /> Pre-made Packages
@@ -87,7 +122,7 @@
 
                     <div class="input">
                         <label for="size">Sign size</label>
-                        <select x-model="size" id="size" class="font-mono">
+                        <select x-model="size" id="size" style="font-family: var(--font-mono);">
                             <option value="1">1x1</option>
                             <option value="2" selected>2x1</option>
                             <option value="4">4x1</option>
@@ -115,7 +150,9 @@
                         <x-slot:summary>
                             <x-heroicon-m-code-bracket />JSON Data
                         </x-slot:summary>
-                        <p><x-md>Send POST requests to `/api/tmasigns`</x-md></p>
+                        <p>
+                            <x-md>Send POST requests to `/api/tmasigns`</x-md>
+                        </p>
                         <pre><code id="jsondebug" class="language-json"></code></pre>
                     </x-details-card>
                 </section>
@@ -130,11 +167,13 @@
                 <section class="locatortoolcard" x-data="{ input: '', data: ['A'] }">
                     <div class="content">
                         <h4 class="heading">Locator Tool</h4>
-                        <p class="long-text"><x-md>
-                            Will automatically create locator files for you. One URL per line. Must have filename and extension as the last part of the
-                            url. For example: `https://domain.example/filename.zip`. Invalid URLs will be skipped. Locator files will be in
-                            the `.zip` file.
-                        </x-md></p>
+                        <p class="long-text">
+                            <x-md>
+                                Will automatically create locator files for you. One URL per line. Must have filename and extension as the last part of the
+                                url. For example: `https://domain.example/filename.zip`. Invalid URLs will be skipped. Locator files will be in
+                                the `.zip` file.
+                            </x-md>
+                        </p>
                     </div>
                     <div class="input">
                         <div class="row">

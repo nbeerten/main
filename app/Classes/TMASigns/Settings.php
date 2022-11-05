@@ -35,12 +35,6 @@ class Settings
         4 => 8,
         6 => 6
     ];
-    public const suboutlinewidth = [
-        1 => 0,
-        2 => 0,
-        4 => 0,
-        6 => 0
-    ];
     public const outlinecolor = "#ffffff";
     public const base = [
         1 => '../assets/TMASigns/1x1.tga',

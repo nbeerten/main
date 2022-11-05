@@ -11,6 +11,9 @@
     padding: 0.75rem 1rem;
     border-radius: 0.375rem;
 
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+
     > .code {
         display: flex;
         justify-content: center;
@@ -19,6 +22,7 @@
             font-size: 1.75rem;
         }
         font-family: var(--font-mono);
+        color: var(--text-color-primary);
 
         padding: 0 1rem;
         align-items: center;
@@ -46,6 +50,15 @@
 
             > .description {
                 font-size: 1.75rem;
+                color: var(--text-color-primary);
+            }
+
+            > .request-path {
+                border-radius: 0.375rem;
+                background-color: var(--bg-secondary);
+                padding-left: 0.25rem;
+                padding-right: 0.25rem;
+                font-family: var(--font-mono);
             }
         }
         

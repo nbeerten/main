@@ -35,13 +35,6 @@
                     @endforeach
                 </table>
             </x-card>
-        </div>
-        <x-details>
-            <x-slot:summary>Summary of details</x-slot:summary>
-            <x-card>
-                <x-slot:title>Title</x-slot:title>
-                <p>Cool paragraph ngl</p>
-            </x-card>
-        </x-details>       
+        </div>      
     </section>
 </x-layout.app>
