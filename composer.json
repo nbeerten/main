@@ -16,6 +16,7 @@
         "livewire/livewire": "^2.10",
         "maennchen/zipstream-php": "^2.2",
         "opcodesio/log-viewer": "^1.6",
+        "spatie/browsershot": "^3.57",
         "ublabs/blade-simple-icons": "^0.53.0"
     },
     "require-dev": {

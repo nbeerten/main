@@ -28,7 +28,7 @@
 @endpush
 
 <x-layout.app title="TMA Signs">
-    <x-slot:opengraph img="{{ asset('assets/og/tmasigns@630.jpg') }}">
+    <x-slot:opengraph>
         Small web application to create signs for the game Trackmania with user input as text on the image, styled to fit in with the TMA signpack.
     </x-slot:opengraph>
 

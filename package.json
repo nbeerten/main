@@ -27,6 +27,7 @@
         "laravel-mix-make-file-hash": "^2.2.0",
         "npm": "^8.19.1",
         "prismjs": "^1.29.0",
+        "puppeteer": "18.2.1",
         "typed.js": "^2.0.12"
     }
 }

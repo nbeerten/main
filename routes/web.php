@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\TMASignsController;
+use App\Http\Controllers\OpengraphImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,7 @@ use App\Http\Controllers\TMASignsController;
 |
 */
 
+// Main pages
 Route::get('/', function () {
     return view('pages.home');
 })->name('home');
@@ -23,6 +25,11 @@ Route::get('/tmasigns', function () {
     return view('pages.tmasigns');
 })->name('tmasigns');
 
+// Small services
+Route::get('/og', [OpengraphImageController::class, 'get'])
+     ->name('og');
+
+// Authentication
 Route::get('/login', function () {
     if(Auth::check()) return redirect(route('auth.dashboard'));
     else return view('auth.login');

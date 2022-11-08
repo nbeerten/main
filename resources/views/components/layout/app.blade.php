@@ -28,7 +28,7 @@
         <meta property="og:type" content="website">
         <meta property="og:title" content="{{ $title ?? Request::path() }} - Nils Beerten">
         <meta property="og:description" content="{{ $opengraph ?? '' }}">
-        <meta property="og:image" content="{{ $opengraph->attributes->get('img') ?? '' }}">
+        <meta property="og:image" content="{{ env('APP_URL') }}/og?url={{ Request::path() }}&title={{ $title ?? Request::path() }}">
 
         <!-- Twitter Meta Tags -->
         <meta name="twitter:card" content="summary_large_image">
