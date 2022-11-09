@@ -4,7 +4,7 @@
 
 <x-layout.app title="Home">
     <x-slot:description>
-        Website of Nils, also known as nbeerten or nbert. Projects of mine include Refresh Leaderboard and the rewrite of nilsbeerten.nl
+        Hai, I'm Nils. Projects include Refresh Leaderboard: a plugin for Openplanet and the rewrite of nilsbeerten.nl...
     </x-slot:description>
 
     <x-slot:hero>

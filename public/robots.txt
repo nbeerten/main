@@ -1,3 +1,9 @@
 User-agent: *
 Allow: /$
+Allow: /dist/*
+Allow: /assets/*
+Allow: /favicon.ico$
+Allow: /favicon.svg$
+Allow: /apple-touch-icon.png$
+Allow: /manifest.webmanifest$
 Disallow: /
