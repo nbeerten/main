@@ -1,34 +1,35 @@
 <!DOCTYPE html>
 <html lang="{{ App::currentLocale() }}">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>{{ $title ?? Request::path() }} - Nils Beerten</title>
-    @isset($opengraph)
-        <meta name="description" content="{{ $opengraph ?? '' }}">
-    @endisset
 
     {{-- Main JS & CSS from the compiled files --}}
     <link rel="stylesheet" href="{{ mix('/css/app.css', 'dist') }}">
 
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.webmanifest">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/ico/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/ico/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/ico/favicon-16x16.png">
-    <link rel="mask-icon" href="/ico/safari-pinned-tab.svg" color="#fff">
-    <meta name="theme-color" content="#ffdf00">
+    <meta name="theme-color" content="#171717">
 
-    @isset($opengraph)
+    <title>{{ $title ?? Request::path() }} - Nils Beerten</title>
+    @isset($description)
+        <meta name="description" content="{{ $description ?? '' }}">
+    @endisset
+
+    @isset($description)
         <!-- Facebook Meta Tags -->
         <meta property="og:url" content="{{ Request::fullUrl() }}">
         <meta property="og:og:site_name" content="nilsbeerten.nl">
         <meta property="og:type" content="website">
         <meta property="og:title" content="{{ $title ?? Request::path() }} - Nils Beerten">
-        <meta property="og:description" content="{{ $opengraph ?? '' }}">
+        <meta property="og:description" content="{{ $description ?? '' }}">
         <meta property="og:image" content="{{ env('APP_URL') }}/og?url={{ Request::path() }}&title={{ $title ?? Request::path() }}">
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="600" />
+        <meta property="og:image:alt" content="Preview of the page together with the page title and website logo" />
 
         <!-- Twitter Meta Tags -->
         <meta name="twitter:card" content="summary_large_image">
@@ -37,8 +38,19 @@
         <meta name="twitter:creator" content="@nbertn">
         <meta name="twitter:site" content="@nbertn">
         <meta name="twitter:title" content="{{ $title ?? Request::path() }} - Nils Beerten">
-        <meta name="twitter:description" content="{{ $opengraph ?? '' }}">
-        <meta name="twitter:image" content="{{ $opengraph->attributes->get('img') ?? '' }}">
+        <meta name="twitter:description" content="{{ $description ?? '' }}">
+        <meta name="twitter:image" content="{{ env('APP_URL') }}/og?url={{ Request::path() }}&title={{ $title ?? Request::path() }}">
+
+        @if(Request::is('/'))
+        <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "url": "https://nilsbeerten.nl/",
+              "logo": "https://localhost/icon-512.png"
+            }
+        </script>
+        @endif
     @endisset
     
     <!-- Style Stack -->

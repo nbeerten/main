@@ -18,11 +18,11 @@ use App\Http\Controllers\OpengraphImageController;
 
 // Main pages
 Route::get('/', function () {
-    return view('pages.home');
+    return view('home');
 })->name('home');
 
 Route::get('/tmasigns', function () {
-    return view('pages.tmasigns');
+    return view('tmasigns');
 })->name('tmasigns');
 
 // Small services

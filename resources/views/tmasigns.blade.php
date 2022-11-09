@@ -28,9 +28,9 @@
 @endpush
 
 <x-layout.app title="TMA Signs">
-    <x-slot:opengraph>
+    <x-slot:description>
         Small web application to create signs for the game Trackmania with user input as text on the image, styled to fit in with the TMA signpack.
-    </x-slot:opengraph>
+    </x-slot:description>
 
     <section class="default-page tmasigns">
         <h3 class="heading">TMA Signs</h3>

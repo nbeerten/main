@@ -3,9 +3,9 @@
 @endpush
 
 <x-layout.app title="Home">
-    <x-slot:opengraph>
+    <x-slot:description>
         Website of Nils, also known as nbeerten or nbert. Projects of mine include Refresh Leaderboard and the rewrite of nilsbeerten.nl
-    </x-slot:opengraph>
+    </x-slot:description>
 
     <x-slot:hero>
         <header class="home__header">
