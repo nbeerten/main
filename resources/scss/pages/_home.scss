@@ -1,26 +1,31 @@
 @use "../settings" as *;
 
 .home__header {
+    --height: 60vh;
+
     display: grid;
     place-items: end;
-    background-size: cover;
     background-position: top;
-    background-attachment: scroll, scroll;
+    background-attachment: scroll, fixed;
+    background-size: auto, auto var(--height);
+    background-origin: border-box;
+    background-repeat: no-repeat;
     @media (min-width: $breakpoint-sm) {
         background-attachment: scroll, fixed;
+        background-size: cover;
     }
     background-image: linear-gradient(to bottom, hsla(0deg, 0%, 0%, 0) 88%, hsl(0deg, 0%, 9%)), var(--nb-heroimage);
     
-    height: 60vh;
+    height: var(--height);
     @media (min-width: $breakpoint-md) {
-        height: 65vh;
+        --height: 65vh;
     }
     @media (min-width: $breakpoint-md) {
-        height: 70vh;
+        --height: 70vh;
     }
 
     @media (min-width: $breakpoint-lg) {
-        height: 73vh;
+        --height: 73vh;
     }
 
     @supports (height: 60svh) {

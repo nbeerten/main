@@ -16,6 +16,7 @@ services:
     working_dir: /var/www/
     volumes:
       - app:/var/www
+      - chromecache:/tmp/chromeuserdatadir
       - ./php.ini:/usr/local/etc/php/conf.d/local.ini
     networks:
       - main
@@ -81,6 +82,8 @@ networks:
 
 volumes:
     app:
+        driver: local
+    chromecache:
         driver: local
     mysql:
         driver: local

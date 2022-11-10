@@ -18,6 +18,36 @@ class OpengraphImage
     protected Imagick $overlay;
     protected Imagick $thumbnail;
 
+    private const BLOCKLIST = [ "cloudflareinsights.com" ];
+    private const ARGS = [
+        "no-sandbox",
+        "disable-setuid-sandbox",
+        "disable-infobars",
+        "single-process",
+        "no-zygote",
+        "no-first-run",
+        "window-position" => "0,0",
+        "ignore-certificate-errors",
+        "ignore-certificate-errors-skip-list",
+        "disable-dev-shm-usage",
+        "disable-accelerated-2d-canvas",
+        "disable-gpu",
+        "hide-scrollbars",
+        "disable-notifications",
+        "disable-background-timer-throttling",
+        "disable-backgrounding-occluded-windows",
+        "disable-breakpad",
+        "disable-component-extensions-with-background-pages",
+        "disable-extensions",
+        "disable-features" => "TranslateUI,BlinkGenPropertyTrees",
+        "disable-ipc-flooding-protection",
+        "disable-renderer-backgrounding",
+        "enable-features" => "NetworkService,NetworkServiceInProcess",
+        "force-color-profile" => "srgb",
+        "metrics-recording-only",
+        "mute-audio"
+      ];
+
     /**
      * Construct OG class
      *
@@ -42,15 +72,19 @@ class OpengraphImage
     private function thumbnail(): self|false
     {
         $image = Browsershot::url("http://nginx/{$this->url}")
+            ->userAgent("OpengraphImage (" . env('APP_URL') . ")")
             ->windowSize(1200, 450)
             ->hideBackground()
+            ->disableJavascript()
+            ->blockDomains(self::BLOCKLIST)
+            ->setOption('addStyleTag', json_encode(['content' => 'nav { display: none; }']))
             ->preventUnsuccessfulResponse()
-            ->waitUntilNetworkIdle()
-            ->noSandbox();
+            ->noSandbox()
+            ->addChromiumArguments(self::ARGS);
 
         $this->thumbnail = new Imagick();
         $this->thumbnail->readImageBlob($image->screenshot());
-        $this->thumbnail->setImageFormat("png");
+        $this->thumbnail->setImageFormat("jpg");
 
         return $this;
     }
@@ -63,16 +97,15 @@ class OpengraphImage
     private function overlay(): self|false
     {
         $image = Browsershot::html(View::file(__DIR__ . '/views/opengraph.blade.php', ['title' => $this->title]))
-            ->setOption('args', ['--disable-web-security'])
             ->windowSize(1200, 150)
             ->hideBackground()
             ->preventUnsuccessfulResponse()
-            ->waitUntilNetworkIdle()
-            ->noSandbox();
+            ->noSandbox()
+            ->addChromiumArguments(self::ARGS);
 
         $this->overlay = new Imagick();
         $this->overlay->readImageBlob($image->screenshot());
-        $this->overlay->setImageFormat("png");
+        $this->overlay->setImageFormat("jpg");
 
         return $this;
     }
@@ -96,7 +129,7 @@ class OpengraphImage
             $image->addImage($this->overlay);
             $image->resetIterator();
             $image = $image->appendImages(true);
-            $image->setImageFormat("png");
+            $image->setImageFormat("jpg");
             
 
             $blob = $image->getImageBlob();

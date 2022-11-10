@@ -24,7 +24,7 @@ class OpengraphImageController extends Controller
         try {
         $opengraph = new OpengraphImage(url: $validated['url'] ?? $request->path(), title: $validated['title']);
 
-        return response($opengraph->get())->header('Content-Type', 'image/png');
+        return response($opengraph->get())->header('Content-Type', 'image/jpg');
         } catch (Exception $e) {
             Log::error($e->getMessage());
             return response(status: 404);

@@ -17,7 +17,7 @@
                     </span>
                     <span class="divider"></span>
                     <span data-popup-bottom="Local Time">
-                        <x-heroicon-m-clock /><span x-text="time"></span>
+                        <x-heroicon-m-clock /><span x-text="time"></span><noscript>{{ now('Europe/Amsterdam')->isoFormat('DD/MM, HH:mm') }}</noscript>
                     </span>
                 </p>
                 <div class="icon-groups">
