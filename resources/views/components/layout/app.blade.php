@@ -47,7 +47,7 @@
               "@context": "https://schema.org",
               "@type": "Organization",
               "url": "https://nilsbeerten.nl/",
-              "logo": "https://localhost/icon-512.png"
+              "logo": "https://nilsbeerten.nl/icon-512.png"
             }
         </script>
         @endif
