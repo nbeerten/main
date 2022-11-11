@@ -2,7 +2,7 @@
     <script defer src='{{ mix('/js/home.js', 'dist') }}'></script>
 @endpush
 
-<x-layout.app title="Home">
+<x-layout.app title="Home" noindex="false">
     <x-slot:description>
         Hai, I'm Nils. Projects include Refresh Leaderboard: a plugin for Openplanet and the rewrite of nilsbeerten.nl...
     </x-slot:description>

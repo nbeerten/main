@@ -15,7 +15,6 @@ services:
     working_dir: /var/www/
     volumes:
       - ./:/var/www
-      - chromecache:/tmp/chromeuserdatadir
       - ./docker/dev/php.ini:/usr/local/etc/php/conf.d/local.ini
     networks:
       - main

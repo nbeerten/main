@@ -20,6 +20,11 @@
     @endisset
 
     @isset($description)
+        @isset($noindex)
+            @if($noindex === "true")
+            <meta name="robots" content="noindex">
+            @endif
+        @endisset
         <!-- Facebook Meta Tags -->
         <meta property="og:url" content="{{ Request::fullUrl() }}">
         <meta property="og:og:site_name" content="nilsbeerten.nl">

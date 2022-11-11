@@ -1,4 +1,4 @@
-<x-layout.app title="Login">
+<x-layout.app title="Login" noindex="true">
 
     <section class="default-page">
         <h3 class="heading">Login</h3>

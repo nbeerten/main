@@ -1,4 +1,4 @@
-<x-layout.app title="Account Dashboard">
+<x-layout.app title="Account Dashboard" noindex="true">
     <section class="default-page dashboard">
         <h3 class="heading">Account Dashboard</h3>
         <x-card style="max-width: 40ch; min-width: 0; margin-bottom: 1rem;">
