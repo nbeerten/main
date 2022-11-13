@@ -10,6 +10,7 @@ use \Imagick as Imagick;
 
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Opengraph thumbnail generation for embedding in social media
@@ -104,7 +105,8 @@ class OpengraphImage
             ->hideBackground()
             ->preventUnsuccessfulResponse()
             ->noSandbox()
-            ->addChromiumArguments(self::ARGS);
+            ->addChromiumArguments(self::ARGS)
+            ->setOption('args', ['--disable-web-security']);
 
         $this->overlay = new Imagick();
         $this->overlay->readImageBlob($image->screenshot());

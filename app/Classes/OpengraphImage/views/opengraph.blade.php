@@ -48,6 +48,7 @@
                 display: block;
                 color: white;
                 font-family: 'Hubot Sans';
+                font-weight: 800;
                 margin: 0;
                 font-size: 4rem;
                 font-stretch: 110%;
@@ -57,9 +58,10 @@
                 color: #d1d5db;
                 margin: 0;
                 font-family: 'Mona Sans';
+                font-weight: 600;
                 font-size: 1.5rem;
                 font-stretch: 115%;
-                margin-left: 3px;
+                margin-left: 4px;
             }
 
             img {
