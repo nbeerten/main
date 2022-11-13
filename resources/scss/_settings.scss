@@ -6,11 +6,11 @@
     --text-color-primary: #ffffff;
     --text-color-secondary: #d1d5db;
 
-    --font-sans: "MontserratVariable", "Montserrat", ui-sans-serif, sans-serif, system-ui;
-    --font-mono: "Fira CodeVariable", "Fira Code", ui-monospace, monospace;
+    --font-sans: "Mona Sans", ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --font-display: "Hubot Sans", ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --font-mono: 'JetBrains Mono', ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 
     --brand-color: #ffdf00;
-
     --bg-body: #171717;
     --bg-cards: #0a0a0a;
     --bg-primary: #171717;
@@ -19,7 +19,7 @@
     --bg-error: #7f1d1d;
     --bg-success: #166534;
 
-    --border-color: rgb(113 113 122);
+    --border-color: rgb(113, 113, 122);
 
     --outline-color: #0000ff;
 
@@ -27,6 +27,21 @@
     --color-success: #166534;
     --color-info: #5865F2;
 
+}
+
+// Font mixins
+@mixin font-sans($stretch: 115%) {
+    font-family: var(--font-sans);
+    font-stretch: $stretch;
+}
+
+@mixin font-display($stretch: 110%) {
+    font-family: var(--font-display);
+    font-stretch: $stretch;
+}
+
+@mixin font-mono {
+    font-family: var(--font-mono);
 }
 
 // Breakpoints

@@ -117,7 +117,7 @@ class Base
 
     public function get() {
         if(!empty($this->subtext) && $this->size != 6) return $this->MultiLine();
-        else if(!empty($this->text)) return $this->SingleLine();
+        else if(!empty($this->text) || $this->text === "0") return $this->SingleLine();
         else return abort(422);
     }
 }

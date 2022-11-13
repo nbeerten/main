@@ -7,8 +7,16 @@
     justify-self: center;
 }
 
-*:has(>.heroicons) {
-    display: flex;
-    flex-direction: row;
-    gap: 0.5em;
+@supports selector(:has(> .heroicons)) {
+    *:has(>.heroicons) {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5em;
+    }
+}
+
+@supports not selector(:has(> .heroicons)) {
+    .heroicons {
+        display: inline-block;
+    }
 }

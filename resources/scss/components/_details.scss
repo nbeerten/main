@@ -1,7 +1,10 @@
+@use '../settings' as *;
+
 .component_details {
     transition: transform 0.2s ease-in-out;
 
     > summary {
+        @include font-display;
         font-size: 1.5rem;
         color: var(--text-color-heading);
         font-weight: 600;
@@ -46,6 +49,8 @@
     flex-direction: column;
 
     summary {
+        @include font-display;
+        
         cursor: pointer;
         user-select: none;
         position: relative;

@@ -6,6 +6,8 @@
 
     {{-- Main JS & CSS from the compiled files --}}
     <link rel="stylesheet" href="{{ mix('/css/app.css', 'dist') }}">
+    <link rel="preload" href="{{ asset('/fonts/Mona-Sans.woff2') }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ asset('/fonts/Hubot-Sans.woff2') }}" as="font" type="font/woff2" crossorigin>
 
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">

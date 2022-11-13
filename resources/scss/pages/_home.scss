@@ -15,6 +15,7 @@
         background-size: cover;
     }
     background-image: linear-gradient(to bottom, hsla(0deg, 0%, 0%, 0) 88%, hsl(0deg, 0%, 9%)), var(--nb-heroimage);
+
     
     height: var(--height);
     @media (min-width: $breakpoint-md) {
@@ -75,6 +76,8 @@
             line-height: 1;
             font-weight: 800;
             will-change: contents;
+
+            @include font-display(120%);
         }
 
         .info-text {

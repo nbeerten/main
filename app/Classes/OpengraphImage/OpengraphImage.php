@@ -4,6 +4,7 @@ namespace App\Classes\OpengraphImage;
 
 use Exception;
 use Spatie\Browsershot\Browsershot;
+use Spatie\Image\Manipulations;
 
 use \Imagick as Imagick;
 
@@ -17,6 +18,8 @@ class OpengraphImage
 {
     protected Imagick $overlay;
     protected Imagick $thumbnail;
+
+    private const BASEURL = "http://nginx/";
 
     private const BLOCKLIST = [ "cloudflareinsights.com" ];
     private const ARGS = [
@@ -66,15 +69,15 @@ class OpengraphImage
 
     /**
      * Backup function to generate website preview thumbnail
-     *
+     * 
      * @return mixed
      */
     private function thumbnail(): self|false
     {
-        $image = Browsershot::url("http://nginx/{$this->url}")
+        $image = Browsershot::url(self::BASEURL . $this->url)
             ->userAgent("OpengraphImage (" . env('APP_URL') . ")")
+            ->mobile()
             ->windowSize(1200, 450)
-            ->hideBackground()
             ->disableJavascript()
             ->blockDomains(self::BLOCKLIST)
             ->setOption('addStyleTag', json_encode(['content' => 'nav { display: none; }']))
@@ -96,7 +99,7 @@ class OpengraphImage
      */
     private function overlay(): self|false
     {
-        $image = Browsershot::html(View::file(__DIR__ . '/views/opengraph.blade.php', ['title' => $this->title]))
+        $image = Browsershot::html(View::file(__DIR__ . '/views/opengraph.blade.php', ['title' => $this->title, 'baseurl' => self::BASEURL]))
             ->windowSize(1200, 150)
             ->hideBackground()
             ->preventUnsuccessfulResponse()

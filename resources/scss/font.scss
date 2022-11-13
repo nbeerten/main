@@ -1,0 +1,47 @@
+@font-face {
+    font-family: 'Mona Sans';
+    src: url('/fonts/Mona-Sans.woff2') format('woff2 supports variations'),
+         url('/fonts/Mona-Sans.woff2') format('woff2-variations');
+    font-weight: 200 900;
+    font-stretch: 75% 125%;
+}
+
+@font-face {
+    font-family: 'Hubot Sans';
+    src: url('/fonts/Hubot-Sans.woff2') format('woff2 supports variations'),
+         url('/fonts/Hubot-Sans.woff2') format('woff2-variations');
+    font-weight: 200 900;
+    font-stretch: 75% 125%;
+}
+
+$JetBrainsMono: (
+    100: "JetBrainsMono-Thin",
+    200: "JetBrainsMono-ExtraLight",
+    300: "JetBrainsMono-Light",
+    400: "JetBrainsMono-Regular",
+    500: "JetBrainsMono-Medium",
+    600: "JetBrainsMono-SemiBold",
+    700: "JetBrainsMono-Bold",
+    800: "JetBrainsMono-ExtraBold",
+
+);
+
+@each $name, $fontname in $JetBrainsMono {
+    @font-face {
+        font-family: 'JetBrains Mono';
+        font-style: normal;
+        font-weight: $name;
+        src: url(/fonts/JetBrainsMono/ttf/#{$fontname}.ttf) format("truetype"),
+             url(/fonts/JetBrainsMono/webfonts/#{$fontname}.woff2) format("woff2");
+        font-variant-numeric: slashed-zero;
+    }
+
+    @font-face {
+        font-family: 'JetBrains Mono';
+        font-style: italic;
+        font-weight: $name;
+        src: url(/fonts/JetBrainsMono/ttf/#{$fontname}Italic.ttf) format("truetype"),
+             url(/fonts/JetBrainsMono/webfonts/#{$fontname}Italic.woff2) format("woff2");
+        font-variant-numeric: slashed-zero;
+    }
+}

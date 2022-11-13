@@ -1,6 +1,0 @@
-@use "@fontsource/montserrat/scss/mixins" as Montserrat;
-@use "@fontsource/fira-code/scss/mixins" as FiraCode;
-
-@include Montserrat.fontFaceVariable($type: "wghtOnly");
-
-@include FiraCode.fontFaceVariable($type: "wghtOnly");

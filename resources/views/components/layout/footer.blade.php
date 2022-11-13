@@ -30,7 +30,7 @@
     </div>
     <div class="bottom">
         <div class="copyright">
-            <p x-data="{ year: new Date().getFullYear() }">&copy;<span x-text="year">2022</span> Nils Beerten</p>
+            <p x-data="{ year: new Date().getFullYear() }"><span class="year"><span x-text="year">2022</span></span> <span class="name">Nils Beerten</span></p>
         </div>
         <div class="socials">
             <a href="https://twitter.com/nbertn" target="_blank" data-popup="@nbertn" aria-label="twitter: @nbertn">

@@ -1,3 +1,5 @@
+@use '../settings' as *;
+
 .footer-divider {
     display: block;
     height: 1px;
@@ -70,7 +72,17 @@ footer {
         }
 
         .copyright {
-            font-weight: 500;
+            .year:before {
+                content: "\00A9";
+            }
+            .year {
+                @include font-display(100%);
+                font-weight: 400;
+            }
+            .name {
+                @include font-display();
+                font-weight: 500;
+            }
         }
 
         .socials {
