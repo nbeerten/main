@@ -6,26 +6,30 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
-        "blade-ui-kit/blade-heroicons": "^2.0",
-        "guzzlehttp/guzzle": "^7.2",
-        "laravel/fortify": "^1.13",
-        "laravel/framework": "^9.19.0",
-        "laravel/sanctum": "^3.0",
-        "laravel/telescope": "^4.9",
-        "laravel/tinker": "^2.7",
-        "livewire/livewire": "^2.10",
-        "maennchen/zipstream-php": "^2.2",
-        "opcodesio/log-viewer": "^1.6",
-        "spatie/browsershot": "^3.57",
+        "blade-ui-kit/blade-heroicons": "^2.0.5",
+        "doctrine/dbal": "^3.5.1",
+        "guzzlehttp/guzzle": "^7.5",
+        "laravel/fortify": "^1.13.7",
+        "laravel/framework": "^9.40.1",
+        "laravel/sanctum": "^3.0.1",
+        "laravel/telescope": "^4.9.6",
+        "laravel/tinker": "^2.7.3",
+        "livewire/livewire": "^2.10.7",
+        "maennchen/zipstream-php": "^2.2.1",
+        "opcodesio/log-viewer": "^1.7.1",
+        "romanzipp/laravel-turnstile": "^1.1",
+        "spatie/browsershot": "^3.57.3",
+        "statamic/cms": "3.3.56",
+        "statamic/eloquent-driver": "^1.1",
         "ublabs/blade-simple-icons": "^0.53.0"
     },
     "require-dev": {
-        "fakerphp/faker": "^1.9.1",
-        "laravel/pint": "^1.0",
-        "mockery/mockery": "^1.4.4",
-        "nunomaduro/collision": "^6.1",
-        "phpunit/phpunit": "^9.5.10",
-        "spatie/laravel-ignition": "^1.0"
+        "fakerphp/faker": "^1.20",
+        "laravel/pint": "^1.2",
+        "mockery/mockery": "^1.5.1",
+        "nunomaduro/collision": "^6.3.1",
+        "phpunit/phpunit": "^9.5.26",
+        "spatie/laravel-ignition": "^1.6.1"
     },
     "autoload": {
         "psr-4": {
@@ -40,9 +44,13 @@
         }
     },
     "scripts": {
+        "pre-update-cmd": [
+            "Statamic\\Console\\Composer\\Scripts::preUpdateCmd"
+        ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
+            "@php artisan package:discover --ansi",
+            "@php artisan statamic:install --ansi"
         ],
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
@@ -64,7 +72,8 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "allow-plugins": {
-            "pestphp/pest-plugin": true
+            "pestphp/pest-plugin": true,
+            "pixelfear/composer-dist-plugin": true
         }
     },
     "minimum-stability": "dev",

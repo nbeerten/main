@@ -1,3 +1,10 @@
+@php
+    App\Classes\Opengraph\Opengraph::make(
+        title: $code,
+        noindex: true
+    );
+@endphp
+
 <x-layout.app title="{{ $title }}">
     <section class="default-page">
         <div class="error__card">

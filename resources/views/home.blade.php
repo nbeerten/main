@@ -1,8 +1,16 @@
+@php
+    App\Classes\Opengraph\Opengraph::make(
+        title: "Home",
+        description: "Hai, I'm Nils. Projects include Refresh Leaderboard: a plugin for Openplanet and the rewrite of nilsbeerten.nl...",
+        noindex: false
+    );
+@endphp
+
 @push('scripts')
     <script defer src='{{ mix('/js/home.js', 'dist') }}'></script>
 @endpush
 
-<x-layout.app title="Home" noindex="false">
+<x-layout.app>
     <x-slot:description>
         Hai, I'm Nils. Projects include Refresh Leaderboard: a plugin for Openplanet and the rewrite of nilsbeerten.nl...
     </x-slot:description>
@@ -91,4 +99,26 @@
             </x-card> --}}
         </div>
     </section>
+
+    @php($tag = Statamic::tag('collection:posts')->limit(3)->fetch())
+    @if(count($tag) > 0 )
+        <section class="posts">
+            <h3 class="heading">Posts</h3>
+            <div class="cards">
+                @foreach($tag as $post)
+                    <x-card class="post">
+                        <x-slot:img src="{{ $post->featured_image }}" alt="Logo of RefreshLeaderboard plugin" width="160" height="160"></x-slot:img>
+                        <x-slot:title>{{ $post->title }}</x-slot:title>
+                        {{ $post->meta_description }}
+
+                        <x-slot:action>
+                            <a href="{{ $post->permalink }}" rel="canonical">
+                                Read more...
+                            </a>
+                        </x-slot:action>
+                    </x-card>
+                @endforeach
+            </div>
+        </section>
+    @endif
 </x-layout.app>

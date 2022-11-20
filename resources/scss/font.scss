@@ -1,5 +1,6 @@
 @font-face {
     font-family: 'Mona Sans';
+    font-display: fallback;
     src: url('/fonts/Mona-Sans.woff2') format('woff2 supports variations'),
          url('/fonts/Mona-Sans.woff2') format('woff2-variations');
     font-weight: 200 900;
@@ -8,6 +9,7 @@
 
 @font-face {
     font-family: 'Hubot Sans';
+    font-display: fallback;
     src: url('/fonts/Hubot-Sans.woff2') format('woff2 supports variations'),
          url('/fonts/Hubot-Sans.woff2') format('woff2-variations');
     font-weight: 200 900;
@@ -29,19 +31,19 @@ $JetBrainsMono: (
 @each $name, $fontname in $JetBrainsMono {
     @font-face {
         font-family: 'JetBrains Mono';
+        font-display: optional;
         font-style: normal;
         font-weight: $name;
         src: url(/fonts/JetBrainsMono/ttf/#{$fontname}.ttf) format("truetype"),
              url(/fonts/JetBrainsMono/webfonts/#{$fontname}.woff2) format("woff2");
-        font-variant-numeric: slashed-zero;
     }
 
     @font-face {
         font-family: 'JetBrains Mono';
+        font-display: optional;
         font-style: italic;
         font-weight: $name;
         src: url(/fonts/JetBrainsMono/ttf/#{$fontname}Italic.ttf) format("truetype"),
              url(/fonts/JetBrainsMono/webfonts/#{$fontname}Italic.woff2) format("woff2");
-        font-variant-numeric: slashed-zero;
     }
 }

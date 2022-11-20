@@ -74,6 +74,7 @@
                 min-height: 200px;
                 place-content: center;
                 border-radius: 0.375rem 0.375rem 0 0;
+                overflow: hidden;
                 background-color: rgb(55 65 81);
 
                 margin-bottom: 0.8rem;
@@ -100,7 +101,7 @@
                     bottom: 0px;
                     left: 0px;
                     width: 100%;
-                    transform: translateY(100%);
+                    translate: 0% 100%;
                     border-radius: 0 0 0.375rem 0.375rem;
                     background-color: var(--bg-secondary);
                     padding: 0 0.5rem;
@@ -199,12 +200,6 @@
             border-radius: 0.375rem;
             background-color: var(--bg-cards);
             padding: 1rem;
-
-            > img {
-                max-height: 30;
-                aspect-ratio: 6 / 1;
-                border-radius: 0.5rem;
-            }
 
             > .content {
                 display: flex;

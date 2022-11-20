@@ -1,3 +1,10 @@
+@php
+    App\Classes\Opengraph\Opengraph::make(
+        title: "Dashboard",
+        noindex: true
+    );
+@endphp
+
 <x-layout.app title="Account Dashboard" noindex="true">
     <section class="default-page dashboard">
         <h3 class="heading">Account Dashboard</h3>
@@ -35,6 +42,6 @@
                     @endforeach
                 </table>
             </x-card>
-        </div>      
+        </div> 
     </section>
 </x-layout.app>

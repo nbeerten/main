@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\TMASignsController;
 use App\Http\Controllers\OpengraphImageController;
+use App\Http\Controllers\PostViewController;
 
 /*
 |--------------------------------------------------------------------------

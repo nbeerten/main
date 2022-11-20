@@ -16,6 +16,7 @@ services:
     working_dir: /var/www/
     volumes:
       - app:/var/www
+      - storage:/var/www/storage/app/public
       - ./php.ini:/usr/local/etc/php/conf.d/local.ini
     networks:
       - main
@@ -32,6 +33,7 @@ services:
       - "443:443"
     volumes:
       - app:/var/www:ro
+      - storage:/var/www/storage/app/public
       - ./:/etc/nginx/conf.d/
       - ./ssl/:/etc/ssl/
     networks:
@@ -82,7 +84,7 @@ networks:
 volumes:
     app:
         driver: local
-    chromecache:
+    storage:
         driver: local
     mysql:
         driver: local

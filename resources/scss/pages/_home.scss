@@ -177,3 +177,24 @@
         gap: 1rem;
     }
 }
+
+.posts {
+    > .heading {
+        display: block;
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+        font-size: 1.875rem;
+        line-height: 2.25rem;
+        font-weight: 700;
+    }
+
+    > .cards {
+        display: grid;
+        width: 100%;
+        grid-template-columns: 1fr;
+        @media (min-width: $breakpoint-md) {
+            grid-template-columns: repeat(auto-fill, 30ch);
+        }
+        gap: 1rem;
+    }
+}

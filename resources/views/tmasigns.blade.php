@@ -1,3 +1,11 @@
+@php
+    App\Classes\Opengraph\Opengraph::make(
+        title: "TMA Signs",
+        description: "Small web application to create signs for the game Trackmania with user input as text on the image, styled to fit in with the TMA signpack.",
+        noindex: true
+    );
+@endphp
+
 @push('scripts')
     <script defer src='{{ mix('/js/TMASigns.js', 'dist') }}'></script>
     <script defer src='{{ mix('/js/prism.js', 'dist') }}'></script>
@@ -27,7 +35,7 @@
     </script>
 @endpush
 
-<x-layout.app title="TMA Signs" noindex="true">
+<x-layout.app>
     <x-slot:description>
         Small web application to create signs for the game Trackmania with user input as text on the image, styled to fit in with the TMA signpack.
     </x-slot:description>

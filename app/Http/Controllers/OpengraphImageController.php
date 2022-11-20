@@ -16,7 +16,8 @@ class OpengraphImageController extends Controller
 
         $validator = Validator::make($request->all(), [
             'url' => ['required', 'string', 'max:256'],
-            'title' => ['required', 'string', 'max:64']
+            'title' => ['required', 'string', 'max:64'],
+            'template' => ['string', 'max:64']
         ]);
         if ($validator->fails()) return response(status: 404); // Returns plain 404 error instead of webpage
         $validated = $validator->validated();

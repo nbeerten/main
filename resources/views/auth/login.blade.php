@@ -1,5 +1,15 @@
-<x-layout.app title="Login" noindex="true">
+@php
+    App\Classes\Opengraph\Opengraph::make(
+        title: "Login",
+        noindex: true
+    );
+@endphp
 
+@push('headscripts')
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+@endpush
+
+<x-layout.app>
     <section class="default-page">
         <h3 class="heading">Login</h3>
         <div class="login__form">
@@ -18,31 +28,26 @@
                         </ul>
                     </x-slot:more>
                 </x-information-card>
-                {{-- <div class="loginerror">
-                    <x-heroicon-s-exclamation-circle/>
-                    <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                    </ul>
-                </div> --}}
             @endif
             <form method="POST" action="/login">
                 @csrf
 
-                <!-- Email Address -->
+                {{-- Email Address --}}
                 <div class="input">
                     <label for="email">Email</label>
-                    <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus>
+                    <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus autocomplete="username" placeholder=" ">
                 </div>
 
-                <!-- Password -->
+                {{-- Password --}}
                 <div class="input">
                     <label for="password">Password</label>
-                    <input id="password" type="password" name="password" required autocomplete="current-password">
+                    <input id="password" type="password" name="password" required autocomplete="current-password" placeholder=" " pattern="(.){8,}">
                 </div>
 
-                <!-- Remember Me -->
+                {{-- Cloudflare Turnstile Captcha --}}
+                {{ romanzipp\Turnstile\Captcha::getChallenge(theme: 'dark', action: 'login') }}
+
+                {{-- Remember Me --}}
                 <div class="rememberme">
                     <div for="remember_me">
                         <input id="remember_me" type="checkbox" name="remember" value="1">

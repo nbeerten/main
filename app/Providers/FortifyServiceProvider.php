@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Fortify\Fortify;
 
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+
+use romanzipp\Turnstile\Rules\TurnstileCaptcha;
+
 class FortifyServiceProvider extends ServiceProvider
 {
     /**
@@ -48,6 +53,20 @@ class FortifyServiceProvider extends ServiceProvider
 
         Fortify::loginView(function () {
             return view('auth.login');
+        });
+
+        Fortify::authenticateUsing(function (Request $request) {
+            $turnstile = $request->validate([
+                'cf-turnstile-response' => ['required', 'string', new TurnstileCaptcha()],
+            ]);
+
+            $user = User::where('email', $request->email)->first();
+     
+            if ($turnstile &&
+                $user &&
+                Hash::check($request->password, $user->password)) {
+                return $user;
+            }
         });
     }
 }

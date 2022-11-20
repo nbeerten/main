@@ -26,5 +26,12 @@
         button[type="submit"] {
             margin-left: auto;
         }
+
+        .cf-turnstiles {
+            display: flex;
+            border-radius: 2rem;
+            width: max-content;
+            overflow: hidden;
+        }
     }
 }

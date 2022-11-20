@@ -35,6 +35,22 @@
         padding-right: 0.75rem;
         padding-top: 0.5rem;
         padding-bottom: 0.5rem;
+
+        --outline-color: transparent;
+        outline: 1px solid var(--outline-color);
+
+        // Validation colors
+        &:invalid {
+            --outline-color: var(--color-error);
+        }
+
+        &:valid {
+            --outline-color: transparent;
+        }
+
+        &:placeholder-shown {
+            --outline-color: transparent;
+        }
     }
 
     input:hover {
@@ -43,11 +59,10 @@
 
     input:focus {
         background-color: var(--input-background-hover);
-        outline: 1px solid transparent;
     }
 
     input:focus-visible {
-        outline: 1px solid var(--input-outline);
+        --outline-color: var(--input-outline);
     }
 
     textarea {

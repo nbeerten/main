@@ -5,6 +5,7 @@
     accent-color: var(--brand-color);
     scroll-behavior: smooth;
     overflow-x: hidden;
+    background-color: var(--bg-body);
 }
 
 body {
@@ -14,6 +15,8 @@ body {
 
     background-color: var(--bg-body);
 
+    text-rendering: optimizeLegibility;
+    
     max-width: 100vw;
 
     // Fix for URL fragment scrolling
