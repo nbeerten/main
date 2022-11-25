@@ -9,50 +9,27 @@ sections:
           required: true
           validate:
             - required
+          instructions_position: above
+          listable: hidden
+          visibility: visible
+          always_save: false
+          input_type: text
+          antlers: false
       -
         handle: content
         field:
-          collapse: false
-          always_show_set_button: false
-          previews: true
-          buttons:
-            - h2
-            - h3
-            - bold
-            - italic
-            - unorderedlist
-            - orderedlist
-            - removeformat
-            - quote
-            - anchor
-            - image
-            - table
-            - underline
-            - strikethrough
-            - superscript
-            - code
-            - codeblock
-            - horizontalrule
-          save_html: false
-          toolbar_mode: fixed
-          link_noopener: false
-          link_noreferrer: false
-          target_blank: false
-          reading_time: true
-          fullscreen: true
-          allow_source: true
-          enable_input_rules: true
-          enable_paste_rules: true
+          restrict: false
+          automatic_line_breaks: true
+          automatic_links: false
+          escape_markup: false
+          smartypants: false
           antlers: false
-          remove_empty_nodes: false
-          display: Content
-          type: bard
-          icon: bard
+          type: markdown
+          icon: markdown
           listable: hidden
           instructions_position: above
           visibility: visible
           always_save: false
-          instructions: 'Field with **bard** type.'
           validate:
             - required
   sidebar:
@@ -70,6 +47,17 @@ sections:
           required: true
           validate:
             - required
+          instructions_position: above
+          listable: hidden
+          visibility: visible
+          always_save: false
+          mode: single
+          time_enabled: true
+          time_seconds_enabled: false
+          full_width: false
+          inline: false
+          columns: 1
+          rows: 1
       -
         handle: author
         field:
@@ -83,4 +71,32 @@ sections:
           always_save: false
           validate:
             - required
+          max_items: 1
+      -
+        handle: meta_description
+        field:
+          antlers: true
+          display: 'Meta Description'
+          type: textarea
+          icon: textarea
+          listable: hidden
+          instructions_position: above
+          visibility: visible
+          always_save: false
+      -
+        handle: featured_image
+        field:
+          mode: grid
+          container: images
+          restrict: false
+          allow_uploads: true
+          show_filename: true
+          max_files: 1
+          display: 'Featured Image'
+          type: assets
+          icon: assets
+          listable: hidden
+          instructions_position: above
+          visibility: visible
+          always_save: false
 title: Post

@@ -1,5 +1,5 @@
 @php
-    App\Classes\Opengraph\Opengraph::make(
+    App\Classes\SEO\SEO::make(
         title: "TMA Signs",
         description: "Small web application to create signs for the game Trackmania with user input as text on the image, styled to fit in with the TMA signpack.",
         noindex: true

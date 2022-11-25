@@ -1,0 +1,62 @@
+sections:
+  main:
+    display: Main
+    fields:
+      -
+        handle: name
+        field:
+          input_type: text
+          character_limit: 128
+          antlers: false
+          type: text
+          icon: text
+          listable: hidden
+          instructions_position: above
+          visibility: visible
+          always_save: false
+          validate:
+            - required
+          placeholder: Name
+      -
+        handle: email
+        field:
+          placeholder: example@domain.tld
+          input_type: email
+          antlers: false
+          type: text
+          icon: text
+          listable: hidden
+          instructions_position: above
+          visibility: visible
+          always_save: false
+          validate:
+            - required
+            - email
+      -
+        handle: subject
+        field:
+          input_type: text
+          character_limit: 64
+          antlers: false
+          type: text
+          icon: text
+          listable: hidden
+          instructions_position: above
+          visibility: visible
+          always_save: false
+          validate:
+            - required
+          placeholder: Subject
+      -
+        handle: message
+        field:
+          antlers: false
+          type: textarea
+          icon: textarea
+          listable: hidden
+          instructions_position: above
+          visibility: visible
+          always_save: false
+          validate:
+            - required
+          placeholder: Message

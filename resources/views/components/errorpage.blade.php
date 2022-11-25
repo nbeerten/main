@@ -1,5 +1,5 @@
 @php
-    App\Classes\Opengraph\Opengraph::make(
+    App\Classes\SEO\SEO::make(
         title: $code,
         noindex: true
     );

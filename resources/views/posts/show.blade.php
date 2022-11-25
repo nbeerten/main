@@ -1,10 +1,27 @@
 @php
-    App\Classes\Opengraph\Opengraph::make(
+    use Spatie\SchemaOrg\Schema;
+
+    $schema = Schema::BlogPosting()
+        ->headline($page->title)
+        ->datePublished($page->date->isoFormat('YYYY-MM-DDThh:mm:ssZ'))
+        ->author(Schema::person()->name($page->author->name))
+        ->image([$page->featured_image ?? (env('APP_URL') . "/og?url=" . Request::path() . "&title=" . $seo->title ?? Request::path() )]);
+
+    App\Classes\SEO\SEO::make(
         title: $page->title,
         description: $page->meta_description,
         thumbnail: $page->featured_image,
-        noindex: true
+        noindex: false,
+        type: [
+            "type" => "article",
+            "items" => [
+                "author" => $page->author->name,
+                "published_time" => $page->date->isoFormat('YYYY-MM-DDThh:mm:ssZ')
+            ]
+        ],
+        schema: $schema->toScript()
     );
+
 @endphp
 
 @push('scripts')
@@ -23,7 +40,6 @@
                     </span>
                     <p>Posted by {{ $page->author->name }}</p>
                 </div>
-            <p></p>
             </hgroup>
             <hr>
             <section class="two-col">

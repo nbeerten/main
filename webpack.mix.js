@@ -18,10 +18,10 @@ mix.js("resources/js/app.js", "js")
    .js("resources/js/pages/home.js", "js")
 
    .sass("resources/scss/app.scss", "css")
-   .purgeCss({
-        enabled: true,
-        safelist: ['heroicons']
-    })
+//    .purgeCss({
+//         enabled: true,
+//         safelist: ['heroicons']
+//     })
    .sourceMaps(false, 'source-map')
 
    .setPublicPath('public/dist/')

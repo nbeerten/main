@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\TMASignsController;
 use App\Http\Controllers\OpengraphImageController;
-use App\Http\Controllers\PostViewController;
+
+use Statamic\Statamic;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,19 +23,13 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('/tmasigns', function () {
-    return view('tmasigns');
-})->name('tmasigns');
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
 
 // Small services
 Route::get('/og', [OpengraphImageController::class, 'get'])
      ->name('og');
-
-// Authentication
-Route::get('/login', function () {
-    if(Auth::check()) return redirect(route('auth.dashboard'));
-    else return view('auth.login');
-})->name('auth.login');
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
@@ -43,13 +38,24 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/logout', function () {
         Auth::logout();
-        Request::session()->invalidate();
-        Request::session()->regenerateToken();
-        return redirect(route('auth.login'));
+        // Request::session()->invalidate();
+        // Request::session()->regenerateToken();
+        return redirect(route('login'));
     })->name('auth.logout');
+
+    
+
+    Route::get('/tmasigns', function () {
+        return view('tmasigns');
+    })->name('tmasigns');
+    Route::get('tmasigns/batch/{size}', [TMASignsController::class, 'batch']);
+
+
+
 });
 
-// Routes which need authentication
-Route::middleware('auth')->group(function () {
-    Route::get('tmasigns/batch/{size}', [TMASignsController::class, 'batch']);
+Statamic::pushWebRoutes(function () {
+    Route::redirect('/cp/auth/login', '/login');
+    Route::statamic('/posts', 'posts.index')->name('posts');
+    Route::redirect('/post', '/posts');
 });

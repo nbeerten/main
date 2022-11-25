@@ -1,0 +1,70 @@
+@use "../settings" as *;
+
+.contact__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+
+    form {
+        width: 40ch;
+        max-width: 100%;
+        background-color: var(--bg-secondary);
+        padding: 1rem;
+        border-radius: 0.375rem;
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+
+            .subject {
+                grid-column: span 2;
+            }
+
+            .message {
+                grid-column: span 2;
+            }
+
+            .honeypot {
+                display: none;
+            }
+
+            .submit-row {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                grid-column: span 2;
+                gap: 0.5rem;
+                
+                @media (min-width: $breakpoint-md) {
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+                    height: 65px;
+                }
+
+                > .captcha {
+                    align-self: center;
+                    @media (min-width: $breakpoint-md) {
+                        align-self: flex-end;
+                    }
+                    height: 65px;
+                }
+
+                button {
+                    width: 100%;
+                    justify-content: center;
+
+                    @media (min-width: $breakpoint-md) {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        height: 95%;
+                        flex-grow: 1;
+                    }
+                }
+            }
+        }
+    }
+}

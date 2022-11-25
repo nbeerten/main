@@ -13,6 +13,7 @@ use Illuminate\Support\ServiceProvider;
 use Laravel\Fortify\Fortify;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 use romanzipp\Turnstile\Rules\TurnstileCaptcha;
@@ -55,18 +56,12 @@ class FortifyServiceProvider extends ServiceProvider
             return view('auth.login');
         });
 
-        Fortify::authenticateUsing(function (Request $request) {
-            $turnstile = $request->validate([
-                'cf-turnstile-response' => ['required', 'string', new TurnstileCaptcha()],
-            ]);
+        Fortify::requestPasswordResetLinkView(function () {
+            return view('auth.forgot-password');
+        });
 
-            $user = User::where('email', $request->email)->first();
-     
-            if ($turnstile &&
-                $user &&
-                Hash::check($request->password, $user->password)) {
-                return $user;
-            }
+        Fortify::resetPasswordView(function ($request) {
+            return view('auth.reset-password', ['request' => $request]);
         });
     }
 }

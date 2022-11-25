@@ -1,5 +1,5 @@
 @php
-    App\Classes\Opengraph\Opengraph::make(
+    App\Classes\SEO\SEO::make(
         title: "Dashboard",
         noindex: true
     );
@@ -11,7 +11,14 @@
         <x-card style="max-width: 40ch; min-width: 0; margin-bottom: 1rem;">
             <x-slot:title>Welcome</x-slot:title>
             <p>Logged in as {{ Auth::user()->name }} ({{ Auth::user()->id }}), email: {{ Auth::user()->email }}</p>
-            <x-slot:button href="/logout">Logout</x-slot:button>
+            <x-slot:action>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="button">
+                        Logout
+                    </button>
+                </form>
+            </x-slot:action>
         </x-card>
         <div class="card-row">
             <x-card>
@@ -20,6 +27,7 @@
                 <div class="helper_row">
                     <a href="/telescope" target="_blank" class="button"><x-heroicon-m-sparkles/> Telescope</a>
                     <a href="/log-viewer" target="_blank" class="button"><x-heroicon-m-bars-4/> Log-Viewer</a>
+                    <a href="/cp" target="_blank" class="button"><x-simpleicon-statamic class="heroicons" /> Statamic</a>
                 </div>
                 </x-slot:htmlcontent>
             </x-card>

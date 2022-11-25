@@ -1,12 +1,21 @@
 @use "../settings" as *;
 
 .posts-show {
+    --max-content-width: 45rem;
+
     width: 100%;
     article {
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
+
         > hgroup {
+            @media (max-width: $breakpoint-lg) {
+                align-self: center;
+                width: var(--max-content-width);
+                max-width: 100%;
+            }
+
             > .heading {
                 display: block;
                 padding-top: 1.5rem;
@@ -31,14 +40,27 @@
             }
         }
 
+        hr {
+            @media (max-width: $breakpoint-lg) {
+                width: var(--max-content-width);
+                max-width: 100%;
+                align-self: center;
+            }
+        }
+
         > .two-col {
             display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
+            flex-direction: column;
+            @media (min-width: $breakpoint-lg) {
+                flex-direction: row;
+            }
+            justify-content: center;
+            gap: 2rem 1rem;
 
             .content {
-                width: 75ch;
+                width: var(--max-content-width);
                 max-width: 100%;
+                align-self: center;
             }
 
             aside {
@@ -46,6 +68,12 @@
                 display: flex;
                 flex-direction: column;
                 gap: 0.5rem;
+
+                @media (max-width: $breakpoint-lg) {
+                    width: var(--max-content-width);
+                    max-width: 100%;
+                    align-self: center;
+                }
 
                 .permalink {
                     position: relative;

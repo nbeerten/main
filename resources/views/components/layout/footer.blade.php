@@ -13,6 +13,7 @@
             <h4>Pages</h4>
             <ul class="no-standard">
                 <li><a href="/">Homepage</a></li>
+                <li><a href="/posts">Posts</a></li>
             </ul>
         </div>
         <div>

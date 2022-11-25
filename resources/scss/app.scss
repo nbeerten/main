@@ -18,9 +18,11 @@
 
 @use 'prism';
 
+@use 'pages/auth';
+@use 'pages/contact';
 @use 'pages/dashboard';
 @use 'pages/error';
 @use 'pages/home';
-@use 'pages/login';
-@use 'pages/tmasigns';
+@use 'pages/posts-index';
 @use 'pages/posts-show';
+@use 'pages/tmasigns';

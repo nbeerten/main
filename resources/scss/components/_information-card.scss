@@ -31,7 +31,7 @@
             max-width: 100ch;
         }
 
-        > :last-child:not(p) {
+        > :last-child:not(:nth-child(1), p) {
             margin-top: 0.5rem;
         }
     }

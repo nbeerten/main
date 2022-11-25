@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "aryehraber/statamic-captcha": "^1.9",
         "blade-ui-kit/blade-heroicons": "^2.0.5",
         "doctrine/dbal": "^3.5.1",
         "guzzlehttp/guzzle": "^7.5",
@@ -18,9 +19,10 @@
         "maennchen/zipstream-php": "^2.2.1",
         "opcodesio/log-viewer": "^1.7.1",
         "romanzipp/laravel-turnstile": "^1.1",
-        "spatie/browsershot": "^3.57.3",
-        "statamic/cms": "3.3.56",
-        "statamic/eloquent-driver": "^1.1",
+        "spatie/browsershot": "^3.57.4",
+        "spatie/schema-org": "^3.13",
+        "statamic/cms": "^3.3.57",
+        "statamic/eloquent-driver": "^1.1.1",
         "ublabs/blade-simple-icons": "^0.53.0"
     },
     "require-dev": {

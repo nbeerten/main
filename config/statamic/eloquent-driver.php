@@ -6,19 +6,19 @@ return [
     'table_prefix' => env('STATAMIC_ELOQUENT_PREFIX', ''),
 
     'assets' => [
-        'driver'          => 'eloquent',
+        'driver'          => 'file',
         'container_model' => \Statamic\Eloquent\Assets\AssetContainerModel::class,
         'model'           => \Statamic\Eloquent\Assets\AssetModel::class,
     ],
 
     'blueprints' => [
-        'driver'          => 'eloquent',
+        'driver'          => 'file',
         'blueprint_model' => \Statamic\Eloquent\Fields\BlueprintModel::class,
         'fieldset_model'  => \Statamic\Eloquent\Fields\FieldsetModel::class,
     ],
 
     'collections' => [
-        'driver'     => 'eloquent',
+        'driver'     => 'file',
         'model'      => \Statamic\Eloquent\Collections\CollectionModel::class,
         'tree'       => \Statamic\Eloquent\Structures\CollectionTree::class,
         'tree_model' => \Statamic\Eloquent\Structures\TreeModel::class,
@@ -37,30 +37,30 @@ return [
     ],
 
     'global_sets' => [
-        'driver'          => 'eloquent',
+        'driver'          => 'file',
         'model'           => \Statamic\Eloquent\Globals\GlobalSetModel::class,
         'variables_model' => \Statamic\Eloquent\Globals\VariablesModel::class,
     ],
 
     'navigations' => [
-        'driver'     => 'eloquent',
+        'driver'     => 'file',
         'model'      => \Statamic\Eloquent\Structures\NavModel::class,
         'tree'       => \Statamic\Eloquent\Structures\NavTree::class,
         'tree_model' => \Statamic\Eloquent\Structures\TreeModel::class,
     ],
 
     'revisions' => [
-        'driver' => 'eloquent',
+        'driver' => 'file',
         'model'  => \Statamic\Eloquent\Revisions\RevisionModel::class,
     ],
 
     'taxonomies' => [
-        'driver' => 'eloquent',
+        'driver' => 'file',
         'model'  => \Statamic\Eloquent\Taxonomies\TaxonomyModel::class,
     ],
 
     'terms' => [
-        'driver' => 'eloquent',
+        'driver' => 'file',
         'model'  => \Statamic\Eloquent\Taxonomies\TermModel::class,
     ],
 ];

@@ -1,0 +1,57 @@
+@use "../settings" as *;
+
+.posts-index {
+    .cards {
+        display: grid;
+        width: 100%;
+        grid-template-columns: 1fr;
+
+        @media (min-width: $breakpoint-md) {
+            grid-template-columns: repeat(auto-fill, 30ch);
+        }
+        gap: 1rem;
+
+        .card.post {
+            > div > p {
+                line-height: 1.25;
+
+                @supports (-webkit-line-clamp: 6) {
+                    display: -webkit-box;
+                    -webkit-line-clamp: 6;
+                    -webkit-box-orient: vertical;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                }
+
+
+                @media (min-width: $breakpoint-xl) {
+                    @supports (-webkit-line-clamp: 5) {
+                        -webkit-line-clamp: 5;
+                    }
+                }
+            }
+            
+            .action {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .timestamp {
+                svg {
+                    margin-bottom: 0.1em;
+                }
+                color: var(--text-color-secondary);
+                font-size: 0.9em;
+            }
+        }
+    }
+
+    .no-posts {
+        width: 100%;
+        height: 10rem;
+        display: grid;
+        place-content: center;
+    }
+}

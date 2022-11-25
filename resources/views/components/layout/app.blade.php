@@ -16,51 +16,7 @@
 
     <meta name="theme-color" content="#171717">
 
-    <meta name="robots" content="{{ ($opengraph->noindex ?? false) ? 'noindex' : '' }} noimageindex">
-    <title>{{ $opengraph->title ?? Request::path() }} - Nils Beerten</title>
-    
-    @isset($opengraph)
-        @if($opengraph->description && $opengraph->title)
-            <meta name="description" content="{{ $opengraph->description }}">
-
-            <!-- Facebook Meta Tags -->
-            <meta property="og:url" content="{{ Request::fullUrl() }}">
-            <meta property="og:og:site_name" content="nilsbeerten.nl">
-            <meta property="og:type" content="website">
-            <meta property="og:title" content="{{ $opengraph->title ?? Request::path() }} - Nils Beerten">
-            <meta property="og:description" content="{{ $opengraph->description }}">
-            <meta property="og:image" 
-                  @if($opengraph->thumbnail !== false)
-                  content="{{ $opengraph->thumbnail }}">
-                  @else
-                    content="{{ env('APP_URL') }}/og?url={{ Request::path() }}&title={{ $opengraph->title ?? Request::path() }}">
-                  @endif
-            <meta property="og:image:width" content="1200" />
-            <meta property="og:image:height" content="600" />
-            <meta property="og:image:alt" content="Preview of the page together with the page title and website logo" />
-
-            <!-- Twitter Meta Tags -->
-            <meta name="twitter:card" content="summary_large_image">
-            <meta property="twitter:domain" content="nilsbeerten.nl">
-            <meta property="twitter:url" content="{{ Request::fullUrl() }}">
-            <meta name="twitter:creator" content="@nbertn">
-            <meta name="twitter:site" content="@nbertn">
-            <meta name="twitter:title" content="{{ $opengraph->title ?? Request::path() }} - Nils Beerten">
-            <meta name="twitter:description" content="{{ $opengraph->description }}">
-            <meta name="twitter:image" content="{{ env('APP_URL') }}/og?url={{ Request::path() }}&title={{ $opengraph->title ?? Request::path() }}">
-
-            @if(Request::is('/'))
-            <script type="application/ld+json">
-                {
-                    "@context": "https://schema.org",
-                    "@type": "Organization",
-                    "url": "https://nilsbeerten.nl/",
-                    "logo": "https://nilsbeerten.nl/icon-512.png"
-                }
-            </script>
-            @endif
-        @endif
-    @endisset
+    <x-layout.seo />
     
     <!-- Style Stack -->
     @stack('style')

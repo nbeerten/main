@@ -11,10 +11,10 @@
         @isset($more)
             <p>{!! $more !!}</p>
         @endisset
-        <div>
-            @isset($action)
+        @isset($action)
+            <div>
                 {!! $action !!}
-            @endisset
-        </div>
+            </div>
+        @endisset
     </div>
 </aside>

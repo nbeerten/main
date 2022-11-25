@@ -1,5 +1,5 @@
 @php
-    App\Classes\Opengraph\Opengraph::make(
+    App\Classes\SEO\SEO::make(
         title: "Home",
         description: "Hai, I'm Nils. Projects include Refresh Leaderboard: a plugin for Openplanet and the rewrite of nilsbeerten.nl...",
         noindex: false
@@ -107,12 +107,12 @@
             <div class="cards">
                 @foreach($tag as $post)
                     <x-card class="post">
-                        <x-slot:img src="{{ $post->featured_image }}" alt="Logo of RefreshLeaderboard plugin" width="160" height="160"></x-slot:img>
+                        <x-slot:img src="{{ $post->featured_image }}"></x-slot:img>
                         <x-slot:title>{{ $post->title }}</x-slot:title>
                         {{ $post->meta_description }}
 
                         <x-slot:action>
-                            <a href="{{ $post->permalink }}" rel="canonical">
+                            <a href="{{ $post->permalink }}" rel="canonical" class="readmore">
                                 Read more...
                             </a>
                         </x-slot:action>
