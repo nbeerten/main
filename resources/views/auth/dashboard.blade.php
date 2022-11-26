@@ -24,7 +24,7 @@
             <x-card>
                 <x-slot:title>Apps</x-slot:title>
                 <x-slot:htmlcontent>
-                <div class="helper_row">
+                <div class="helper_row-wrap">
                     <a href="/telescope" target="_blank" class="button"><x-heroicon-m-sparkles/> Telescope</a>
                     <a href="/log-viewer" target="_blank" class="button"><x-heroicon-m-bars-4/> Log-Viewer</a>
                     <a href="/cp" target="_blank" class="button"><x-simpleicon-statamic class="heroicons" /> Statamic</a>

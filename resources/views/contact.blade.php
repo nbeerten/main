@@ -43,7 +43,7 @@
                 <div class="form-grid">
                     @foreach ($statamic->fields as $field)
                     <div class="input {{ $field['handle'] }}">
-                        <label>{{ Str::title($field['handle']) }}</label>
+                        <label for="{{ $field['handle'] }}">{{ Str::title($field['handle']) }}</label>
                         {!! $field['field'] !!}
                     </div>
                     @endforeach

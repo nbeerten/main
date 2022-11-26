@@ -82,6 +82,12 @@
                     background: var(--bg-cards);
                     border-radius: 0.375rem;
                     padding: 0.5rem 0.75rem;
+                    text-align: start;
+
+                    // Firefox Fix
+                    @supports not selector(:has(svg)) { 
+                        svg { margin-right: 0.5rem; } 
+                    }
 
                     &.copied::after {
                         content: "Copied to clipboard";
