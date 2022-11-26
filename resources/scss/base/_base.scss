@@ -60,6 +60,14 @@ p:not(.no-standard), li:not(.no-standard) {
     color: var(--text-color-paragraph);
 }
 
+p:not(.no-standard) a {
+    color: #6470f7;
+    &:hover {
+        color: #5865F2;
+        text-decoration: underline;
+    }
+}
+
 ul:not(.no-standard) {
     list-style-type: "- ";
     list-style-position: inside;

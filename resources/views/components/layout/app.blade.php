@@ -54,10 +54,11 @@
     <!-- Script Stack -->
     <script src="{{ mix('/js/app.js', 'dist') }}" defer></script>
     @stack('scripts')
-    @production
-    <!-- Cloudflare Web Analytics -->
-    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d7046c97f3134ce3ba2831d8ccdb239a"}'></script>
-    <!-- End Cloudflare Web Analytics -->
-    @endproduction
+    {{-- @production --}}
+    <!-- Goatcounter -->
+    <script data-goatcounter="https://nilsbeerten.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+    <!-- Goatcounter -->
+    {{-- @endproduction --}}
 </body>
 </html>

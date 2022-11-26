@@ -5,7 +5,7 @@
 
     App\Classes\SEO\SEO::make(
         title: "Posts",
-        noindex: false
+        noindex: (count($articles) === 0)
     );
 @endphp
 
@@ -14,7 +14,7 @@
         <h3 class="heading">Posts</h3>
             @if(count($articles) === 0)
                 <div class="no-posts">
-                    <p><i>Couldn't find any posts, waiting for non-existant content to magically appear...</i></p>
+                    <p><i>No content to be found here yet... Waiting for non-existant content to magically appear...</i></p>
                 </div>
             @else
             <div class="cards">

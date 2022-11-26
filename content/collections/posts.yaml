@@ -1,6 +1,6 @@
 title: Posts
 template: posts/show
-layout: components/layout/app
+layout: posts/showlayout
 revisions: false
 route: '/post/{slug}'
 date: true

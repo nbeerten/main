@@ -69,12 +69,17 @@
             <x-card>
                 <x-slot:img src="{{ asset('assets/RefreshLeaderboard.webp') }}" alt="Logo of RefreshLeaderboard plugin" width="160" height="160"></x-slot:img>
                 <x-slot:title>Refresh Leaderboard</x-slot:title>
-                A plugin for the Trackmania scripting platform Openplanet, which provides a button to refresh the leaderboard widget in the in-game UI.
+                A plugin for the Trackmania scripting platform <a href="https://openplanet.dev/" target="_blank">Openplanet</a>, which provides a button to refresh the leaderboard widget in the in-game UI.
 
                 <x-slot:action>
-                    <a href="https://github.com/nbeerten/tm-refresh-leaderboard" class="button">
-                        <x-heroicon-m-arrow-top-right-on-square /> Visit github repository
-                    </a>
+                    <div class="helper_row-wrap">
+                        <a href="https://github.com/nbeerten/tm-refresh-leaderboard" class="button" target="_blank">
+                            <x-simpleicon-github class="heroicons" />
+                        </a>
+                        <a href="https://openplanet.dev/plugin/refreshleaderboard" class="button" target="_blank">
+                            <x-heroicon-m-arrow-top-right-on-square /> Openplanet page
+                        </a>
+                    </div>
                 </x-slot:action>
             </x-card>
             <x-card>
@@ -83,7 +88,7 @@
                 Website rewrite: Now using Laravel on the backend, together with SCSS for styling and AlpineJS & vanilla JS for frontend functionality.
                 
                 <x-slot:action>
-                    <a href="" disabled onclick="event.preventDefault()" class="button">
+                    <a href="" disabled onclick="event.preventDefault()" class="button" target="_blank">
                         <x-heroicon-m-arrow-top-right-on-square /> Visit github repository
                     </a>
                 </x-slot:action>
@@ -107,14 +112,20 @@
             <div class="cards">
                 @foreach($tag as $post)
                     <x-card class="post">
-                        <x-slot:img src="{{ $post->featured_image }}"></x-slot:img>
+                        <x-slot:img src="{{ $post->featured_image }}" width="160" height="160" alt="Featured image of post"></x-slot:img>
                         <x-slot:title>{{ $post->title }}</x-slot:title>
                         {{ $post->meta_description }}
 
                         <x-slot:action>
-                            <a href="{{ $post->permalink }}" rel="canonical" class="readmore">
-                                Read more...
-                            </a>
+                            <div class="action">
+                                <span class="timestamp">
+                                    <x-heroicon-o-newspaper/>
+                                    <time datetime="{{ $post->date->isoFormat("YYYY-MM-DD") }}" x-data="{ time: new Date({{ $post->date->getTimestampMs() }}).toLocaleString('en', { month: 'long', day: 'numeric', year: 'numeric' }) }"><span x-text="time"></span></time>
+                                </span>
+                                <a href="{{ $post->permalink }}" class="readmore">
+                                    Read more...
+                                </a>
+                            </div>
                         </x-slot:action>
                     </x-card>
                 @endforeach

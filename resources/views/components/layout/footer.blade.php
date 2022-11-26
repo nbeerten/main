@@ -9,17 +9,18 @@
             </ul>
         </div>
         <div>
-            <h4>Github</h4>
+            <h4>Miscellaneous</h4>
             <ul class="no-standard">
-                <li><a href="https://github.com/nbeerten/tm-refresh-leaderboard"><x-heroicon-m-arrow-top-right-on-square /> Refresh Leaderboard</a></li>
+                <li><a href="https://status.nilsbeerten.nl/">Status Page</a></li>
+                <li><a href="https://trackmania.exchange/ms?authorid=41263"><x-heroicon-m-arrow-top-right-on-square /> Trackmania Maps</a></li>
             </ul>
         </div>
         <div>
-            <h4>Miscellaneous</h4>
-            <ul class="no-standard">
-                <li><a href="https://trackmania.exchange/ms?authorid=41263"><x-heroicon-m-arrow-top-right-on-square /> Trackmania Maps</a></li>
-                <li><a href="https://status.nilsbeerten.nl/">Status Page</a></li>
-            </ul>
+            <h4>Info</h4>
+            <p><x-md>
+                **Fonts:** [Mona Sans & Hubot Sans](https://github.com/mona-sans), [Jetbrains Mono](https://www.jetbrains.com/lp/mono/).
+                **Icons:** [heroicons](https://heroicons.com/), [simpleicons](https://simpleicons.org/).
+            </x-md></p>
         </div>
     </div>
     <div class="bottom">
