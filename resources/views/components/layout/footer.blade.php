@@ -18,9 +18,16 @@
         <div>
             <h4>Info</h4>
             <p><x-md>
-                **Fonts:** [Mona Sans & Hubot Sans](https://github.com/mona-sans), [Jetbrains Mono](https://www.jetbrains.com/lp/mono/).
+                **Fonts:** [Mona Sans & Hubot Sans](https://github.com/mona-sans), [Jetbrains Mono](https://www.jetbrains.com/lp/mono/). <br>
                 **Icons:** [heroicons](https://heroicons.com/), [simpleicons](https://simpleicons.org/).
             </x-md></p>
+        </div>
+        <div>
+            <h4>Statistics</h4>
+            <p class="visitor-count">
+                <span>Visitors of this page:</span>
+                <span><x-heroicon-s-eye style="font-size: 1.25rem;" /> <span id="goatcounterstats"></span></span>
+            </p>
         </div>
     </div>
     <div class="bottom">

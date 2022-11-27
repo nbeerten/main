@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\TMASignsController;
 use App\Http\Controllers\OpengraphImageController;
+use App\Http\Controllers\PostController;
 
 use Statamic\Statamic;
 
@@ -22,6 +23,10 @@ use Statamic\Statamic;
 Route::get('/', function () {
     return view('home');
 })->name('home');
+
+Route::get('/posts', [PostController::class, 'index'])->name('posts');
+Route::redirect('/post', '/posts', 301);
+Route::get('/post/{slug}', [PostController::class, 'show'])->name('post.slug');
 
 Route::get('/contact', function () {
     return view('contact');
@@ -56,6 +61,4 @@ Route::middleware('auth')->group(function () {
 
 Statamic::pushWebRoutes(function () {
     Route::redirect('/cp/auth/login', '/login');
-    Route::statamic('/posts', 'posts.index')->name('posts');
-    Route::redirect('/post', '/posts');
 });

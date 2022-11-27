@@ -56,6 +56,16 @@ footer {
                 }
             }
         }
+
+        .visitor-count {
+            display: flex;
+            flex-direction: column;
+            #goatcounterstats {
+                @include font-mono;
+                font-variant-numeric: tabular-nums;
+                font-size: 2rem;
+            }
+        }
     }
 
     .bottom {

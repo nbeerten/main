@@ -112,7 +112,10 @@
             <div class="cards">
                 @foreach($tag as $post)
                     <x-card class="post">
-                        <x-slot:img src="{{ $post->featured_image }}" width="160" height="160" alt="Featured image of post"></x-slot:img>
+                        @foreach (Statamic::tag('glide:generate')->src($post->featured_image)->width(400) as $image)
+                            <x-slot:img src="{{ $image['url'] }}" width="{{ $image['width'] }}" alt="Featured image of post"></x-slot:img>
+                        @endforeach
+                        
                         <x-slot:title>{{ $post->title }}</x-slot:title>
                         {{ $post->meta_description }}
 
