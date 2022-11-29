@@ -1,0 +1,85 @@
+@use "../settings" as *;
+
+.form-card {
+    width: 100%;
+    max-width: 40ch;
+    background-color: var(--bg-secondary);
+    padding: 1rem;
+    border-radius: 0.375rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    input[type=checkbox].rememberme {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+        color: var(--text-color-secondary);
+    }
+
+    .submit-row {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        grid-column: span 2;
+        gap: 0.5rem;
+        
+        @media (min-width: $breakpoint-md) {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            height: 65px;
+        }
+
+        > .captcha {
+            align-self: center;
+            @media (min-width: $breakpoint-md) {
+                align-self: flex-end;
+            }
+            height: 65px;
+        }
+
+        button {
+            width: 100%;
+            justify-content: center;
+
+            @media (min-width: $breakpoint-md) {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 95%;
+                flex-grow: 1;
+            }
+        }
+    }
+
+    &.contact .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+
+        .subject {
+            grid-column: span 2;
+        }
+
+        .message {
+            grid-column: span 2;
+        }
+
+        .honeypot {
+            display: none;
+        }
+    }
+
+    .bottom {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-top: 1px solid var(--border-color);
+        padding-top: 0.5rem;
+        color: var(--text-color-secondary);
+    }
+}

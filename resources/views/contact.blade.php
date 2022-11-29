@@ -5,7 +5,7 @@
     );
 @endphp
 
-@push('headscripts')
+@push('scripts')
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 @endpush
 
@@ -13,7 +13,7 @@
     <section class="default-page">
         <h3 class="heading">Contact</h3>
         <div class="contact__form">
-            <form method="POST" action="/!/forms/contact">
+            <form method="POST" action="/!/forms/contact" class="form-card contact">
                 @php( $statamic = Statamic::tag('form:contact'))
                 @csrf
                 

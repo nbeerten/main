@@ -73,6 +73,16 @@ ul:not(.no-standard) {
     list-style-position: inside;
 }
 
+:where(code,
+kbd,
+samp,
+pre):not([class*=language-], .no-standard) {
+    font-family: var(--font-mono);
+    letter-spacing: -0.05em;
+    font-size: 1em;
+    height: 100vh;
+}
+
 code:not([class*=language-], .no-standard) {
     border-radius: 0.375em;
     background-color: var(--bg-primary);

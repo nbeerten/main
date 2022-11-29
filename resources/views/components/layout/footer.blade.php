@@ -35,16 +35,20 @@
             <p x-data="{ year: new Date().getFullYear() }"><span class="year"><span x-text="year">2022</span></span> <span class="name">Nils Beerten</span></p>
         </div>
         <div class="socials">
-            <a href="https://twitter.com/nbertn" target="_blank" data-popup="@nbertn" aria-label="twitter: @nbertn">
+            <a href="https://twitter.com/nbertn" target="_blank" aria-label="twitter: @nbertn">
+                <tool-tip role="tooltip" tip-position="block-start">@nbertn</tool-tip>
                 <x-simpleicon-twitter />
             </a>
-            <a href="https://youtube.com/channel/UC-bj0JxjTzxnL2LSQMEx6MA" target="_blank" data-popup="nbert" aria-label="youtube: nbert">
+            <a href="https://youtube.com/channel/UC-bj0JxjTzxnL2LSQMEx6MA" target="_blank" aria-label="youtube: nbert">
+                <tool-tip role="tooltip" tip-position="block-start">nbert</tool-tip>
                 <x-simpleicon-youtube />
             </a>
-            <a href="https://github.com/nbeerten" target="_blank" data-popup="nbeerten" aria-label="github: nbeerten">
+            <a href="https://github.com/nbeerten" target="_blank" aria-label="github: nbeerten">
+                <tool-tip role="tooltip" tip-position="block-start">nbeerten</tool-tip>
                 <x-simpleicon-github />
             </a>
-            <a href="https://discord.com/invite/TdRSgYjJ7S" target="_blank" data-popup="nbert#2620" aria-label="discord: nbert#2620">
+            <a href="https://discord.com/invite/TdRSgYjJ7S" target="_blank" aria-label="discord: nbert#2620">
+                <tool-tip role="tooltip" tip-position="block-start">nbert#2620</tool-tip>
                 <x-simpleicon-discord />
             </a>
         </div>

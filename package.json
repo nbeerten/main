@@ -1,30 +1,19 @@
 {
+    "name": "nilsbeerten-main",
     "private": true,
     "scripts": {
-        "dev": "npm run development",
-        "development": "mix",
-        "watch": "mix watch",
-        "watch-poll": "mix watch -- --watch-options-poll=1000",
-        "hot": "mix watch --hot",
-        "prod": "npm run production",
-        "production": "mix --production"
+        "dev": "vite",
+        "build": "vite build"
     },
     "devDependencies": {
-        "autoprefixer": "^10.4.7",
-        "axios": "^0.27",
-        "laravel-mix": "^6.0.49",
-        "laravel-mix-purgecss": "^6.0.0",
-        "lodash": "^4.17.19",
-        "postcss": "^8.1.14",
-        "resolve-url-loader": "^5.0.0",
-        "sass": "^1.55.0",
-        "sass-loader": "^12.6.0"
+        "autoprefixer": "^10.4.13",
+        "laravel-vite-plugin": "^0.7.1",
+        "postcss": "^8.4.19",
+        "sass": "^1.56.1",
+        "vite": "^3.2.4"
     },
     "dependencies": {
-        "@fontsource/fira-code": "^4.5.10",
-        "@fontsource/montserrat": "^4.5.11",
         "alpinejs": "^3.10.3",
-        "laravel-mix-make-file-hash": "^2.2.0",
         "npm": "^8.19.1",
         "prismjs": "^1.29.0",
         "puppeteer": "18.2.1",

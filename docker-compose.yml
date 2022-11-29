@@ -13,6 +13,10 @@ services:
       SERVICE_NAME: app
       SERVICE_TAGS: dev
     working_dir: /var/www/
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+      - "5173:5173"
     volumes:
       - ./:/var/www
       - ./docker/dev/php.ini:/usr/local/etc/php/conf.d/local.ini

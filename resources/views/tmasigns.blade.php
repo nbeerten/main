@@ -7,8 +7,8 @@
 @endphp
 
 @push('scripts')
-    <script defer src='{{ mix('/js/TMASigns.js', 'dist') }}'></script>
-    <script defer src='{{ mix('/js/prism.js', 'dist') }}'></script>
+    @vite('resources/js/pages/TMASigns.js')
+    @vite('resources/js/prism.js')
 
     <script>
         document.addEventListener("alpine:init", () => {

@@ -1,9 +1,6 @@
 {
-    "name": "laravel/laravel",
+    "name": "nbeerten/main",
     "type": "project",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
-    "license": "MIT",
     "require": {
         "php": "^8.0.2",
         "aryehraber/statamic-captcha": "^1.9",

@@ -1,5 +1,5 @@
 @push('scripts')
-    <script defer src='{{ mix('/js/prism.js', 'dist') }}'></script>
+    @vite('resources/js/prism.js')
 @endpush
 
 <x-layout.app>
@@ -11,8 +11,16 @@
                     <p>Posted by {{ $post->author->name }}</p>
                     <p>
                         <x-heroicon-o-newspaper/>
-                        <time style="position: relative" data-popup="Published at" aria-label="Published at" datetime="{{ $post->date->isoFormat("YYYY-MM-DD") }}" x-data="{ time: new Date({{ $post->date->getTimestampMs() }}).toLocaleString('en', { month: 'long', day: 'numeric', year: 'numeric' }) }"><span x-text="time"></span></time>
-                        <span style="position: relative" data-popup="Page views" aria-label="Page views"><x-heroicon-s-eye/> <span id="goatcounterstats">0</span></span>
+                        <time aria-label="Published at" 
+                              datetime="{{ $post->date->isoFormat("YYYY-MM-DD") }}" 
+                              x-data="{ time: new Date({{ $post->date->getTimestampMs() }}).toLocaleString('en', { month: 'long', day: 'numeric', year: 'numeric' }) }">
+                              <tool-tip role="tooltip" tip-position="block-start">Published at</tool-tip>
+                              <span x-text="time"></span>
+                        </time>
+                        <span aria-label="Page views">
+                            <tool-tip role="tooltip" tip-position="block-start">Page views</tool-tip>
+                            <x-heroicon-s-eye/><span id="goatcounterstats">0</span>
+                        </span>
                     </p>
                 </div>
             </hgroup>

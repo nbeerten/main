@@ -37,6 +37,8 @@
             padding-right: 0.5rem;
 
             a {
+                --site-logo: url(/public/assets/logo_white.svg);
+
                 height: 2rem;
                 width: 2rem;
                 user-select: none;

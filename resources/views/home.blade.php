@@ -7,7 +7,7 @@
 @endphp
 
 @push('scripts')
-    <script defer src='{{ mix('/js/home.js', 'dist') }}'></script>
+    @vite('resources/js/pages/home.js')
 @endpush
 
 <x-layout.app>
@@ -24,37 +24,46 @@
                         <x-heroicon-m-map-pin />The Netherlands
                     </span>
                     <span class="divider"></span>
-                    <span data-popup-bottom="Local Time">
+                    <span>
+                        <tool-tip role="tooltip" tip-position="block-end">Local Time</tool-tip>
                         <x-heroicon-m-clock /><span x-text="time"></span><noscript>{{ now('Europe/Amsterdam')->isoFormat('DD/MM, HH:mm') }}</noscript>
                     </span>
                 </p>
                 <div class="icon-groups">
                     <div class="socials">
-                        <a href="https://twitter.com/nbertn" target="_blank" data-popup="@nbertn" aria-label="twitter: @nbertn">
+                        <a href="https://twitter.com/nbertn" target="_blank" aria-label="twitter: @nbertn">
+                            <tool-tip role="tooltip" tip-position="block-start">@nbertn</tool-tip>
                             <x-simpleicon-twitter />
                         </a>
-                        <a href="https://youtube.com/channel/UC-bj0JxjTzxnL2LSQMEx6MA" target="_blank" data-popup="nbert" aria-label="youtube: nbert">
+                        <a href="https://youtube.com/channel/UC-bj0JxjTzxnL2LSQMEx6MA" target="_blank" aria-label="youtube: nbert">
+                            <tool-tip role="tooltip" tip-position="block-start">nbert</tool-tip>
                             <x-simpleicon-youtube />
                         </a>
-                        <a href="https://github.com/nbeerten" target="_blank" data-popup="nbeerten" aria-label="github: nbeerten">
+                        <a href="https://github.com/nbeerten" target="_blank" aria-label="github: nbeerten">
+                            <tool-tip role="tooltip" tip-position="block-start">nbeerten</tool-tip>
                             <x-simpleicon-github />
                         </a>
-                        <a href="https://discord.com/invite/TdRSgYjJ7S" target="_blank" data-popup="nbert#2620" aria-label="discord: nbert#2620">
+                        <a href="https://discord.com/invite/TdRSgYjJ7S" target="_blank" aria-label="discord: nbert#2620">
+                            <tool-tip role="tooltip" tip-position="block-start">nbert#2620</tool-tip>
                             <x-simpleicon-discord />
                         </a>
                     </div>
                     <span class="divider"></span>
                     <div class="coding-languages">
-                        <a href="https://laravel.com/" target="_blank" data-popup="Laravel" aria-label="Laravel">
+                        <a href="https://laravel.com/" target="_blank" aria-label="Laravel">
+                            <tool-tip role="tooltip" tip-position="block-start">Laravel</tool-tip>
                             <x-simpleicon-laravel />
                         </a>
-                        <a href="https://www.php.net/" target="_blank" data-popup="PHP" aria-label="PHP">
+                        <a href="https://www.php.net/" target="_blank" aria-label="PHP">
+                            <tool-tip role="tooltip" tip-position="block-start">PHP</tool-tip>
                             <x-simpleicon-php />
                         </a>
-                        <a href="https://sass-lang.com/" target="_blank" data-popup="SCSS" aria-label="SCSS">
+                        <a href="https://sass-lang.com/" target="_blank" aria-label="SCSS">
+                            <tool-tip role="tooltip" tip-position="block-start">SCSS</tool-tip>
                             <x-simpleicon-sass />
                         </a>
-                        <a href="https://alpinejs.dev/" target="_blank" data-popup="AlpineJS" aria-label="AlpineJS">
+                        <a href="https://alpinejs.dev/" target="_blank" aria-label="AlpineJS">
+                            <tool-tip role="tooltip" tip-position="block-start">AlpineJS</tool-tip>
                             <x-simpleicon-alpinedotjs />
                         </a>
                     </div>

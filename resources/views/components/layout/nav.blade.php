@@ -1,7 +1,7 @@
 <nav class="nav">
     <div class="navbar">
         <div class="logo">
-            <a href="/" style="--site-logo: url({{ asset('assets/logo_white.svg') }});" aria-label="Button with logo, links to homepage" tabindex="-1"></a>
+            <a href="/" aria-label="Button with logo, links to homepage" tabindex="-1"></a>
         </div>
         <div class="navitems">
             <div class="navitem {{ Request::routeIs('home') ? 'active' : '' }}">

@@ -1,9 +1,9 @@
 @use '../settings' as *;
 
-h1:not(.no.standard), h2:not(.no.standard), h3:not(.no.standard), h4:not(.no.standard), h5:not(.no.standard), h6:not(.no.standard) {
+:where(h1, h2, h3, h4, h5, h6):not(.no-standard) {
     @include font-display;
 }
 
-*:where(code:not([class*=language-], .no-standard)) { 
+:where(code:not([class*=language-], .no-standard)) { 
     @include font-mono;
 }

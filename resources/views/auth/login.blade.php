@@ -5,7 +5,7 @@
     );
 @endphp
 
-@push('headscripts')
+@push('scripts')
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 @endpush
 
@@ -29,7 +29,7 @@
                     </x-slot:more>
                 </x-information-card>
             @endif
-            <form method="POST" action="/login">
+            <form method="POST" action="/login" class="form-card">
                 @csrf
 
                 {{-- Email Address --}}

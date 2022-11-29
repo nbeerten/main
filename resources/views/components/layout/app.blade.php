@@ -5,9 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     {{-- Main JS & CSS from the compiled files --}}
-    <link rel="stylesheet" href="{{ mix('/css/app.css', 'dist') }}">
-    <link rel="preload" href="{{ asset('/fonts/Mona-Sans.woff2') }}" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="{{ asset('/fonts/Hubot-Sans.woff2') }}" as="font" type="font/woff2" crossorigin>
+    {{-- <link rel="stylesheet" href="{{ mix('/css/app.css', 'dist') }}"> --}}
+    @vite('resources/scss/app.scss')
+    @vite('resources/js/app.js')
+    @production
+        <link rel="preload" href="{{ asset('fonts/Mona-Sans.woff2') }}" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="{{ asset('fonts/Hubot-Sans.woff2') }}" as="font" type="font/woff2" crossorigin>
+    @endproduction
 
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -21,7 +25,7 @@
     <!-- Style Stack -->
     @stack('style')
     <!-- Head Scripts Stack -->
-    @stack('headscripts')
+    @stack('scripts')
 </head>
 
 <body>
@@ -52,13 +56,10 @@
     </svg>
 
     <!-- Script Stack -->
-    <script src="{{ mix('/js/app.js', 'dist') }}" defer></script>
-    @stack('scripts')
-    {{-- @production --}}
+    @stack('bodyscripts')
     <!-- Goatcounter -->
     <script data-goatcounter="https://nilsbeerten.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
     <!-- Goatcounter -->
-    {{-- @endproduction --}}
 </body>
 </html>

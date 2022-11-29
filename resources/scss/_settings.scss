@@ -7,33 +7,33 @@
 
 // Hero
 :root {
-    --nb-heroimage: url('/assets/hero@768p.webp');
+    --nb-heroimage: url('/public/assets/hero@768p.webp');
 
     @media (min-aspect-ratio: 16/9) {
         @media (min-width: 1367px) {
-            --nb-heroimage: url('/assets/hero@1080p.webp');
+            --nb-heroimage: url('/public/assets/hero@1080p.webp');
         }
     
         @media (min-width: 1921px) {
-            --nb-heroimage: url('/assets/hero@1440p.webp');
+            --nb-heroimage: url('/public/assets/hero@1440p.webp');
         }
     
         @media (min-width: 2561px) {
-            --nb-heroimage: url('/assets/hero.webp');
+            --nb-heroimage: url('/public/assets/hero.webp');
         }
     }
     
     @media (max-aspect-ratio: 16/9) {
         @media (min-height: 769px) {
-            --nb-heroimage: url('/assets/hero@1080p.webp');
+            --nb-heroimage: url('/public/assets/hero@1080p.webp');
         }
         
         @media (min-height: 1081px) {
-            --nb-heroimage: url('/assets/hero@1440p.webp');
+            --nb-heroimage: url('/public/assets/hero@1440p.webp');
         }
     
         @media (min-height: 1441px) {
-            --nb-heroimage: url('/assets/hero.webp');
+            --nb-heroimage: url('/public/assets/hero.webp');
         }
     }
 }

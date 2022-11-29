@@ -1,6 +1,7 @@
 /.vscode
 /node_modules
 /public/dist
+/public/build
 /public/hot
 /public/storage
 /public/**/*.map
