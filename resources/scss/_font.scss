@@ -35,7 +35,7 @@ $JetBrainsMono: (
         font-style: normal;
         font-weight: $name;
         src: url('/resources/fonts/JetBrainsMono/ttf/#{$fontname}.ttf') format("truetype"),
-             url('/public/fonts/JetBrainsMono/webfonts/#{$fontname}.woff2') format("woff2");
+             url('/resources/fonts/JetBrainsMono/webfonts/#{$fontname}.woff2') format("woff2");
     }
     
     @if($fontname == "JetBrainsMono-Regular") {
@@ -45,7 +45,7 @@ $JetBrainsMono: (
             font-style: italic;
             font-weight: $name;
             src: url('/resources/fonts/JetBrainsMono/ttf/JetBrainsMono-Italic.ttf') format("truetype"),
-                url('/resources/fonts/JetBrainsMono/webfonts/JetBrainsMono-Italic.woff2') format("woff2");
+                 url('/resources/fonts/JetBrainsMono/webfonts/JetBrainsMono-Italic.woff2') format("woff2");
         }
     } @else {
         @font-face {
@@ -54,7 +54,7 @@ $JetBrainsMono: (
             font-style: italic;
             font-weight: $name;
             src: url('/resources/fonts/JetBrainsMono/ttf/#{$fontname}Italic.ttf') format("truetype"),
-                url('/resources/fonts/JetBrainsMono/webfonts/#{$fontname}Italic.woff2') format("woff2");
+                 url('/resources/fonts/JetBrainsMono/webfonts/#{$fontname}Italic.woff2') format("woff2");
         }
     }
 }

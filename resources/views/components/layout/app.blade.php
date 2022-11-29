@@ -8,10 +8,9 @@
     {{-- <link rel="stylesheet" href="{{ mix('/css/app.css', 'dist') }}"> --}}
     @vite('resources/scss/app.scss')
     @vite('resources/js/app.js')
-    @production
-        <link rel="preload" href="{{ asset('fonts/Mona-Sans.woff2') }}" as="font" type="font/woff2" crossorigin>
-        <link rel="preload" href="{{ asset('fonts/Hubot-Sans.woff2') }}" as="font" type="font/woff2" crossorigin>
-    @endproduction
+
+    <link rel="preload" href="{{ Vite::asset('resources/fonts/Mona-Sans.woff2') }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ Vite::asset('resources/fonts/Hubot-Sans.woff2') }}" as="font" type="font/woff2" crossorigin>
 
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
