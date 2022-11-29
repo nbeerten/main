@@ -48,7 +48,7 @@
                 <x-simpleicon-github />
             </a>
             <a href="https://discord.com/invite/TdRSgYjJ7S" target="_blank" aria-label="discord: nbert#2620">
-                <tool-tip role="tooltip" tip-position="block-start">nbert#2620</tool-tip>
+                <tool-tip role="tooltip" tip-position="inline-start">nbert#2620</tool-tip>
                 <x-simpleicon-discord />
             </a>
         </div>
