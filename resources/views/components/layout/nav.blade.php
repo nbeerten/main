@@ -1,7 +1,7 @@
 <nav class="nav">
     <div class="navbar">
         <div class="logo">
-            <a href="/" aria-label="Button with logo, links to homepage" tabindex="-1"></a>
+            <a href="/" tabindex="-1" aria-hidden="true"></a>
         </div>
         <div class="navitems">
             <div class="navitem {{ Request::routeIs('home') ? 'active' : '' }}">

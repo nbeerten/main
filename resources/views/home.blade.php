@@ -11,14 +11,10 @@
 @endpush
 
 <x-layout.app>
-    <x-slot:description>
-        Hai, I'm Nils. Projects include Refresh Leaderboard: a plugin for Openplanet and the rewrite of nilsbeerten.nl...
-    </x-slot:description>
-
     <x-slot:hero>
         <header class="home__header">
-            <div>
-                <h2 class="main-heading">Hai, I'm <span id="typewriter-text"></span><noscript>Nils.</noscript></h2>
+            <div class="main">
+                <h2 class="main-heading">Hai, I'm <span id="typewriter-text">Nils.</span></h2>
                 <p class="info-text" x-data="{ time: new Date().toLocaleString('en-GB', { day: 'numeric', month: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Europe/Amsterdam' }) }">
                     <span>
                         <x-heroicon-m-map-pin />The Netherlands
@@ -92,7 +88,7 @@
                 </x-slot:action>
             </x-card>
             <x-card>
-                <x-slot:img src="{{ asset('assets/logo_white.svg') }}" alt="Logo of nilsbeerten.nl" width="160" height="160"></x-slot:img>
+                <x-slot:img src="{{ asset('assets/logo_white.svg') }}" alt="Logo of nilsbeerten.nl" width="160" height="160" loading="lazy"></x-slot:img>
                 <x-slot:title>Website Rewrite</x-slot:title>
                 Website rewrite: Now using Laravel on the backend, together with SCSS for styling and AlpineJS & vanilla JS for frontend functionality.
                 
@@ -121,8 +117,8 @@
             <div class="cards">
                 @foreach($tag as $post)
                     <x-card class="post">
-                        @foreach (Statamic::tag('glide:generate')->src($post->featured_image)->width(400) as $image)
-                            <x-slot:img src="{{ $image['url'] }}" width="{{ $image['width'] }}" alt="Featured image of post"></x-slot:img>
+                        @foreach (Statamic::tag('glide:generate')->src($post->featured_image)->width(400)->format('webp') as $image)
+                            <x-slot:img src="{{ $image['url'] }}" width="{{ $image['width'] }}" alt="Featured image of post" loading="lazy"></x-slot:img>
                         @endforeach
                         
                         <x-slot:title>{{ $post->title }}</x-slot:title>

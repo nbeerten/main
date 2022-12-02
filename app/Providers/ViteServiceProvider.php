@@ -24,8 +24,9 @@ class ViteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Vite::useScriptTagAttributes([
-            'defer' => true
-        ]);
+        // Vite::useScriptTagAttributes([
+        //     'defer' => true,
+        //     'async' => true
+        // ]);
     }
 }

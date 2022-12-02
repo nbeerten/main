@@ -1,0 +1,156 @@
+/* Non-colored variables */
+:root {
+    --font-sans: "Mona Sans", ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --font-display: "Hubot Sans", ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --font-mono: 'JetBrains Mono', ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+/* Hero */
+:root {
+    --nb-heroimage: url('/public/assets/hero@768p.webp');
+
+    @media (min-aspect-ratio: 16/9) {
+        @media (min-width: 1367px) {
+            --nb-heroimage: url('/public/assets/hero@1080p.webp');
+        }
+    
+        @media (min-width: 1921px) {
+            --nb-heroimage: url('/public/assets/hero@1440p.webp');
+        }
+    
+        @media (min-width: 2561px) {
+            --nb-heroimage: url('/public/assets/hero.webp');
+        }
+    }
+    
+    @media (max-aspect-ratio: 16/9) {
+        @media (min-height: 769px) {
+            --nb-heroimage: url('/public/assets/hero@1080p.webp');
+        }
+        
+        @media (min-height: 1081px) {
+            --nb-heroimage: url('/public/assets/hero@1440p.webp');
+        }
+    
+        @media (min-height: 1441px) {
+            --nb-heroimage: url('/public/assets/hero.webp');
+        }
+    }
+}
+
+/* Font mixins */
+@mixin font-sans($stretch: 115%) {
+    font-family: var(--font-sans);
+    font-stretch: $stretch;
+}
+@mixin font-display($stretch: 110%) {
+    font-family: var(--font-display);
+    font-stretch: $stretch;
+}
+@mixin font-mono {
+    font-family: var(--font-mono);
+}
+
+@custom-media --min-breakpoint-sm (min-width: 640px);
+@custom-media --min-breakpoint-md (min-width: 768px);
+@custom-media --min-breakpoint-lg (min-width: 1024px);
+@custom-media --min-breakpoint-xl (min-width: 1280px);
+@custom-media --min-breakpoint-2xl (min-width: 1536px);
+@custom-media --max-breakpoint-sm (max-width: 640px);
+@custom-media --max-breakpoint-md (max-width: 768px);
+@custom-media --max-breakpoint-lg (max-width: 1024px);
+@custom-media --max-breakpoint-xl (max-width: 1280px);
+@custom-media --max-breakpoint-2xl (max-width: 1536px);
+
+
+/*
+/* Colors
+/* Dark Theme
+*/
+:root.theme-dark, :root {
+    --text-color-heading: #ffffff;
+    --text-color-paragraph: #d1d5db;
+
+    --text-color-primary: #ffffff;
+    --text-color-secondary: #d1d5db;
+
+
+    --brand-color: #ffdf00;
+    --bg-body: #171717;
+    --bg-cards: #0a0a0a;
+    --bg-primary: #171717;
+    --bg-secondary: #0a0a0a;
+    --bg-warn: #eab308;
+    --bg-error: #7f1d1d;
+    --bg-success: #166534;
+
+    --border-color: rgb(113, 113, 122);
+
+    --outline-color: #0000ff;
+
+    --color-error: #7f1d1d;
+    --color-success: #166534;
+    --color-info: #5865F2;
+
+    /* Component specific variables */
+    /* Scrollbar */
+    --scrollbar-background: #d1d5db;
+    --scrollbar-background-hover: #ffffff;
+
+    /* Navbar */
+    --nav-bg: rgba(24, 24, 27, 0.5);
+
+    /* Button */
+    --button-background: #262626;
+    --button-background-hover: #404040;
+    --button-background-active: #171717;
+
+    /* Input */
+    --input-background: #262626;
+    --input-background-hover: #404040;
+    --input-outline: rgb(113 113 122);
+}
+
+/* :root.theme-light {
+    --text-color-heading: #000000;
+    --text-color-paragraph: #171717;
+
+    --text-color-primary: #000000;
+    --text-color-secondary: #171717;
+
+
+    --brand-color: #ffdf00;
+    --bg-body: #ffffff;
+    --bg-cards: #f8fafc;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --bg-warn: #eab308;
+    --bg-error: #7f1d1d;
+    --bg-success: #166534;
+
+    --border-color: #d1d5db;
+
+    --outline-color: #0000ff;
+
+    --color-error: #7f1d1d;
+    --color-success: #166534;
+    --color-info: #5865F2;
+
+    /* Component specific variables 
+    /* Scrollbar 
+    --scrollbar-background: #171717;
+    --scrollbar-background-hover: #262626;
+
+    /* Navbar 
+    --nav-bg: rgba(24, 24, 27, 0.5);
+
+    /* Button 
+    --button-background: #d1d5db;
+    --button-background-hover: #e5e7eb;
+    --button-background-active: #f3f4f6;
+
+    /* Input 
+    --input-background: #d1d5db;
+    --input-background-hover: #e5e7eb;
+    --input-outline: rgb(113 113 122);
+} */

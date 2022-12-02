@@ -1,0 +1,10 @@
+.dashboard {
+    .card-row {
+        display: flex;
+        flex-direction: column;
+        @media (--min-breakpoint-lg) {
+            flex-direction: row;
+        }
+        gap: 1rem;
+    }
+}

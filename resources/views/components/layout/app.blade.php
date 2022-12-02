@@ -4,13 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    {{-- Main JS & CSS from the compiled files --}}
-    {{-- <link rel="stylesheet" href="{{ mix('/css/app.css', 'dist') }}"> --}}
-    @vite('resources/scss/app.scss')
-    @vite('resources/js/app.js')
-
     <link rel="preload" href="{{ Vite::asset('resources/fonts/Mona-Sans.woff2') }}" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="{{ Vite::asset('resources/fonts/Hubot-Sans.woff2') }}" as="font" type="font/woff2" crossorigin>
+    {{-- Main JS & CSS from the compiled files --}}
+    @vite('resources/css/app.css')
+
 
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -21,10 +19,8 @@
 
     <x-layout.seo />
     
-    <!-- Style Stack -->
     @stack('style')
-    <!-- Head Scripts Stack -->
-    @stack('scripts')
+    @stack('headscripts')
 </head>
 
 <body>
@@ -55,10 +51,10 @@
     </svg>
 
     <!-- Script Stack -->
-    @stack('bodyscripts')
+    @vite('resources/js/app.js')
+    @stack('scripts')
     <!-- Goatcounter -->
     <script data-goatcounter="https://nilsbeerten.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
-    <!-- Goatcounter -->
 </body>
 </html>
