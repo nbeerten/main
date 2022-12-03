@@ -8,6 +8,13 @@
 }
 
 @font-face {
+    font-family: 'Mona Sans Fallback';
+    size-adjust: 108.5%;
+    ascent-override: 82%;
+    src: local(Arial);
+  }
+
+@font-face {
     font-family: 'Hubot Sans';
     font-display: fallback;
     src: url('/resources/fonts/Hubot-Sans.woff2') format('woff2 supports variations'),

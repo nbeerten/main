@@ -1,6 +1,8 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 
+import postcssScss from 'postcss-scss';
+
 import postcssImport from 'postcss-import';
 import postcssImportExtGlob from 'postcss-import-ext-glob';
 import postcssImportUrl from 'postcss-import-url';
@@ -30,6 +32,7 @@ export default defineConfig({
     css: {
         devSourcemap: true,
         postcss: {
+            parser: postcssScss,
             plugins: [
                 postcssImport,
                 postcssImportExtGlob,
