@@ -77,6 +77,7 @@
                     position: relative;
                     @include font-sans;
                     color: var(--text-color-secondary);
+                    border: 1px solid var(--secondary-border-color);
                     background: var(--bg-cards);
                     border-radius: 0.375rem;
                     padding: 0.5rem 0.75rem;
@@ -131,6 +132,7 @@
                     overflow: hidden;
                     max-width: 100%;
                     position: relative;
+                    border: 1px solid var(--secondary-border-color);
 
                     img {
                         position: absolute;

@@ -1,6 +1,7 @@
 @php
     App\Classes\SEO\SEO::make(
         title: "Contact",
+        description: "Contact me",
         noindex: false
     );
 @endphp

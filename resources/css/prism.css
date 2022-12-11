@@ -18,14 +18,15 @@ pre[class*=language-] {
     -webkit-hyphens: none;
     -moz-hyphens: none;
     -ms-hyphens: none;
-    hyphens: none
+    hyphens: none;
 }
 
 pre[class*=language-] {
     padding: 1em;
     margin: .5em 0;
     overflow: auto;
-    border-radius: .3em
+    border-radius: .3em;
+    border: 1px solid var(--secondary-border-color);
 }
 
 :not(pre) > code[class*=language-],

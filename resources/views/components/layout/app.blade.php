@@ -24,6 +24,15 @@
     <x-layout.seo />
     
     @stack('style')
+    <script>
+        partytown = {
+            forward: [ "goatcounter" ],
+            lib: "/vendor/partytown/",
+        };
+    </script>
+    <script>
+    {{!! File::get('../public/vendor/partytown/partytown.js') !!}}
+    </script>
     @vite('resources/js/app.js')
     @stack('scripts')
 </head>
@@ -58,7 +67,6 @@
     <!-- Script Stack -->
     @stack('footerscripts')
     <!-- Goatcounter -->
-    <script data-goatcounter="https://nilsbeerten.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
+    <script data-goatcounter="https://nilsbeerten.goatcounter.com/count" src="{{ Vite::asset("resources/js/count.js") }}" type="text/partytown"></script>
 </body>
 </html>

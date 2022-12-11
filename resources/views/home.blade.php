@@ -1,11 +1,3 @@
-@php
-    App\Classes\SEO\SEO::make(
-        title: "Home",
-        description: "Hai, I'm Nils. Projects include Refresh Leaderboard: a plugin for Openplanet and the rewrite of nilsbeerten.nl...",
-        noindex: false
-    );
-@endphp
-
 @push('scripts')
     @vite('resources/js/pages/home.js')
 @endpush
@@ -110,12 +102,11 @@
         </div>
     </section>
 
-    @php($tag = Statamic::tag('collection:posts')->limit(3)->fetch())
-    @if(count($tag) > 0 )
+    @if(count($posts) > 0 )
         <section class="posts">
             <h3 class="heading">Posts</h3>
             <div class="cards">
-                @foreach($tag as $post)
+                @foreach($posts as $post)
                     <x-card class="post">
                         @foreach (Statamic::tag('glide:generate')->src($post->featured_image)->width(400)->format('webp') as $image)
                             <x-slot:img src="{{ $image['url'] }}" width="{{ $image['width'] }}" alt="Featured image of post" loading="lazy"></x-slot:img>

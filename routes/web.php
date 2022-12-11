@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TMASignsController;
 use App\Http\Controllers\OpengraphImageController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\HomeController;
 
 use Statamic\Statamic;
 
@@ -20,9 +21,7 @@ use Statamic\Statamic;
 */
 
 // Main pages
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [HomeController::class, 'show'])->name('home');
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts');
 Route::redirect('/post', '/posts', 301);

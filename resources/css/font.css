@@ -7,12 +7,15 @@
     font-stretch: 75% 125%;
 }
 
+
 @font-face {
     font-family: 'Mona Sans Fallback';
-    size-adjust: 108.5%;
-    ascent-override: 82%;
     src: local(Arial);
-  }
+    size-adjust: 110%;
+    ascent-override: 78%;
+    descent-override: normal;
+    line-gap-override: 7%;
+}
 
 @font-face {
     font-family: 'Hubot Sans';
@@ -21,6 +24,15 @@
          url('/resources/fonts/Hubot-Sans.woff2') format('woff2-variations');
     font-weight: 200 900;
     font-stretch: 75% 125%;
+}
+
+@font-face {
+    font-family: 'Hubot Sans Fallback';
+    src: local(Arial);
+    size-adjust: 114%;
+    ascent-override: 72%;
+    descent-override: normal;
+    line-gap-override: 10%;
 }
 
 $JetBrainsMono: (

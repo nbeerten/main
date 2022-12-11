@@ -13,6 +13,9 @@ import postcssAdvancedVariables from 'postcss-advanced-variables';
 import postcssSortMediaQueries from 'postcss-sort-media-queries';
 import autoprefixer from 'autoprefixer';
 
+import path from 'path';
+import { partytownVite } from '@builder.io/partytown/utils';
+
 export default defineConfig({
     server: {
         host: '0.0.0.0',
@@ -24,10 +27,14 @@ export default defineConfig({
         laravel([
             '/resources/css/app.css',
             '/resources/js/app.js',
+            '/resources/js/count.js',
             '/resources/js/prism.js',
             '/resources/js/pages/home.js',
             '/resources/js/pages/TMASigns.js',
         ]),
+        partytownVite({
+            dest: path.join(__dirname, 'public/vendor', 'partytown'),
+        }),
     ],
     css: {
         devSourcemap: true,
