@@ -6,16 +6,21 @@ use Illuminate\Http\Request;
 use Statamic\Facades\Entry;
 use Spatie\SchemaOrg\Schema;
 use App\Classes\SEO\SEO;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
     public function index(Request $request)
     {
-        $posts = Entry::query()
+        if(Auth::check()) {
+            $posts = Entry::query()->where('collection', 'posts')->get();
+        } else {
+            $posts = Entry::query()
             ->where('collection', 'posts')
-            ->take(18)
+            ->where('published', true)
             ->get();
-
+        }
+        
         SEO::make(
             title: "Posts",
             noindex: (count($posts) === 0)

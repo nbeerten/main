@@ -5,57 +5,47 @@
 <x-layout.app>
     <x-slot:hero>
         <header class="home__header">
+            <div class="background-component large-glow"></div>
+            <div class="background-component small-glow"></div>
+            <div class="background-component left-glow-1"></div>
+            <div class="background-component left-small-glow-2"></div>
             <div class="main">
-                <h2 class="main-heading">Hai, I'm <span id="typewriter-text">Nils.</span></h2>
+                <h2 class="main-heading">Hai, I'm 
+                    <span class="typewriter-text-wrapper"><span id="typewriter-text" aria-hidden="true" aria-label="Nils, nbert, or nbeerten.">Nils.</span></span>
+                </h2>
+                <hr />
                 <p class="info-text" x-data="{ time: new Date().toLocaleString('en-GB', { day: 'numeric', month: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Europe/Amsterdam' }) }">
                     <span>
                         <x-heroicon-m-map-pin />The Netherlands
                     </span>
-                    <span class="divider"></span>
                     <span>
                         <tool-tip role="tooltip" tip-position="block-end">Local Time</tool-tip>
-                        <x-heroicon-m-clock /><span x-text="time"></span><noscript>{{ now('Europe/Amsterdam')->isoFormat('DD/MM, HH:mm') }}</noscript>
+                        <x-heroicon-m-clock /><span x-text="time">{{ now('Europe/Amsterdam')->isoFormat('DD/MM, HH:mm') }}</span>
+                    </span>
+                    <span class="divider"></span>
+                    <span class="coding-languages" aria-roledescription="Frameworks and tools used:" role="list">
+                        <a href="https://laravel.com/" target="_blank" aria-label="Laravel" role="listitem">
+                            <tool-tip role="tooltip" tip-position="block-start">Laravel</tool-tip>
+                            <x-simpleicon-laravel class="heroicons" aria-label="Laravel icon" width="36" />
+                        </a>
+                        <a href="https://www.php.net/" target="_blank" aria-label="PHP" role="listitem">
+                            <tool-tip role="tooltip" tip-position="block-start">PHP</tool-tip>
+                            <x-simpleicon-php class="heroicons" aria-label="PHP icon" width="36" />
+                        </a>
+                        <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" aria-label="CSS3" role="listitem">
+                            <tool-tip role="tooltip" tip-position="block-start">CSS</tool-tip>
+                            <x-simpleicon-css3 class="heroicons" aria-label="CSS icon" width="36" />
+                        </a>
+                        <a href="https://alpinejs.dev/" target="_blank" aria-label="AlpineJS" role="listitem">
+                            <tool-tip role="tooltip" tip-position="block-start">AlpineJS</tool-tip>
+                            <x-simpleicon-alpinedotjs class="heroicons" aria-label="AlpineJS icon" width="36" />
+                        </a>
+                        <a href="https://statamic.com/" target="_blank" aria-label="Statamic" role="listitem">
+                            <tool-tip role="tooltip" tip-position="block-start">Statamic</tool-tip>
+                            <x-simpleicon-statamic class="heroicons" aria-label="Statamic icon" width="36" />
+                        </a>
                     </span>
                 </p>
-                <div class="icon-groups">
-                    <div class="socials">
-                        <a href="https://twitter.com/nbertn" target="_blank" aria-label="twitter: @nbertn">
-                            <tool-tip role="tooltip" tip-position="block-start">@nbertn</tool-tip>
-                            <x-simpleicon-twitter />
-                        </a>
-                        <a href="https://youtube.com/channel/UC-bj0JxjTzxnL2LSQMEx6MA" target="_blank" aria-label="youtube: nbert">
-                            <tool-tip role="tooltip" tip-position="block-start">nbert</tool-tip>
-                            <x-simpleicon-youtube />
-                        </a>
-                        <a href="https://github.com/nbeerten" target="_blank" aria-label="github: nbeerten">
-                            <tool-tip role="tooltip" tip-position="block-start">nbeerten</tool-tip>
-                            <x-simpleicon-github />
-                        </a>
-                        <a href="https://discord.com/invite/TdRSgYjJ7S" target="_blank" aria-label="discord: nbert#2620">
-                            <tool-tip role="tooltip" tip-position="block-start">nbert#2620</tool-tip>
-                            <x-simpleicon-discord />
-                        </a>
-                    </div>
-                    <span class="divider"></span>
-                    <div class="coding-languages">
-                        <a href="https://laravel.com/" target="_blank" aria-label="Laravel">
-                            <tool-tip role="tooltip" tip-position="block-start">Laravel</tool-tip>
-                            <x-simpleicon-laravel />
-                        </a>
-                        <a href="https://www.php.net/" target="_blank" aria-label="PHP">
-                            <tool-tip role="tooltip" tip-position="block-start">PHP</tool-tip>
-                            <x-simpleicon-php />
-                        </a>
-                        <a href="https://sass-lang.com/" target="_blank" aria-label="SCSS">
-                            <tool-tip role="tooltip" tip-position="block-start">SCSS</tool-tip>
-                            <x-simpleicon-sass />
-                        </a>
-                        <a href="https://alpinejs.dev/" target="_blank" aria-label="AlpineJS">
-                            <tool-tip role="tooltip" tip-position="block-start">AlpineJS</tool-tip>
-                            <x-simpleicon-alpinedotjs />
-                        </a>
-                    </div>
-                </div>
             </div>
         </header>
     </x-slot:hero>
@@ -80,14 +70,18 @@
                 </x-slot:action>
             </x-card>
             <x-card>
-                <x-slot:img src="{{ asset('assets/logo_white.svg') }}" alt="Logo of nilsbeerten.nl" width="160" height="160" loading="lazy"></x-slot:img>
-                <x-slot:title>Website Rewrite</x-slot:title>
-                Website rewrite: Now using Laravel on the backend, together with SCSS for styling and AlpineJS & vanilla JS for frontend functionality.
-                
+                <x-slot:img src="{{ asset('assets/nextdotnilsbeerten_thumb.webp') }}" alt="Thumbnail for next.nilsbeerten.nl project" width="160" height="160"></x-slot:img>
+                <x-slot:title>next.nilsbeerten.nl</x-slot:title>
+                    A <b>secondary</b> backend hosted on the edge using the 
+                    <a href="https://nextjs.org/" target="_blank">Next.js</a> framework. Includes 
+                    <a href="https://vercel.com/docs/concepts/functions/edge-functions/og-image-generation" target="_blank">@vercel/og</a> to generate
+                    Opengraph images for the main site.
                 <x-slot:action>
-                    <a href="" disabled onclick="event.preventDefault()" class="button" target="_blank">
-                        <x-heroicon-m-arrow-top-right-on-square /> Visit github repository
-                    </a>
+                    <div class="helper_row-wrap">
+                        <a href="https://github.com/nbeerten/nb-next-api" class="button" target="_blank">
+                            <x-simpleicon-github class="heroicons" /> Github Repository
+                        </a>
+                    </div>
                 </x-slot:action>
             </x-card>
             {{-- <x-card>

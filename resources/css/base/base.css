@@ -48,6 +48,8 @@ main {
     padding-left: 2rem;
     padding-right: 2rem
     }
+
+    text-rendering: optimizeLegibility;
 }
 
 ::selection {
@@ -65,6 +67,10 @@ p:not(.no-standard) a {
         color: #5865F2;
         text-decoration: underline;
     }
+}
+
+i {
+    font-variation-settings: "ital" 1;
 }
 
 ul:not(.no-standard) {

@@ -21,6 +21,7 @@
     "dependencies": {
         "@builder.io/partytown": "^0.7.3",
         "alpinejs": "^3.10.3",
+        "feather-icons": "^4.29.0",
         "modern-normalize": "^1.1.0",
         "npm": "^8.19.1",
         "postcss-import-url": "^7.1.0",
