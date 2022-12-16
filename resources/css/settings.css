@@ -3,6 +3,11 @@
     --font-sans: "Mona Sans", "Mona Sans Fallback", ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     --font-display: "Hubot Sans", "Hubot Sans Fallback", ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     --font-mono: 'JetBrains Mono', ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+    // JS CSS bridge (i.e. scrollheight properties)
+    --scrollposition-y-px: 0px;
+    --scrollposition-y-p: 0%;
+    --scrollposition-y: 0;
 }
 
 /* Hero */
@@ -56,11 +61,11 @@
 @custom-media --min-breakpoint-lg (min-width: 1024px);
 @custom-media --min-breakpoint-xl (min-width: 1280px);
 @custom-media --min-breakpoint-2xl (min-width: 1536px);
-@custom-media --max-breakpoint-sm (max-width: 640px);
-@custom-media --max-breakpoint-md (max-width: 768px);
-@custom-media --max-breakpoint-lg (max-width: 1024px);
-@custom-media --max-breakpoint-xl (max-width: 1280px);
-@custom-media --max-breakpoint-2xl (max-width: 1536px);
+@custom-media --max-breakpoint-sm (max-width: 639px);
+@custom-media --max-breakpoint-md (max-width: 767px);
+@custom-media --max-breakpoint-lg (max-width: 1023px);
+@custom-media --max-breakpoint-xl (max-width: 1279px);
+@custom-media --max-breakpoint-2xl (max-width: 1535px);
 
 
 /*
@@ -76,13 +81,37 @@
 
 
     --brand-color: #ffdf00;
-    --bg-body: #171717;
-    --bg-cards: #0a0a0a;
+    --bg-body: #111;
+    --bg-cards: #000;
     --bg-primary: #171717;
-    --bg-secondary: #0a0a0a;
+    --bg-secondary: #000;
     --bg-warn: #eab308;
     --bg-error: #7f1d1d;
     --bg-success: #166534;
+
+    // New design variables
+    --accent-0: #000;
+    --accent-1: #111;
+    --accent-2: #333;
+    --accent-3: #444;
+    --accent-4: #666;
+    --accent-5: #888;
+    --accent-6: #999;
+    --accent-7: #cccccc;
+    --accent-8: #fafafa;
+    --accent-9: #FFF;
+    --accent-error-lightest: #F7D4D6;
+    --accent-error-light: #F33;
+    --accent-error: RED;
+    --accent-error-dark: #E60000;
+    --accent-success-lighter: #D3E5FF;
+    --accent-success-light: #3291FF;
+    --accent-success: #0070F3;
+    --accent-success-dark: #0761D1;
+    --accent-warning-lighter: #FFEFCF;
+    --accent-warning-light: #F7B955;
+    --accent-warning: #F5A623;
+    --accent-warning-dark: #AB570A;
 
     --border-color: rgb(113, 113, 122);
     --secondary-border-color: #333;

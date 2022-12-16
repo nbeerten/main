@@ -31,6 +31,8 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
+Route::view('/background', 'background', ['aspectratio' => Request::query('aspectratio', '16 / 9')]);
+
 // Small services
 Route::get('/og', [OpengraphImageController::class, 'get'])
      ->name('og');

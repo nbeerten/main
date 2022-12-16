@@ -9,11 +9,6 @@
     {{-- Main JS & CSS from the compiled files --}}
     @vite('resources/css/app.css')
 
-    <link rel="preload" href="{{ Vite::asset('public/assets/hero@768p.webp') }}" as="image" type="image/webp" media="(min-aspect-ratio: 16/9) and (max-width: 1366px), (max-aspect-ratio: 16/9) and (max-height: 768px)">
-    <link rel="preload" href="{{ Vite::asset('public/assets/hero@1080p.webp') }}" as="image" type="image/webp" media="(min-aspect-ratio: 16/9) and (min-width: 1367px) and (max-width: 1920px), (max-aspect-ratio: 16/9) and (min-height: 769px) and (max-width: 1080px)">
-    <link rel="preload" href="{{ Vite::asset('public/assets/hero@1440p.webp') }}" as="image" type="image/webp" media="(min-aspect-ratio: 16/9) and (min-width: 1921px) and (min-width: 2560px), (max-aspect-ratio: 16/9) and (min-width: 1081px) and (min-width: 1440px)">
-    <link rel="preload" href="{{ Vite::asset('public/assets/hero.webp') }}" as="image" type="image/webp" media="(min-aspect-ratio: 16/9) and (min-width: 2561px), (max-aspect-ratio: 16/9) and (min-width: 1441px)">
-
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
