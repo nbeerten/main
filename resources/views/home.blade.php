@@ -84,7 +84,7 @@
                     </div>
                 </x-slot:action>
             </x-card>
-            <x-card>
+            {{-- <x-card>
                 <x-slot:img src="{{ asset('assets/tmasigns_1x1example.webp') }}" alt="Example of a one by one sized sign"></x-slot:img>
                 <x-slot:title>TMA Sign Generator</x-slot:title>
                 A small web application to create signs with text defined by the user for Trackmania, styled to fit in with the TMA signpack.
@@ -92,7 +92,7 @@
                 <x-slot:action>
                     <a href="/tmasigns" class="button">Visit page</a>
                 </x-slot:action>
-            </x-card>
+            </x-card> --}}
         </div>
     </section>
 
