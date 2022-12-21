@@ -10,9 +10,9 @@
             <div class="background-component left-glow-1"></div>
             <div class="background-component left-small-glow-2"></div>
             <div class="main">
-                <h2 class="main-heading">Hai, I'm 
+                <h1 class="main-heading">Hai, I'm 
                     <span class="typewriter-text-wrapper"><span id="typewriter-text" aria-hidden="true" aria-label="Nils, nbert, or nbeerten.">Nils.</span></span>
-                </h2>
+                </h1>
                 <hr />
                 <p class="info-text" x-data="{ time: new Date().toLocaleString('en-GB', { day: 'numeric', month: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Europe/Amsterdam' }) }">
                     <span>
@@ -84,15 +84,15 @@
                     </div>
                 </x-slot:action>
             </x-card>
-            {{-- <x-card>
+            <x-card>
                 <x-slot:img src="{{ asset('assets/tmasigns_1x1example.webp') }}" alt="Example of a one by one sized sign"></x-slot:img>
-                <x-slot:title>TMA Signs Generator</x-slot:title>
-                Small web application to create signs for the game Trackmania with user input as text on the image, styled to fit in with the TMA signpack.
+                <x-slot:title>TMA Sign Generator</x-slot:title>
+                A small web application to create signs with text defined by the user for Trackmania, styled to fit in with the TMA signpack.
                 
                 <x-slot:action>
-                    <a href="/tmasigns" class="button">Go to page</a>
+                    <a href="/tmasigns" class="button">Visit page</a>
                 </x-slot:action>
-            </x-card> --}}
+            </x-card>
         </div>
     </section>
 

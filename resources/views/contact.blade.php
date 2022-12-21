@@ -12,7 +12,7 @@
 
 <x-layout.app>
     <section class="default-page">
-        <h3 class="heading">Contact</h3>
+        <h1 class="heading">Contact</h1>
         <div class="contact__form">
             <form method="POST" action="/!/forms/contact" class="form-card contact">
                 @php( $statamic = Statamic::tag('form:contact'))

@@ -22,7 +22,7 @@ class Settings
     public const font = "../assets/TMASigns/Montserrat-Black.ttf";
     public const colors = [
         "green" => '#1c6f38',
-        "orange" => "#f5751c",
+        "orange" => "#f47621",
         "gold" => "#c9b12d",
         "blueish" => "#c5e9f6",
         "white" => "#ffffff"

@@ -21,7 +21,7 @@
         display: block;
         font-size: 0.875rem;
         line-height: 1.25rem;
-        color: var(--text-color-secondary);
+        color: var(--accent-7);
         user-select: none;
         padding-bottom: 0.25rem;
     }
@@ -30,19 +30,20 @@
         display: block;
         width: 100%;
         border-radius: 0.375rem;
-        background-color: var(--input-background);
+        background-color: var(--accent-0);
         padding-left: 0.75rem;
         padding-right: 0.75rem;
         padding-top: 0.5rem;
         padding-bottom: 0.5rem;
-        border: 1px solid var(--secondary-border-color);
+        border: 1px solid var(--accent-2);
+        transition: outline 0.1s ease-in-out;
 
         --outline-color: transparent;
         outline: 1px solid var(--outline-color);
 
         /* Validation colors */
         &:invalid {
-            --outline-color: var(--color-error);
+            --outline-color: var(--accent-error-dark);
         }
 
         &:valid {
@@ -55,15 +56,15 @@
     }
 
     input:hover {
-        background-color: var(--input-background-hover);
+        --outline-color: var(--accent-5);
     }
 
     input:focus {
-        background-color: var(--input-background-hover);
+        --outline-color: var(--accent-7);
     }
 
     input:focus-visible {
-        --outline-color: var(--input-outline);
+        --outline-color: var(--accent-9);
     }
 
     textarea {
@@ -71,50 +72,56 @@
         margin-top: 0.25rem;
         width: 100%;
         border-radius: 0.375rem;
-        background-color: var(--input-background);
+        background-color: var(--accent-0);
         padding-left: 0.75rem;
         padding-right: 0.75rem;
         padding-top: 0.5rem;
         padding-bottom: 0.5rem;
-        border: 1px solid var(--secondary-border-color);
+        border: 1px solid var(--accent-2);
+        transition: outline 0.1s ease-in-out;
+
+        --outline-color: transparent;
+        outline: 1px solid var(--outline-color);
     }
 
     textarea:hover {
-        background-color: var(--input-background-hover);
+        --outline-color: var(--accent-5);
     }
 
     textarea:focus {
-        background-color: var(--input-background-hover);
-        outline: 1px solid transparent;
+        --outline-color: var(--accent-7);
     }
 
     textarea:focus-visible {
-        outline: 1px solid var(--input-outline);
+        --outline-color: var(--accent-9);
     }
 
     select {
         display: block;
         width: 100%;
         border-radius: 0.375rem;
-        background-color: var(--input-background);
+        background-color: var(--accent-0);
         padding-top: 0.5rem;
         padding-bottom: 0.5rem;
         padding-left: 0.75rem;
         padding-right: 0.75rem;
-        border: 1px solid var(--secondary-border-color);
+        border: 1px solid var(--accent-3);
+        transition: outline 0.1s ease-in-out;
+        
+        --outline-color: transparent;
+        outline: 1px solid var(--outline-color);
     }
 
     select:hover {
-        background-color: var(--input-background-hover);
+        --outline-color: var(--accent-5);
     }
 
     select:focus {
-        background-color: var(--input-background-hover);
-        outline: 1px solid transparent;
+        --outline-color: var(--accent-7);
     }
 
     select:focus-visible {
-        outline: 1px solid var(--input-outline);
+        --outline-color: var(--accent-9);
     }
 
     .row {
@@ -133,8 +140,8 @@
 
     button.action {
         svg {
-            width: 1rem;
-            height: 1rem;
+            width: 1.25rem;
+            height: 1.25rem;
             align-self: center;
         }
     }

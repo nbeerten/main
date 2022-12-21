@@ -1,6 +1,6 @@
 <x-layout.app>
     <section class="default-page posts-index">
-        <h3 class="heading">Posts</h3>
+        <h1 class="heading">Posts</h1>
             @if(count($posts) === 0)
                 <div class="no-posts">
                     <p><i>No content to be found here yet... Waiting for non-existant content to magically appear...</i></p>

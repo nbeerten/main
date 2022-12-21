@@ -1,5 +1,5 @@
 .information-card {
-    --accent-color: var(--border-color);
+    --accent-color: var(--accent-2);
 
     display: flex;
     max-width: 100%;
@@ -21,14 +21,14 @@
     
     > .content {
         > h6 {
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 500;
         }
 
         > p {
-            font-size: 0.9rem;
             font-weight: 400;
-            max-width: 100ch;
+            font-stretch: 100%;
+            max-width: 80ch;
         }
 
         > :last-child:not(:nth-child(1), p) {

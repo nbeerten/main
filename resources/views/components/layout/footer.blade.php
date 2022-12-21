@@ -35,6 +35,14 @@
             <p x-data="{ year: new Date().getFullYear() }"><span class="year"><span x-text="year">2022</span></span> <span class="name">Nils Beerten</span></p>
         </div>
         <div class="socials">
+            <a rel="me" href="https://mastodon.social/@nbeerten" target="_blank" aria-label="mastodon: @nbeerten@mastodon.social">
+                <tool-tip role="tooltip" tip-position="block-start">@nbeerten@mastodon.social</tool-tip>
+                <x-simpleicon-mastodon />
+            </a>
+            <a rel="me" href="https://trackmania.social/@nbert" target="_blank" aria-label="mastodon: @nbert@trackmania.social">
+                <tool-tip role="tooltip" tip-position="block-start">@nbert@trackmania.social</tool-tip>
+                <x-simpleicon-mastodon />
+            </a>
             <a href="https://twitter.com/nbertn" target="_blank" aria-label="twitter: @nbertn">
                 <tool-tip role="tooltip" tip-position="block-start">@nbertn</tool-tip>
                 <x-simpleicon-twitter />

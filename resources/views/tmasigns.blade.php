@@ -1,7 +1,7 @@
 @php
     App\Classes\SEO\SEO::make(
         title: "TMA Signs",
-        description: "Small web application to create signs for the game Trackmania with user input as text on the image, styled to fit in with the TMA signpack.",
+        description: "A small web application to create signs with text defined by the user for Trackmania, styled to fit in with the TMA signpack.",
         noindex: true
     );
 @endphp
@@ -36,25 +36,10 @@
 @endpush
 
 <x-layout.app>
-    <x-slot:description>
-        Small web application to create signs for the game Trackmania with user input as text on the image, styled to fit in with the TMA signpack.
-    </x-slot:description>
-
     <section class="default-page tmasigns">
-        <h3 class="heading">TMA Signs</h3>
+        <h1 class="heading">TMA Signs</h1>
 
-        <x-information-card>
-            <x-md>Did you find a bug, need help or have feedback?</x-md>
-            <x-slot:more>
-                Feel free to report, ask or share it with me by sending me a DM on discord, or by sending a message in my discord server. Alternatively you can also
-                create a github issue in this project's repository.
-            </x-slot:more>
-            <x-slot:action>
-            <button x-data x-on:click="$dispatch('open-faq')" class="button">Frequently Asked Questions</button>
-            </x-slot:action>
-        </x-information-card>
-
-        <x-modal data-id="faq">
+        {{-- <x-modal data-id="faq">
             <x-slot:title>
                 <x-heroicon-m-question-mark-circle /> FAQ
             </x-slot:title>
@@ -62,12 +47,12 @@
                 <x-slot:summary>What do I do with the file?</x-slot:summary>
                 <p>
                     <x-md>
-                        After downloading the file you'll need to host it somewhere. This website intentionally never allows you to use it as a host for the signs,
+                        After downloading the file you'll need to host it somewhere. This website intentionally never allows you to use it as hosting for the signs,
                         because signs need to be hosted on servers that are able to handle thousands of requests at the same moment for events such as cup of the day.
-                        Currently the best option is to host signs on Discord.
+                        Currently the best option is to host signs on Discord:
                         <br><br>
                         Hosting a sign on Discord is relatively easy. The first step is to send the file(s) in a channel in **any** Discord server. All Discord
-                        servers are "public", so even your own server with only you as member will work. After uploading the file(s), you have to copy the url to
+                        servers are "public", so even your own server with a single member will work. After uploading the file(s), you have to copy the url to
                         them. This is not the same as copying the URL of the message, so pay attention to that. The URL should end with `.tga` or `.zip`.
                         <br><br>
                         After copying the URL, you can go to the map editor and select the skinning tool (the bucket icon). Then click the "Custom URL" button and paste
@@ -75,36 +60,33 @@
                     </x-md>
                 </p>
             </x-details>
-        </x-modal>
-
+        </x-modal> --}}
         <x-details open>
             <x-slot:summary id="packages">
-                <x-heroicon-s-archive-box /> Pre-made Packages
+                <x-heroicon-s-archive-box /> TMA Signpack
             </x-slot:summary>
-            <div class="card-row">
-                <x-card class="card-top">
-                    <x-slot:img src="{{ asset('assets/tma_sign6x1_Checkpoint 7.jpg') }}" alt="Sign preview"></x-slot:img>
-                    <x-slot:title>Checkpoint numbers</x-slot:title>
-                    <x-md>
-                        A pre-made package containing numbered checkpoint signs from 1 to 25. Only in the `6x1` size (sign size used on checkpoints, start and finish).
-                    </x-md>
+            <x-card class="tmasigns__signpack-card">
+                <x-slot:img src="{{ asset('assets/tmasigns_signpack_thumb.webp') }}" alt="Sign preview" height="160" width="500"></x-slot:img>
+                <x-slot:title>The TMA Signpack</x-slot:title>
+                <x-md>
+                    The main signpack includes: arrow signs made by Juice, checkpoint numbers `1-25` for `6x1` signs, and common text
+                    such as: 'Start', 'Checkpoint', 'Multilap' and 'Finish'.
+                    **More information can be found in the TMA Discord Server**
+                </x-md>
 
-                    <x-slot:button href="https://github.com/nbeerten/tmasigns">
-                        <x-heroicon-s-archive-box-arrow-down defer /> Download package
-                    </x-slot:button>
-                </x-card>
-                <x-card class="card-top">
-                    <x-slot:img src="{{ asset('assets/tma_sign6x1_start.jpg') }}" alt="Example of sign"></x-slot:img>
-                    <x-slot:title>Common signs</x-slot:title>
-                    <x-md>A pre-made package containing signs in all formats, with texts like "GPS", "Start", "Finish", "Multilap", "Checkpoint" and much more.</x-md>
-
-                    <x-slot:button href="https://github.com/nbeerten/tmasigns">
-                        <x-heroicon-s-archive-box-arrow-down defer /> Download package
-                    </x-slot:button>
-                </x-card>
-            </div>
+                <x-slot:action>
+                    <a href="https://discord.gg/b8MfZsYFWg" class="button" role="button">
+                        <x-simpleicon-discord class="heroicons" /> TMA Discord Server
+                    </a>
+                    <a href="https://discord.gg/b8MfZsYFWg" class="button" role="button">
+                        <x-heroicon-s-archive-box-arrow-down defer /> Download signpack
+                    </a>
+                </x-slot:action>
+            </x-card>
         </x-details>
+        
         <hr>
+
         <x-details open>
             <x-slot:summary id="generator">
                 <x-heroicon-s-beaker /> Sign Generator
@@ -143,10 +125,20 @@
                     </details> --}}
 
                     <div class="wrapper-button-align-right">
-                        <a id="downloadButton" href="" @@click.prevent.throttle.500ms="TMASigns.downloadTGA($data)"
-                            download="tma_sign2x1_text.zip" class="button">
-                            <x-heroicon-m-arrow-down-tray /> Download TGA
+                        <a id="downloadButton" href="" @@click.prevent.throttle.500ms="TMASigns.downloadsign($data)"
+                            download="tma-text-text-subtext_4x1-UG.zip" class="button" role="button">
+                            <x-heroicon-m-arrow-down-tray /> Download
                         </a>
+                    </div>
+
+                    <div class="tmasigns__information-card">
+                        <x-information-card>
+                            <x-md>Did you find a bug, need help or have feedback?</x-md>
+                            <x-slot:more>
+                                Feel free to report, ask or share it with me by sending me a DM on discord (nbert#2620).
+                                In case you need a large amount of signs with e.g. incremental numbers feel free to contact me as well.
+                            </x-slot:more>
+                        </x-information-card>
                     </div>
                 </section>
                 <section class="right-col">
@@ -166,7 +158,9 @@
                 </section>
             </div>
         </x-details>
+
         <hr>
+
         <x-details>
             <x-slot:summary id="tools">
                 <x-heroicon-s-wrench /> Tools
@@ -188,11 +182,7 @@
                             <input x-model="$store.locatorTool.newUrl" id="locatortool" type="url" placeholder="URL"
                                 @@keyup.enter.prevent="$store.locatorTool.addUrl($store.locatorTool.newUrl)">
                             <button class="action button" @@click.prevent="$store.locatorTool.addUrl($store.locatorTool.newUrl)">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
-                                    <path fill-rule="evenodd"
-                                        d="M12 3.75a.75.75 0 01.75.75v6.75h6.75a.75.75 0 010 1.5h-6.75v6.75a.75.75 0 01-1.5 0v-6.75H4.5a.75.75 0 010-1.5h6.75V4.5a.75.75 0 01.75-.75z"
-                                        clip-rule="evenodd" />
-                                </svg>
+                                <x-heroicon-o-plus stroke-width="2.5" />
                             </button>
                         </div>
                     </div>
@@ -217,4 +207,13 @@
             </div>
         </x-details>
     </section>
+    <script>
+        // Auto close all other tools when hash = generator; script placed here to prevent flickering
+        if(window.location.hash == "#generator") {
+            const elements = document.querySelectorAll(`details[open] > summary:not(#generator)`);
+            elements.forEach(element => {
+                element.parentNode.removeAttribute('open');
+            })
+        }
+    </script>
 </x-layout.app>

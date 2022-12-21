@@ -1,4 +1,4 @@
-<aside class="information-card" style='--accent-color: {!! $accent ?? "var(--color-info)" !!}' {{ $attributes }}>
+<aside class="information-card" style='--accent-color: {!! $accent ?? "var(--accent-info-dark)" !!}' {{ $attributes }}>
     <div class="icon">
         @isset($icon)
         {!! $icon !!}

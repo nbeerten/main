@@ -44,7 +44,7 @@
 }
 
 /* Font mixins */
-@mixin font-sans($stretch: 115%) {
+@mixin font-sans($stretch: 110%) {
     font-family: var(--font-sans);
     font-stretch: $stretch;
 }
@@ -108,12 +108,16 @@
     --accent-success-light: #3291FF;
     --accent-success: #0070F3;
     --accent-success-dark: #0761D1;
+    --accent-info-lighter: #D3E5FF;
+    --accent-info-light: #3291FF;
+    --accent-info: #0070F3;
+    --accent-info-dark: #0761D1;
     --accent-warning-lighter: #FFEFCF;
     --accent-warning-light: #F7B955;
     --accent-warning: #F5A623;
     --accent-warning-dark: #AB570A;
 
-    --border-color: rgb(113, 113, 122);
+    --border-color: var(--accent-2);
     --secondary-border-color: #333;
 
     --outline-color: #0000ff;

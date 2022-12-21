@@ -14,22 +14,22 @@ class TMASignsController extends Controller
 {
     public function jpg($size, $options, $text, $subtext) {
         $TMASigns = new TMASigns("jpg", $size, $options, $text, $subtext);
-        return response($TMASigns->jpg())->header('Content-Type', 'image/jpg');
+        return response($TMASigns->get())->header('Content-Type', 'image/jpg');
     }
 
     public function webp($size, $options, $text, $subtext) {
         $TMASigns = new TMASigns("webp", $size, $options, $text, $subtext);
-        return response($TMASigns->webp())->header('Content-Type', 'image/webp');
+        return response($TMASigns->get())->header('Content-Type', 'image/webp');
     }
 
     public function tga_zip($size, $options, $text, $subtext) {
         $TMASigns = new TMASigns("tga", $size, $options, $text, $subtext);
-        return response($TMASigns->tga_zip())->header('Content-Type', 'application/zip');
+        return response($TMASigns->getZip())->header('Content-Type', 'application/zip');
     }
 
     public function tga_raw($size, $options, $text, $subtext) {
         $TMASigns = new TMASigns("tga", $size, $options, $text, $subtext);
-        return response($TMASigns->tga_raw())->header('Content-Type', 'image/tga');
+        return response($TMASigns->get())->header('Content-Type', 'image/tga');
     }
 
     public function json(Request $request)
@@ -59,22 +59,55 @@ class TMASignsController extends Controller
             return $this->jpg($size, $options, $text, $subtext);
     }
 
-    public function batch(Request $request, $size)
+    public function bigbatch(Request $request)
     {
-
+        $sizes = [2, 4, 6];
+        
         // enable output of HTTP headers
         $options = new ZipStream\Option\Archive();
         $options->setSendHttpHeaders(true);
 
-        $zip = new ZipStream\ZipStream("tma_sign{$size}x1_Checkpoint-1-25.zip", $options);
+        $mainzip = new ZipStream\ZipStream("tma-bigbatch-text-and-cp-signs.zip", $options);
 
-        for ($x = 1; $x <= 25; $x++) {
-            $TMASigns = new TMASigns("tga", $size, [], "Checkpoint {$x}", '');
-
-            $zip->addFile("Checkpoint_{$x}.tga", $TMASigns->tga_raw());
+        foreach ($sizes as $size) {
+            if($size == 6) {
+                for ($x = 1; $x <= 25; $x++) {
+                    $x = str_pad($x, 2, '0', STR_PAD_LEFT); 
+                    $TMASigns = new TMASigns("jpg", $size, [], "Checkpoint {$x}", '');
+        
+                    $mainzip->addFile("Advertisement{$size}x1/tma-CP_{$size}x1/tma-CP-{$x}.jpg", $TMASigns->get());
+                }
+            }
+    
+            $strings = [
+                "Start",
+                "Finish",
+                "Checkpoint",
+                "GPS",
+                "GPS back",
+                "Multilap",
+            ];
+            
+            if($size !== 6) {
+                foreach ($strings as $value) {
+                    $TMASigns = new TMASigns("tga", $size, [], $value, '');
+                    $value = str_replace(' ', '', strtolower($value));
+        
+                    $data = $TMASigns->tga_zip_stream();
+        
+                    $mainzip->addFileFromStream("Advertisement{$size}x1/tma-text_{$size}x1/tma-text-{$value}.zip", $data);
+                    fclose($data);
+                }
+            } elseif($size == 6) {
+                foreach ($strings as $value) {
+                    $TMASigns = new TMASigns("jpg", $size, [], $value, '');
+                    $value = str_replace(' ', '', strtolower($value));
+        
+                    $mainzip->addFile("Advertisement{$size}x1/tma-text_{$size}x1/tma-text-{$value}.jpg", $TMASigns->get());
+                }
+            }
         }
-
-        return $zip->finish();
+        return $mainzip->finish();
     }
 
     public function locatortool(Request $request)

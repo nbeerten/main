@@ -31,7 +31,9 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
-Route::view('/background', 'background', ['aspectratio' => Request::query('aspectratio', '16 / 9')]);
+Route::get('/tmasigns', function () {
+    return view('tmasigns');
+})->name('tmasigns');
 
 // Small services
 Route::get('/og', [OpengraphImageController::class, 'get'])
@@ -49,15 +51,9 @@ Route::middleware('auth')->group(function () {
         return redirect(route('login'));
     })->name('auth.logout');
 
-    
+    Route::get('tmasigns/bigbatch', [TMASignsController::class, 'bigbatch']);
 
-    Route::get('/tmasigns', function () {
-        return view('tmasigns');
-    })->name('tmasigns');
-    Route::get('tmasigns/batch/{size}', [TMASignsController::class, 'batch']);
-
-
-
+    Route::view('/background', 'background', ['aspectratio' => Request::query('aspectratio', '16 / 9')]);
 });
 
 Statamic::pushWebRoutes(function () {

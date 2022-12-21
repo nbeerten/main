@@ -53,6 +53,9 @@ class Base
 
         $sign = $this->baseCanvas->getImageBlob();
 
+        $this->baseCanvas->clear();
+        $this->textStyling->clear();
+
         return $sign;
     }
     
@@ -69,6 +72,10 @@ class Base
         $this->ImageSettings();
 
         $sign = $this->baseCanvas->getImageBlob();
+        
+        $this->baseCanvas->clear();
+        $this->textStyling->clear();
+        $this->subTextStyling->clear();
 
         return $sign;
     }

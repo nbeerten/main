@@ -46,7 +46,7 @@
             hsl(252deg 80% 67% / var(--opacity)) 81%,
             hsl(212deg 100% 48% / var(--opacity)) 100%
         );
-        filter: blur(50px * (1 + var(--scrollposition-y)));
+        filter: blur(calc(50px * (1 + var(--scrollposition-y))));
         @media (--min-breakpoint-md) {
             filter: blur(calc(100px * (1 + var(--scrollposition-y))));
         }

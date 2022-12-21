@@ -1,20 +1,22 @@
 window.TMASigns = {
     updatePreview: function({text, subtext, size, subtextlocation}) {
+        // MS for response
+        const startTime = performance.now();
+
         if(text == '' || size == '') return;
 
 // Not indented for better code syntax for jsondebug card
-        var postData =
-`{
-    "format": "jpg",
-    "size": ${size},
-    "options": {
-        "subtextlocation": "${subtextlocation}"
-    },
-    "text": "${text}",
-    "subtext": "${subtext}"
-}`;
+        const jsonDebugData = JSON.stringify({
+            format: (size != 6 ? "tga" : "jpg"),
+            size: size,
+            options: {
+                subtextlocation: subtextlocation
+            },
+            text: text,
+            subtext: subtext
+        }, null, "  ");
         const jsondebug = document.querySelector("#jsondebug");
-        jsondebug.textContent = postData;
+        jsondebug.textContent = jsonDebugData;
         Prism.highlightAll();
 
         const previewImageParent = document.querySelector(':has(> #previewImage)');
@@ -25,7 +27,17 @@ window.TMASigns = {
             'Accept': 'application/json, image/jpg'
         };
 
-        fetch('/api/tmasigns', {method: 'POST', headers: Headers, body: postData})
+        const bodyData = JSON.stringify({
+            format: "jpg",
+            size: size,
+            options: {
+                subtextlocation: subtextlocation
+            },
+            text: text,
+            subtext: subtext
+        });
+
+        fetch('/api/tmasigns', {method: 'POST', headers: Headers, body: bodyData})
             .then((response) => {
                 previewImageParent.setAttribute("data-status", response.status)
                 previewImageParent.setAttribute("data-status-message", response.statusText)
@@ -35,6 +47,8 @@ window.TMASigns = {
                         if(imageBlob.type !== "image/jpg") return previewImage.src = '';
                         const objectURL = URL.createObjectURL(imageBlob);
                         previewImage.src = objectURL;
+                        const endTime = performance.now();
+                        previewImageParent.setAttribute("data-status-message", `${response.statusText} (${Math.round(endTime - startTime)}ms)`)
                     });
                 }
                 else {
@@ -47,33 +61,31 @@ window.TMASigns = {
             })
     },
 
-    downloadTGA: function({text, subtext, size, subtextlocation}) {
+    downloadsign: function({text, subtext, size, subtextlocation}) {
         if(text == '' || size == '') return;
 
         const downloadButton = document.querySelector('#downloadButton');
-        var filename = 'tma_sign';
-        filename += `${size}x1`;
-        filename += `_${text}`;
-        filename += (subtext !== "" ? `_${subtext}` : '');
+        const fnText = text.replace(/ /g, '').toLowerCase();
+        const fnSubtext = subtext ? subtext.replace(/ /g, '').toLowerCase() + '_' : '';
+        const filename = `tma-text-${fnText}-${fnSubtext}${size}x1-UG`;
 
-        if(size == 6) downloadButton.download = `${filename}.tga`
+        if(size == 6) downloadButton.download = `${filename}.jpg`
         else downloadButton.download = `${filename}.zip`;
 
-        var postData =
-        `{
-            "format": "tga",
-            "size": ${size},
-            "options": {
-                "subtextlocation": "${subtextlocation}"
+        const bodyData = JSON.stringify({
+            format: (size != 6 ? "tga" : "jpg"),
+            size: size,
+            options: {
+                subtextlocation: subtextlocation
             },
-            "text": "${text}",
-            "subtext": "${subtext}"
-        }`;
+            text: text,
+            subtext: subtext
+        });
         const Headers = {
             'Content-Type': 'application/json'
         };
 
-        fetch('/api/tmasigns', {method: 'POST', headers: Headers, body: postData})
+        fetch('/api/tmasigns', {method: 'POST', headers: Headers, body: bodyData})
             .then((response) => {
                 if(response.ok) {
                 response.blob()

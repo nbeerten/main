@@ -14,13 +14,7 @@
         @isset($seo->thumbnail)
             <meta property="og:image" content="{{ $seo->thumbnail }}">
         @else
-            @php
-                $data = ["title" => urlencode(isset($seo->title) ? $seo->title : Request::path()), 
-                        "pagetype" => urlencode(isset($seo->type['type']) ? $seo->type['type'] : "page" )];
-                $hmac = hash_hmac("sha1", json_encode($data), env('OG_HMAC_SECRET'), true);
-                $token = bin2hex($hmac);
-            @endphp
-            <meta property="og:image" content="https://next.nilsbeerten.nl/api/og?title={{ $data["title"] }}&pagetype={{ $data["pagetype"] }}&token={{ $token }}">
+            <meta property="og:image" content="https://next.nilsbeerten.nl/api/og?title={{ rawurlencode($seo->title) }}&pagetype={{ rawurlencode($seo->type['type'] ?? "page") }}">
             <meta property="og:image:width" content="1200" />
             <meta property="og:image:height" content="600" />
             <meta property="og:image:alt" content="Preview of the page together with the page title and website logo" />
@@ -47,7 +41,7 @@
         @isset($seo->thumbnail)
             <meta property="twitter:image" content="{{ $seo->thumbnail }}">
         @else
-            <meta property="twitter:image" content="https://next.nilsbeerten.nl/api/og?title={{ $data["title"] }}&pagetype={{ $data["pagetype"] }}&token={{ $token }}">
+            <meta property="twitter:image" content="https://next.nilsbeerten.nl/api/og?title={{ rawurlencode($seo->title) }}&pagetype={{ rawurlencode($seo->type['type'] ?? "page") }}">
         @endisset
     @endif
     @if($seo->schema)
