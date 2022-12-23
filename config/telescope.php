@@ -8,7 +8,6 @@ return [
     // Custom added
     'allowed_email' => env('EMAIL_WHITELIST', 'null'),
 
-
     /*
     |--------------------------------------------------------------------------
     | Telescope Domain

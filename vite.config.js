@@ -26,11 +26,11 @@ export default defineConfig({
     plugins: [
         laravel([
             '/resources/css/app.css',
-            '/resources/js/app.js',
-            '/resources/js/count.js',
-            '/resources/js/prism.js',
-            '/resources/js/pages/home.js',
-            '/resources/js/pages/TMASigns.js',
+            '/resources/scripts/app.js',
+            '/resources/scripts/count.js',
+            '/resources/scripts/prism.js',
+            '/resources/scripts/pages/home.js',
+            '/resources/scripts/pages/TMASigns.js',
         ]),
         partytownVite({
             dest: path.join(__dirname, 'public/vendor', 'partytown'),

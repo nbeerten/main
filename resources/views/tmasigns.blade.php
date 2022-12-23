@@ -1,14 +1,6 @@
-@php
-    App\Classes\SEO\SEO::make(
-        title: "TMA Signs",
-        description: "A small web application to create signs with text defined by the user for Trackmania, styled to fit in with the TMA signpack.",
-        noindex: true
-    );
-@endphp
-
 @push('scripts')
-    @vite('resources/js/pages/TMASigns.js')
-    @vite('resources/js/prism.js')
+    @vite('resources/scripts/pages/TMASigns.js')
+    @vite('resources/scripts/prism.js')
 
     <script>
         document.addEventListener("alpine:init", () => {

@@ -1,11 +1,3 @@
-@php
-    App\Classes\SEO\SEO::make(
-        title: "Contact",
-        description: "Contact me",
-        noindex: false
-    );
-@endphp
-
 @push('scripts')
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 @endpush
@@ -15,17 +7,16 @@
         <h1 class="heading">Contact</h1>
         <div class="contact__form">
             <form method="POST" action="/!/forms/contact" class="form-card contact">
-                @php( $statamic = Statamic::tag('form:contact'))
                 @csrf
                 
-                @if($statamic->success)
+                @if($form->success)
                 <x-information-card accent="var(--color-success)">
                     <x-slot:icon><x-heroicon-s-check/></x-slot:icon>
                     <x-md>
                         Successfully send the message!
                     </x-md>
                 </x-information-card>
-                @elseif($statamic->errors)
+                @elseif($form->errors)
                     <x-information-card accent="var(--color-error)">
                         <x-slot:icon><x-heroicon-s-exclamation-circle/></x-slot:icon>
                         <x-md>
@@ -33,7 +24,7 @@
                         </x-md>
                         <x-slot:more>
                             <ul>
-                            @foreach ($statamic->errors as $error)
+                            @foreach ($form->errors as $error)
                                 <li>{{ $error }}</li>
                             @endforeach
                             </ul>
@@ -42,14 +33,14 @@
                 @endif
                 
                 <div class="form-grid">
-                    @foreach ($statamic->fields as $field)
+                    @foreach ($form->fields as $field)
                     <div class="input {{ $field['handle'] }}">
                         <label for="{{ $field['handle'] }}">{{ Str::title($field['handle']) }}</label>
                         {!! $field['field'] !!}
                     </div>
                     @endforeach
 
-                    <input type="text" class="honeypot" name="{{ $statamic->honeypot ?? 'honeypot' }}">
+                    <input type="text" class="honeypot" name="{{ $form->honeypot ?? 'honeypot' }}">
 
                     <div class="submit-row">
                         <div class="captcha">

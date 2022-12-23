@@ -18,6 +18,7 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     public const HOME = '/home'; // Not used, kept to prevent errors
+
     public const DASHBOARD = '/dashboard';
 
     /**
@@ -52,7 +53,7 @@ class RouteServiceProvider extends ServiceProvider
 
         RateLimiter::for('tmasigns', function (Request $request) {
             return [
-                Limit::perMinute(30)->by($request->ip())
+                Limit::perMinute(30)->by($request->ip()),
             ];
         });
     }

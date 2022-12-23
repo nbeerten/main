@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "module": "esnext",
+        "target": "esnext",
+        "noImplicitAny": false,
+        "sourceMap": true
+    },
+    "include": [
+        "resources/scripts/**/*",
+        "**/*.ts",
+    ],
+    "exclude": [
+        "node_modules"
+    ],
+}

@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
 use Opcodes\LogViewer\Facades\LogViewer;
 
 class AppServiceProvider extends ServiceProvider
@@ -28,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
         LogViewer::auth(function ($request) {
             // return true to allow viewing the Log Viewer.
         });
-    
+
         // Here's an example:
         LogViewer::auth(function ($request) {
             return $request->user()

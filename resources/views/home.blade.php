@@ -1,5 +1,5 @@
 @push('scripts')
-    @vite('resources/js/pages/home.js')
+    @vite('resources/scripts/pages/home.js')
 @endpush
 
 <x-layout.app>

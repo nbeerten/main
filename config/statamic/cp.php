@@ -41,12 +41,12 @@ return [
         [
             'type' => 'collection',
             'collection' => 'posts',
-            'width' => 50
+            'width' => 50,
         ],
         [
             'type' => 'form',
             'form' => 'contact',
-            'width' => 50
+            'width' => 50,
         ],
     ],
 

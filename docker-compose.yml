@@ -14,8 +14,6 @@ services:
       SERVICE_TAGS: dev
     working_dir: /var/www/
     ports:
-      - "3000:3000"
-      - "3001:3001"
       - "5173:5173"
     volumes:
       - ./:/var/www
@@ -82,8 +80,6 @@ networks:
     driver: bridge
 
 volumes:
-    chromecache:
-        driver: local
     mysql:
         driver: local
     redis:

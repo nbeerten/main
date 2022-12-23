@@ -1,5 +1,5 @@
 @push('scripts')
-    @vite('resources/js/prism.js')
+    @vite('resources/scripts/prism.js')
 @endpush
 
 <x-layout.app>

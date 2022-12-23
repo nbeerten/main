@@ -1,4 +1,5 @@
 <?php
+
 ////////////////////////////////////////////////////////////////
 //// STATAMIC CAPTCHA!!                                     ////
 //// https://github.com/aryehraber/statamic-captcha         ////

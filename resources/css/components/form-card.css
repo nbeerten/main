@@ -24,6 +24,7 @@
         width: 100%;
         grid-column: span 2;
         gap: 0.5rem;
+        overflow: clip;
         
         @media (--min-breakpoint-md) {
             flex-direction: row;
@@ -43,8 +44,10 @@
         button {
             width: 100%;
             justify-content: center;
+            flex-direction: row;
 
             @media (--min-breakpoint-md) {
+                flex-direction: column;
                 display: flex;
                 align-items: center;
                 justify-content: center;

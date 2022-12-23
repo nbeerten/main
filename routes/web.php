@@ -1,12 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers\TMASignsController;
-use App\Http\Controllers\OpengraphImageController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\HomeController;
-
+use App\Http\Controllers\TMASignsController;
+use Illuminate\Support\Facades\Route;
 use Statamic\Statamic;
 
 /*
@@ -20,24 +17,24 @@ use Statamic\Statamic;
 |
 */
 
-// Main pages
-Route::get('/', [HomeController::class, 'show'])->name('home');
+/* Public pages */
 
-Route::get('/posts', [PostController::class, 'index'])->name('posts');
+Route::get('/', [PageController::class, 'home'])
+    ->name('home');
+
+Route::get('/posts', [PostController::class, 'index'])
+    ->name('posts');
+Route::get('/post/{slug}', [PostController::class, 'show'])
+    ->name('post.slug');
 Route::redirect('/post', '/posts', 301);
-Route::get('/post/{slug}', [PostController::class, 'show'])->name('post.slug');
 
-Route::get('/contact', function () {
-    return view('contact');
-})->name('contact');
+Route::get('/contact', [PageController::class, 'contact'])
+    ->name('contact');
 
-Route::get('/tmasigns', function () {
-    return view('tmasigns');
-})->name('tmasigns');
+Route::view('/tmasigns', [PageController::class, 'tmasigns'])
+    ->name('tmasigns');
 
-// Small services
-Route::get('/og', [OpengraphImageController::class, 'get'])
-     ->name('og');
+/* Public pages */
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {

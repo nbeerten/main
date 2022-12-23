@@ -28,7 +28,7 @@
     <script>
     {{!! File::get('../public/vendor/partytown/partytown.js') !!}}
     </script>
-    @vite('resources/js/app.js')
+    @vite('resources/scripts/app.js')
     @stack('scripts')
 </head>
 
@@ -62,6 +62,6 @@
     <!-- Script Stack -->
     @stack('footerscripts')
     <!-- Goatcounter -->
-    <script data-goatcounter="https://nilsbeerten.goatcounter.com/count" src="{{ Vite::asset("resources/js/count.js") }}" type="text/partytown"></script>
+    <script data-goatcounter="https://nilsbeerten.goatcounter.com/count" src="{{ Vite::asset("resources/scripts/count.js") }}" type="text/partytown"></script>
 </body>
 </html>
