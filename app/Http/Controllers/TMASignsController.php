@@ -101,7 +101,7 @@ class TMASignsController extends Controller
                     $TMASigns = new TMASigns('tga', $size, [], $value, '');
                     $value = str_replace(' ', '', strtolower($value));
 
-                    $data = $TMASigns->tga_zip_stream();
+                    $data = $TMASigns->getZipAsStream();
 
                     $mainzip->addFileFromStream("Advertisement{$size}x1/tma-text_{$size}x1/tma-text-{$value}.zip", $data);
                     fclose($data);

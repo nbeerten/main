@@ -16,9 +16,9 @@ class PostController extends Controller
             $posts = Entry::query()->where('collection', 'posts')->get();
         } else {
             $posts = Entry::query()
-            ->where('collection', 'posts')
-            ->where('published', true)
-            ->get();
+                ->where('collection', 'posts')
+                ->where('published', true)
+                ->get();
         }
 
         SEO::make(

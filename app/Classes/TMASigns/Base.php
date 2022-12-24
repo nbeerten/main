@@ -2,8 +2,9 @@
 
 namespace App\Classes\TMASigns;
 
-use Imagick as Imagick;
-use ImagickDraw as ImagickDraw;
+use Imagick;
+use ImagickDraw;
+use ImagickPixel;
 
 /**
  * Base methods for TMASigns
@@ -96,7 +97,7 @@ class Base
     /**
      * Create base canvas. Sets the size of the canvas, and does a fixed for Imagick's reading of `.tga` files.
      *
-     * @return string Blob of multi-line sign
+     * @return Imagick
      */
     private function baseCanvas(): Imagick
     {
@@ -122,7 +123,7 @@ class Base
 
         $newStrokeWidth = ($this->size === 1 && strlen($this->text) <= 4) ? Settings::outlinewidth[$this->size] * 2 : Settings::outlinewidth[$this->size];
         $draw->setStrokeWidth($newStrokeWidth);
-        $draw->setStrokeColor(Settings::outlinecolor);
+        $draw->setStrokeColor(new Imagickpixel(Settings::outlinecolor));
         $draw->setStrokeAntialias(true);
 
         $metrics = $this->baseCanvas->queryFontMetrics($draw, $this->text, false);

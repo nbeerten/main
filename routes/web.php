@@ -3,6 +3,8 @@
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TMASignsController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 use Statamic\Statamic;
 
@@ -31,7 +33,7 @@ Route::redirect('/post', '/posts', 301);
 Route::get('/contact', [PageController::class, 'contact'])
     ->name('contact');
 
-Route::view('/tmasigns', [PageController::class, 'tmasigns'])
+Route::get('/tmasigns', [PageController::class, 'tmasigns'])
     ->name('tmasigns');
 
 /* Public pages */

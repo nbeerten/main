@@ -68,7 +68,7 @@ class TMASigns extends Base
      *
      * @return resource Stream of `.zip` version of request resource
      */
-    public function getZipAsStream(): resource
+    public function getZipAsStream(): mixed
     {
         $tempStream = fopen('php://memory', 'r+');
         $sign = Base::get();
