@@ -4,6 +4,7 @@
     width: max-content;
     border-radius: 0.375rem;
     background-color: var(--button-background);
+    color: unset;
     padding-left: 0.75rem;
     padding-right: 0.75rem;
     padding-top: 0.5rem;
@@ -15,6 +16,7 @@
 
     &:hover {
         background-color: var(--button-background-hover);
+        text-decoration: unset;
     }
 
     &[disabled] {

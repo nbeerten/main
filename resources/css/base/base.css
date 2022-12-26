@@ -57,14 +57,15 @@ main {
     background-color: hsla(235, 86%, 65%, 0.4);
 }
 
-p:not(.no-standard), li:not(.no-standard) {
+
+p:where(:not(.no-standard)), li:where(:not(.no-standard)) {
     color: var(--text-color-paragraph);
 }
 
-p:not(.no-standard) a {
-    color: #6470f7;
+a:where(:not(.no-standard)) {
+    color: var(--color-link);
+
     &:hover {
-        color: #5865F2;
         text-decoration: underline;
     }
 }
@@ -73,7 +74,7 @@ i {
     font-variation-settings: "ital" 1;
 }
 
-ul:not(.no-standard) {
+ul:where(:not(.no-standard)) {
     list-style-type: "- ";
     list-style-position: inside;
 }
@@ -83,21 +84,17 @@ kbd,
 samp,
 pre):not([class*=language-], .no-standard) {
     font-family: var(--font-mono);
-    letter-spacing: -0.05em;
-    font-size: 1em;
-    height: 100vh;
 }
 
-code:not([class*=language-], .no-standard) {
+code:where(:not([class*=language-], .no-standard)) {
+    font-family: var(--font-mono);
     border-radius: 0.375em;
     background-color: var(--bg-primary);
     padding-left: 0.25em;
     padding-right: 0.25em;
-    font-family: var(--font-mono);
-    letter-spacing: -0.05em;
 }
 
-hr:not(.no-standard) {
+hr:where(:not(.no-standard)) {
     border-color: var(--border-color);
     margin: 0.5rem 0rem;
 }

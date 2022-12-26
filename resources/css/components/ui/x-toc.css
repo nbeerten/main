@@ -1,0 +1,9 @@
+.x-toc {
+    li::marker {
+        content: none;
+    }
+
+    li > ul {
+        margin-left: 1em;
+    }
+}

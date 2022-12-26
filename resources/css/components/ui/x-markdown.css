@@ -1,0 +1,926 @@
+.x-markdown {
+    font-stretch: 105%;
+    word-wrap: break-word;
+}
+
+.x-markdown details,
+.x-markdown figcaption,
+.x-markdown figure {
+    display: block;
+}
+
+.x-markdown summary {
+    display: list-item;
+}
+
+.x-markdown [hidden] {
+    display: none;
+}
+
+.x-markdown a {
+    background-color: transparent;
+    color: var(--color-link);
+    text-decoration: none;
+}
+
+.x-markdown a:active,
+.x-markdown a:hover {
+    outline-width: 0;
+}
+
+.x-markdown abbr[title] {
+    border-bottom: none;
+    text-decoration: underline dotted;
+}
+
+.x-markdown b,
+.x-markdown strong {
+    font-weight: 600;
+}
+
+.x-markdown dfn {
+    font-style: italic;
+}
+
+.x-markdown h1 {
+    margin: .67em 0;
+    font-weight: 600;
+    padding-bottom: .3em;
+    font-size: 2em;
+    border-bottom: 1px solid #21262d;
+}
+
+.x-markdown mark {
+    background-color: rgba(187, 128, 9, 0.15);
+    color: #c9d1d9;
+}
+
+.x-markdown small {
+    font-size: 90%;
+}
+
+.x-markdown sub,
+.x-markdown sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+.x-markdown sub {
+    bottom: -0.25em;
+}
+
+.x-markdown sup {
+    top: -0.5em;
+}
+
+.x-markdown img {
+    border-style: none;
+    max-width: 100%;
+    box-sizing: content-box;
+    background-color: #0d1117;
+}
+
+.x-markdown code,
+.x-markdown kbd,
+.x-markdown pre,
+.x-markdown samp {
+    font-family: monospace, monospace;
+    font-size: 1em;
+}
+
+.x-markdown figure {
+    margin: 1em 40px;
+}
+
+.x-markdown hr {
+    box-sizing: content-box;
+    overflow: hidden;
+    background: transparent;
+    border-bottom: 1px solid #21262d;
+    height: .25em;
+    padding: 0;
+    margin: 24px 0;
+    background-color: #30363d;
+    border: 0;
+}
+
+.x-markdown input {
+    font: inherit;
+    margin: 0;
+    overflow: visible;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.x-markdown [type=button],
+.x-markdown [type=reset],
+.x-markdown [type=submit] {
+    -webkit-appearance: button;
+}
+
+.x-markdown [type=button]::-moz-focus-inner,
+.x-markdown [type=reset]::-moz-focus-inner,
+.x-markdown [type=submit]::-moz-focus-inner {
+    border-style: none;
+    padding: 0;
+}
+
+.x-markdown [type=button]:-moz-focusring,
+.x-markdown [type=reset]:-moz-focusring,
+.x-markdown [type=submit]:-moz-focusring {
+    outline: 1px dotted ButtonText;
+}
+
+.x-markdown [type=checkbox],
+.x-markdown [type=radio] {
+    box-sizing: border-box;
+    padding: 0;
+}
+
+.x-markdown [type=number]::-webkit-inner-spin-button,
+.x-markdown [type=number]::-webkit-outer-spin-button {
+    height: auto;
+}
+
+.x-markdown [type=search] {
+    -webkit-appearance: textfield;
+    outline-offset: -2px;
+}
+
+.x-markdown [type=search]::-webkit-search-cancel-button,
+.x-markdown [type=search]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+.x-markdown ::-webkit-input-placeholder {
+    color: inherit;
+    opacity: .54;
+}
+
+.x-markdown ::-webkit-file-upload-button {
+    -webkit-appearance: button;
+    font: inherit;
+}
+
+.x-markdown a:hover {
+    text-decoration: underline;
+}
+
+.x-markdown hr::before {
+    display: table;
+    content: "";
+}
+
+.x-markdown hr::after {
+    display: table;
+    clear: both;
+    content: "";
+}
+
+.x-markdown table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    display: block;
+    width: max-content;
+    max-width: 100%;
+    overflow: auto;
+}
+
+.x-markdown td,
+.x-markdown th {
+    padding: 0;
+}
+
+.x-markdown details summary {
+    cursor: pointer;
+}
+
+.x-markdown details:not([open]) > *:not(summary) {
+    display: none !important;
+}
+
+.x-markdown kbd {
+    display: inline-block;
+    padding: 3px 5px;
+    font: 11px var(--font-mono);
+    line-height: 11px;
+    color: var(--accent-8);
+    vertical-align: middle;
+    background-color: var(--accent-0);
+    border: solid 1px rgba(110, 118, 129, 0.4);
+    border-bottom-color: rgba(110, 118, 129, 0.4);
+    border-radius: 6px;
+    box-shadow: inset 0 -1px 0 rgba(110, 118, 129, 0.4);
+}
+
+.x-markdown h1,
+.x-markdown h2,
+.x-markdown h3,
+.x-markdown h4,
+.x-markdown h5,
+.x-markdown h6 {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+.x-markdown h2 {
+    font-weight: 600;
+    padding-bottom: .3em;
+    font-size: 1.5em;
+}
+
+.x-markdown h3 {
+    font-weight: 600;
+    font-size: 1.25em;
+}
+
+.x-markdown h4 {
+    font-weight: 600;
+    font-size: 1em;
+}
+
+.x-markdown h5 {
+    font-weight: 600;
+    font-size: .875em;
+}
+
+.x-markdown h6 {
+    font-weight: 600;
+    font-size: .85em;
+}
+
+.x-markdown :is(h2 + p:has(a.anchor) + h3) {
+    padding-top: 0rem;
+    margin-top: -0.75rem;
+}
+
+.x-markdown p {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.x-markdown blockquote {
+    position: relative;
+    margin: 0;
+    padding: 0 1em;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        inset-block: 0;
+        width: 0.25em;
+        background-color: var(--accent-2);
+        border-radius: 0.375em;
+        margin-left: -1em;
+    }
+}
+
+.x-markdown ul,
+.x-markdown ol {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 2em;
+}
+
+.x-markdown ol ol,
+.x-markdown ul ol {
+    list-style-type: lower-roman;
+}
+
+.x-markdown ul ul ol,
+.x-markdown ul ol ol,
+.x-markdown ol ul ol,
+.x-markdown ol ol ol {
+    list-style-type: lower-alpha;
+}
+
+.x-markdown dd {
+    margin-left: 0;
+}
+
+.x-markdown tt,
+.x-markdown code {
+    font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+    font-size: 12px;
+}
+
+.x-markdown pre {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+    font-size: 12px;
+    word-wrap: normal;
+}
+
+.x-markdown .octicon {
+    display: inline-block;
+    overflow: visible !important;
+    vertical-align: text-bottom;
+    fill: currentColor;
+}
+
+.x-markdown ::placeholder {
+    color: #484f58;
+    opacity: 1;
+}
+
+.x-markdown input::-webkit-outer-spin-button,
+.x-markdown input::-webkit-inner-spin-button {
+    margin: 0;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.x-markdown .pl-c {
+    color: #8b949e;
+}
+
+.x-markdown .pl-c1,
+.x-markdown .pl-s .pl-v {
+    color: #79c0ff;
+}
+
+.x-markdown .pl-e,
+.x-markdown .pl-en {
+    color: #d2a8ff;
+}
+
+.x-markdown .pl-smi,
+.x-markdown .pl-s .pl-s1 {
+    color: #c9d1d9;
+}
+
+.x-markdown .pl-ent {
+    color: #7ee787;
+}
+
+.x-markdown .pl-k {
+    color: #ff7b72;
+}
+
+.x-markdown .pl-s,
+.x-markdown .pl-pds,
+.x-markdown .pl-s .pl-pse .pl-s1,
+.x-markdown .pl-sr,
+.x-markdown .pl-sr .pl-cce,
+.x-markdown .pl-sr .pl-sre,
+.x-markdown .pl-sr .pl-sra {
+    color: #a5d6ff;
+}
+
+.x-markdown .pl-v,
+.x-markdown .pl-smw {
+    color: #ffa657;
+}
+
+.x-markdown .pl-bu {
+    color: #f85149;
+}
+
+.x-markdown .pl-ii {
+    color: #f0f6fc;
+    background-color: #8e1519;
+}
+
+.x-markdown .pl-c2 {
+    color: #f0f6fc;
+    background-color: #b62324;
+}
+
+.x-markdown .pl-sr .pl-cce {
+    font-weight: bold;
+    color: #7ee787;
+}
+
+.x-markdown .pl-ml {
+    color: #f2cc60;
+}
+
+.x-markdown .pl-mh,
+.x-markdown .pl-mh .pl-en,
+.x-markdown .pl-ms {
+    font-weight: bold;
+    color: #1f6feb;
+}
+
+.x-markdown .pl-mi {
+    font-style: italic;
+    color: #c9d1d9;
+}
+
+.x-markdown .pl-mb {
+    font-weight: bold;
+    color: #c9d1d9;
+}
+
+.x-markdown .pl-md {
+    color: #ffdcd7;
+    background-color: #67060c;
+}
+
+.x-markdown .pl-mi1 {
+    color: #aff5b4;
+    background-color: #033a16;
+}
+
+.x-markdown .pl-mc {
+    color: #ffdfb6;
+    background-color: #5a1e02;
+}
+
+.x-markdown .pl-mi2 {
+    color: #c9d1d9;
+    background-color: #1158c7;
+}
+
+.x-markdown .pl-mdr {
+    font-weight: bold;
+    color: #d2a8ff;
+}
+
+.x-markdown .pl-ba {
+    color: #8b949e;
+}
+
+.x-markdown .pl-sg {
+    color: #484f58;
+}
+
+.x-markdown .pl-corl {
+    text-decoration: underline;
+    color: #a5d6ff;
+}
+
+.x-markdown [data-catalyst] {
+    display: block;
+}
+
+.x-markdown g-emoji {
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 1em;
+    font-style: normal !important;
+    font-weight: 400;
+    line-height: 1;
+    vertical-align: -0.075em;
+}
+
+.x-markdown g-emoji img {
+    width: 1em;
+    height: 1em;
+}
+
+.x-markdown::before {
+    display: table;
+    content: "";
+}
+
+.x-markdown::after {
+    display: table;
+    clear: both;
+    content: "";
+}
+
+.x-markdown > *:first-child {
+    margin-top: 0 !important;
+}
+
+.x-markdown > *:last-child {
+    margin-bottom: 0 !important;
+}
+
+.x-markdown a:not([href]) {
+    color: inherit;
+    text-decoration: none;
+}
+
+.x-markdown .absent {
+    color: var(--accent-error-light);
+}
+
+.x-markdown .anchor {
+    float: left;
+    padding-right: 4px;
+    margin-left: -20px;
+    line-height: 1;
+}
+
+.x-markdown .anchor:focus {
+    outline: none;
+}
+
+.x-markdown p,
+.x-markdown blockquote,
+.x-markdown ul,
+.x-markdown ol,
+.x-markdown dl,
+.x-markdown table,
+.x-markdown pre,
+.x-markdown details {
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+.x-markdown blockquote > :first-child {
+    margin-top: 0;
+}
+
+.x-markdown blockquote > :last-child {
+    margin-bottom: 0;
+}
+
+.x-markdown sup > a::before {
+    content: "[";
+}
+
+.x-markdown sup > a::after {
+    content: "]";
+}
+
+.x-markdown h1 .octicon-link,
+.x-markdown h2 .octicon-link,
+.x-markdown h3 .octicon-link,
+.x-markdown h4 .octicon-link,
+.x-markdown h5 .octicon-link,
+.x-markdown h6 .octicon-link {
+    color: #c9d1d9;
+    vertical-align: middle;
+    visibility: hidden;
+}
+
+.x-markdown h1:hover .anchor,
+.x-markdown h2:hover .anchor,
+.x-markdown h3:hover .anchor,
+.x-markdown h4:hover .anchor,
+.x-markdown h5:hover .anchor,
+.x-markdown h6:hover .anchor {
+    text-decoration: none;
+}
+
+.x-markdown h1:hover .anchor .octicon-link,
+.x-markdown h2:hover .anchor .octicon-link,
+.x-markdown h3:hover .anchor .octicon-link,
+.x-markdown h4:hover .anchor .octicon-link,
+.x-markdown h5:hover .anchor .octicon-link,
+.x-markdown h6:hover .anchor .octicon-link {
+    visibility: visible;
+}
+
+.x-markdown h1 tt,
+.x-markdown h1 code,
+.x-markdown h2 tt,
+.x-markdown h2 code,
+.x-markdown h3 tt,
+.x-markdown h3 code,
+.x-markdown h4 tt,
+.x-markdown h4 code,
+.x-markdown h5 tt,
+.x-markdown h5 code,
+.x-markdown h6 tt,
+.x-markdown h6 code {
+    padding: 0 .2em;
+    font-size: inherit;
+}
+
+.x-markdown ul.no-list,
+.x-markdown ol.no-list {
+    padding: 0;
+    list-style-type: none;
+}
+
+.x-markdown ol[type="1"] {
+    list-style-type: decimal;
+}
+
+.x-markdown ol[type=a] {
+    list-style-type: lower-alpha;
+}
+
+.x-markdown ol[type=i] {
+    list-style-type: lower-roman;
+}
+
+.x-markdown div > ol:not([type]) {
+    list-style-type: decimal;
+}
+
+.x-markdown ul ul,
+.x-markdown ul ol,
+.x-markdown ol ol,
+.x-markdown ol ul {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.x-markdown li > p {
+    margin-top: 16px;
+}
+
+.x-markdown li + li {
+    margin-top: .25em;
+}
+
+.x-markdown dl {
+    padding: 0;
+}
+
+.x-markdown dl dt {
+    padding: 0;
+    margin-top: 16px;
+    font-size: 1em;
+    font-style: italic;
+    font-weight: 600;
+}
+
+.x-markdown dl dd {
+    padding: 0 16px;
+    margin-bottom: 16px;
+}
+
+.x-markdown table th {
+    font-weight: 600;
+    background-color: var(--accent-0);
+}
+
+.x-markdown table th,
+.x-markdown table td {
+    padding: 6px 13px;
+    border: 1px solid var(--accent-2);
+}
+
+.x-markdown table tr {
+    background-color: var(--accent-1);
+    border-top: 1px solid var(--accent-2);
+}
+
+.x-markdown table tr:nth-child(2n) {
+    background-color: var(--accent-1);
+}
+
+.x-markdown table img {
+    background-color: transparent;
+}
+
+.x-markdown img[align=right] {
+    padding-left: 20px;
+}
+
+.x-markdown img[align=left] {
+    padding-right: 20px;
+}
+
+.x-markdown .emoji {
+    max-width: none;
+    vertical-align: text-top;
+    background-color: transparent;
+}
+
+.x-markdown span.frame {
+    display: block;
+    overflow: hidden;
+}
+
+.x-markdown span.frame > span {
+    display: block;
+    float: left;
+    width: auto;
+    padding: 7px;
+    margin: 13px 0 0;
+    overflow: hidden;
+    border: 1px solid #30363d;
+}
+
+.x-markdown span.frame span img {
+    display: block;
+    float: left;
+}
+
+.x-markdown span.frame span span {
+    display: block;
+    padding: 5px 0 0;
+    clear: both;
+    color: #c9d1d9;
+}
+
+.x-markdown span.align-center {
+    display: block;
+    overflow: hidden;
+    clear: both;
+}
+
+.x-markdown span.align-center > span {
+    display: block;
+    margin: 13px auto 0;
+    overflow: hidden;
+    text-align: center;
+}
+
+.x-markdown span.align-center span img {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.x-markdown span.align-right {
+    display: block;
+    overflow: hidden;
+    clear: both;
+}
+
+.x-markdown span.align-right > span {
+    display: block;
+    margin: 13px 0 0;
+    overflow: hidden;
+    text-align: right;
+}
+
+.x-markdown span.align-right span img {
+    margin: 0;
+    text-align: right;
+}
+
+.x-markdown span.float-left {
+    display: block;
+    float: left;
+    margin-right: 13px;
+    overflow: hidden;
+}
+
+.x-markdown span.float-left span {
+    margin: 13px 0 0;
+}
+
+.x-markdown span.float-right {
+    display: block;
+    float: right;
+    margin-left: 13px;
+    overflow: hidden;
+}
+
+.x-markdown span.float-right > span {
+    display: block;
+    margin: 13px auto 0;
+    overflow: hidden;
+    text-align: right;
+}
+
+.x-markdown code,
+.x-markdown tt {
+    padding: .2em .4em;
+    margin: 0;
+    font-size: 85%;
+    background-color: var(--accent-0);
+    border-radius: 6px;
+}
+
+.x-markdown code br,
+.x-markdown tt br {
+    display: none;
+}
+
+.x-markdown del code {
+    text-decoration: inherit;
+}
+
+.x-markdown pre code {
+    font-size: 100%;
+}
+
+.x-markdown pre > code {
+    padding: 0;
+    margin: 0;
+    word-break: normal;
+    white-space: pre;
+    background: transparent;
+    border: 0;
+}
+
+.x-markdown .highlight {
+    margin-bottom: 16px;
+}
+
+.x-markdown .highlight pre {
+    margin-bottom: 0;
+    word-break: normal;
+}
+
+.x-markdown .highlight pre,
+.x-markdown pre {
+    padding: 16px;
+    overflow: auto;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: var(--accent-0);
+    border-radius: 6px;
+}
+
+.x-markdown pre code,
+.x-markdown pre tt {
+    display: inline;
+    max-width: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    line-height: inherit;
+    word-wrap: normal;
+    background-color: transparent;
+    border: 0;
+}
+
+.x-markdown .csv-data td,
+.x-markdown .csv-data th {
+    padding: 5px;
+    overflow: hidden;
+    font-size: 12px;
+    line-height: 1;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.x-markdown .csv-data .blob-num {
+    padding: 10px 8px 9px;
+    text-align: right;
+    background: #0d1117;
+    border: 0;
+}
+
+.x-markdown .csv-data tr {
+    border-top: 0;
+}
+
+.x-markdown .csv-data th {
+    font-weight: 600;
+    background: #161b22;
+    border-top: 0;
+}
+
+.x-markdown .footnotes {
+    font-size: 12px;
+    color: #8b949e;
+    border-top: 1px solid #30363d;
+}
+
+.x-markdown .footnotes ol {
+    padding-left: 16px;
+}
+
+.x-markdown .footnotes li {
+    position: relative;
+}
+
+.x-markdown .footnotes li:target::before {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    bottom: -8px;
+    left: -24px;
+    pointer-events: none;
+    content: "";
+    border: 2px solid #1f6feb;
+    border-radius: 6px;
+}
+
+.x-markdown .footnotes li:target {
+    color: #c9d1d9;
+}
+
+.x-markdown .footnotes .data-footnote-backref g-emoji {
+    font-family: monospace;
+}
+
+.x-markdown .task-list-item {
+    list-style-type: none;
+}
+
+.x-markdown .task-list-item label {
+    font-weight: 400;
+}
+
+.x-markdown .task-list-item.enabled label {
+    cursor: pointer;
+}
+
+.x-markdown .task-list-item + .task-list-item {
+    margin-top: 3px;
+}
+
+.x-markdown .task-list-item .handle {
+    display: none;
+}
+
+.x-markdown .task-list-item-checkbox {
+    margin: 0 .2em .25em -1.6em;
+    vertical-align: middle;
+}
+
+.x-markdown .contains-task-list:dir(rtl) .task-list-item-checkbox {
+    margin: 0 -1.6em .25em .2em;
+}
+
+.x-markdown ::-webkit-calendar-picker-indicator {
+    filter: invert(50%);
+}

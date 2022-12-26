@@ -40,6 +40,8 @@ class PostController extends Controller
             return abort(404);
         }
 
+        $author = $post->author;
+
         // Structured Data
         $schema = Schema::BlogPosting()
             ->headline($post->title)
@@ -63,6 +65,6 @@ class PostController extends Controller
             schema: $schema->toScript()
         );
 
-        return view('posts.show', ['post' => $post]);
+        return view('posts.show', ['post' => $post, 'author' => $author]);
     }
 }

@@ -6,9 +6,14 @@
     <section class="posts-show">
         <article>
             <hgroup>
-                <h1 class="heading">{{ $post->title }}</h1>
+                <h1 class="heading">
+                    {{ $post->title }} 
+                    @if(!$post->published)
+                        <span class="post-badge"><x-heroicon-m-eye-slash /> Unpublished</span>
+                    @endif
+                </h1>
                 <div class="information">
-                    <p>Posted by {{ $post->author->name }}</p>
+                    <p>Posted by {{ $author->name }}</p>
                     <p>
                         <x-heroicon-o-newspaper/>
                         <time aria-label="Published at" 
@@ -27,9 +32,17 @@
             <hr>
             <section class="two-col">
                 <section class="content markdown">
-                    {!! $post->content !!}
+                    <x-markdown anchors flavor="github" class="x-markdown" >
+                        {!! $post->get('content') !!}
+                    </x-markdown>
                 </section>
                 <aside>
+                    <section class="toc">
+                        <h2 class="toc__heading">Table of contents</h2>
+                        <x-toc class="x-toc">
+                            {!! $post->get('content') !!}
+                        </x-toc>
+                    </section>
                     <button class="permalink" :class="clicked ? 'copied' : ''" role="button" x-data="{ clicked: false }"
                         x-on:click="navigator.clipboard.writeText('{{ $post->permalink }}'); clicked = !clicked;">
                         <x-heroicon-o-clipboard-document-list />{{ $post->permalink }}
@@ -37,8 +50,6 @@
                     <figure>
                         <img src="{{ $post->featured_image }}">
                     </figure>
-                    <div class="views">
-                    </div>
                 </aside>
             </section>
         </article>

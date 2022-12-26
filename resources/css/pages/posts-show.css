@@ -20,6 +20,19 @@
                 font-size: 2.5rem;
                 line-height: 2.25rem;
                 font-weight: 800;
+
+                > .post-badge {
+                    display: inline-flex;
+                    align-items: center;
+                    vertical-align: top;
+                    height: 2rem;
+                    font-size: 1.3rem;
+                    padding: 0.25rem 0.75rem;
+                    background-color: var(--accent-0);
+                    border-radius: 0.375rem;
+                    border: 1px solid var(--accent-2);
+                    margin-left: 0.5rem;
+                }
             }
             > .information {
                 display: flex;
@@ -71,6 +84,14 @@
                     width: var(--max-content-width);
                     max-width: 100%;
                     align-self: center;
+                }
+
+                .toc {
+                    &__heading {
+                        font-weight: 600;
+                        font-size: 1.2rem;
+                        margin: 0;
+                    }
                 }
 
                 .permalink {
@@ -128,7 +149,7 @@
                     border-radius: 0.375rem;
                     margin: 0;
                     padding: 0;
-                    aspect-ratio: 16 / 9;
+                    aspect-ratio: 2 / 1;
                     overflow: hidden;
                     max-width: 100%;
                     position: relative;
@@ -143,19 +164,5 @@
                 }
             }
         }
-    }
-}
-
-.markdown {
-    font-stretch: 105%;
-    font-size: 1rem;
-
-    pre {
-        background-color: var(--bg-cards);
-        overflow-x: scroll;
-    }
-    
-    code {
-        font-size: 13px;
     }
 }

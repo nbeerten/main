@@ -84,6 +84,8 @@
     --accent-warning: #F5A623;
     --accent-warning-dark: #AB570A;
 
+    --color-link: var(--accent-success-light);
+
     --border-color: var(--accent-2);
     --secondary-border-color: #333;
 

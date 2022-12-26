@@ -47,11 +47,7 @@ footer {
             }
 
             a {
-                font-style: normal;
-                
-                &:hover {
-                    text-decoration: underline;
-                }
+                color: unset;
             }
         }
 
@@ -102,6 +98,7 @@ footer {
             }
 
             a {
+                color: unset;
                 position: relative;
                 display: block;
                 padding: 0.5rem;

@@ -5,6 +5,9 @@ namespace App\Classes\TMASigns;
 use Exception;
 use ZipStream;
 
+/**
+ * Class for generating TMASigns
+ */
 class TMASigns extends Base
 {
     public function __construct(

@@ -67,7 +67,7 @@ window.TMASigns = {
         const downloadButton = document.querySelector('#downloadButton');
         const fnText = text.replace(/ /g, '').toLowerCase();
         const fnSubtext = subtext ? subtext.replace(/ /g, '').toLowerCase() + '_' : '';
-        const filename = `tma-text-${fnText}-${fnSubtext}${size}x1-UG`;
+        const filename = `TMA2-text-${fnText}-${fnSubtext}${size}x1-UG`;
 
         if(size == 6) downloadButton.download = `${filename}.jpg`
         else downloadButton.download = `${filename}.zip`;
