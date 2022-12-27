@@ -97,6 +97,8 @@
 
                 margin-bottom: 0.8rem;
 
+                outline: var(--accent-2) solid 1px;
+
                 &::after {
                     position: absolute;
                     top: 0px;
@@ -109,6 +111,7 @@
                     padding-top: 0.25rem;
                     padding-bottom: 0.25rem;
                     content: "Preview";
+                    outline: var(--accent-2) solid 1px;
                 }
 
                 &::before {
@@ -124,6 +127,7 @@
                     background-color: var(--bg-secondary);
                     padding: 0 0.5rem;
                     overflow: visible;
+                    outline: var(--accent-2) solid 1px;
                 }
 
                 &[data-status="200"]::before {
@@ -141,6 +145,7 @@
                 > img {
                     max-height: 24rem;
                     cursor: zoom-in;
+                    overflow: clip;
                 }
             }
 

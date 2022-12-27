@@ -52,6 +52,22 @@ main {
     text-rendering: optimizeLegibility;
 }
 
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+    margin: 0;
+}
+
 ::selection {
     color: white;
     background-color: hsla(235, 86%, 65%, 0.4);
@@ -97,20 +113,4 @@ code:where(:not([class*=language-], .no-standard)) {
 hr:where(:not(.no-standard)) {
     border-color: var(--border-color);
     margin: 0.5rem 0rem;
-}
-
-blockquote,
-dl,
-dd,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-hr,
-figure,
-p,
-pre {
-    margin: 0;
 }

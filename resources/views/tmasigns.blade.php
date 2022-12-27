@@ -70,7 +70,7 @@
                     <a href="https://discord.gg/b8MfZsYFWg" class="button" role="button">
                         <x-simpleicon-discord class="heroicons" /> TMA Discord Server
                     </a>
-                    <a href="https://discord.gg/b8MfZsYFWg" class="button" role="button">
+                    <a href="{{-- https://cdn.discordapp.com/attachments/1025895091782565898/1057230647502049351/TMA-signs-pack-v2.zip --}}" class="button" role="button" disabled>
                         <x-heroicon-s-archive-box-arrow-down defer /> Download signpack
                     </a>
                 </x-slot:action>
@@ -85,7 +85,7 @@
             </x-slot:summary>
             <div class="two-col no-scrollbar" x-data="{ text: '', subtext: '', size: '2', subtextlocation: 'bottom' }" @@input.debounce.500ms="TMASigns.updatePreview($data)">
 
-                <section class="left-col">
+                <section class="left-col" role="form">
                     <div class="input">
                         <label for="text">Text</label>
                         <input x-model="text" id="text" type="text" placeholder="Big text">
@@ -103,7 +103,9 @@
                     </div>
 
                     <div class="input">
-                        <label for="size">Sign size</label>
+                        <label for="size">
+                            Sign size
+                        </label>
                         <select x-model="size" id="size" style="font-family: var(--font-mono);">
                             <option value="1">1x1</option>
                             <option value="2" selected>2x1</option>
@@ -111,10 +113,6 @@
                             <option value="6">6x1</option>
                         </select>
                     </div>
-
-                    {{-- <details class="options">
-                        <summary>Options</summary>
-                    </details> --}}
 
                     <div class="wrapper-button-align-right">
                         <a id="downloadButton" href="" @@click.prevent.throttle.500ms="TMASigns.downloadsign($data)"
