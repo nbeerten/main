@@ -2,5 +2,7 @@
     <summary {{ $summary->attributes }}>
         {!! $summary !!}
     </summary>
-    {!! $slot !!}
+    <div class="component_details-card__content">
+        {!! $slot !!}
+    </div>
 </details>

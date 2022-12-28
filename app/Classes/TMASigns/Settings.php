@@ -8,17 +8,17 @@ namespace App\Classes\TMASigns;
 class Settings
 {
     public const fontsize = [
-        1 => 250,
-        2 => 150,
-        4 => 200,
-        6 => 125,
+        1 => [250, 250],
+        2 => [150, 150],
+        4 => [200, 200],
+        6 => [125, 90]
     ];
 
     public const subfontsize = [
-        1 => 50,
-        2 => 50,
-        4 => 80,
-        6 => 70,
+        1 => [50, 50],
+        2 => [50, 50],
+        4 => [80, 80],
+        6 => [70, 50]
     ];
 
     public const font = '../assets/TMASigns/Montserrat-Black.ttf';
@@ -36,10 +36,10 @@ class Settings
     public const subtextcolor = self::colors['white'];
 
     public const outlinewidth = [
-        1 => 5,
-        2 => 6,
-        4 => 8,
-        6 => 6,
+        1 => [5, 5],
+        2 => [6, 6],
+        4 => [8, 8],
+        6 => [6, 5]
     ];
 
     public const outlinecolor = '#ffffff';
@@ -63,13 +63,13 @@ class Settings
             1 => [-40, 140],
             2 => [-20, 100],
             4 => [-50, 110],
-            6 => [0, 0],
+            6 => [-40, 50]
         ],
         'top' => [
             1 => [10, -140],
             2 => [10, -100],
             4 => [30, -115],
-            6 => [0, 0], // Not needed
+            6 => [20, -65]
         ],
     ];
 
@@ -81,5 +81,7 @@ class Settings
 
     public const options = [
         'subtextlocation' => 'bottom',
+        'offsetText' => 'bottom',
+        'offsetSubtext' => 'bottom',
     ];
 }

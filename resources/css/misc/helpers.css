@@ -6,6 +6,13 @@
     display: flex;
     flex-direction: row;
     gap: 0.5rem;
+
+    &.--between {
+        justify-content: space-between;
+        > * {
+            width: 100%;
+        }
+    }
 }
 
 .helper_row-wrap {

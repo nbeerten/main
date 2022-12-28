@@ -79,8 +79,18 @@ class Base
         $this->textStyling = $this->text();
         $this->subTextStyling = $this->subText();
 
-        $this->baseCanvas->annotateImage($this->subTextStyling, 0, Settings::offset[$this->options['subtextlocation']][$this->size][1], 0, $this->subtext);
-        $this->baseCanvas->annotateImage($this->textStyling, 0, Settings::offset[$this->options['subtextlocation']][$this->size][0], 0, $this->text);
+        $this->baseCanvas->annotateImage(
+            $this->subTextStyling, 
+            0, 
+            Settings::offset[$this->options['subtextlocation']][$this->size][1] + $this->options['offsetSubtext'], 
+            0, 
+            $this->subtext);
+        $this->baseCanvas->annotateImage(
+            $this->textStyling, 
+            0, 
+            Settings::offset[$this->options['subtextlocation']][$this->size][0] + $this->options['offsetText'], 
+            0, 
+            $this->text);
 
         // Set all image-specific settings
         $this->imageSettings();
@@ -121,14 +131,14 @@ class Base
         $draw->setFillColor(Settings::textcolor);
         $draw->setTextAntialias(true);
 
-        $newStrokeWidth = ($this->size === 1 && strlen($this->text) <= 4) ? Settings::outlinewidth[$this->size] * 2 : Settings::outlinewidth[$this->size];
+        $newStrokeWidth = ($this->size === 1 && strlen($this->text) <= 4) ? Settings::outlinewidth[$this->size][$this->multiline] * 2 : Settings::outlinewidth[$this->size][$this->multiline];
         $draw->setStrokeWidth($newStrokeWidth);
         $draw->setStrokeColor(new Imagickpixel(Settings::outlinecolor));
         $draw->setStrokeAntialias(true);
 
         $metrics = $this->baseCanvas->queryFontMetrics($draw, $this->text, false);
         $calculatedFontSize = floor($metrics['characterWidth'] * Settings::margins[$this->size] / $metrics['textWidth']);
-        $newFontSize = $calculatedFontSize < Settings::fontsize[$this->size] ? $calculatedFontSize : Settings::fontsize[$this->size];
+        $newFontSize = $calculatedFontSize < Settings::fontsize[$this->size][$this->multiline] ? $calculatedFontSize : Settings::fontsize[$this->size][$this->multiline];
         $draw->setFontSize($newFontSize);
 
         return $draw;
@@ -150,7 +160,7 @@ class Base
 
         $metrics = $this->baseCanvas->queryFontMetrics($draw, $this->subtext, false);
         $calculatedFontSize = floor($metrics['characterWidth'] * Settings::margins[$this->size] / $metrics['textWidth']);
-        $newFontSize = $calculatedFontSize < Settings::subfontsize[$this->size] ? $calculatedFontSize : Settings::subfontsize[$this->size];
+        $newFontSize = $calculatedFontSize < Settings::subfontsize[$this->size][$this->multiline] ? $calculatedFontSize : Settings::subfontsize[$this->size][$this->multiline];
         $draw->setFontSize($newFontSize);
 
         return $draw;
@@ -158,7 +168,7 @@ class Base
 
     public function get()
     {
-        if (! empty($this->subtext) && $this->size != 6) {
+        if (!empty($this->subtext)) {
             return $this->multiLine();
         } elseif (! empty($this->text) || $this->text === '0') {
             return $this->singleLine();

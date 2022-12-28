@@ -83,7 +83,9 @@
             <x-slot:summary id="generator">
                 <x-heroicon-s-beaker /> Sign Generator
             </x-slot:summary>
-            <div class="two-col no-scrollbar" x-data="{ text: '', subtext: '', size: '2', subtextlocation: 'bottom' }" @@input.debounce.500ms="TMASigns.updatePreview($data)">
+            <div class="two-col no-scrollbar" 
+                 x-data="{ text: '', subtext: '', size: '2', subtextlocation: 'bottom', offsetText: '0', offsetSubtext: '0' }" 
+                 @@input.debounce.500ms="TMASigns.updatePreview($data)">
 
                 <section class="left-col" role="form">
                     <div class="input">
@@ -94,8 +96,8 @@
                     <div class="input">
                         <label for="subtext">Subtext (Optional)</label>
                         <div class="row">
-                            <input x-model="subtext" id="subtext" type="text" placeholder="Subtext" x-bind:disabled="size == 6 ? true : false">
-                            <select x-model="subtextlocation" id="subtextlocation" x-bind:disabled="size == 6 ? true : false">
+                            <input x-model="subtext" id="subtext" type="text" placeholder="Subtext">
+                            <select x-model="subtextlocation" id="subtextlocation">
                                 <option value="bottom" selected>Bottom</option>
                                 <option value="top">Top</option>
                             </select>
@@ -113,6 +115,21 @@
                             <option value="6">6x1</option>
                         </select>
                     </div>
+
+                    <x-details-card>
+                        <x-slot:summary>Options</x-slot:summary>
+                        <div class="helper_row --between">
+                            <div class="input">
+                                <label for="offsetText">Text offset</label>
+                                <input x-model="offsetText" id="offsetText" type="number" placeholder="0" min="-200" max="200">
+                            </div>
+
+                            <div class="input">
+                                <label for="offsetSubtext">Subtext offset</label>
+                                <input x-model="offsetSubtext" id="offsetSubtext" type="number" placeholder="0">
+                            </div>
+                        </div>
+                    </x-details-card>
 
                     <div class="wrapper-button-align-right">
                         <a id="downloadButton" href="" @@click.prevent.throttle.500ms="TMASigns.downloadsign($data)"

@@ -1,16 +1,17 @@
 window.TMASigns = {
-    updatePreview: function({text, subtext, size, subtextlocation}) {
+    updatePreview: function({text, subtext, size, subtextlocation, offsetText, offsetSubtext}) {
         // MS for response
         const startTime = performance.now();
 
         if(text == '' || size == '') return;
 
-// Not indented for better code syntax for jsondebug card
         const jsonDebugData = JSON.stringify({
             format: (size != 6 ? "tga" : "jpg"),
             size: size,
             options: {
-                subtextlocation: subtextlocation
+                subtextlocation: subtextlocation,
+                offsetText: offsetText,
+                offsetSubtext: offsetSubtext
             },
             text: text,
             subtext: subtext
@@ -31,7 +32,9 @@ window.TMASigns = {
             format: "jpg",
             size: size,
             options: {
-                subtextlocation: subtextlocation
+                subtextlocation: subtextlocation,
+                offsetText: offsetText,
+                offsetSubtext: offsetSubtext
             },
             text: text,
             subtext: subtext
@@ -61,7 +64,7 @@ window.TMASigns = {
             })
     },
 
-    downloadsign: function({text, subtext, size, subtextlocation}) {
+    downloadsign: function({text, subtext, size, subtextlocation, offsetText, offsetSubtext}) {
         if(text == '' || size == '') return;
 
         const downloadButton = document.querySelector('#downloadButton');
@@ -76,7 +79,9 @@ window.TMASigns = {
             format: (size != 6 ? "tga" : "jpg"),
             size: size,
             options: {
-                subtextlocation: subtextlocation
+                subtextlocation: subtextlocation,
+                offsetText: offsetText,
+                offsetSubtext: offsetSubtext
             },
             text: text,
             subtext: subtext
