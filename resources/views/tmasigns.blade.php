@@ -117,7 +117,7 @@
                     </div>
 
                     <x-details-card>
-                        <x-slot:summary>Options</x-slot:summary>
+                        <x-slot:summary>Advanced Options</x-slot:summary>
                         <div class="helper_row --between">
                             <div class="input">
                                 <label for="offsetText">Text offset</label>
