@@ -55,7 +55,12 @@ class Base
         $this->baseCanvas = $this->baseCanvas();
         $this->textStyling = $this->text();
 
-        $this->baseCanvas->annotateImage($this->textStyling, 0, 0, 0, $this->text);
+        $this->baseCanvas->annotateImage(
+            $this->textStyling, 
+            0, 
+            0 + $this->options['offsetText'], 
+            0, 
+            $this->text);
 
         // Set all image-specific settings
         $this->imageSettings();
@@ -131,7 +136,8 @@ class Base
         $draw->setFillColor(Settings::textcolor);
         $draw->setTextAntialias(true);
 
-        $newStrokeWidth = ($this->size === 1 && strlen($this->text) <= 4) ? Settings::outlinewidth[$this->size][$this->multiline] * 2 : Settings::outlinewidth[$this->size][$this->multiline];
+        $strokeWidth = ($this->size === 1 && strlen($this->text) <= 4) ? Settings::outlinewidth[$this->size][$this->multiline] * 2 : Settings::outlinewidth[$this->size][$this->multiline];
+        $newStrokeWidth = round($strokeWidth + $this->options['outlineModifier'], 3);
         $draw->setStrokeWidth($newStrokeWidth);
         $draw->setStrokeColor(new Imagickpixel(Settings::outlinecolor));
         $draw->setStrokeAntialias(true);

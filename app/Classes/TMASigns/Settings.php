@@ -81,7 +81,7 @@ class Settings
 
     public const options = [
         'subtextlocation' => 'bottom',
-        'offsetText' => 'bottom',
-        'offsetSubtext' => 'bottom',
+        'offsetText' => '0',
+        'offsetSubtext' => '0',
     ];
 }

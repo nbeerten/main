@@ -1,5 +1,5 @@
 window.TMASigns = {
-    updatePreview: function({text, subtext, size, subtextlocation, offsetText, offsetSubtext}) {
+    updatePreview: function({text, subtext, size, subtextlocation, offsetText, offsetSubtext, outlineModifier}) {
         // MS for response
         const startTime = performance.now();
 
@@ -11,7 +11,8 @@ window.TMASigns = {
             options: {
                 subtextlocation: subtextlocation,
                 offsetText: offsetText,
-                offsetSubtext: offsetSubtext
+                offsetSubtext: offsetSubtext,
+                outlineModifier: outlineModifier
             },
             text: text,
             subtext: subtext
@@ -20,8 +21,8 @@ window.TMASigns = {
         jsondebug.textContent = jsonDebugData;
         Prism.highlightAll();
 
-        const previewImageParent = document.querySelector(':has(> #previewImage)');
         const previewImage = document.querySelector('#previewImage');
+        const previewImageParent = previewImage.parentNode;
 
         const Headers = {
             'Content-Type': 'application/json',
@@ -34,7 +35,8 @@ window.TMASigns = {
             options: {
                 subtextlocation: subtextlocation,
                 offsetText: offsetText,
-                offsetSubtext: offsetSubtext
+                offsetSubtext: offsetSubtext,
+                outlineModifier: outlineModifier,
             },
             text: text,
             subtext: subtext
@@ -50,6 +52,7 @@ window.TMASigns = {
                         if(imageBlob.type !== "image/jpg") return previewImage.src = '';
                         const objectURL = URL.createObjectURL(imageBlob);
                         previewImage.src = objectURL;
+                        previewImage.classList.remove("loading");
                         const endTime = performance.now();
                         previewImageParent.setAttribute("data-status-message", `${response.statusText} (${Math.round(endTime - startTime)}ms)`)
                     });
@@ -64,7 +67,14 @@ window.TMASigns = {
             })
     },
 
-    downloadsign: function({text, subtext, size, subtextlocation, offsetText, offsetSubtext}) {
+    startLoadingAnimation: function({text}) {
+        if(text.length < 1) return;
+        const previewImageParent = document.querySelector('#previewImage').parentNode;
+        previewImageParent.setAttribute("data-status-message", `Loading...`);
+        if(previewImageParent.getAttribute("data-status") === "") previewImageParent.setAttribute("data-status", " ");
+    },
+
+    downloadsign: function({text, subtext, size, subtextlocation, offsetText, offsetSubtext, outlineModifier}) {
         if(text == '' || size == '') return;
 
         const downloadButton = document.querySelector('#downloadButton');
@@ -81,7 +91,8 @@ window.TMASigns = {
             options: {
                 subtextlocation: subtextlocation,
                 offsetText: offsetText,
-                offsetSubtext: offsetSubtext
+                offsetSubtext: offsetSubtext,
+                outlineModifier: outlineModifier
             },
             text: text,
             subtext: subtext

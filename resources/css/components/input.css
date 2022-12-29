@@ -36,35 +36,22 @@
         padding-top: 0.5rem;
         padding-bottom: 0.5rem;
         border: 1px solid var(--accent-2);
-        transition: outline 0.1s ease-in-out;
+        transition: border 0.1s ease-in-out;
 
-        --outline-color: transparent;
-        outline: 1px solid var(--outline-color);
+        outline: none;
 
         /* Validation colors */
         &:invalid {
-            --outline-color: var(--accent-error-dark);
-        }
-
-        &:valid {
-            --outline-color: transparent;
+            border-color: var(--accent-error-dark);
         }
 
         &:placeholder-shown {
-            --outline-color: transparent;
+            border-color: var(--accent-2);
         }
     }
 
-    input:hover {
-        --outline-color: var(--accent-5);
-    }
-
     input:focus {
-        --outline-color: var(--accent-7);
-    }
-
-    input:focus-visible {
-        --outline-color: var(--accent-9);
+        border-color: var(--accent-5);
     }
 
     textarea {
@@ -78,22 +65,13 @@
         padding-top: 0.5rem;
         padding-bottom: 0.5rem;
         border: 1px solid var(--accent-2);
-        transition: outline 0.1s ease-in-out;
+        transition: border 0.1s ease-in-out;
 
-        --outline-color: transparent;
-        outline: 1px solid var(--outline-color);
-    }
+        outline: none;
 
-    textarea:hover {
-        --outline-color: var(--accent-5);
-    }
-
-    textarea:focus {
-        --outline-color: var(--accent-7);
-    }
-
-    textarea:focus-visible {
-        --outline-color: var(--accent-9);
+        &:focus {
+            border-color: var(--accent-5);
+        }
     }
 
     select {
@@ -106,22 +84,13 @@
         padding-left: 0.75rem;
         padding-right: 0.75rem;
         border: 1px solid var(--accent-2);
-        transition: outline 0.1s ease-in-out;
+        transition: borer 0.1s ease-in-out;
         
-        --outline-color: transparent;
-        outline: 1px solid var(--outline-color);
-    }
+        outline: none;
 
-    select:hover {
-        --outline-color: var(--accent-5);
-    }
-
-    select:focus {
-        --outline-color: var(--accent-7);
-    }
-
-    select:focus-visible {
-        --outline-color: var(--accent-9);
+        &:focus {
+            border-color: var(--accent-5);
+        }
     }
 
     .row {

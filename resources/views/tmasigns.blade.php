@@ -58,7 +58,7 @@
                 <x-heroicon-s-archive-box /> TMA Signpack
             </x-slot:summary>
             <x-card class="tmasigns__signpack-card">
-                <x-slot:img src="{{ asset('assets/tmasigns_signpack_thumb.webp') }}" alt="Sign preview" height="160" width="500"></x-slot:img>
+                <x-slot:img src="{{ asset('assets/tma_signpack_thumb.webp') }}" alt="Sign preview" height="160" width="500"></x-slot:img>
                 <x-slot:title>The TMA Signpack</x-slot:title>
                 <x-md>
                     The main signpack includes: arrow signs made by Juice, checkpoint numbers `1-25` for `6x1` signs, and common text
@@ -84,19 +84,20 @@
                 <x-heroicon-s-beaker /> Sign Generator
             </x-slot:summary>
             <div class="two-col no-scrollbar" 
-                 x-data="{ text: '', subtext: '', size: '2', subtextlocation: 'bottom', offsetText: '0', offsetSubtext: '0' }" 
-                 @@input.debounce.500ms="TMASigns.updatePreview($data)">
+                 x-data="{ text: '', subtext: '', size: '2', subtextlocation: 'bottom', offsetText: '0', offsetSubtext: '0', outlineModifier: '0' }" 
+                 @@input.debounce.500ms="TMASigns.updatePreview($data)"
+                 @@input="TMASigns.startLoadingAnimation($data)">
 
                 <section class="left-col" role="form">
                     <div class="input">
                         <label for="text">Text</label>
-                        <input x-model="text" id="text" type="text" placeholder="Big text">
+                        <input x-model="text" id="text" type="text" placeholder="Big text" pattern="^.{0,32}">
                     </div>
 
                     <div class="input">
                         <label for="subtext">Subtext (Optional)</label>
                         <div class="row">
-                            <input x-model="subtext" id="subtext" type="text" placeholder="Subtext">
+                            <input x-model="subtext" id="subtext" type="text" placeholder="Subtext" pattern="^.{0,64}">
                             <select x-model="subtextlocation" id="subtextlocation">
                                 <option value="bottom" selected>Bottom</option>
                                 <option value="top">Top</option>
@@ -116,6 +117,8 @@
                         </select>
                     </div>
 
+                    <hr>
+
                     <x-details-card>
                         <x-slot:summary>Advanced Options</x-slot:summary>
                         <div class="helper_row --between">
@@ -128,6 +131,10 @@
                                 <label for="offsetSubtext">Subtext offset</label>
                                 <input x-model="offsetSubtext" id="offsetSubtext" type="number" placeholder="0">
                             </div>
+                        </div>
+                        <div class="input">
+                            <label for="outlineModifier">Outline modifier</label>
+                            <input x-model="outlineModifier" id="outlineModifier" type="number" placeholder="0">
                         </div>
                     </x-details-card>
 
