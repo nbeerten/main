@@ -56,10 +56,10 @@ class Base
         $this->textStyling = $this->text();
 
         $this->baseCanvas->annotateImage(
-            $this->textStyling, 
-            0, 
-            0 + $this->options['offsetText'], 
-            0, 
+            $this->textStyling,
+            0,
+            0 + $this->options['offsetText'],
+            0,
             $this->text);
 
         // Set all image-specific settings
@@ -85,16 +85,16 @@ class Base
         $this->subTextStyling = $this->subText();
 
         $this->baseCanvas->annotateImage(
-            $this->subTextStyling, 
-            0, 
-            Settings::offset[$this->options['subtextlocation']][$this->size][1] + $this->options['offsetSubtext'], 
-            0, 
+            $this->subTextStyling,
+            0,
+            Settings::offset[$this->options['subtextlocation']][$this->size][1] + $this->options['offsetSubtext'],
+            0,
             $this->subtext);
         $this->baseCanvas->annotateImage(
-            $this->textStyling, 
-            0, 
-            Settings::offset[$this->options['subtextlocation']][$this->size][0] + $this->options['offsetText'], 
-            0, 
+            $this->textStyling,
+            0,
+            Settings::offset[$this->options['subtextlocation']][$this->size][0] + $this->options['offsetText'],
+            0,
             $this->text);
 
         // Set all image-specific settings
@@ -174,7 +174,7 @@ class Base
 
     public function get()
     {
-        if (!empty($this->subtext)) {
+        if (! empty($this->subtext)) {
             return $this->multiLine();
         } elseif (! empty($this->text) || $this->text === '0') {
             return $this->singleLine();

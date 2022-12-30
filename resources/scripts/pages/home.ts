@@ -1,4 +1,4 @@
-import Typed from 'typed.js'
+import Typed from 'typed.js';
 
 /**
  * Uses canvas.measureText to compute and return the width of the given text of given font in pixels.
@@ -11,23 +11,24 @@ import Typed from 'typed.js'
 function getTextWidth(text, font) {
     // if given, use cached canvas for better performance
     // else, create new canvas
-    var canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement("canvas"));
-    var context = canvas.getContext("2d");
+    var canvas = canvas || (canvas = document.createElement("canvas"));
+    const context = canvas.getContext("2d");
     context.font = font;
-    var metrics = context.measureText(text);
+    const metrics = context.measureText(text);
     return metrics.width;
 }
 
-addEventListener('load', () => {
+function startTypingAnimation() {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     const textWidth = getTextWidth("Hai, I'm nbeerten. |", 'normal normal 800 semi-expanded min(4rem, 15vw)/1.5 "Hubot Sans"');
-    const targetTextParent = document.querySelector("#typewriter-text").parentNode.parentNode;
+    const targetTextParent = document.querySelector("#typewriter-text")?.parentElement?.parentElement as HTMLElement;
+        if(targetTextParent == null) return;
     targetTextParent.style.width = `${textWidth}px`;
 
     if (!mediaQuery || mediaQuery.matches) {
         return;
     } else {
-        var typing = new Typed("#typewriter-text", {
+        const typing: Typed = new Typed("#typewriter-text", {
             strings: ["Nils.", "Nils.", "nbert.", "nbeerten."],
             typeSpeed: 100,
             backSpeed: 75,
@@ -35,4 +36,6 @@ addEventListener('load', () => {
             loop: true,
         })
     }
-});
+}
+
+addEventListener('load', () => startTypingAnimation());

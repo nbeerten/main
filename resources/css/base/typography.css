@@ -1,7 +1,8 @@
 :where(h1, h2, h3, h4, h5, h6):not(.no-standard) {
-    @include font-display;
+    font-family: var(--font-display);
+font-stretch: var(--font-display-stretch);
 }
 
 :where(code:not([class*=language-], .no-standard)) { 
-    @include font-mono;
+    font-family: var(--font-mono);
 }

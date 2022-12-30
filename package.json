@@ -6,6 +6,10 @@
         "build": "vite build"
     },
     "devDependencies": {
+        "@tsconfig/recommended": "^1.0.1",
+        "@types/alpinejs": "^3.7.1",
+        "@types/glob": "^8.0.0",
+        "@types/node": "^18.11.18",
         "autoprefixer": "^10.4.13",
         "laravel-vite-plugin": "^0.7.1",
         "postcss": "^8.4.19",
@@ -22,6 +26,7 @@
         "@builder.io/partytown": "^0.7.3",
         "alpinejs": "^3.10.3",
         "feather-icons": "^4.29.0",
+        "glob": "^8.0.3",
         "modern-normalize": "^1.1.0",
         "npm": "^9.2.0",
         "postcss-import-url": "^7.1.0",

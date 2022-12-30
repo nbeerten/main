@@ -5,15 +5,13 @@ namespace App\Classes\TMASigns;
 use Exception;
 use ZipStream;
 
-use App\Classes\TMASigns\Settings;
-
 /**
  * Class for generating TMASigns
  */
 class TMASigns extends Base
 {
     /**
-     *  Easy-access variable to check if sign is multiline 
+     *  Easy-access variable to check if sign is multiline
      */
     protected int $multiline = 0;
 
@@ -31,7 +29,9 @@ class TMASigns extends Base
             throw new Exception("Invalid size: $size");
         }
 
-        if (!empty($subtext) || $subtext === "0") $this->multiline = 1;
+        if (! empty($subtext) || $subtext === '0') {
+            $this->multiline = 1;
+        }
     }
 
     /**

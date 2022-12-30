@@ -55,7 +55,7 @@ footer {
             display: flex;
             flex-direction: column;
             #goatcounterstats {
-                @include font-mono;
+                font-family: var(--font-mono);
                 font-variant-numeric: tabular-nums;
                 font-size: 2rem;
             }
@@ -80,11 +80,13 @@ footer {
                 content: "\00A9";
             }
             .year {
-                @include font-display(100%);
+                font-family: var(--font-display);
+                font-stretch: 100%;
                 font-weight: 400;
             }
             .name {
-                @include font-display;
+                font-family: var(--font-display);
+                font-stretch: var(--font-display-stretch);
                 font-weight: 500;
             }
         }

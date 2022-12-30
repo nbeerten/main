@@ -4,13 +4,16 @@
     --font-display: "Hubot Sans", "Hubot Sans Fallback", ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     --font-mono: 'JetBrains Mono', ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 
-    // JS CSS bridge (i.e. scrollheight properties)
+    --font-sans-stretch: 110%;
+    --font-display-stretch: 110%;
+
+    /* JS CSS bridge (i.e. scrollheight properties) */
     --scrollposition-y-px: 0px;
     --scrollposition-y-p: 0%;
     --scrollposition-y: 0;
 }
 
-/* Font mixins */
+/* Font mixins
 @mixin font-sans($stretch: 110%) {
     font-family: var(--font-sans);
     font-stretch: $stretch;
@@ -21,7 +24,7 @@
 }
 @mixin font-mono {
     font-family: var(--font-mono);
-}
+} */
 
 @custom-media --min-breakpoint-sm (min-width: 640px);
 @custom-media --min-breakpoint-md (min-width: 768px);
@@ -56,7 +59,7 @@
     --bg-error: #7f1d1d;
     --bg-success: #166534;
 
-    // New design variables
+    /* New design variables */
     --accent-0: #000;
     --accent-1: #111;
     --accent-2: #333;

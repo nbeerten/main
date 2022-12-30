@@ -1,5 +1,5 @@
 @push('scripts')
-    @vite('resources/scripts/pages/TMASigns.js')
+    @vite('resources/scripts/pages/TMASigns.ts')
     @vite('resources/scripts/prism.js')
 
     <script>

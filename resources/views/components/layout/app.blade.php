@@ -28,7 +28,7 @@
     <script>
     {{!! File::get('../public/vendor/partytown/partytown.js') !!}}
     </script>
-    @vite('resources/scripts/app.js')
+    @vite('resources/scripts/app.ts')
     @stack('scripts')
 </head>
 

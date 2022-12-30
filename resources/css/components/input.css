@@ -1,3 +1,5 @@
+
+
 .input {
     * {
         transition: background-color 0.1s ease-in-out;
@@ -48,6 +50,10 @@
         &:placeholder-shown {
             border-color: var(--accent-2);
         }
+
+        &::placeholder {
+            color: var(--accent-6);
+        }
     }
 
     input:focus {
@@ -72,6 +78,10 @@
         &:focus {
             border-color: var(--accent-5);
         }
+
+        &::placeholder {
+            color: var(--accent-6);
+        }
     }
 
     select {
@@ -90,6 +100,10 @@
 
         &:focus {
             border-color: var(--accent-5);
+        }
+
+        &::placeholder {
+            color: var(--accent-6);
         }
     }
 

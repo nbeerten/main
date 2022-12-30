@@ -1,3 +1,5 @@
+declare var TMASigns, Prism, Alpine;
+
 window.TMASigns = {
     updatePreview: function({text, subtext, size, subtextlocation, offsetText, offsetSubtext, outlineModifier}) {
         // MS for response
@@ -17,12 +19,15 @@ window.TMASigns = {
             text: text,
             subtext: subtext
         }, null, "  ");
-        const jsondebug = document.querySelector("#jsondebug");
+        const jsondebug = document.querySelector("#jsondebug") as HTMLElement;
+            if(jsondebug == null) return;
         jsondebug.textContent = jsonDebugData;
         Prism.highlightAll();
 
-        const previewImage = document.querySelector('#previewImage');
-        const previewImageParent = previewImage.parentNode;
+        const previewImage = document.querySelector('#previewImage') as HTMLElement;
+            if(previewImage == null) return;
+        const previewImageParent = previewImage.parentElement as HTMLElement;
+            if(previewImageParent == null) return;
 
         const Headers = {
             'Content-Type': 'application/json',
@@ -44,14 +49,14 @@ window.TMASigns = {
 
         fetch('/api/tmasigns', {method: 'POST', headers: Headers, body: bodyData})
             .then((response) => {
-                previewImageParent.setAttribute("data-status", response.status)
+                previewImageParent.setAttribute("data-status", response.status.toString())
                 previewImageParent.setAttribute("data-status-message", response.statusText)
                 if(response.ok) {
                     response.blob()
                     .then((imageBlob) => {
-                        if(imageBlob.type !== "image/jpg") return previewImage.src = '';
+                        if(imageBlob.type !== "image/jpg") return previewImage.setAttribute('src', '');
                         const objectURL = URL.createObjectURL(imageBlob);
-                        previewImage.src = objectURL;
+                        previewImage.setAttribute('src', objectURL);
                         previewImage.classList.remove("loading");
                         const endTime = performance.now();
                         previewImageParent.setAttribute("data-status-message", `${response.statusText} (${Math.round(endTime - startTime)}ms)`)
@@ -60,7 +65,7 @@ window.TMASigns = {
                 else {
                     response.json()
                     .then((data) => {
-                        previewImage.src = ' ';
+                        previewImage.setAttribute('src', ' ');
                         previewImageParent.setAttribute("data-status-message", data['message']);
                     });
                 }
@@ -69,7 +74,8 @@ window.TMASigns = {
 
     startLoadingAnimation: function({text}) {
         if(text.length < 1) return;
-        const previewImageParent = document.querySelector('#previewImage').parentNode;
+        const previewImageParent = document.querySelector('#previewImage')?.parentElement;
+            if(previewImageParent == null) return;
         previewImageParent.setAttribute("data-status-message", `Loading...`);
         if(previewImageParent.getAttribute("data-status") === "") previewImageParent.setAttribute("data-status", " ");
     },
@@ -77,13 +83,14 @@ window.TMASigns = {
     downloadsign: function({text, subtext, size, subtextlocation, offsetText, offsetSubtext, outlineModifier}) {
         if(text == '' || size == '') return;
 
-        const downloadButton = document.querySelector('#downloadButton');
+        const downloadButton: HTMLElement = document.querySelector('#downloadButton') as HTMLElement;
+            if(downloadButton === null) return;
         const fnText = text.replace(/ /g, '').toLowerCase();
         const fnSubtext = subtext ? subtext.replace(/ /g, '').toLowerCase() + '_' : '';
         const filename = `TMA2-text-${fnText}-${fnSubtext}${size}x1-UG`;
 
-        if(size == 6) downloadButton.download = `${filename}.jpg`
-        else downloadButton.download = `${filename}.zip`;
+        if(size == 6) downloadButton.setAttribute('download', `${filename}.jpg`);
+        else downloadButton.setAttribute('download', `${filename}.zip`);
 
         const bodyData = JSON.stringify({
             format: (size != 6 ? "tga" : "jpg"),
@@ -107,17 +114,17 @@ window.TMASigns = {
                 response.blob()
                     .then((imageBlob) => {
                         const objectURL = URL.createObjectURL(imageBlob);
-                        downloadButton.href = objectURL;
+                        downloadButton.setAttribute('href', objectURL);
                         downloadButton.click();
                         URL.revokeObjectURL(objectURL);
                     });
-                } else downloadButton.href = "";
+                } else downloadButton.setAttribute('href', " ");
             });
     },
 
     downloadLocators: function() {
 
-        const locatorToolDownloadButton = document.querySelector('#locatorToolDownloadButton');
+        const locatorToolDownloadButton = document.querySelector('#locatorToolDownloadButton') as HTMLElement;
 
         const data = JSON.stringify(Alpine.store('locatorTool').urls);
         const postData = `{ "urls": ${data} }`;
@@ -132,11 +139,11 @@ window.TMASigns = {
                     response.blob()
                     .then((responseBlob) => {
                         const objectURL = URL.createObjectURL(responseBlob);
-                        locatorToolDownloadButton.href = objectURL;
+                        locatorToolDownloadButton.setAttribute('href', objectURL);
                         locatorToolDownloadButton.click();
                         URL.revokeObjectURL(objectURL);
                     });
-                } else locatorToolDownloadButton.href = "";
+                } else locatorToolDownloadButton.setAttribute('href', "");
             });
     }
 };

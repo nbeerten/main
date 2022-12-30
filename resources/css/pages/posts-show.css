@@ -96,7 +96,8 @@
 
                 .permalink {
                     position: relative;
-                    @include font-sans;
+                    font-family: var(--font-sans);
+                    font-stretch: var(--font-sans-stretch);
                     color: var(--text-color-secondary);
                     border: 1px solid var(--secondary-border-color);
                     background: var(--bg-cards);

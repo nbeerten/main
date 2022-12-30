@@ -4,32 +4,51 @@ window.Alpine = Alpine
 
 Alpine.start()
 
-addEventListener('DOMContentLoaded', polyfill());
-addEventListener('load', goatcounterstats());
+addEventListener('DOMContentLoaded', () => polyfill());
+addEventListener('load', () => goatcounterstats());
 
-async function goatcounterstats() {
+/**
+ * Fetches the number of page views from GoatCounter, and then displays it in all HTMLElements with
+ * the id 'goatcounterstats'
+ * 
+ * @returns Promise resolving to void.
+ */
+async function goatcounterstats(): Promise<void> {
     let url = 'https://nilsbeerten.goatcounter.com/counter/' + encodeURI(location.pathname) + '.json';
 
     fetch(url)
         .then((response) => { return response.json() })
         .then((json) => {
-            const elements = document.querySelectorAll('#goatcounterstats');
+            const elements: NodeListOf<HTMLElement> = document.querySelectorAll('#goatcounterstats') as NodeListOf<HTMLElement>;
             elements.forEach(element => element.textContent = json.count);
-            return true;
+            return;
         })
         .catch(() => {
-            const elements = document.querySelectorAll('#goatcounterstats');
+            const elements: NodeListOf<HTMLElement> = document.querySelectorAll('#goatcounterstats') as NodeListOf<HTMLElement>;
             elements.forEach(element => element.textContent = '0');
-            return false;
+            return;
         });
 }
 
-async function polyfill() {
+/**
+ * If the browser doesn't support the `:has()` pseudo-class, then add the `has_tool-tip` class to all
+ * elements with the `tool-tip` child element, and add the `has_heroicons` class to all elements with
+ * the `heroicons` child element
+ * 
+ * @returns Promise resolving to void.
+ */
+async function polyfill(): Promise<void> {
     if (!CSS.supports('selector(:has(*))')) {
-        document.querySelectorAll('tool-tip').forEach(tooltip =>
-            tooltip.parentNode.classList.add('has_tool-tip'))
+        const elements = document.querySelectorAll('tool-tip') as NodeListOf<HTMLElement>;
+            if(elements == null) return;
+        elements.forEach(tooltip => {
+            tooltip = tooltip.parentElement as HTMLElement;
+            if(tooltip == null) return;
+            
+            tooltip.classList.add('has_tool-tip')
+        })
 
-        let tooltip_styles = document.createElement('style')
+        const tooltip_styles: HTMLStyleElement = document.createElement('style');
         tooltip_styles.textContent = `
           .has_tool-tip {
             position: relative;
@@ -38,20 +57,24 @@ async function polyfill() {
             opacity: 1;
             transition-delay: 200ms;
           }
-        `
+        `;
         document.head.appendChild(tooltip_styles)
 
-        document.querySelectorAll('.heroicons').forEach(tooltip =>
-            tooltip.parentNode.classList.add('has_heroicons'))
+        document.querySelectorAll('.heroicons').forEach(heroicons => {
+            heroicons = heroicons.parentElement as HTMLElement;
+                if(heroicons == null) return;
+            heroicons.classList.add('has_heroicons');
+        })
 
-        let heroicons_styles = document.createElement('style')
+        const heroicons_styles: HTMLStyleElement = document.createElement('style');
         heroicons_styles.textContent = `
           .has_heroicons {
             display: flex;
             flex-direction: row;
             gap: 0.5em;
           }
-        `
+        `;
+
         document.head.appendChild(heroicons_styles);
     }
 }

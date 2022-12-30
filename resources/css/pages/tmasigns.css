@@ -1,5 +1,5 @@
 .tmasigns {
-    // For now optimized for a single card
+    /* For now optimized for a single card */
     &__signpack-card {
         max-width: 90ch;
 

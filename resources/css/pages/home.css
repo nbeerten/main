@@ -182,7 +182,8 @@
             line-height: 1.2;
             font-weight: 800;
 
-            @include font-display(112.5%);
+            font-family: var(--font-display);
+            font-stretch: 112.5%;
 
             .typewriter-text-wrapper { position: relative; user-select: none; }
             .typewriter-text-wrapper::before {
@@ -192,7 +193,8 @@
                 translate: 0 -50%;
                 z-index: -1;
                 content: "nbeerten.|";
-                @include font-display(112.5%);
+                font-family: var(--font-display);
+                font-stretch: 112.5%;
                 font-weight: 800;
                 line-height: 1;
                 font-size: min(4rem, 15vw);
