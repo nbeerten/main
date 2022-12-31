@@ -33,6 +33,7 @@
         "postcss-scss": "^4.0.6",
         "postcss-sort-media-queries": "^4.3.0",
         "prismjs": "^1.29.0",
+        "shiki": "^0.12.1",
         "typed.js": "^2.0.12"
     }
 }

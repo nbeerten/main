@@ -60,11 +60,11 @@
             <x-card class="tmasigns__signpack-card">
                 <x-slot:img src="{{ asset('assets/tma_signpack_thumb.webp') }}" alt="Sign preview" height="160" width="500"></x-slot:img>
                 <x-slot:title>The TMA Signpack</x-slot:title>
-                <x-md>
+                <x-markdown :anchors="false" :highlight-code="false">
                     The main signpack includes: arrow signs made by Juice, checkpoint numbers `1-25` for `6x1` signs, and common text
                     such as: 'Start', 'Checkpoint', 'Multilap' and 'Finish'.
                     **More information can be found in the TMA Discord Server**
-                </x-md>
+                </x-markdown>
 
                 <x-slot:action>
                     <a href="https://discord.gg/b8MfZsYFWg" class="button" role="button">

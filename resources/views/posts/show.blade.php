@@ -1,5 +1,5 @@
 @push('scripts')
-    @vite('resources/scripts/prism.js')
+    {{-- @vite('resources/scripts/prism.js') --}}
 @endpush
 
 <x-layout.app>
@@ -32,7 +32,7 @@
             <hr>
             <section class="two-col">
                 <section class="content markdown">
-                    <x-markdown anchors flavor="github" class="x-markdown" >
+                    <x-markdown class="x-markdown" >
                         {!! $post->get('content') !!}
                     </x-markdown>
                 </section>

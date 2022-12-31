@@ -121,7 +121,7 @@ return [
         Watchers\BatchWatcher::class => env('TELESCOPE_BATCH_WATCHER', true),
 
         Watchers\CacheWatcher::class => [
-            'enabled' => env('TELESCOPE_CACHE_WATCHER', true),
+            'enabled' => env('APP_ENV') == 'local' ? env('TELESCOPE_CACHE_WATCHER', true) : env('TELESCOPE_CACHE_WATCHER', false),
             'hidden' => [],
         ],
 
@@ -168,7 +168,7 @@ return [
             'slow' => 100,
         ],
 
-        Watchers\RedisWatcher::class => env('TELESCOPE_REDIS_WATCHER', true),
+        Watchers\RedisWatcher::class => env('APP_ENV') == 'local' ? env('TELESCOPE_REDIS_WATCHER', true) : env('TELESCOPE_REDIS_WATCHER', false),
 
         Watchers\RequestWatcher::class => [
             'enabled' => env('TELESCOPE_REQUEST_WATCHER', true),
@@ -178,6 +178,6 @@ return [
         ],
 
         Watchers\ScheduleWatcher::class => env('TELESCOPE_SCHEDULE_WATCHER', true),
-        Watchers\ViewWatcher::class => env('TELESCOPE_VIEW_WATCHER', true),
+        Watchers\ViewWatcher::class => env('APP_ENV') == 'local' ? env('TELESCOPE_VIEW_WATCHER', true) : env('TELESCOPE_VIEW_WATCHER', false),
     ],
 ];
