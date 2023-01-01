@@ -6,7 +6,9 @@ use App\Classes\SEO\SEO;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Spatie\SchemaOrg\Schema;
+use Statamic;
 use Statamic\Facades\Entry;
+use Statamic\Facades\Term;
 
 class PostController extends Controller
 {
@@ -52,7 +54,7 @@ class PostController extends Controller
         // Opengraph and general metadata
         SEO::make(
             title: $post->title,
-            description: $post->meta_description,
+            description: $post->summary,
             thumbnail: $post->featured_image,
             noindex: false,
             type: [
@@ -66,5 +68,34 @@ class PostController extends Controller
         );
 
         return view('posts.show', ['post' => $post, 'author' => $author]);
+    }
+
+    public function tags(Request $request, string $slug)
+    {   
+        $tag = Term::find('tags::'.$slug);
+
+        if(is_null($tag)) {
+            return abort(404, "Tag not found");
+        }
+        
+        if (Auth::check()) {
+            $posts = Entry::query()
+                ->where('collection', 'posts')
+                ->whereTaxonomy('tags::'.$slug)
+                ->get();
+        } else {
+            $posts = Entry::query()
+                ->where('collection', 'posts')
+                ->whereTaxonomy('tags::'.$slug)
+                ->where('published', true)
+                ->get();
+        }
+
+        SEO::make(
+            title: "Tag: $tag->title",
+            noindex: (count($posts) === 0)
+        );
+
+        return view('posts.tags', ['posts' => $posts, 'tag' => $tag]);
     }
 }

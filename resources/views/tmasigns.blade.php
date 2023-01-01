@@ -144,6 +144,18 @@
                             <x-heroicon-m-arrow-down-tray /> Download
                         </a>
                     </div>
+                </section>
+                <section class="right-col">
+                    <div class="preview-image" data-status="" data-status-message="">
+                        <img id="previewImage" src="{{ asset('assets/default_sign.jpg') }}" onclick="preventDefault()" draggable="false">
+                    </div>
+
+                    <x-details-card class="json-debug">
+                        <x-slot:summary>
+                            <x-heroicon-m-code-bracket />Debug information
+                        </x-slot:summary>
+                        <pre><code id="jsondebug" class="language-json"></code></pre>
+                    </x-details-card>
 
                     <div class="tmasigns__information-card">
                         <x-information-card>
@@ -154,21 +166,6 @@
                             </x-slot:more>
                         </x-information-card>
                     </div>
-                </section>
-                <section class="right-col">
-                    <div class="preview-image" data-status="" data-status-message="">
-                        <img id="previewImage" src="{{ asset('assets/default_sign.jpg') }}" onclick="window.open(this.getAttribute('src'));">
-                    </div>
-
-                    <x-details-card>
-                        <x-slot:summary>
-                            <x-heroicon-m-code-bracket />JSON Data
-                        </x-slot:summary>
-                        <p>
-                            <x-md>Send POST requests to `/api/tmasigns`</x-md>
-                        </p>
-                        <pre><code id="jsondebug" class="language-json"></code></pre>
-                    </x-details-card>
                 </section>
             </div>
         </x-details>

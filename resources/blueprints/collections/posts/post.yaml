@@ -16,6 +16,14 @@ sections:
           input_type: text
           antlers: false
       -
+        handle: tags
+        field:
+          type: terms
+          taxonomies:
+            - tags
+          display: Tags
+          mode: select
+      -
         handle: content
         field:
           restrict: false
@@ -73,16 +81,17 @@ sections:
             - required
           max_items: 1
       -
-        handle: meta_description
+        handle: summary
         field:
           antlers: true
-          display: 'Meta Description'
+          display: Summary
           type: textarea
           icon: textarea
           listable: hidden
           instructions_position: above
           visibility: visible
           always_save: false
+          instructions: 'For SEO description and article preview on site'
       -
         handle: featured_image
         field:

@@ -32,7 +32,7 @@
     </div>
     <div class="bottom">
         <div class="copyright">
-            <p x-data="{ year: new Date().getFullYear() }"><span class="year"><span x-text="year">2022</span></span> <span class="name">Nils Beerten</span></p>
+            <p><span class="year">{{ now()->format('Y') }}</span> <span class="name">Nils Beerten</span></p>
         </div>
         <div class="socials">
             <a rel="me" href="https://mastodon.social/@nbeerten" target="_blank" aria-label="mastodon: @nbeerten@mastodon.social">

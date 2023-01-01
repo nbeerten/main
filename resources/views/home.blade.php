@@ -107,7 +107,7 @@
                         @endforeach
                         
                         <x-slot:title>{{ $post->title }}</x-slot:title>
-                        {{ $post->meta_description }}
+                        {{ $post->summary }}
 
                         <x-slot:action>
                             <div class="action">

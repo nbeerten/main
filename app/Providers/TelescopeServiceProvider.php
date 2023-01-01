@@ -25,8 +25,7 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
                 return true;
             }
 
-            return !$entry->isRequest() ||
-                   ( $entry->isReportableException() ||
+            return $entry->isReportableException() ||
                    $entry->isException() ||
                    $entry->isQuery() ||
                    $entry->isFailedRequest() ||
@@ -34,7 +33,7 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
                    $entry->isScheduledTask() ||
                    $entry->hasMonitoredTag() ||
                    $entry->isSlowQuery() ||
-                   $entry->isDump());
+                   $entry->isDump();
         });
 
         Telescope::tag(function (IncomingEntry $entry) {

@@ -29,6 +29,8 @@ Route::get('/posts', [PostController::class, 'index'])
 Route::get('/post/{slug}', [PostController::class, 'show'])
     ->name('post.slug');
 Route::redirect('/post', '/posts', 301);
+Route::get('/tags/{tag}', [PostController::class, 'tags'])
+    ->name('post.slug');
 
 Route::get('/contact', [PageController::class, 'contact'])
     ->name('contact');

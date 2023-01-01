@@ -1,9 +1,9 @@
 <x-layout.app>
     <section class="default-page posts-index">
-        <h1 class="heading">Posts</h1>
+        <h1 class="heading">Tag: {{ $tag->title }}</h1>
             @if(count($posts) === 0)
                 <div class="no-posts">
-                    <p><i>No posts found yet...</i></p>
+                    <p><i>No post with the tag "{{ $tag->title }}" found.</i></p>
                 </div>
             @else
             <div class="cards">
