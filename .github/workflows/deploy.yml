@@ -64,6 +64,17 @@ jobs:
           docker compose down && 
           docker volume rm main_app && 
           docker compose up -d --wait
+    
+    - name: Prune dangling images
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        USERNAME: ${{ secrets.USERNAME }}
+        PORT: ${{ secrets.PORT }}
+        KEY: ${{ secrets.SSHKEY }}
+        script: >
+          cd ~/main &&
+          docker image prune
 
     - name: Migrate and cache config, route and views
       uses: appleboy/ssh-action@master
