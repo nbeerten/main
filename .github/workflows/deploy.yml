@@ -74,7 +74,7 @@ jobs:
         KEY: ${{ secrets.SSHKEY }}
         script: >
           cd ~/main &&
-          docker image prune
+          docker image prune -f
 
     - name: Migrate and cache config, route and views
       uses: appleboy/ssh-action@master
