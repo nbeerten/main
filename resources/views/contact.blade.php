@@ -8,36 +8,40 @@
         <div class="contact__form">
             <form method="POST" action="/!/forms/contact" class="form-card contact">
                 @csrf
-                
-                @if($form->success)
-                <x-information-card accent="var(--color-success)">
-                    <x-slot:icon><x-heroicon-s-check/></x-slot:icon>
-                    <x-md>
-                        Successfully send the message!
-                    </x-md>
-                </x-information-card>
+
+                @if ($form->success)
+                    <x-information-card accent="var(--color-success)">
+                        <x-slot:icon>
+                            <x-heroicon-s-check />
+                        </x-slot:icon>
+                        <x-md>
+                            Successfully send the message!
+                        </x-md>
+                    </x-information-card>
                 @elseif($form->errors)
                     <x-information-card accent="var(--color-error)">
-                        <x-slot:icon><x-heroicon-s-exclamation-circle/></x-slot:icon>
+                        <x-slot:icon>
+                            <x-heroicon-s-exclamation-circle />
+                        </x-slot:icon>
                         <x-md>
                             Error!
                         </x-md>
                         <x-slot:more>
                             <ul>
-                            @foreach ($form->errors as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
+                                @foreach ($form->errors as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
                             </ul>
                         </x-slot:more>
                     </x-information-card>
                 @endif
-                
+
                 <div class="form-grid">
                     @foreach ($form->fields as $field)
-                    <div class="input {{ $field['handle'] }}">
-                        <label for="{{ $field['handle'] }}">{{ Str::title($field['handle']) }}</label>
-                        {!! $field['field'] !!}
-                    </div>
+                        <div class="input {{ $field['handle'] }}">
+                            <label for="{{ $field['handle'] }}">{{ Str::title($field['handle']) }}</label>
+                            {!! $field['field'] !!}
+                        </div>
                     @endforeach
 
                     <input type="text" class="honeypot" name="{{ $form->honeypot ?? 'honeypot' }}">
@@ -47,7 +51,9 @@
                             {{-- Cloudflare Turnstile Captcha --}}
                             {!! Statamic::tag('captcha') !!}
                         </div>
-                        <button type="submit" class="button"><x-heroicon-s-paper-airplane/>Submit</button>
+                        <button type="submit" class="button">
+                            <x-heroicon-s-paper-airplane />Submit
+                        </button>
                     </div>
                 </div>
             </form>

@@ -8,6 +8,11 @@
     <link rel="preload" href="{{ Vite::asset('resources/fonts/Hubot-Sans.woff2') }}" as="font" type="font/woff2" crossorigin>
     {{-- Main JS & CSS from the compiled files --}}
     @vite('resources/css/app.css')
+    <style>
+        :root { 
+            overflow-y: overlay;
+        }
+    </style>
 
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">

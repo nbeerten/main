@@ -197,6 +197,7 @@ return [
         App\Providers\TelescopeServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
         App\Providers\ViteServiceProvider::class,
+        App\Providers\BladeServiceProvider::class,
 
     ],
 

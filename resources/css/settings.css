@@ -100,8 +100,8 @@
 
     /* Component specific variables */
     /* Scrollbar */
-    --scrollbar-background: #d1d5db;
-    --scrollbar-background-hover: #ffffff;
+    --scrollbar-background: hsla(216, 12%, 84%, 0.5);
+    --scrollbar-background-hover: hsla(0, 0%, 100%, 0.8);
 
     /* Navbar */
     --nav-bg: rgba(24, 24, 27, 0.5);

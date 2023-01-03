@@ -23,6 +23,7 @@
         "vite": "^3.2.4"
     },
     "dependencies": {
+        "@alpinejs/collapse": "^3.10.5",
         "@builder.io/partytown": "^0.7.3",
         "alpinejs": "^3.10.3",
         "feather-icons": "^4.29.0",
@@ -30,6 +31,7 @@
         "modern-normalize": "^1.1.0",
         "npm": "^9.2.0",
         "postcss-import-url": "^7.1.0",
+        "postcss-preset-env": "^7.8.3",
         "postcss-scss": "^4.0.6",
         "postcss-sort-media-queries": "^4.3.0",
         "prismjs": "^1.29.0",

@@ -35,8 +35,8 @@
             <x-slot:title>
                 <x-heroicon-m-question-mark-circle /> FAQ
             </x-slot:title>
-            <x-details>
-                <x-slot:summary>What do I do with the file?</x-slot:summary>
+            <x-ui.accordion>
+                <x-slot:title>What do I do with the file?</x-slot:title>
                 <p>
                     <x-md>
                         After downloading the file you'll need to host it somewhere. This website intentionally never allows you to use it as hosting for the signs,
@@ -51,12 +51,12 @@
                         the URL to the sign there. Then click "OK", and if you did it correctly, it should now show up!
                     </x-md>
                 </p>
-            </x-details>
+            </x-ui.accordion>
         </x-modal> --}}
-        <x-details open>
-            <x-slot:summary id="packages">
+        <x-ui.accordion expanded>
+            <x-slot:title>
                 <x-heroicon-s-archive-box /> TMA Signpack
-            </x-slot:summary>
+            </x-slot:title>
             <x-card class="tmasigns__signpack-card">
                 <x-slot:img src="{{ asset('assets/tma_signpack_thumb.webp') }}" alt="Sign preview" height="160" width="500"></x-slot:img>
                 <x-slot:title>The TMA Signpack</x-slot:title>
@@ -75,14 +75,14 @@
                     </a>
                 </x-slot:action>
             </x-card>
-        </x-details>
+        </x-ui.accordion>
         
         <hr>
 
-        <x-details open>
-            <x-slot:summary id="generator">
+        <x-ui.accordion expanded>
+            <x-slot:title id="generator">
                 <x-heroicon-s-beaker /> Sign Generator
-            </x-slot:summary>
+            </x-slot:title>
             <div class="two-col no-scrollbar" 
                  x-data="{ text: '', subtext: '', size: '2', subtextlocation: 'bottom', offsetText: '0', offsetSubtext: '0', outlineModifier: '0' }" 
                  @@input.debounce.500ms="TMASigns.updatePreview($data)"
@@ -119,8 +119,8 @@
 
                     <hr>
 
-                    <x-details-card>
-                        <x-slot:summary>Advanced Options</x-slot:summary>
+                    <x-ui.accordion-card>
+                        <x-slot:title>Advanced Options</x-slot:title>
                         <div class="helper_row --between">
                             <div class="input">
                                 <label for="offsetText">Text offset</label>
@@ -136,7 +136,7 @@
                             <label for="outlineModifier">Outline modifier</label>
                             <input x-model="outlineModifier" id="outlineModifier" type="number" placeholder="0">
                         </div>
-                    </x-details-card>
+                    </x-ui.accordion-card>
 
                     <div class="wrapper-button-align-right">
                         <a id="downloadButton" href="" @@click.prevent.throttle.500ms="TMASigns.downloadsign($data)"
@@ -150,12 +150,12 @@
                         <img id="previewImage" src="{{ asset('assets/default_sign.jpg') }}" onclick="preventDefault()" draggable="false">
                     </div>
 
-                    <x-details-card class="json-debug">
-                        <x-slot:summary>
+                    <x-ui.accordion-card class="json-debug">
+                        <x-slot:title>
                             <x-heroicon-m-code-bracket />Debug information
-                        </x-slot:summary>
+                        </x-slot:title>
                         <pre><code id="jsondebug" class="language-json"></code></pre>
-                    </x-details-card>
+                    </x-ui.accordion-card>
 
                     <div class="tmasigns__information-card">
                         <x-information-card>
@@ -168,14 +168,14 @@
                     </div>
                 </section>
             </div>
-        </x-details>
+        </x-ui.accordion>
 
         <hr>
 
-        <x-details>
-            <x-slot:summary id="tools">
+        <x-ui.accordion>
+            <x-slot:title id="tools">
                 <x-heroicon-s-wrench /> Tools
-            </x-slot:summary>
+            </x-slot:title>
             <div class="card-row locatortool">
                 <section class="locatortoolcard" x-data="{ input: '', data: ['A'] }">
                     <div class="content">
@@ -216,7 +216,7 @@
                     </div>
                 </section>
             </div>
-        </x-details>
+        </x-ui.accordion>
     </section>
     <script>
         // Auto close all other tools when hash = generator; script placed here to prevent flickering

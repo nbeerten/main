@@ -8,6 +8,7 @@ import postcssCustomSelectors from 'postcss-custom-selectors';
 import postcssCustomMedia from 'postcss-custom-media';
 import postcssAdvancedVariables from 'postcss-advanced-variables';
 import postcssSortMediaQueries from 'postcss-sort-media-queries';
+import postcssPresetEnv from 'postcss-preset-env';
 import autoprefixer from 'autoprefixer';
 
 import path from 'path';
@@ -43,7 +44,10 @@ export default defineConfig({
                 postcssCustomSelectors,
                 postcssCustomMedia,
                 postcssSortMediaQueries,
-                autoprefixer,
+                postcssPresetEnv({
+                    browsers: '> 1% and last 10 versions',
+                    enableClientSidePolyfills: false
+                })
             ],
         }
     },

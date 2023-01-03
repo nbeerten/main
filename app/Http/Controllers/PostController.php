@@ -6,7 +6,6 @@ use App\Classes\SEO\SEO;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Spatie\SchemaOrg\Schema;
-use Statamic;
 use Statamic\Facades\Entry;
 use Statamic\Facades\Term;
 
@@ -71,13 +70,13 @@ class PostController extends Controller
     }
 
     public function tags(Request $request, string $slug)
-    {   
+    {
         $tag = Term::find('tags::'.$slug);
 
-        if(is_null($tag)) {
-            return abort(404, "Tag not found");
+        if (is_null($tag)) {
+            return abort(404, 'Tag not found');
         }
-        
+
         if (Auth::check()) {
             $posts = Entry::query()
                 ->where('collection', 'posts')
