@@ -9,7 +9,7 @@
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 @endpush
 
-<x-layout.app>
+<x-app>
     <section class="default-page">
         <h3 class="heading">Reset password</h3>
         <div class="auth__form">
@@ -70,4 +70,4 @@
             </form>
         </div>
     </section>
-</x-layout.app>
+</x-app>

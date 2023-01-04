@@ -27,7 +27,7 @@
     </script>
 @endpush
 
-<x-layout.app>
+<x-app>
     <section class="default-page tmasigns">
         <h1 class="heading">TMA Signs</h1>
 
@@ -227,4 +227,4 @@
             })
         }
     </script>
-</x-layout.app>
+</x-app>

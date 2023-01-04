@@ -1,1 +1,1 @@
-<x-errorpage :title="__('Method not allowed')" code="405" :message="__('Method not allowed')" />
+<x-app.error-page :title="__('Method not allowed')" code="405" :message="__('Method not allowed')" />

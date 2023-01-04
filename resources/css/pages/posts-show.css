@@ -1,11 +1,12 @@
 .posts-show {
     --max-content-width: 45rem;
 
-    width: 100%;
+    position: relative;
     article {
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
+        padding-top: 0.75rem;
 
         > hgroup {
             @media (--max-breakpoint-lg) {
@@ -13,26 +14,21 @@
                 width: var(--max-content-width);
                 max-width: 100%;
             }
+            
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            translate: 0 -100%;
+            padding-bottom: 0.5rem;
 
             > .heading {
-                display: block;
-                padding-top: 1.5rem;
-                font-size: 2.5rem;
-                line-height: 2.25rem;
-                font-weight: 800;
-
-                > .post-badge {
-                    display: inline-flex;
-                    align-items: center;
-                    vertical-align: top;
-                    height: 2rem;
-                    font-size: 1.3rem;
-                    padding: 0.25rem 0.75rem;
-                    background-color: var(--accent-0);
-                    border-radius: 0.375rem;
-                    border: 1px solid var(--accent-2);
-                    margin-left: 0.5rem;
-                }
+                filter: drop-shadow(0px 0px 10px black);
+                padding-bottom: 0.1rem;
+                font-size: 2rem;
+                font-weight: 700;
+                width: var(--max-content-width);
+                max-width: 100%;
             }
             > .information {
                 display: flex;
@@ -86,10 +82,29 @@
                     align-self: center;
                 }
 
+                .post-badge {
+                    display: inline-flex;
+                    align-items: center;
+                    vertical-align: -5%;
+                    height: 2rem;
+                    padding: 0.25rem 0.75rem;
+                    background-color: var(--accent-0);
+                    border-radius: 0.375rem;
+                    border: 1px solid var(--accent-2);
+                }
+
+                .tags {
+                    &__heading {
+                        font-weight: 500;
+                        font-size: 1.1rem;
+                        margin-bottom: 0.2rem;
+                    }
+                }
+
                 .toc {
                     &__heading {
-                        font-weight: 600;
-                        font-size: 1.2rem;
+                        font-weight: 500;
+                        font-size: 1.1rem;
                         margin: 0;
                     }
                 }

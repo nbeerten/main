@@ -4,6 +4,7 @@
     scroll-behavior: smooth;
     overflow-x: hidden;
     background-color: var(--bg-body);
+    overflow-anchor: none;
 }
 
 body {

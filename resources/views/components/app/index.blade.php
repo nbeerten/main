@@ -21,7 +21,7 @@
 
     <meta name="theme-color" content="#171717">
 
-    <x-layout.seo />
+    <x-app.seo />
     
     @stack('style')
     <script>
@@ -39,14 +39,14 @@
 
 <body>
     <div class="main-wrapper">
-        <x-layout.nav />
+        <x-nav />
 
         @isset($hero)
             @if($hero)
             {!! $hero !!}
             @endif
         @else
-            <x-layout.hero />
+            <x-hero />
         @endisset
 
         {{-- Main content --}}
@@ -57,7 +57,7 @@
 
     {{-- Footer --}}
     <span class="footer-divider"></span>
-    <x-layout.footer />
+    <x-footer />
 
     <!-- SVG Stack -->
     <svg hidden style="display:none;visibility:hidden;">

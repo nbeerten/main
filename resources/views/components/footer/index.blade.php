@@ -1,34 +1,26 @@
 <footer>
     <div class="links">
-        <div>
-            <h4>Pages</h4>
-            <ul class="no-standard">
-                <li><a href="/">Homepage</a></li>
-                <li><a href="/posts">Posts</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
-        </div>
-        <div>
-            <h4>Miscellaneous</h4>
-            <ul class="no-standard">
-                <li><a href="https://status.nilsbeerten.nl/">Status Page</a></li>
-                <li><a href="https://trackmania.exchange/ms?authorid=41263"><x-heroicon-m-arrow-top-right-on-square /> Trackmania Maps</a></li>
-            </ul>
-        </div>
-        <div>
-            <h4>Info</h4>
+        <x-footer.link-row title="Pages">
+            <x-footer.link-item href="/">Homepage</x-footer.link-item>
+            <x-footer.link-item href="/posts">Posts</x-footer.link-item>
+            <x-footer.link-item href="/contact">Contact</x-footer.link-item>
+        </x-footer.link-row>
+        <x-footer.link-row title="Miscellaneous">
+            <x-footer.link-item href="https://status.nilsbeerten.nl/">Status Page</x-footer.link-item>
+            <x-footer.link-item href="https://trackmania.exchange/ms?authorid=41263"><x-heroicon-m-arrow-top-right-on-square /> Trackmania Maps</x-footer.link-item>
+        </x-footer.link-row>
+        <x-footer.link-row title="Info">
             <p><x-md>
                 **Fonts:** [Mona Sans & Hubot Sans](https://github.com/mona-sans), [Jetbrains Mono](https://www.jetbrains.com/lp/mono/). <br>
                 **Icons:** [heroicons](https://heroicons.com/), [simpleicons](https://simpleicons.org/).
             </x-md></p>
-        </div>
-        <div>
-            <h4>Statistics</h4>
+        </x-footer.link-row>
+        <x-footer.link-row title="Statistics">
             <p class="visitor-count">
                 <span>Visitors of this page:</span>
                 <span><x-heroicon-s-eye style="font-size: 1.25rem;" /> <span id="goatcounterstats"></span></span>
             </p>
-        </div>
+        </x-footer.link-row>
     </div>
     <div class="bottom">
         <div class="copyright">

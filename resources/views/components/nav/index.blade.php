@@ -4,19 +4,19 @@
             <a href="/" tabindex="-1" aria-hidden="true"></a>
         </div>
         <div class="navitems">
-            <div class="navitem {{ Request::routeIs('home') ? 'active' : '' }}">
-                <a href="{{ route("home") }}">Home</a>
-            </div>
-            <div class="navitem {{ Request::routeIs('posts') ? 'active' : '' }}">
-                <a href="{{ route("posts") }}">Posts</a>
-            </div>
-            <div class="navitem {{ Request::routeIs('contact') ? 'active' : '' }}">
-                <a href="{{ route("contact") }}">Contact</a>
-            </div>
+            <x-nav.item route="home">
+                Home
+            </x-nav.item>
+            <x-nav.item route="posts">
+                Posts
+            </x-nav.item>
+            <x-nav.item route="contact">
+                Contact
+            </x-nav.item>
         @if(Request::routeIs('tmasigns'))
-            <div class="navitem {{ Request::routeIs('tmasigns') ? 'active' : '' }}">
-                <a href="{{ route("tmasigns") }}">TMA Signs</a>
-            </div>
+            <x-nav.item route="tmasigns">
+                TMA Signs
+            </x-nav.item>
         @endif
             <div class="helper_grow"></div>
         @auth

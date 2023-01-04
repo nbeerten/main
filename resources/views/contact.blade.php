@@ -2,7 +2,7 @@
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 @endpush
 
-<x-layout.app>
+<x-app>
     <section class="default-page">
         <h1 class="heading">Contact</h1>
         <div class="contact__form">
@@ -59,4 +59,4 @@
             </form>
         </div>
     </section>
-</x-layout.app>
+</x-app>

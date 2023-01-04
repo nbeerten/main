@@ -10,11 +10,6 @@ use ZipStream;
  */
 class TMASigns extends Base
 {
-    /**
-     *  Easy-access variable to check if sign is multiline
-     */
-    protected int $multiline = 0;
-
     public function __construct(
         protected string $format,
         protected int $size,

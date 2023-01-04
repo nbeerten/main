@@ -5,7 +5,7 @@
     );
 @endphp
 
-<x-layout.app title="{{ $title }}">
+<x-app title="{{ $title }}">
     <section class="default-page">
         <div class="error__card">
             <p class="code">{{ $code }}</p>
@@ -18,4 +18,4 @@
             </div>
         </div>
     </section>
-</x-layout.app>
+</x-app>

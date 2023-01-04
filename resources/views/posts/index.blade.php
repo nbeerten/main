@@ -1,4 +1,4 @@
-<x-layout.app>
+<x-app>
     <section class="default-page posts-index">
         <h1 class="heading">Posts</h1>
             @if(count($posts) === 0)
@@ -29,5 +29,5 @@
             </div>
             @endif
     </section>
-</x-layout.app>
+</x-app>
 

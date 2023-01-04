@@ -12,15 +12,17 @@
     margin-top: 2rem;
     margin-bottom: 2rem;
 
+    border: 1px solid var(--accent-2);
+
     > .code {
         display: flex;
         justify-content: center;
         font-size: 4rem;
         @media (--min-breakpoint-lg) {
-            font-size: 1.75rem;
+            font-size: 2.5rem;
         }
         font-family: var(--font-mono);
-        color: var(--text-color-primary);
+        color: var(--accent-9);
 
         padding: 0 1rem;
         align-items: center;

@@ -1,1 +1,1 @@
-<x-errorpage :title="__('Unauthorized')" code="401" :message="__('Unauthorized')" />
+<x-app.error-page :title="__('Unauthorized')" code="401" :message="__('Unauthorized')" />

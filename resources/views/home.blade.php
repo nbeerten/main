@@ -2,7 +2,7 @@
     @vite('resources/scripts/pages/home.ts')
 @endpush
 
-<x-layout.app>
+<x-app>
     <x-slot:hero>
         <header class="home__header">
             <div class="background-component large-glow"></div>
@@ -127,4 +127,4 @@
             </div>
         </section>
     @endif
-</x-layout.app>
+</x-app>
