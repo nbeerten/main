@@ -1,4 +1,4 @@
-<meta name="robots" content="{{ ($seo->noindex ?? false) ? 'noindex' : '' }} noimageindex">
+<meta name="robots" content="{{ $seo->noindex ? 'noindex' : '' }} {{ $seo->noimageindex ? 'noimageindex' : '' }}">
 <title>{{ $seo->title ?? Request::path() }} - Nils Beerten</title>
 
 @isset($seo)

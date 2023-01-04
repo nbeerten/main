@@ -41,6 +41,8 @@ class PostController extends Controller
             return abort(404);
         }
 
+        if(!Auth::check() && !$post->published) return abort(404);
+
         $author = $post->author;
 
         // Structured Data
@@ -55,7 +57,8 @@ class PostController extends Controller
             title: $post->title,
             description: $post->summary,
             thumbnail: $post->featured_image,
-            noindex: false,
+            noindex: !$post->published,
+            noimageindex: !$post->published,
             type: [
                 'type' => 'article',
                 'items' => [

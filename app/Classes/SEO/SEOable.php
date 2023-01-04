@@ -27,7 +27,8 @@ class SEOable
         public readonly ?string $title,
         public readonly ?string $description,
         public readonly ?string $thumbnail,
-        public readonly bool $noindex = true
+        public readonly bool $noindex = true,
+        public readonly bool $noimageindex = true
 
     ) {
         return $this;
