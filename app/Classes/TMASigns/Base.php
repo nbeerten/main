@@ -15,10 +15,15 @@ class Base
      *  Easy-access variable to check if sign is multiline
      */
     protected int $multiline = 0;
+
     protected string $format;
+
     protected int $size;
+
     protected $options;
+
     protected $text;
+
     protected $subtext;
 
     private Imagick $baseCanvas;

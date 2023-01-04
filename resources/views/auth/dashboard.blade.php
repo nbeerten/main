@@ -7,7 +7,7 @@
 
 <x-app title="Account Dashboard" noindex="true">
     <section class="default-page dashboard">
-        <h3 class="heading">Account Dashboard</h3>
+        <h3 class="heading">Dashboard</h3>
         <x-card style="max-width: 40ch; min-width: 0; margin-bottom: 1rem;">
             <x-slot:title>Welcome</x-slot:title>
             <p>Logged in as {{ Auth::user()->name }} ({{ Auth::user()->id }}), email: {{ Auth::user()->email }}</p>

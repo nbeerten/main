@@ -3,7 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use romanzipp\Turnstile;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 /**
  * Middleware for validating captcha.
@@ -20,19 +21,20 @@ class ValidateCaptcha
     public function handle($request, Closure $next)
     {
         // Check if method is post, and if the route isnt the logout route
-        if ($request->isMethod('post') && ! $request->routeIs('logout')) {
-            $token = $request->input('cf-turnstile-response');
-
-            $validator = new Turnstile\Validator();
-            $validation = $validator->validate($token);
-
-            if ($validation->isValid()) {
-                return $next($request);
-            } else {
-                return back()->withErrors($validation->getMessage())->withInput($request->except('cf-turnstile-response'));
-            }
-        } else {
+        if ($request->routeIs('logout') || ! $request->isMethod('post')) {
             return $next($request);
         }
+
+        $validator = Validator::make($request->all(), [
+            'cf-turnstile-response' => ['required', Rule::turnstile()],
+        ]);
+
+        if ($validator->fails()) {
+            return back()
+                   ->withErrors($validator->errors())
+                   ->withInput($request->except('cf-turnstile-response'));
+        }
+
+        return $next($request);
     }
 }

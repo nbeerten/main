@@ -6,7 +6,7 @@
 @endphp
 
 @push('scripts')
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    @turnstileScripts()
 @endpush
 
 <x-app>
@@ -37,7 +37,7 @@
                     </x-slot:more>
                 </x-information-card>
             @endif
-            <form method="POST" action="/forgot-password">
+            <form method="POST" action="/forgot-password" class="form-card">
                 @csrf
 
                 {{-- Email Address --}}
@@ -49,9 +49,9 @@
                 <div class="submit-row">
                     <div class="captcha">
                         {{-- Cloudflare Turnstile Captcha --}}
-                        {{ romanzipp\Turnstile\Captcha::getChallenge(theme: 'dark', action: Request::path()) }}
+                        <x-turnstile data-action="forgot-password" data-theme="dark" />
                     </div>
-                    <button type="submit" class="button"><x-heroicon-s-paper-airplane/>Submit</button>
+                    <button type="submit" class="button"><x-heroicon-s-paper-airplane/> Submit</button>
                 </div>
             </form>
         </div>
