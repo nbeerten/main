@@ -31,10 +31,15 @@
         };
     </script>
     <script>
-    {{!! File::get('../public/vendor/partytown/partytown.js') !!}}
+    {{!! File::get(public_path().'/vendor/partytown/partytown.js') !!}}
     </script>
     @vite('resources/scripts/app.ts')
+
+    {{-- Stack of scripts from anywhere --}}
     @stack('scripts')
+
+    {{-- Always load last to prevent errors of undefined functions --}}
+    @vite('resources/scripts/alpine.ts')
 </head>
 
 <body>

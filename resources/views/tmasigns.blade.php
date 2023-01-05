@@ -84,10 +84,16 @@
                 <x-heroicon-s-beaker /> Sign Generator
             </x-slot:title>
             <div class="two-col no-scrollbar" 
-                 x-data="{ text: '', subtext: '', size: '2', subtextlocation: 'bottom', offsetText: '0', offsetSubtext: '0', outlineModifier: '0' }" 
-                 @@input.debounce.500ms="TMASigns.updatePreview($data)"
-                 @@input="TMASigns.startLoadingAnimation($data)">
-
+                 x-data="{ text: $persist('').using(sessionStorage), 
+                           subtext: $persist('').using(sessionStorage), 
+                           size: $persist('2').using(sessionStorage), 
+                           subtextlocation: $persist('bottom').using(sessionStorage), 
+                           offsetText: $persist('0').using(sessionStorage), 
+                           offsetSubtext: $persist('0').using(sessionStorage), 
+                           outlineModifier: $persist('0').using(sessionStorage) }" 
+                 x-on:input.debounce.500ms="TMASigns.updatePreview($data)"
+                 x-on:input="TMASigns.startLoadingAnimation($data)"
+                 x-init="TMASigns.updatePreview($data)">
                 <section class="left-col" role="form">
                     <div class="input">
                         <label for="text">Text</label>

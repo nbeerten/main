@@ -24,6 +24,7 @@
     },
     "dependencies": {
         "@alpinejs/collapse": "^3.10.5",
+        "@alpinejs/persist": "^3.10.5",
         "@builder.io/partytown": "^0.7.3",
         "alpinejs": "^3.10.3",
         "feather-icons": "^4.29.0",
