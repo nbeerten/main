@@ -12,6 +12,10 @@
         :root { 
             overflow-y: overlay;
         }
+
+        [x-cloak] { 
+            display: none !important; 
+        }
     </style>
 
     <link rel="icon" href="/favicon.ico" sizes="any">
