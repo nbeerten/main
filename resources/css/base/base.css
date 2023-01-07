@@ -5,6 +5,8 @@
     overflow-x: hidden;
     background-color: var(--bg-body);
     overflow-anchor: none;
+
+    scroll-padding-top: 4.75rem;
 }
 
 body {

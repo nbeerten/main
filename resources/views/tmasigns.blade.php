@@ -224,13 +224,4 @@
             </div>
         </x-ui.accordion>
     </section>
-    <script>
-        // Auto close all other tools when hash = generator; script placed here to prevent flickering
-        if(window.location.hash == "#generator") {
-            const elements = document.querySelectorAll(`details[open] > summary:not(#generator)`);
-            elements.forEach(element => {
-                element.parentNode.removeAttribute('open');
-            })
-        }
-    </script>
 </x-app>

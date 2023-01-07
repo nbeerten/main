@@ -10,7 +10,7 @@
 
 <div class="x-accordion"
      x-data="{ expanded: {{ $expanded }} }">
-    <{!! $headingLevel !!} class="x-accordion__h">
+    <{!! $headingLevel !!} class="x-accordion__h" {{ $title->attributes }}>
         <button type="button"
                 aria-controls="accordion_content_{{ $uid }}"
                 id="accordion_{{ $uid }}"

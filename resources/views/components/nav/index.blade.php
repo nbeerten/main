@@ -1,4 +1,8 @@
-<nav class="nav" :class="expanded && '--dark'" x-data="{ expanded: false, mobile: window.matchMedia('(max-width: 767px)').matches }">
+<nav class="nav" :class="(dark || expanded) && '--dark'"
+    x-data="{ expanded: false,
+              mobile: window.matchMedia('(max-width: 767px)').matches,
+              dark: false }"
+    x-on:darkennavbar.window="dark = $event.detail">
     <div class="navbar">
         <div class="logo">
             <a href="/" tabindex="-1" aria-hidden="true"></a>

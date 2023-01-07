@@ -4,7 +4,9 @@
 
 <x-app>
     <x-slot:hero>
-        <header class="home__header">
+        <header class="home__header" x-data 
+            x-intersect:leave.margin.-64px.0.0.0="$dispatch('darkennavbar', true)"
+            x-intersect:enter.margin.-64px.0.0.0="$dispatch('darkennavbar', false)">
             <div class="background-component large-glow"></div>
             <div class="background-component small-glow"></div>
             <div class="background-component left-glow-1"></div>
