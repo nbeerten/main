@@ -13,19 +13,6 @@
     --scrollposition-y: 0;
 }
 
-/* Font mixins
-@mixin font-sans($stretch: 110%) {
-    font-family: var(--font-sans);
-    font-stretch: $stretch;
-}
-@mixin font-display($stretch: 110%) {
-    font-family: var(--font-display);
-    font-stretch: $stretch;
-}
-@mixin font-mono {
-    font-family: var(--font-mono);
-} */
-
 @custom-media --min-breakpoint-sm (min-width: 640px);
 @custom-media --min-breakpoint-md (min-width: 768px);
 @custom-media --min-breakpoint-lg (min-width: 1024px);

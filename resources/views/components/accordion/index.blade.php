@@ -8,15 +8,15 @@
     $animationDuration = !empty($attributes->get('animation-duration')) ? $attributes->get('animation-duration') : "200ms";
 @endphp
 
-<div class="x-accordion"
+<div class="accordion"
      x-data="{ expanded: {{ $expanded }} }">
-    <{!! $headingLevel !!} class="x-accordion__h" {{ $title->attributes }}>
+    <{!! $headingLevel !!} class="accordion-h" {{ $title->attributes }}>
         <button type="button"
                 aria-controls="accordion_content_{{ $uid }}"
                 id="accordion_{{ $uid }}"
                 x-on:click="expanded = !expanded"
                 :aria-expanded="expanded ? true : false"
-                class="x-accordion__button">
+                class="accordion-trigger">
             <span>
                 {!! $title !!}
             </span>
@@ -27,7 +27,7 @@
          aria-labelledby="accordion_{{ $uid }}"
          x-show="expanded" 
          x-collapse.duration.{{ $animationDuration }}
-         class="x-accordion__content">
+         class="accordion-body">
         
             {!! $slot !!}
 

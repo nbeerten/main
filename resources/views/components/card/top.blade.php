@@ -1,8 +1,8 @@
-<article {{ $attributes->merge(['class' => 'card']) }}>
+<div class="card card-top">
     @isset($img)
         <img class="card__img" loading="lazy" {!! $img->attributes !!}>
     @endisset
-    <div class="card__content">
+    <div class="card-body">
         @isset($title)
             <h4 class="card__heading">{!! $title !!}</h4>
         @endisset
@@ -11,19 +11,19 @@
             {!! $htmlcontent !!}
         @endisset
         <div class="helper_grow"></div>
-        @if(isset($action) || isset($button))
-        <hr>
+        @if (isset($action) || isset($button))
+            <hr>
         @endisset
         <div class="card__action">
             @isset($action)
                 {!! $action !!}
             @else
-            @isset($button)
-                <a {!! $button->attributes !!} class="button">
-                    {!! $button !!}
-                </a>
-            @endisset
+                @isset($button)
+                    <a {!! $button->attributes !!} class="button">
+                        {!! $button !!}
+                    </a>
+                @endisset
             @endisset
         </div>
     </div>
-</article>
+</div>

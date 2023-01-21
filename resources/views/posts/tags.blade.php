@@ -8,12 +8,12 @@
             @else
             <div class="cards">
                 @foreach($posts as $post)
-                    <x-card class="post">
+                    <x-card.post class="post">
                         <x-slot:img src="{{ $post->featured_image }}" width="160" height="160"></x-slot:img>
                         <x-slot:title>{{ $post->title }}</x-slot:title>
                         {{ $post->summary }}
 
-                        <x-slot:action>
+                        <x-slot:footer>
                             <div class="action">
                                 <span class="timestamp">
                                     <x-heroicon-o-newspaper/>
@@ -23,8 +23,8 @@
                                     Read more...
                                 </a>
                             </div>
-                        </x-slot:action>
-                    </x-card>
+                        </x-slot:footer>
+                    </x-card.post>
                 @endforeach
             </div>
             @endif

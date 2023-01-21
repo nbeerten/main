@@ -1,6 +1,6 @@
 @php
     $route = $attributes->get('route');
 @endphp
-<div class="navitem {{ Request::routeIs($route) ? 'active' : '' }}" {{ $attributes->except(['route']) }}>
+<div class="nav-item {{ Request::routeIs($route) ? 'nav-item-active' : '' }}" {{ $attributes->except(['route']) }}>
     <a href="{{ route($route) }}">{{ $slot }}</a>
 </div>

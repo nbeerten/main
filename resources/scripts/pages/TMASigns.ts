@@ -1,4 +1,4 @@
-declare var TMASigns, Prism, Alpine;
+declare var TMASigns, Alpine;
 
 window.TMASigns = {
     updatePreview: function({text, subtext, size, subtextlocation, offsetText, offsetSubtext, outlineModifier}) {
@@ -22,7 +22,6 @@ window.TMASigns = {
         const jsondebug = document.querySelector("#jsondebug") as HTMLElement;
             if(jsondebug == null) return;
         jsondebug.textContent = jsonDebugData;
-        Prism.highlightAll();
 
         const previewImage = document.querySelector('#previewImage') as HTMLElement;
             if(previewImage == null) return;

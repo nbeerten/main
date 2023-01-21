@@ -1,5 +1,5 @@
 <footer>
-    <div class="links">
+    <div class="footer-links">
         <x-footer.link-row title="Pages">
             <x-footer.link-item href="/">Homepage</x-footer.link-item>
             <x-footer.link-item href="/posts">Posts</x-footer.link-item>
@@ -22,11 +22,11 @@
             </p>
         </x-footer.link-row>
     </div>
-    <div class="bottom">
-        <div class="copyright">
+    <div class="footer-bottom">
+        <div class="footer-copyright">
             <p><span class="year">{{ now()->format('Y') }}</span> <span class="name">Nils Beerten</span></p>
         </div>
-        <div class="socials">
+        <div class="footer-socials">
             <a rel="me" href="https://mastodon.social/@nbeerten" target="_blank" aria-label="mastodon: @nbeerten@mastodon.social">
                 <tool-tip role="tooltip" tip-position="block-start">@nbeerten@mastodon.social</tool-tip>
                 <x-simpleicon-mastodon />

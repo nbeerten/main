@@ -25,7 +25,7 @@ body {
     /* Fix for URL fragment scrolling */
     scroll-padding-top: 5rem; 
 
-    .main-wrapper {
+    & .main-wrapper {
         min-height: 100vh;
     }
 }

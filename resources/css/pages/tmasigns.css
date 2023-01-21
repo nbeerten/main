@@ -1,29 +1,29 @@
 .tmasigns {
     /* For now optimized for a single card */
-    &__signpack-card {
+    & .tmasigns__signpack-card {
         max-width: 90ch;
 
-        .card__img {
+        & .card-img {
             width: 100%;
             flex-grow: 1;
             object-fit: cover;
             object-position: 50% 40%;
         }
 
-        .card__content {
+        & .card-body {
             max-height: max-content;
             max-width: 50ch;
-            .card__long-text {
+            & .card__long-text {
                 --line-clamp: 8;
             }
         }
 
-        .card__action {
+        & .card-footer {
             justify-content: flex-end;
         }
     }
 
-    .two-col {
+    & .two-col {
         display: flex;
         flex-direction: column-reverse;
         gap: 1rem;
@@ -32,7 +32,7 @@
             flex-direction: row;
         }
 
-        > .left-col {
+        & > .left-col {
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
@@ -42,42 +42,42 @@
                 width: 50%
             }
 
-            > .wrapper-button-align-right {
+            & > .wrapper-button-align-right {
                 margin-top: 0.5rem;
                 display: flex;
                 width: 100%;
                 justify-content: flex-end;
                 align-self: flex-end;
 
-                .button {
+                & .button {
                     background-color: var(--accent-info-dark);
                     font-size: 1.1rem;
                 }
             }
 
-            > .options {
+            & > .options {
                 background-color: var(--bg-cards);
                 padding: 0.5rem;
                 border-radius: 0.375rem;
                 user-select: none;
 
-                > summary {
+                & > summary {
                     cursor: pointer;
                 }
 
-                > :not(summary) {
+                & > :not(summary) {
                     margin-top: 0.5rem;
                 }
             }
             
 
-            .tmasigns__information-card {
+            & .tmasigns__information-card {
                 max-width: 75ch;
                 margin-bottom: 1rem;
             }
         }
 
-        > .right-col {
+        & > .right-col {
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
@@ -86,7 +86,7 @@
                 width: 50%;
             }
 
-            > .preview-image {
+            & > .preview-image {
                 position: relative;
                 display: grid;
                 max-height: 24rem;
@@ -146,7 +146,7 @@
                     background-color: var(--bg-error);
                 }
 
-                > img {
+                & > img {
                     max-height: 24rem;
                     cursor: not-allowed;
                     overflow: clip;
@@ -155,19 +155,19 @@
                 }
             }
 
-            > .json-debug {
+            & > .json-debug {
                 border: none;
                 outline: var(--accent-2) solid 1px;
 
-                pre {
+                & pre {
                     margin: 0;
                 }
             }
         }
     }
 
-    .locatortool {
-        > .locatortoolcard {
+    & .locatortool {
+        & > .locatortoolcard {
             display: flex;
             width: 100%;
             @media (--min-breakpoint-lg) {
@@ -179,13 +179,13 @@
             background-color: var(--bg-cards);
             padding: 1rem;
 
-            > .content {
+            & > .content {
                 display: flex;
                 flex-direction: column;
                 gap: 0.25rem;
                 flex-grow: 1;
 
-                > .heading {
+                & > .heading {
                     border-bottom-width: 1px;
                     border-color: var(--border-color);
                     padding-bottom: 0.25rem;
@@ -194,7 +194,7 @@
                     font-weight: 700
                 }
 
-                > .long-text {
+                & > .long-text {
                     overflow: hidden;
                     text-overflow: ellipsis;
                     line-height: 1.25;
@@ -202,7 +202,7 @@
                 }
             }
 
-            > .input > textarea {
+            & > .input > textarea {
                 font-size: 0.8rem;
                 font-family: var(--font-mono);
                 line-height: 2rem;
@@ -210,7 +210,7 @@
                 white-space: nowrap;
             }
 
-            > .wrapper-button-align-right {
+            & > .wrapper-button-align-right {
                 display: flex;
                 width: 100%;
                 justify-content: flex-end;
@@ -218,12 +218,12 @@
         }
 
         /* Not directly under this div, dont add `>` */
-        .urllist {
+        & .urllist {
             display: flex;
             flex-wrap: wrap;
             flex-direction: row;
 
-            > li {
+            & > li {
                 display: flex;
                 gap: 0.5rem;
                 align-items: center;
@@ -236,14 +236,14 @@
                 font-size: 1rem;
                 max-width: 100%;
 
-                span {
+                & span {
                     max-width: 95%;
                     white-space: nowrap;
                     overflow: hidden;
                     text-overflow: ellipsis;
                 }
 
-                svg {
+                & svg {
                     width: 1rem;
                     height: 1rem;
                 }

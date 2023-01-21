@@ -28,7 +28,7 @@ footer {
     padding-right: 2rem;
     }
 
-    .links {
+    & .footer-links {
         gap: 0.5rem;
         padding-top: 1rem;
     
@@ -41,20 +41,20 @@ footer {
         grid-template-columns: repeat(4, minmax(0, 1fr));
         }
 
-        div {
-            > h4 {
+        & div {
+            & > h4 {
                 font-weight: 600;
             }
 
-            a {
+            & a {
                 color: unset;
             }
         }
 
-        .visitor-count {
+        & .visitor-count {
             display: flex;
             flex-direction: column;
-            #goatcounterstats {
+            & #goatcounterstats {
                 font-family: var(--font-mono);
                 font-variant-numeric: tabular-nums;
                 font-size: 2rem;
@@ -62,7 +62,7 @@ footer {
         }
     }
 
-    .bottom {
+    & .footer-bottom {
         margin-bottom: 0.5rem;
         display: flex;
         flex-direction: row;
@@ -75,23 +75,23 @@ footer {
         margin: 0px
         }
 
-        .copyright {
-            .year:before {
+        & .footer-copyright {
+            & .year:before {
                 content: "\00A9";
             }
-            .year {
+            & .year {
                 font-family: var(--font-display);
                 font-stretch: 100%;
                 font-weight: 400;
             }
-            .name {
+            & .name {
                 font-family: var(--font-display);
                 font-stretch: var(--font-display-stretch);
                 font-weight: 500;
             }
         }
 
-        .socials {
+        & .footer-socials {
             display: flex;
             flex-direction: row;
           
@@ -99,13 +99,13 @@ footer {
             margin-left: -0.5rem
             }
 
-            a {
+            & a {
                 color: unset;
                 position: relative;
                 display: block;
                 padding: 0.5rem;
 
-                svg {
+                & svg {
                     width: 1rem;
                     height: 1rem;
                     pointer-events: none;

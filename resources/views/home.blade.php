@@ -57,11 +57,13 @@
         <div class="cards">
             <x-card>
                 <x-slot:img src="{{ asset('assets/RefreshLeaderboard.webp') }}" alt="Logo of RefreshLeaderboard plugin" width="160" height="160"></x-slot:img>
-                <x-slot:title>Refresh Leaderboard</x-slot:title>
-                A plugin for the Trackmania scripting platform <a href="https://openplanet.dev/" target="_blank">Openplanet</a>, which provides a button to refresh the
-                leaderboard widget in the in-game UI.
+                <h4 class="card-title">Refresh Leaderboard</h4>
+                <p class="card-text">
+                    A plugin for the Trackmania scripting platform <a href="https://openplanet.dev/" target="_blank">Openplanet</a>, which provides a button to refresh the
+                    leaderboard widget in the in-game UI.
+                </p>
 
-                <x-slot:action>
+                <x-slot:footer>
                     <div class="helper_row-wrap">
                         <a href="https://github.com/nbeerten/tm-refresh-leaderboard" class="button" target="_blank">
                             <x-simpleicon-github class="heroicons" />
@@ -70,32 +72,34 @@
                             <x-heroicon-m-arrow-top-right-on-square /> Openplanet page
                         </a>
                     </div>
-                </x-slot:action>
+                </x-slot:footer>
             </x-card>
             <x-card>
                 <x-slot:img src="{{ asset('assets/nextdotnilsbeerten_thumb.webp') }}" alt="Thumbnail for next.nilsbeerten.nl project" width="160" height="160">
                 </x-slot:img>
-                <x-slot:title>next.nilsbeerten.nl</x-slot:title>
-                A <b>secondary</b> backend hosted on the edge using the
-                <a href="https://nextjs.org/" target="_blank">Next.js</a> framework. Includes
-                <a href="https://vercel.com/docs/concepts/functions/edge-functions/og-image-generation" target="_blank">@vercel/og</a> to generate
-                Opengraph images for the main site.
-                <x-slot:action>
+                <h4 class="card-title">next.nilsbeerten.nl</h4>
+                <p class="card-text">
+                    A <b>secondary</b> backend hosted on the edge using the
+                    <a href="https://nextjs.org/" target="_blank">Next.js</a> framework. Includes
+                    <a href="https://vercel.com/docs/concepts/functions/edge-functions/og-image-generation" target="_blank">@vercel/og</a> to generate
+                    Opengraph images for the main site.
+                </p>
+                <x-slot:footer>
                     <div class="helper_row-wrap">
                         <a href="https://github.com/nbeerten/nb-next-api" class="button" target="_blank">
                             <x-simpleicon-github class="heroicons" /> Github Repository
                         </a>
                     </div>
-                </x-slot:action>
+                </x-slot:footer>
             </x-card>
             {{-- <x-card>
                 <x-slot:img src="{{ asset('assets/tmasigns_1x1example.webp') }}" alt="Example of a one by one sized sign"></x-slot:img>
-                <x-slot:title>TMA Sign Generator</x-slot:title>
+                <h4 class="card-title">TMA Sign Generator</h4>
                 A small web application to create signs with text defined by the user for Trackmania, styled to fit in with the TMA signpack.
                 
-                <x-slot:action>
+                <x-slot:footer>
                     <a href="/tmasigns" class="button">Visit page</a>
-                </x-slot:action>
+                </x-slot:footer>
             </x-card> --}}
         </div>
     </section>
@@ -105,7 +109,7 @@
             <h3 class="heading">Posts</h3>
             <div class="cards">
                 @foreach ($posts as $post)
-                    <x-card class="post">
+                    <x-card.post class="post">
                         @foreach (Statamic::tag('glide:generate')->src($post->featured_image)->width(400)->format('webp') as $image)
                             <x-slot:img src="{{ $image['url'] }}" width="{{ $image['width'] }}" alt="Featured image of post" loading="lazy"></x-slot:img>
                         @endforeach
@@ -113,7 +117,7 @@
                         <x-slot:title>{{ $post->title }}</x-slot:title>
                         {{ $post->summary }}
 
-                        <x-slot:action>
+                        <x-slot:footer>
                             <div class="action">
                                 <span class="timestamp">
                                     <x-heroicon-o-newspaper />
@@ -123,8 +127,8 @@
                                     Read more...
                                 </a>
                             </div>
-                        </x-slot:action>
-                    </x-card>
+                        </x-slot:footer>
+                    </x-card.post>
                 @endforeach
             </div>
         </section>

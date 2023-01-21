@@ -1,4 +1,4 @@
-<div class="navitems--desktop">
+<div class="nav-desktop">
     <x-nav.item route="home">
         Home
     </x-nav.item>
@@ -8,29 +8,45 @@
     <x-nav.item route="contact">
         Contact
     </x-nav.item>
-@if(Request::routeIs('tmasigns'))
-    <x-nav.item route="tmasigns">
-        TMA Signs
-    </x-nav.item>
-@endif
+    @if (Request::routeIs('tmasigns'))
+        <x-nav.item route="tmasigns">
+            TMA Signs
+        </x-nav.item>
+    @endif
     <div class="helper_grow"></div>
     @auth
-        <x-ui.dropdown class="account-dropdown">
-            <x-slot name="trigger" class="account-dropdown__trigger">
+        <x-dropdown class="nav-account-desktop">
+            <x-slot name="trigger" class="nav-account-toggle">
                 <button><img src="/storage/{{ Auth::user()->avatar }}" alt="Profile picture of {{ Auth::user()->name }}" /></button>
             </x-slot>
-            
-            <x-slot name="slot" class="account-dropdown__slot">
+
+            <x-slot:slot class="nav-account-body">
                 <div>
-                    <div class="account-dropdown__items">
-                        <a href="/dashboard" class="item"><x-heroicon-m-user-circle /> Dashboard</a>
-                        <a href="/telescope" target="_blank" class="item"><x-heroicon-m-sparkles/> Telescope</a>
-                        <a href="/log-viewer" target="_blank" class="item"><x-heroicon-m-bars-4/> Log-Viewer</a>
-                        <a href="/cp" target="_blank" class="item"><x-simpleicon-statamic class="heroicons" /> Statamic</a>
-                        <x-logout class="item"><x-heroicon-m-lock-closed/> Log out</x-logout>
+                    <div>
+                        <div class="nav-account-details">
+                            <img src="/storage/{{ Auth::user()->avatar }}" alt="Profile picture of {{ Auth::user()->name }}" />
+                            <p>{{ Auth::user()->name }}</p>
+                        </div>
+                        <div class="nav-account-items">
+                            <a href="/dashboard" class="item">
+                                <x-heroicon-m-user-circle />
+                            </a>
+                            <a href="/telescope" target="_blank" class="item">
+                                <x-heroicon-m-sparkles />
+                            </a>
+                            <a href="/log-viewer" target="_blank" class="item">
+                                <x-heroicon-m-bars-4 />
+                            </a>
+                            <a href="/cp" target="_blank" class="item">
+                                <x-simpleicon-statamic class="heroicons" />
+                            </a>
+                            <x-logout class="item">
+                                <x-heroicon-m-lock-closed />
+                            </x-logout>
+                        </div>
                     </div>
                 </div>
-            </x-slot>
-        </x-ui-dropdown>
-    @endauth
+            </x-slot:slot>
+            </x-dropdown>
+        @endauth
 </div>

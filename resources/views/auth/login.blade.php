@@ -12,7 +12,7 @@
 <x-app>
     <section class="default-page">
         <h3 class="heading">Login</h3>
-        <div class="auth__form">
+        <div class="form-wrapper">
         
             @if($errors->any())
                 <x-information-card accent="var(--color-error)">

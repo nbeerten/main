@@ -1,5 +1,5 @@
 <meta name="robots" content="{{ $seo->noindex ? 'noindex' : '' }} {{ $seo->noimageindex ? 'noimageindex' : '' }}">
-<title>{{ $seo->title ?? Request::path() }} - Nils Beerten</title>
+<title>{{ $seo->title ?? Request::path() }} - {{ env("APP_NAME") }}</title>
 
 @isset($seo)
     @if($seo->description && $seo->title)

@@ -17,7 +17,7 @@
     position: relative;
     z-index: 0;
 
-    > .hero__background-component {
+    & > .hero__background-component {
         z-index: -1;
         position: absolute;
         display: block;
@@ -25,7 +25,7 @@
         translate: -50% -50%;
     }
 
-    > .hero__glow-1 {
+    & > .hero__glow-1 {
         width: 50%;
         top: 25%;
         right: -25%;
@@ -52,7 +52,7 @@
         }
     }
 
-    > .hero__glow-2 {
+    & > .hero__glow-2 {
         width: calc(15vw * 0.2 + 20rem * 0.8);
         top: 90%;
         left: calc(45% + (0.01 * var(--scrollposition-y-p)));
@@ -76,7 +76,7 @@
         filter: blur(calc(40px * (1 + var(--scrollposition-y) * 0.5)));
     }
 
-    > .hero__glow-3 {
+    & > .hero__glow-3 {
         width: 40%;
         top: 0%;
         left: 0;

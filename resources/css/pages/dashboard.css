@@ -1,5 +1,5 @@
 .dashboard {
-    .card-row {
+    & .card-row {
         display: flex;
         flex-direction: column;
         @media (--min-breakpoint-lg) {

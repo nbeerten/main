@@ -1,5 +1,5 @@
 .posts-index {
-    .cards {
+    & .cards {
         display: grid;
         width: 100%;
         grid-template-columns: 1fr;
@@ -9,8 +9,8 @@
         }
         gap: 1rem;
 
-        .card.post {
-            > div > p {
+        & .card.post {
+            & > div > p {
                 line-height: 1.25;
 
                 @supports (-webkit-line-clamp: 6) {
@@ -29,15 +29,15 @@
                 }
             }
             
-            .action {
+            & .action {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
                 gap: 1rem;
             }
 
-            .timestamp {
-                svg {
+            & .timestamp {
+                & svg {
                     margin-bottom: 0.1em;
                 }
                 color: var(--text-color-secondary);
@@ -46,7 +46,7 @@
         }
     }
 
-    .no-posts {
+    & .no-posts {
         width: 100%;
         height: 10rem;
         display: grid;

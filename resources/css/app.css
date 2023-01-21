@@ -4,7 +4,6 @@
 @import 'reset';
 
 @import 'settings';
-@import 'prism';
 
 @import-glob 'base/**/*.css';
 @import-glob 'misc/**/*.css';

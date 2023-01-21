@@ -23,7 +23,7 @@ return [
         // 'color-picker' => Components\Forms\Inputs\ColorPicker::class,
         // 'countdown' => Components\DateTime\Countdown::class,
         // 'cron' => Components\Support\Cron::class,
-        'dropdown' => Components\Navigation\Dropdown::class,
+        // 'dropdown' => Components\Navigation\Dropdown::class,
         // 'easy-mde' => Components\Editors\EasyMDE::class,
         // 'email' => Components\Forms\Inputs\Email::class,
         'error' => Components\Forms\Error::class,

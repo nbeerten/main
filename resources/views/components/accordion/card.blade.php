@@ -7,14 +7,14 @@
     $animationDuration = !empty($attributes->get('animation-duration')) ? $attributes->get('animation-duration') : "200ms";
 @endphp
 
-<div {{ $attributes->merge(['class' => 'x-accordion-card']) }}
+<div {{ $attributes->merge(['class' => 'accordioncard']) }}
      x-data="{ expanded: {{ $expanded }} }">
     <button type="button"
             aria-controls="accordion_content_{{ $uid }}"
             id="accordion_{{ $uid }}"
             x-on:click="expanded = !expanded"
             :aria-expanded="expanded ? true : false"
-            class="x-accordion-card__button">
+            class="accordioncard-trigger">
         <span>
             {!! $title !!}
         </span>
@@ -25,7 +25,7 @@
          x-show="expanded" 
          x-collapse.duration.{{ $animationDuration }}
          class="x-accordion-card__content">
-        <div class="x-accordion-card__inner">
+        <div class="accordioncard-inner">
             {!! $slot !!}
         </div>
     </div>

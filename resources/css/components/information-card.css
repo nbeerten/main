@@ -14,24 +14,24 @@
 
     margin: 0.5rem 0;
 
-    > .icon svg {
+    & > .icon svg {
         fill: var(--accent-color);
         align-self: flex-start;
     }
     
-    > .content {
-        > h6 {
+    & > .content {
+        & > h6 {
             font-size: 1.1rem;
             font-weight: 500;
         }
 
-        > p {
+        & > p {
             font-weight: 400;
             font-stretch: 100%;
             max-width: 80ch;
         }
 
-        > :last-child:not(:nth-child(1), p) {
+        & > :last-child:not(:nth-child(1), p) {
             margin-top: 0.5rem;
         }
     }

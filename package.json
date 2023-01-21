@@ -19,6 +19,7 @@
         "postcss-import": "^15.0.0",
         "postcss-import-ext-glob": "^2.1.1",
         "postcss-nested": "^6.0.0",
+        "postcss-nesting": "^10.2.0",
         "postcss-strip-inline-comments": "^0.1.5",
         "vite": "^3.2.4"
     },

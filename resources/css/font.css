@@ -1,15 +1,15 @@
 @font-face {
-    font-family: 'Mona Sans';
+    font-family: "Mona Sans";
     font-display: fallback;
-    src: url('/resources/fonts/Mona-Sans.woff2') format('woff2 supports variations'),
-        url('/resources/fonts/Mona-Sans.woff2') format('woff2-variations');
+    src: url("/resources/fonts/Mona-Sans.woff2")
+            format("woff2 supports variations"),
+        url("/resources/fonts/Mona-Sans.woff2") format("woff2-variations");
     font-weight: 200 900;
     font-stretch: 75% 125%;
 }
 
-
 @font-face {
-    font-family: 'Mona Sans Fallback';
+    font-family: "Mona Sans Fallback";
     src: local(Arial);
     size-adjust: 110%;
     ascent-override: 78%;
@@ -18,16 +18,17 @@
 }
 
 @font-face {
-    font-family: 'Hubot Sans';
+    font-family: "Hubot Sans";
     font-display: fallback;
-    src: url('/resources/fonts/Hubot-Sans.woff2') format('woff2 supports variations'),
-        url('/resources/fonts/Hubot-Sans.woff2') format('woff2-variations');
+    src: url("/resources/fonts/Hubot-Sans.woff2")
+            format("woff2 supports variations"),
+        url("/resources/fonts/Hubot-Sans.woff2") format("woff2-variations");
     font-weight: 200 900;
     font-stretch: 75% 125%;
 }
 
 @font-face {
-    font-family: 'Hubot Sans Fallback';
+    font-family: "Hubot Sans Fallback";
     src: local(Arial);
     size-adjust: 114%;
     ascent-override: 72%;
@@ -36,17 +37,17 @@
 }
 
 @font-face {
-    font-family: 'JetBrains Mono';
+    font-family: "JetBrains Mono";
     font-display: optional;
     font-style: normal;
-    src: url('/resources/fonts/JetBrainsMono.ttf') format('truetype');
+    src: url("/resources/fonts/JetBrainsMono.ttf") format("truetype");
     font-weight: 100 800;
 }
 
 @font-face {
-    font-family: 'Hubot Sans';
+    font-family: "JetBrains Mono";
     font-display: optional;
     font-style: italic;
-    src: url('/resources/fonts/JetBrainsMono-Italic.ttf') format('truetype');
+    src: url("/resources/fonts/JetBrainsMono-Italic.ttf") format("truetype");
     font-weight: 100 800;
 }

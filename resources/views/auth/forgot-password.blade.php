@@ -12,7 +12,7 @@
 <x-app>
     <section class="default-page">
         <h3 class="heading">Forgot password</h3>
-        <div class="auth__form">
+        <div class="form-wrapper">
         
             @if (session('status'))
                 <x-information-card accent="var(--color-success)">

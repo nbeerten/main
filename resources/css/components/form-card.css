@@ -1,3 +1,10 @@
+.form-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
 .form-card {
     width: 100%;
     max-width: 40ch;
@@ -9,7 +16,7 @@
     gap: 0.5rem;
     border: 1px solid var(--secondary-border-color);
 
-    input[type=checkbox].rememberme {
+    & input[type=checkbox].rememberme {
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
@@ -18,7 +25,7 @@
         color: var(--text-color-secondary);
     }
 
-    .submit-row {
+    & .submit-row {
         display: flex;
         flex-direction: column;
         width: 100%;
@@ -33,7 +40,7 @@
             height: 65px;
         }
 
-        > .captcha {
+        & > .captcha {
             align-self: center;
             @media (--min-breakpoint-md) {
                 align-self: flex-end;
@@ -41,7 +48,7 @@
             height: 65px;
         }
 
-        button {
+        & button {
             width: 100%;
             justify-content: center;
             flex-direction: row;
@@ -62,20 +69,20 @@
         grid-template-columns: 1fr 1fr;
         gap: 0.5rem;
 
-        .subject {
+        & .subject {
             grid-column: span 2;
         }
 
-        .message {
+        & .message {
             grid-column: span 2;
         }
 
-        .honeypot {
+        & .honeypot {
             display: none;
         }
     }
 
-    .bottom {
+    & .bottom {
         display: flex;
         align-items: center;
         justify-content: center;

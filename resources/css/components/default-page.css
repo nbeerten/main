@@ -1,7 +1,7 @@
 .default-page {
     position: relative;
     padding-top: 1rem;
-    > .heading {
+    & > .heading {
         filter: drop-shadow(0px 0px 10px black);
         position: absolute;
         top: 0;

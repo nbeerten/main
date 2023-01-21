@@ -5,7 +5,7 @@
 <x-app>
     <section class="default-page">
         <h1 class="heading">Contact</h1>
-        <div class="contact__form">
+        <div class="form-wrapper">
             <form method="POST" action="/!/forms/contact" class="form-card contact">
                 @csrf
 

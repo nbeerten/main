@@ -1,6 +1,5 @@
 @push('scripts')
     @vite('resources/scripts/pages/TMASigns.ts')
-    @vite('resources/scripts/prism.js')
 
     <script>
         document.addEventListener("alpine:init", () => {
@@ -35,7 +34,7 @@
             <x-slot:title>
                 <x-heroicon-m-question-mark-circle /> FAQ
             </x-slot:title>
-            <x-ui.accordion>
+            <x-accordion>
                 <x-slot:title>What do I do with the file?</x-slot:title>
                 <p>
                     <x-md>
@@ -51,60 +50,63 @@
                         the URL to the sign there. Then click "OK", and if you did it correctly, it should now show up!
                     </x-md>
                 </p>
-            </x-ui.accordion>
+            </x-accordion>
         </x-modal> --}}
-        <x-ui.accordion expanded>
+        <x-accordion expanded>
             <x-slot:title>
                 <x-heroicon-s-archive-box /> TMA Signpack
             </x-slot:title>
             <x-card class="tmasigns__signpack-card">
                 <x-slot:img src="{{ asset('assets/tma_signpack_thumb.webp') }}" alt="Sign preview" height="160" width="500"></x-slot:img>
-                <x-slot:title>The TMA Signpack</x-slot:title>
-                <x-markdown :anchors="false" :highlight-code="false">
-                    The main signpack includes: arrow signs made by Juice, checkpoint numbers `1-25` for `6x1` signs, and common text
-                    such as: 'Start', 'Checkpoint', 'Multilap' and 'Finish'.
-                    **More information can be found in the TMA Discord Server**
-                </x-markdown>
+                <h4 class="card-title">The TMA Signpack</h4>
+                <p class="card-text">
+                    <x-markdown :anchors="false" :highlight-code="false">
+                        The main signpack includes: arrow signs made by Juice, checkpoint numbers `1-25` for `6x1` signs, and common text
+                        such as: 'Start', 'Checkpoint', 'Multilap' and 'Finish'.
+                        **More information can be found in the TMA Discord Server**
+                    </x-markdown>
+                </p>
 
-                <x-slot:action>
-                    <a href="https://discord.gg/b8MfZsYFWg" class="button" role="button">
+                <x-slot:footer>
+                    <a class="button" href="https://discord.gg/b8MfZsYFWg" role="button">
                         <x-simpleicon-discord class="heroicons" /> TMA Discord Server
                     </a>
-                    <a href="{{-- https://cdn.discordapp.com/attachments/1025895091782565898/1057230647502049351/TMA-signs-pack-v2.zip --}}" class="button" role="button" disabled>
+                    <a class="button" href="{{-- https://cdn.discordapp.com/attachments/1025895091782565898/1057230647502049351/TMA-signs-pack-v2.zip --}}" role="button" disabled>
                         <x-heroicon-s-archive-box-arrow-down defer /> Download signpack
                     </a>
-                </x-slot:action>
+                </x-slot:footer>
             </x-card>
-        </x-ui.accordion>
-        
+        </x-accordion>
+
         <hr>
 
-        <x-ui.accordion expanded>
+        <x-accordion expanded>
             <x-slot:title id="generator">
                 <x-heroicon-s-beaker /> Sign Generator
             </x-slot:title>
             <div class="two-col no-scrollbar" 
-                 x-data="{ text: $persist('').using(sessionStorage), 
-                           subtext: $persist('').using(sessionStorage), 
-                           size: $persist('2').using(sessionStorage), 
-                           subtextlocation: $persist('bottom').using(sessionStorage), 
-                           offsetText: $persist('0').using(sessionStorage), 
-                           offsetSubtext: $persist('0').using(sessionStorage), 
-                           outlineModifier: $persist('0').using(sessionStorage) }" 
+                 x-data="{
+                    text: $persist('').using(sessionStorage),
+                    subtext: $persist('').using(sessionStorage),
+                    size: $persist('2').using(sessionStorage),
+                    subtextlocation: $persist('bottom').using(sessionStorage),
+                    offsetText: $persist('0').using(sessionStorage),
+                    offsetSubtext: $persist('0').using(sessionStorage),
+                    outlineModifier: $persist('0').using(sessionStorage) }" 
+                 x-init="TMASigns.updatePreview($data)" 
                  x-on:input.debounce.500ms="TMASigns.updatePreview($data)"
-                 x-on:input="TMASigns.startLoadingAnimation($data)"
-                 x-init="TMASigns.updatePreview($data)">
+                 x-on:input="TMASigns.startLoadingAnimation($data)">
                 <section class="left-col" role="form">
                     <div class="input">
                         <label for="text">Text</label>
-                        <input x-model="text" id="text" type="text" placeholder="Big text" pattern="^.{0,32}">
+                        <input id="text" type="text" pattern="^.{0,32}" placeholder="Big text" x-model="text">
                     </div>
 
                     <div class="input">
                         <label for="subtext">Subtext (Optional)</label>
                         <div class="row">
-                            <input x-model="subtext" id="subtext" type="text" placeholder="Subtext" pattern="^.{0,64}">
-                            <select x-model="subtextlocation" id="subtextlocation">
+                            <input id="subtext" type="text" pattern="^.{0,64}" placeholder="Subtext" x-model="subtext">
+                            <select id="subtextlocation" x-model="subtextlocation">
                                 <option value="bottom" selected>Bottom</option>
                                 <option value="top">Top</option>
                             </select>
@@ -115,7 +117,7 @@
                         <label for="size">
                             Sign size
                         </label>
-                        <select x-model="size" id="size" style="font-family: var(--font-mono);">
+                        <select id="size" style="font-family: var(--font-mono);" x-model="size">
                             <option value="1">1x1</option>
                             <option value="2" selected>2x1</option>
                             <option value="4">4x1</option>
@@ -125,43 +127,43 @@
 
                     <hr>
 
-                    <x-ui.accordion-card>
+                    <x-accordion.card>
                         <x-slot:title>Advanced Options</x-slot:title>
                         <div class="helper_row --between">
                             <div class="input">
                                 <label for="offsetText">Text offset</label>
-                                <input x-model="offsetText" id="offsetText" type="number" placeholder="0" min="-200" max="200">
+                                <input id="offsetText" type="number" max="200" min="-200" placeholder="0" x-model="offsetText">
                             </div>
 
                             <div class="input">
                                 <label for="offsetSubtext">Subtext offset</label>
-                                <input x-model="offsetSubtext" id="offsetSubtext" type="number" placeholder="0">
+                                <input id="offsetSubtext" type="number" placeholder="0" x-model="offsetSubtext">
                             </div>
                         </div>
                         <div class="input">
                             <label for="outlineModifier">Outline modifier</label>
-                            <input x-model="outlineModifier" id="outlineModifier" type="number" placeholder="0">
+                            <input id="outlineModifier" type="number" placeholder="0" x-model="outlineModifier">
                         </div>
-                    </x-ui.accordion-card>
+                    </x-accordion.card>
 
                     <div class="wrapper-button-align-right">
-                        <a id="downloadButton" href="" @@click.prevent.throttle.500ms="TMASigns.downloadsign($data)"
-                            download="tma-text-text-subtext_4x1-UG.zip" class="button" role="button">
+                        <a class="button" id="downloadButton" href="" role="button"
+                            @@click.prevent.throttle.500ms="TMASigns.downloadsign($data)" download="tma-text-text-subtext_4x1-UG.zip">
                             <x-heroicon-m-arrow-down-tray /> Download
                         </a>
                     </div>
                 </section>
                 <section class="right-col">
-                    <div class="preview-image" data-status="" data-status-message="">
-                        <img id="previewImage" src="{{ asset('assets/default_sign.jpg') }}" onclick="preventDefault()" draggable="false">
+                    <div class="preview-image" data-status-message="" data-status="">
+                        <img id="previewImage" src="{{ asset('assets/default_sign.jpg') }}" draggable="false" onclick="preventDefault()">
                     </div>
 
-                    <x-ui.accordion-card class="json-debug">
+                    <x-accordion.card class="json-debug">
                         <x-slot:title>
                             <x-heroicon-m-code-bracket />Debug information
                         </x-slot:title>
-                        <pre><code id="jsondebug" class="language-json"></code></pre>
-                    </x-ui.accordion-card>
+                        <pre><code class="language-json" id="jsondebug"></code></pre>
+                    </x-accordion.card>
 
                     <div class="tmasigns__information-card">
                         <x-information-card>
@@ -174,11 +176,11 @@
                     </div>
                 </section>
             </div>
-        </x-ui.accordion>
+        </x-accordion>
 
         <hr>
 
-        <x-ui.accordion>
+        <x-accordion>
             <x-slot:title id="tools">
                 <x-heroicon-s-wrench /> Tools
             </x-slot:title>
@@ -196,8 +198,8 @@
                     </div>
                     <div class="input">
                         <div class="row">
-                            <input x-model="$store.locatorTool.newUrl" id="locatortool" type="url" placeholder="URL"
-                                @@keyup.enter.prevent="$store.locatorTool.addUrl($store.locatorTool.newUrl)">
+                            <input id="locatortool" type="url" @@keyup.enter.prevent="$store.locatorTool.addUrl($store.locatorTool.newUrl)"
+                                placeholder="URL" x-model="$store.locatorTool.newUrl">
                             <button class="action button" @@click.prevent="$store.locatorTool.addUrl($store.locatorTool.newUrl)">
                                 <x-heroicon-o-plus stroke-width="2.5" />
                             </button>
@@ -205,11 +207,11 @@
                     </div>
                     <ul class="urllist">
                         <template x-for="url, index in $store.locatorTool.urls">
-                            <li><span x-text="url" x-bind:title="url"></span>
+                            <li><span x-bind:title="url" x-text="url"></span>
                                 <div class="deletebutton">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"
-                                        @@click.throttle.500ms="$store.locatorTool.deleteUrl(url)">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                    <svg @@click.throttle.500ms="$store.locatorTool.deleteUrl(url)" fill="none" stroke-width="3"
+                                        stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
                                     </svg>
                                 </div>
                             </li>
@@ -217,11 +219,11 @@
                     </ul>
 
                     <div class="wrapper-button-align-right">
-                        <a id="locatorToolDownloadButton" href="" @@click.prevent.throttle.500ms="TMASigns.downloadLocators()"
-                            download="locators.zip" class="button">Download locators</a>
+                        <a class="button" id="locatorToolDownloadButton" href="" @@click.prevent.throttle.500ms="TMASigns.downloadLocators()"
+                            download="locators.zip">Download locators</a>
                     </div>
                 </section>
             </div>
-        </x-ui.accordion>
+        </x-accordion>
     </section>
 </x-app>

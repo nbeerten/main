@@ -1,8 +1,8 @@
-<div class="navitems--mobile__wrapper" 
+<div class="nav-mobile-wrapper" 
     x-show="expanded" x-collapse x-cloak
     x-on:click.outside="expanded = false"
     x-on:resize.window="mobile = window.matchMedia('(max-width: 767px)').matches"> 
-    <div class="navitems--mobile">
+    <div class="nav-mobile">
         <x-nav.item route="home">
             Home
         </x-nav.item>
@@ -18,8 +18,8 @@
         </x-nav.item>
     @endif
     @auth
-        <div class="account-buttons">
-            <a href="/dashboard" class="profile-picture"><img src="/storage/{{ Auth::user()->avatar }}" alt="Profile picture of {{ Auth::user()->name }}" /></a>
+        <div class="nav-account-mobile">
+            <a href="/dashboard" class="nav-account-picture"><img src="/storage/{{ Auth::user()->avatar }}" alt="Profile picture of {{ Auth::user()->name }}" /></a>
             <a href="/dashboard"><x-heroicon-m-user-circle /></a>
             <a href="/telescope" target="_blank"><x-heroicon-m-sparkles/></a>
             <a href="/log-viewer" target="_blank"><x-heroicon-m-bars-4/></a>

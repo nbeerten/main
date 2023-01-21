@@ -3,7 +3,7 @@ import laravel from 'laravel-vite-plugin';
 
 import postcssImport from 'postcss-import';
 import postcssImportExtGlob from 'postcss-import-ext-glob';
-import postcssNested from 'postcss-nested';
+import postcssNesting from 'postcss-nesting';
 import postcssCustomSelectors from 'postcss-custom-selectors';
 import postcssCustomMedia from 'postcss-custom-media';
 import postcssAdvancedVariables from 'postcss-advanced-variables';
@@ -40,7 +40,7 @@ export default defineConfig({
                 postcssImport,
                 postcssImportExtGlob,
                 postcssAdvancedVariables,
-                postcssNested,
+                postcssNesting,
                 postcssCustomSelectors,
                 postcssCustomMedia,
                 postcssSortMediaQueries,
