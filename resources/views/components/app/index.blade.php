@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ App::currentLocale() }}" class="theme-dark">
+<html lang="{{ App::currentLocale() }}" dir="ltr">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,7 +8,7 @@
     <link rel="preload" href="{{ Vite::asset('resources/fonts/Hubot-Sans.woff2') }}" as="font" type="font/woff2" crossorigin>
     {{-- Main JS & CSS from the compiled files --}}
     @vite('resources/css/app.css')
-    <style>
+    <style nonce="{{ csp_nonce() }}">
         :root { 
             overflow-y: overlay;
         }
@@ -28,13 +28,13 @@
     <x-app.seo />
     
     @stack('style')
-    <script>
+    <script nonce="{{ csp_nonce() }}">
         partytown = {
             forward: [ "goatcounter" ],
             lib: "/vendor/partytown/",
         };
     </script>
-    <script>
+    <script nonce="{{ csp_nonce() }}">
     {{!! File::get(public_path().'/vendor/partytown/partytown.js') !!}}
     </script>
     @vite('resources/scripts/app.ts')

@@ -1,7 +1,7 @@
 @push('scripts')
     @vite('resources/scripts/pages/TMASigns.ts')
 
-    <script>
+    <script nonce="{{ csp_nonce() }}">
         document.addEventListener("alpine:init", () => {
             Alpine.store("locatorTool", {
                 // The array of all messages

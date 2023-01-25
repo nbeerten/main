@@ -19,42 +19,41 @@ use Statamic\Statamic;
 |
 */
 
-/* Public pages */
+/* Add CSP header to all public pages */
+Route::middleware(Spatie\Csp\AddCspHeaders::class)->group(function () {
+    Route::get('/', [PageController::class, 'home'])
+        ->name('home');
 
-Route::get('/', [PageController::class, 'home'])
-    ->name('home');
+    Route::get('/posts', [PostController::class, 'index'])
+        ->name('posts');
+    Route::get('/post/{slug}', [PostController::class, 'show'])
+        ->name('post.slug');
+    Route::redirect('/post', '/posts', 301);
+    Route::get('/tags/{slug}', [PostController::class, 'tags'])
+        ->name('tags.slug');
 
-Route::get('/posts', [PostController::class, 'index'])
-    ->name('posts');
-Route::get('/post/{slug}', [PostController::class, 'show'])
-    ->name('post.slug');
-Route::redirect('/post', '/posts', 301);
-Route::get('/tags/{slug}', [PostController::class, 'tags'])
-    ->name('tags.slug');
+    Route::get('/contact', [PageController::class, 'contact'])
+        ->name('contact');
 
-Route::get('/contact', [PageController::class, 'contact'])
-    ->name('contact');
+    Route::get('/tmasigns', [PageController::class, 'tmasigns'])
+        ->name('tmasigns');
 
-Route::get('/tmasigns', [PageController::class, 'tmasigns'])
-    ->name('tmasigns');
+    /* Public pages */
 
-/* Public pages */
+    Route::middleware('auth')->group(function () {
+        Route::get('/dashboard', function () {
+            return view('auth.dashboard');
+        })->name('auth.dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('auth.dashboard');
-    })->name('auth.dashboard');
+        Route::get('/logout', function () {
+            Auth::logout();
+            return redirect(route('login'));
+        })->name('auth.logout');
 
-    Route::get('/logout', function () {
-        Auth::logout();
-        // Request::session()->invalidate();
-        // Request::session()->regenerateToken();
-        return redirect(route('login'));
-    })->name('auth.logout');
+        Route::get('tmasigns/bigbatch', [TMASignsController::class, 'bigbatch']);
 
-    Route::get('tmasigns/bigbatch', [TMASignsController::class, 'bigbatch']);
-
-    Route::view('/background', 'background', ['aspectratio' => Request::query('aspectratio', '16 / 9')]);
+        Route::view('/background', 'background', ['aspectratio' => Request::query('aspectratio', '16 / 9')]);
+    });
 });
 
 Statamic::pushWebRoutes(function () {
