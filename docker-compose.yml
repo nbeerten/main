@@ -87,7 +87,7 @@ services:
       - laravel
 
   npm:
-    image: node:lts-alpine
+    image: node:current-alpine
     volumes:
       - .:/var/www/html
     ports:

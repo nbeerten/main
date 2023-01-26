@@ -20,7 +20,6 @@ class CSPPolicy extends Basic
                  Scheme::DATA,
                  Scheme::BLOB,
                  'https://nilsbeerten.goatcounter.com/count',
-                 'https://statamic.com/',
                  ! App::environment('local') ?: 'http://localhost:5173',
              ])
              ->addDirective(Directive::SCRIPT, [
@@ -46,6 +45,7 @@ class CSPPolicy extends Basic
                  Keyword::SELF,
                  Scheme::DATA,
                  Scheme::BLOB,
+                 Scheme::HTTPS,
              ])
              ->addDirective(Directive::FONT, '*')
              ->addDirective(Directive::FRAME, [

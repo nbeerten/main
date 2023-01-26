@@ -2,9 +2,6 @@
     <x-nav.item route="home">
         Home
     </x-nav.item>
-    <x-nav.item route="posts">
-        Posts
-    </x-nav.item>
     <x-nav.item route="contact">
         Contact
     </x-nav.item>
@@ -17,14 +14,14 @@
     @auth
         <x-dropdown class="nav-account-desktop">
             <x-slot name="trigger" class="nav-account-toggle">
-                <button><img src="/storage/{{ Auth::user()->avatar }}" alt="Profile picture of {{ Auth::user()->name }}" /></button>
+                <button><img src="https://github.com/{{ Auth::user()->github_username }}.png" alt="Profile picture of {{ Auth::user()->name }}" /></button>
             </x-slot>
 
             <x-slot:slot class="nav-account-body">
                 <div>
                     <div>
                         <div class="nav-account-details">
-                            <img src="/storage/{{ Auth::user()->avatar }}" alt="Profile picture of {{ Auth::user()->name }}" />
+                            <img src="https://github.com/{{ Auth::user()->github_username }}.png" alt="Profile picture of {{ Auth::user()->name }}" />
                             <p>{{ Auth::user()->name }}</p>
                         </div>
                         <div class="nav-account-items">
@@ -36,9 +33,6 @@
                             </a>
                             <a href="/log-viewer" target="_blank" class="item">
                                 <x-heroicon-m-bars-4 />
-                            </a>
-                            <a href="/cp" target="_blank" class="item">
-                                <x-simpleicon-statamic class="heroicons" />
                             </a>
                             <x-logout class="item">
                                 <x-heroicon-m-lock-closed />

@@ -10,7 +10,9 @@
         <h3 class="heading">Dashboard</h3>
         <x-card style="max-width: 40ch; min-width: 0; margin-bottom: 1rem;">
             <h4 class="card-title">Welcome</h4>
-            <p class="card-text">Logged in as {{ Auth::user()->name }} ({{ Auth::user()->id }}), email: {{ Auth::user()->email }}</p>
+            <p class="card-text">Logged in as {{ Auth::user()->name }} ({{ Auth::user()->id }})</p>
+            <p class="card-text">Email: {{ Auth::user()->email }}</p>
+            <p class="card-text">Github: {{ Auth::user()->github_username }}</p>
             <x-slot:footer>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
@@ -27,7 +29,6 @@
                     <div class="helper_row-wrap">
                         <a href="/telescope" target="_blank" class="button"><x-heroicon-m-sparkles/> Telescope</a>
                         <a href="/log-viewer" target="_blank" class="button"><x-heroicon-m-bars-4/> Log-Viewer</a>
-                        <a href="/cp" target="_blank" class="button"><x-simpleicon-statamic class="heroicons" /> Statamic</a>
                     </div>
                 </x-slot:footer>
             </x-card>

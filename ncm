@@ -47,8 +47,8 @@ elif [ "$1" == "php" ]; then
 elif [ "$1" == "artisan" ] || [ "$1" == "art" ]; then
     shift 1
 
-        ARGS+=(run --rm)
-        ARGS+=(artisan "$@")
+        ARGS+=(exec php)
+        ARGS+=(php artisan "$@")
 
 # Proxy NPM commands to the "npm" binary on the application container...
 elif [ "$1" == "npm" ]; then

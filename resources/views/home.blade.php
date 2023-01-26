@@ -71,10 +71,6 @@
                             <tool-tip role="tooltip" tip-position="block-start">AlpineJS</tool-tip>
                             <x-simpleicon-alpinedotjs class="heroicons" aria-label="AlpineJS icon" width="36" />
                         </a>
-                        <a href="https://statamic.com/" target="_blank" aria-label="Statamic" role="listitem">
-                            <tool-tip role="tooltip" tip-position="block-start">Statamic</tool-tip>
-                            <x-simpleicon-statamic class="heroicons" aria-label="Statamic icon" width="36" />
-                        </a>
                     </span>
                 </p>
             </div>
@@ -150,35 +146,4 @@
             </x-card> --}}
         </div>
     </section>
-    
-
-    @if (count($posts) > 0)
-        <section class="posts">
-            <h3 class="heading">Posts</h3>
-            <div class="cards">
-                @foreach ($posts as $post)
-                    <x-card.post class="post">
-                        @foreach (Statamic::tag('glide:generate')->src($post->featured_image)->width(400)->format('webp') as $image)
-                            <x-slot:img src="{{ $image['url'] }}" width="{{ $image['width'] }}" alt="Featured image of post" loading="lazy"></x-slot:img>
-                        @endforeach
-
-                        <x-slot:title>{{ $post->title }}</x-slot:title>
-                        {{ $post->summary }}
-
-                        <x-slot:footer>
-                            <div class="action">
-                                <span class="timestamp">
-                                    <x-heroicon-o-newspaper />
-                                    <time datetime="{{ $post->date->isoFormat('YYYY-MM-DD') }}" x-data="{ time: new Date({{ $post->date->getTimestampMs() }}).toLocaleString('en', { month: 'long', day: 'numeric', year: 'numeric' }) }"><span x-text="time"></span></time>
-                                </span>
-                                <a href="{{ $post->permalink }}" class="readmore">
-                                    Read more...
-                                </a>
-                            </div>
-                        </x-slot:footer>
-                    </x-card.post>
-                @endforeach
-            </div>
-        </section>
-    @endif
 </x-app>
