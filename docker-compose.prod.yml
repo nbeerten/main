@@ -19,12 +19,12 @@ services:
       - "80:80"
     volumes:
       - .:/var/www/html:delegated
-      - ./docker/dev/nginx/:/etc/nginx/conf.d/
+      - ./docker/prod/nginx/:/etc/nginx/conf.d/
+      - ./docker/prod/ssl/:/etc/ssl/
     depends_on:
       - php
       - redis
       - mysql
-      - mailhog
     networks:
       - laravel
 
@@ -112,13 +112,5 @@ services:
       - mysql
       - php
     entrypoint: [ 'php', '/var/www/html/artisan' ]
-    networks:
-      - laravel
-  
-  mailhog:
-    image: mailhog/mailhog:latest
-    ports:
-      - "1025:1025"
-      - "8025:8025"
     networks:
       - laravel

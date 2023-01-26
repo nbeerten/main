@@ -48,9 +48,7 @@ class PageController extends Controller
             noindex: false
         );
 
-        $form = Statamic::tag('form:contact');
-
-        return view('contact', ['form' => $form]);
+        return view('contact');
     }
 
     public function tmasigns(Request $request)

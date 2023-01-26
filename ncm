@@ -1,0 +1,96 @@
+#!/bin/bash
+
+# Define Docker Compose command prefix...
+docker compose &> /dev/null
+if [ $? == 0 ]; then
+    DOCKER_COMPOSE=(docker compose)
+else
+    DOCKER_COMPOSE=(docker-compose)
+fi
+
+# Ensure that Docker is running...
+if ! docker info > /dev/null 2>&1; then
+    echo "${BOLD}Docker is not running.${NC}" >&2
+
+    exit 1
+fi
+
+ARGS=()
+
+if [ "$1" == "--env" ]; then
+    ARGS+=(-f docker-compose.$2.yml)
+    
+    shift 2
+fi
+
+# Use correct up command
+if [ "$1" == "up" ]; then
+    shift 1
+
+    ARGS+=(up -d --build nginx)
+
+# Proxy Composer commands to the "composer" binary on the application container...
+elif [ "$1" == "composer" ]; then
+    shift 1
+
+    ARGS+=(exec php)
+    ARGS+=(composer "$@")
+
+# Proxy Artisan commands to the "artisan" binary on the application container...
+elif [ "$1" == "php" ]; then
+    shift 1
+
+        ARGS+=(exec php)
+        ARGS+=(php "$@")
+
+# Proxy Artisan commands to the "artisan" binary on the application container...
+elif [ "$1" == "artisan" ] || [ "$1" == "art" ]; then
+    shift 1
+
+        ARGS+=(run --rm)
+        ARGS+=(artisan "$@")
+
+# Proxy NPM commands to the "npm" binary on the application container...
+elif [ "$1" == "npm" ]; then
+    shift 1
+
+    ARGS+=(run --rm)
+    ARGS+=(npm "$@")
+
+# Proxy Vite commands to the "npm" binary on the application container...
+elif [ "$1" == "vite" ]; then
+    shift 1
+
+    if [ "$1" == "build" ]; then
+        ARGS+=(run --rm npm run build)
+    else 
+        ARGS+=(run --rm --service-ports npm run dev)
+    fi
+
+# Proxy the "pint" command to "php vendor/bin/pint"...
+elif [ "$1" == "pint" ]; then
+    shift 1
+
+    ARGS+=(exec php)
+    ARGS+=(php vendor/bin/pint "$@")
+
+# Initiate a Bash shell within the application container...
+elif [ "$1" == "bash" ]; then
+    shift 1
+
+    ARGS+=(exec -u laravel php)
+    ARGS+=(bash "$@")
+
+# Initiate a root user Bash shell within the application container...
+elif [ "$1" == "root-bash" ]; then
+    shift 1
+
+    ARGS+=(exec -u root php)
+    ARGS+=(bash "$@")
+
+# Pass unknown commands to the "docker-compose" binary...
+else
+    ARGS+=("$@")
+fi
+
+"${DOCKER_COMPOSE[@]}" "${ARGS[@]}"

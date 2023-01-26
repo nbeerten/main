@@ -8,3 +8,6 @@ This repository contains the code for my personal website, [nilsbeerten.nl](http
 
 ## Contributing
 If you have any feedback or issues, please open a new issue in the repository.
+
+## Acknowledgements
+ - Docker Compose setup inspired by: [aschmelyun/docker-compose-laravel](https://github.com/aschmelyun/docker-compose-laravel) and [laravel/sail](https://github.com/laravel/sail)

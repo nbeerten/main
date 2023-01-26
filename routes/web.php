@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TMASignsController;
@@ -35,10 +36,11 @@ Route::middleware(Spatie\Csp\AddCspHeaders::class)->group(function () {
     Route::get('/contact', [PageController::class, 'contact'])
         ->name('contact');
 
+    Route::post('/contact', [ContactFormController::class, 'post'])
+        ->name('contact.post');
+
     Route::get('/tmasigns', [PageController::class, 'tmasigns'])
         ->name('tmasigns');
-
-    /* Public pages */
 
     Route::middleware('auth')->group(function () {
         Route::get('/dashboard', function () {
@@ -47,6 +49,7 @@ Route::middleware(Spatie\Csp\AddCspHeaders::class)->group(function () {
 
         Route::get('/logout', function () {
             Auth::logout();
+
             return redirect(route('login'));
         })->name('auth.logout');
 
