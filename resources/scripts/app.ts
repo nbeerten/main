@@ -1,28 +1,4 @@
 addEventListener('DOMContentLoaded', () => polyfill());
-addEventListener('load', () => goatcounterstats());
-
-/**
- * Fetches the number of page views from GoatCounter, and then displays it in all HTMLElements with
- * the id 'goatcounterstats'
- * 
- * @returns Promise resolving to void.
- */
-async function goatcounterstats(): Promise<void> {
-    let url = 'https://nilsbeerten.goatcounter.com/counter/' + encodeURI(location.pathname) + '.json';
-
-    fetch(url)
-        .then((response) => { return response.json() })
-        .then((json) => {
-            const elements: NodeListOf<HTMLElement> = document.querySelectorAll('#goatcounterstats') as NodeListOf<HTMLElement>;
-            elements.forEach(element => element.textContent = json.count);
-            return;
-        })
-        .catch(() => {
-            const elements: NodeListOf<HTMLElement> = document.querySelectorAll('#goatcounterstats') as NodeListOf<HTMLElement>;
-            elements.forEach(element => element.textContent = '0');
-            return;
-        });
-}
 
 /**
  * If the browser doesn't support the `:has()` pseudo-class, then add the `has_tool-tip` class to all

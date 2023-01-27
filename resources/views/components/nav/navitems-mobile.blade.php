@@ -20,6 +20,7 @@
             <a href="/dashboard"><x-heroicon-m-user-circle /></a>
             <a href="/telescope" target="_blank"><x-heroicon-m-sparkles/></a>
             <a href="/log-viewer" target="_blank"><x-heroicon-m-bars-4/></a>
+            <a href="https://analytics.nilsbeerten.nl/websites/ad9a9ebf-feb9-4204-88ef-1c11b9834ee5" target="_blank"><x-heroicon-m-chart-bar /></a>
             <x-logout><x-heroicon-m-arrow-left-on-rectangle/></x-logout>
         </div>
     @endauth

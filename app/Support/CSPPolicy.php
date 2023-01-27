@@ -19,7 +19,6 @@ class CSPPolicy extends Basic
                  Keyword::SELF,
                  Scheme::DATA,
                  Scheme::BLOB,
-                 'https://nilsbeerten.goatcounter.com/count',
                  ! App::environment('local') ?: 'http://localhost:5173',
              ])
              ->addDirective(Directive::SCRIPT, [
@@ -27,11 +26,12 @@ class CSPPolicy extends Basic
                  Keyword::UNSAFE_EVAL,
                  Keyword::UNSAFE_INLINE,
                  'https://challenges.cloudflare.com',
+                 'https://analytics.nilsbeerten.nl',
                  ! App::environment('local') ?: 'http://localhost:5173',
              ])
              ->addDirective(Directive::CONNECT, [
                  Keyword::SELF,
-                 'https://nilsbeerten.goatcounter.com/',
+                 'https://analytics.nilsbeerten.nl',
                  'ws://localhost:5173',
              ])
              ->addDirective(Directive::STYLE, [
@@ -50,8 +50,7 @@ class CSPPolicy extends Basic
              ->addDirective(Directive::FONT, '*')
              ->addDirective(Directive::FRAME, [
                  Keyword::SELF,
-                 'https://challenges.cloudflare.com',
-                 'https://nilsbeerten.goatcounter.com/',
+                 'https://challenges.cloudflare.com'
              ]);
 
         $this->addNonceForDirective(Directive::STYLE);

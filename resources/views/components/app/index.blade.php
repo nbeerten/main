@@ -28,7 +28,9 @@
     <x-app.seo />
     
     @stack('style')
-    <script nonce="{{ csp_nonce() }}">
+
+    {{-- Partytown --}}
+    {{-- <script nonce="{{ csp_nonce() }}">
         partytown = {
             forward: [ "goatcounter" ],
             lib: "/vendor/partytown/",
@@ -36,7 +38,9 @@
     </script>
     <script nonce="{{ csp_nonce() }}">
     {{!! File::get(public_path().'/vendor/partytown/partytown.js') !!}}
-    </script>
+    </script> --}}
+
+    {{-- Main Javascript --}}
     @vite('resources/scripts/app.ts')
 
     {{-- Stack of scripts from anywhere --}}
@@ -44,6 +48,15 @@
 
     {{-- Always load last to prevent errors of undefined functions --}}
     @vite('resources/scripts/alpine.ts')
+
+    <!-- Umami Analytics -->
+    @guest
+        <script async defer 
+            data-website-id="ad9a9ebf-feb9-4204-88ef-1c11b9834ee5" 
+            src="https://analytics.nilsbeerten.nl/umami.js"
+            data-domains="nilsbeerten.nl">
+        </script>
+    @endguest
 </head>
 
 <body>
@@ -75,7 +88,5 @@
 
     <!-- Script Stack -->
     @stack('footerscripts')
-    <!-- Goatcounter -->
-    <script data-goatcounter="https://nilsbeerten.goatcounter.com/count" src="{{ Vite::asset("resources/scripts/count.js") }}" type="text/partytown"></script>
 </body>
 </html>
