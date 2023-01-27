@@ -33,7 +33,7 @@ services:
     restart: unless-stopped
     tty: true
     ports:
-      - "3306:3306"
+      - "3306"
     environment:
       MYSQL_DATABASE: ${DB_DATABASE}
       MYSQL_USER: ${DB_USERNAME}
@@ -65,24 +65,9 @@ services:
     image: redis:alpine
     restart: unless-stopped
     ports:
-      - "6379:6379"
+      - "6379"
     volumes:
       - redis:/data
-    networks:
-      - laravel
-
-  composer:
-    build:
-      context: ./docker
-      dockerfile: php.dockerfile
-      args:
-        - UID=${UID:-1000}
-        - GID=${GID:-1000}
-    volumes:
-      - .:/var/www/html
-    depends_on:
-      - php
-    entrypoint: [ 'composer' ]
     networks:
       - laravel
 
@@ -96,22 +81,6 @@ services:
       - "5173:5173"
     working_dir: /var/www/html
     entrypoint: [ 'npm' ]
-    networks:
-      - laravel
-
-  artisan:
-    build:
-      context: ./docker
-      dockerfile: php.dockerfile
-      args:
-        - UID=${UID:-1000}
-        - GID=${GID:-1000}
-    volumes:
-      - .:/var/www/html:delegated
-    depends_on:
-      - mysql
-      - php
-    entrypoint: [ 'php', '/var/www/html/artisan' ]
     networks:
       - laravel
   

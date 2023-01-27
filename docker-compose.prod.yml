@@ -17,6 +17,7 @@ services:
         - GID=${GID:-1000}
     ports:
       - "80:80"
+      - "443:443"
     volumes:
       - .:/var/www/html:delegated
       - ./docker/prod/nginx/:/etc/nginx/conf.d/
@@ -33,7 +34,7 @@ services:
     restart: unless-stopped
     tty: true
     ports:
-      - "3306:3306"
+      - "3306"
     environment:
       MYSQL_DATABASE: ${DB_DATABASE}
       MYSQL_USER: ${DB_USERNAME}
@@ -54,7 +55,7 @@ services:
         - UID=${UID:-1000}
         - GID=${GID:-1000}
     ports:
-      - "9000:9000"
+      - "9000"
     volumes:
       - .:/var/www/html:delegated
       # - ./docker/php/php.ini:/usr/local/etc/php/conf.d/local.ini
@@ -65,24 +66,9 @@ services:
     image: redis:alpine
     restart: unless-stopped
     ports:
-      - "6379:6379"
+      - "6379"
     volumes:
       - redis:/data
-    networks:
-      - laravel
-
-  composer:
-    build:
-      context: ./docker
-      dockerfile: php.dockerfile
-      args:
-        - UID=${UID:-1000}
-        - GID=${GID:-1000}
-    volumes:
-      - .:/var/www/html
-    depends_on:
-      - php
-    entrypoint: [ 'composer' ]
     networks:
       - laravel
 
@@ -90,27 +76,7 @@ services:
     image: node:lts-alpine
     volumes:
       - .:/var/www/html
-    ports:
-      - "3000:3000"
-      - "3001:3001"
-      - "5173:5173"
     working_dir: /var/www/html
     entrypoint: [ 'npm' ]
-    networks:
-      - laravel
-
-  artisan:
-    build:
-      context: ./docker
-      dockerfile: php.dockerfile
-      args:
-        - UID=${UID:-1000}
-        - GID=${GID:-1000}
-    volumes:
-      - .:/var/www/html:delegated
-    depends_on:
-      - mysql
-      - php
-    entrypoint: [ 'php', '/var/www/html/artisan' ]
     networks:
       - laravel
