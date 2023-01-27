@@ -27,7 +27,7 @@ fi
 if [ "$1" == "up" ]; then
     shift 1
 
-    ARGS+=(up -d --build nginx)
+    ARGS+=(up -d --build nginx "$@")
 
 # Proxy Composer commands to the "composer" binary on the application container...
 elif [ "$1" == "composer" ]; then

@@ -2,7 +2,7 @@ networks:
   laravel:
 
 volumes:
-    mysql:
+    mariadb:
         driver: local
     redis:
         driver: local
@@ -25,25 +25,25 @@ services:
     depends_on:
       - php
       - redis
-      - mysql
+      - mariadb
     networks:
       - laravel
 
-  mysql:
-    image: mysql:latest
+  mariadb:
+    image: mariadb:latest
     restart: unless-stopped
     tty: true
     ports:
       - "3306"
     environment:
-      MYSQL_DATABASE: ${DB_DATABASE}
-      MYSQL_USER: ${DB_USERNAME}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MARIADB_DATABASE: ${DB_DATABASE}
+      MARIADB_USER: ${DB_USERNAME}
+      MARIADB_PASSWORD: ${DB_PASSWORD}
+      MARIADB_ROOT_PASSWORD: ${DB_PASSWORD}
       SERVICE_TAGS: dev
-      SERVICE_NAME: mysql
+      SERVICE_NAME: mariadb
     volumes:
-      - mysql:/var/lib/mysql
+      - mariadb:/var/lib/mysql
     networks:
       - laravel
 
