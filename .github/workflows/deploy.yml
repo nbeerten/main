@@ -1,34 +1,34 @@
-name: Deploy
+# name: Deploy
 
-on:
-  push:
-    branches:
-      - 'docker-rewrite'
+# on:
+#   push:
+#     branches:
+#       - 'docker-rewrite'
 
-jobs:
-  Deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Deploy to server
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        USERNAME: ${{ secrets.USERNAME }}
-        PORT: ${{ secrets.PORT }}
-        KEY: ${{ secrets.SSHKEY }}
-        script: |
-          cd ~/new-main
-          ./ncm --env prod artisan down --no-interaction
-          git pull
-          ./ncm --env prod down
-          ./ncm --env prod up --wait
-          ./ncm --env prod composer install --no-dev --ansi --no-interaction
-          ./ncm --env prod npm install
-          ./ncm --env prod vite build
-          ./ncm --env prod artisan migrate --no-interaction --force
-          ./ncm --env prod artisan storage:link --no-interaction --force
-          ./ncm --env prod artisan config:cache --no-interaction
-          ./ncm --env prod artisan route:cache --no-interaction
-          ./ncm --env prod artisan view:cache --no-interaction
-          ./ncm --env prod artisan icons:cache --no-interaction
-          ./ncm --env prod artisan up --no-interaction
+# jobs:
+#   Deploy:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Deploy to server
+#       uses: appleboy/ssh-action@master
+#       with:
+#         host: ${{ secrets.HOST }}
+#         USERNAME: ${{ secrets.USERNAME }}
+#         PORT: ${{ secrets.PORT }}
+#         KEY: ${{ secrets.SSHKEY }}
+#         script: |
+#           cd ~/new-main
+#           ./ncm --env prod artisan down --no-interaction
+#           git pull
+#           ./ncm --env prod down
+#           ./ncm --env prod up --wait
+#           ./ncm --env prod composer install --no-dev --ansi --no-interaction
+#           ./ncm --env prod npm install
+#           ./ncm --env prod vite build
+#           ./ncm --env prod artisan migrate --no-interaction --force
+#           ./ncm --env prod artisan storage:link --no-interaction --force
+#           ./ncm --env prod artisan config:cache --no-interaction
+#           ./ncm --env prod artisan route:cache --no-interaction
+#           ./ncm --env prod artisan view:cache --no-interaction
+#           ./ncm --env prod artisan icons:cache --no-interaction
+#           ./ncm --env prod artisan up --no-interaction
