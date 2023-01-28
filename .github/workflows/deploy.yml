@@ -1,97 +1,35 @@
-name: Build and deploy
+name: Deploy
 
 on:
   push:
     branches:
-      - 'main'
+      - 'docker-rewrite'
 
 jobs:
-  Build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout 
-        uses: actions/checkout@v3
-        
-      - name: Login to Docker Hub
-        uses: docker/login-action@v2
-        with:
-          username: ${{ secrets.DOCKER_HUB_USERNAME }}
-          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
-
-      - name: Build and push
-        uses: docker/build-push-action@v3
-        with:
-          context: .
-          file: ./docker/app/Dockerfile
-          builder: ${{ steps.buildx.outputs.name }}
-          push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/main:latest
-          cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/main:buildcache
-          cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/main:buildcache,mode=max
-
   Deploy:
     runs-on: ubuntu-latest
-    needs: Build
+    if: ${{ !contains(github.event.head_commit.message, '[nodeploy]') }}
     steps:
-    - name: Checkout 
-      uses: actions/checkout@v3
-
-    - name: Copy docker folder contents via scp
-      uses: appleboy/scp-action@master
-      env:
-        HOST: ${{ secrets.HOST }}
-        USERNAME: ${{ secrets.USERNAME }}
-        PORT: ${{ secrets.PORT }}
-        KEY: ${{ secrets.SSHKEY }}
-      with:
-        source: "docker/prod/"
-        target: "/home/nbeerten/main"
-        strip_components: 2
-
-    - name: Pull image and restart container
+    - name: Deploy to server
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
         USERNAME: ${{ secrets.USERNAME }}
         PORT: ${{ secrets.PORT }}
         KEY: ${{ secrets.SSHKEY }}
-        script: >
-          cd ~/main &&
-          docker compose pull app && 
-          docker compose down && 
-          docker volume rm main_app && 
-          docker compose up -d --wait
-    
-    - name: Prune dangling images
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        USERNAME: ${{ secrets.USERNAME }}
-        PORT: ${{ secrets.PORT }}
-        KEY: ${{ secrets.SSHKEY }}
-        script: >
-          cd ~/main &&
-          docker image prune -f
-
-    - name: Migrate and cache config, route and views
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        USERNAME: ${{ secrets.USERNAME }}
-        PORT: ${{ secrets.PORT }}
-        KEY: ${{ secrets.SSHKEY }}
-        script: >
-          cd ~/main && 
-          docker compose exec app bash -c 
-          'php artisan down --no-interaction && 
-          php artisan storage:link --no-interaction --force &&
-          php artisan package:discover --no-interaction &&
-          php artisan migrate --no-interaction --force && 
-          php artisan config:cache --no-interaction && 
-          php artisan route:cache --no-interaction && 
-          php artisan view:cache --no-interaction && 
-          php artisan icons:cache --no-interaction && 
-          php artisan up --no-interaction'
+        script: |
+          cd ~/main
+          ./ncm --env prod artisan down --no-interaction
+          git pull
+          ./ncm --env prod down
+          ./ncm --env prod up --wait
+          ./ncm --env prod composer install --no-dev --ansi --no-interaction
+          ./ncm --env prod npm install
+          ./ncm --env prod vite build
+          ./ncm --env prod artisan migrate --no-interaction --force
+          ./ncm --env prod artisan storage:link --no-interaction --force
+          ./ncm --env prod artisan config:cache --no-interaction
+          ./ncm --env prod artisan route:cache --no-interaction
+          ./ncm --env prod artisan view:cache --no-interaction
+          ./ncm --env prod artisan icons:cache --no-interaction
+          ./ncm --env prod artisan up --no-interaction

@@ -4,28 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Classes\SEO\SEO;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Spatie\SchemaOrg\Schema;
-use Statamic\Facades\Entry;
-use Statamic\Statamic;
 
 class PageController extends Controller
 {
     public function home(Request $request)
     {
-        if (Auth::check()) {
-            $posts = Entry::query()
-            ->where('collection', 'posts')
-            ->take(6)
-            ->get();
-        } else {
-            $posts = Entry::query()
-            ->where('collection', 'posts')
-            ->where('published', true)
-            ->take(6)
-            ->get();
-        }
-
         $schema = Schema::organization()
             ->url('https://nilsbeerten.nl/')
             ->logo('https://nilsbeerten.nl/icon-512.png');
@@ -37,7 +21,7 @@ class PageController extends Controller
             schema: $schema->toScript()
         );
 
-        return view('home', ['posts' => $posts]);
+        return view('home');
     }
 
     public function contact(Request $request)
@@ -48,9 +32,7 @@ class PageController extends Controller
             noindex: false
         );
 
-        $form = Statamic::tag('form:contact');
-
-        return view('contact', ['form' => $form]);
+        return view('contact');
     }
 
     public function tmasigns(Request $request)

@@ -52,6 +52,7 @@ return [
     'attributes' => [
         // 'width' => 50,
         // 'height' => 50,
+        'nonce' => '{{ csp_nonce() }}',
     ],
 
 ];

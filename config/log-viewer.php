@@ -1,6 +1,7 @@
 <?php
 
 use Opcodes\LogViewer\Level;
+use Illuminate\Support\Facades\Route;
 
 return [
 
@@ -39,7 +40,7 @@ return [
     |
     */
 
-    'back_to_system_url' => config('app.url', null),
+    'back_to_system_url' => '/dashboard',
 
     'back_to_system_label' => null, // Displayed by default: "Back to {{ app.name }}"
 

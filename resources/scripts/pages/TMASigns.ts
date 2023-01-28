@@ -1,4 +1,4 @@
-declare var TMASigns, Alpine;
+declare var TMASigns, Alpine, umami;
 
 window.TMASigns = {
     updatePreview: function({text, subtext, size, subtextlocation, offsetText, offsetSubtext, outlineModifier}) {
@@ -58,7 +58,7 @@ window.TMASigns = {
                         previewImage.setAttribute('src', objectURL);
                         previewImage.classList.remove("loading");
                         const endTime = performance.now();
-                        previewImageParent.setAttribute("data-status-message", `${response.statusText} (${Math.round(endTime - startTime)}ms)`)
+                        previewImageParent.setAttribute("data-status-message", `${response.statusText} (${Math.round(endTime - startTime)}ms)`);
                     });
                 }
                 else {
@@ -67,6 +67,8 @@ window.TMASigns = {
                         previewImage.setAttribute('src', ' ');
                         previewImageParent.setAttribute("data-status-message", data['message']);
                     });
+
+                    umami.trackEvent('tmasigns-preview-error', { type: 'api' });
                 }
             })
     },
@@ -117,12 +119,13 @@ window.TMASigns = {
                         downloadButton.click();
                         URL.revokeObjectURL(objectURL);
                     });
+
+                umami.trackEvent('tmasigns-download', { type: 'api' });
                 } else downloadButton.setAttribute('href', " ");
             });
     },
 
     downloadLocators: function() {
-
         const locatorToolDownloadButton = document.querySelector('#locatorToolDownloadButton') as HTMLElement;
 
         const data = JSON.stringify(Alpine.store('locatorTool').urls);
@@ -143,6 +146,8 @@ window.TMASigns = {
                         URL.revokeObjectURL(objectURL);
                     });
                 } else locatorToolDownloadButton.setAttribute('href', "");
+
+                umami.trackEvent('tmasigns-locators', { type: 'api' });
             });
     }
 };

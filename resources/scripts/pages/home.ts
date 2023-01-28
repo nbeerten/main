@@ -34,6 +34,7 @@ function startTypingAnimation() {
             backSpeed: 75,
             backDelay: 3000,
             loop: true,
+            autoInsertCss: false
         })
     }
 }

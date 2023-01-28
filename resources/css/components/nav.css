@@ -256,6 +256,7 @@
                 align-items: center;
                 gap: 0.5rem;
                 justify-content: flex-start;
+                width: max-content;
 
                 & img {
                     aspect-ratio: 1;
@@ -269,6 +270,7 @@
                     margin-top: auto;
                     margin-bottom: 0.15em;
                     color: var(--accent-7);
+                    white-space: nowrap;
                 }
             }
         

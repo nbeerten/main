@@ -6,9 +6,6 @@
         <x-nav.item route="home">
             Home
         </x-nav.item>
-        <x-nav.item route="posts">
-            Posts
-        </x-nav.item>
         <x-nav.item route="contact">
             Contact
         </x-nav.item>
@@ -19,11 +16,11 @@
     @endif
     @auth
         <div class="nav-account-mobile">
-            <a href="/dashboard" class="nav-account-picture"><img src="/storage/{{ Auth::user()->avatar }}" alt="Profile picture of {{ Auth::user()->name }}" /></a>
+            <a href="/dashboard" class="nav-account-picture"><img src="https://github.com/{{ Auth::user()->github_username }}.png" alt="Profile picture of {{ Auth::user()->name }}" /></a>
             <a href="/dashboard"><x-heroicon-m-user-circle /></a>
             <a href="/telescope" target="_blank"><x-heroicon-m-sparkles/></a>
             <a href="/log-viewer" target="_blank"><x-heroicon-m-bars-4/></a>
-            <a href="/cp" target="_blank"><x-simpleicon-statamic class="heroicons" /></a>
+            <a href="https://analytics.nilsbeerten.nl/websites/ad9a9ebf-feb9-4204-88ef-1c11b9834ee5" target="_blank"><x-heroicon-m-chart-bar /></a>
             <x-logout><x-heroicon-m-arrow-left-on-rectangle/></x-logout>
         </div>
     @endauth

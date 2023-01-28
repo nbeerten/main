@@ -15,12 +15,12 @@
                 **Icons:** [heroicons](https://heroicons.com/), [simpleicons](https://simpleicons.org/).
             </x-md></p>
         </x-footer.link-row>
-        <x-footer.link-row title="Statistics">
+        {{-- <x-footer.link-row title="Statistics">
             <p class="visitor-count">
                 <span>Visitors of this page:</span>
                 <span><x-heroicon-s-eye style="font-size: 1.25rem;" /> <span id="goatcounterstats"></span></span>
             </p>
-        </x-footer.link-row>
+        </x-footer.link-row> --}}
     </div>
     <div class="footer-bottom">
         <div class="footer-copyright">

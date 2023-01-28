@@ -2,6 +2,35 @@
     @vite('resources/scripts/pages/home.ts')
 @endpush
 
+@push('style')
+<style type="text/css" nonce="{{ csp_nonce() }}">
+.typed-cursor {
+    opacity: 1;
+}
+.typed-cursor.typed-cursor--blink {
+    animation: typedjsBlink 0.7s infinite;
+    -webkit-animation: typedjsBlink 0.7s infinite;
+    animation: typedjsBlink 0.7s infinite;
+}
+@keyframes typedjsBlink {
+    50% {
+        opacity: 0;
+    }
+}
+@-webkit-keyframes typedjsBlink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+</style>
+@endpush
+
 <x-app>
     <x-slot:hero>
         <header class="home__header" x-data 
@@ -42,10 +71,6 @@
                             <tool-tip role="tooltip" tip-position="block-start">AlpineJS</tool-tip>
                             <x-simpleicon-alpinedotjs class="heroicons" aria-label="AlpineJS icon" width="36" />
                         </a>
-                        <a href="https://statamic.com/" target="_blank" aria-label="Statamic" role="listitem">
-                            <tool-tip role="tooltip" tip-position="block-start">Statamic</tool-tip>
-                            <x-simpleicon-statamic class="heroicons" aria-label="Statamic icon" width="36" />
-                        </a>
                     </span>
                 </p>
             </div>
@@ -74,15 +99,29 @@
                     </div>
                 </x-slot:footer>
             </x-card>
+            {{-- <x-card>
+                <x-slot:img src="{{ asset('assets/tmasigns_1x1example.webp') }}" alt="Example of a one by one sized sign"></x-slot:img>
+                <h4 class="card-title">TMA Sign Generator</h4>
+                <p class="card-text">
+                    A tool powered by Imagick that enables mappers to create signs with customizable text that fit in with rest of TMA signpack.
+                </p>
+                
+                <x-slot:footer>
+                    <a href="https://github.com/nbeerten/main" class="button" target="_blank" aria-label="Github: nbeerten/main">
+                        <x-simpleicon-github class="heroicons" />
+                    </a>
+                    <a href="/tmasigns" class="button">Visit tool</a>
+                </x-slot:footer>
+            </x-card> --}}
             <x-card>
                 <x-slot:img src="{{ asset('assets/nextdotnilsbeerten_thumb.webp') }}" alt="Thumbnail for next.nilsbeerten.nl project" width="160" height="160">
                 </x-slot:img>
                 <h4 class="card-title">next.nilsbeerten.nl</h4>
                 <p class="card-text">
                     A <b>secondary</b> backend hosted on the edge using the
-                    <a href="https://nextjs.org/" target="_blank">Next.js</a> framework. Includes
-                    <a href="https://vercel.com/docs/concepts/functions/edge-functions/og-image-generation" target="_blank">@vercel/og</a> to generate
-                    Opengraph images for the main site.
+                    <a href="https://nextjs.org/" target="_blank">Next.js</a> framework.
+                    Provides Opengraph images for the main site using
+                    <a href="https://vercel.com/docs/concepts/functions/edge-functions/og-image-generation" target="_blank">@vercel/og</a>.
                 </p>
                 <x-slot:footer>
                     <div class="helper_row-wrap">
@@ -93,44 +132,18 @@
                 </x-slot:footer>
             </x-card>
             {{-- <x-card>
-                <x-slot:img src="{{ asset('assets/tmasigns_1x1example.webp') }}" alt="Example of a one by one sized sign"></x-slot:img>
-                <h4 class="card-title">TMA Sign Generator</h4>
-                A small web application to create signs with text defined by the user for Trackmania, styled to fit in with the TMA signpack.
+                <x-slot:img src="{{ asset('assets/favicon.svg') }}" alt="Example of a one by one sized sign"></x-slot:img>
+                <h4 class="card-title">nbeerten/main</h4>
+                <p class="card-text">
+                    Github repository for this website, nilsbeerten.nl. This website is built using Laravel, Alpine.js, CSS and TypeScript.
+                </p>
                 
                 <x-slot:footer>
-                    <a href="/tmasigns" class="button">Visit page</a>
+                    <a href="https://github.com/nbeerten/main" class="button" target="_blank">
+                        <x-simpleicon-github class="heroicons" /> Github Repository
+                    </a>
                 </x-slot:footer>
             </x-card> --}}
         </div>
     </section>
-
-    @if (count($posts) > 0)
-        <section class="posts">
-            <h3 class="heading">Posts</h3>
-            <div class="cards">
-                @foreach ($posts as $post)
-                    <x-card.post class="post">
-                        @foreach (Statamic::tag('glide:generate')->src($post->featured_image)->width(400)->format('webp') as $image)
-                            <x-slot:img src="{{ $image['url'] }}" width="{{ $image['width'] }}" alt="Featured image of post" loading="lazy"></x-slot:img>
-                        @endforeach
-
-                        <x-slot:title>{{ $post->title }}</x-slot:title>
-                        {{ $post->summary }}
-
-                        <x-slot:footer>
-                            <div class="action">
-                                <span class="timestamp">
-                                    <x-heroicon-o-newspaper />
-                                    <time datetime="{{ $post->date->isoFormat('YYYY-MM-DD') }}" x-data="{ time: new Date({{ $post->date->getTimestampMs() }}).toLocaleString('en', { month: 'long', day: 'numeric', year: 'numeric' }) }"><span x-text="time"></span></time>
-                                </span>
-                                <a href="{{ $post->permalink }}" class="readmore">
-                                    Read more...
-                                </a>
-                            </div>
-                        </x-slot:footer>
-                    </x-card.post>
-                @endforeach
-            </div>
-        </section>
-    @endif
 </x-app>
