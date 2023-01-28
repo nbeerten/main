@@ -23,7 +23,6 @@ jobs:
           ./ncm --env prod down
           ./ncm --env prod up --wait
           ./ncm --env prod composer install --no-dev --ansi --no-interaction
-          ./ncm --env prod artisan package:discover --no-interaction
           ./ncm --env prod npm install
           ./ncm --env prod vite build
           ./ncm --env prod artisan migrate --no-interaction --force
