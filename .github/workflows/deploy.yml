@@ -19,7 +19,7 @@ jobs:
         PORT: ${{ secrets.PORT }}
         KEY: ${{ secrets.SSHKEY }}
         script: |
-          cd $SERVER_DIRECTORY
+          cd "$SERVER_DIRECTORY"
           ./ncm --env prod artisan down --no-interaction
           git pull
           ./ncm --env prod down
