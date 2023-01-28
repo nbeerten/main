@@ -73,7 +73,7 @@ services:
       - laravel
 
   npm:
-    image: node:lts-alpine
+    image: node:current-alpine
     volumes:
       - .:/var/www/html
     working_dir: /var/www/html
