@@ -29,17 +29,6 @@
     
     @stack('style')
 
-    {{-- Partytown --}}
-    {{-- <script nonce="{{ csp_nonce() }}">
-        partytown = {
-            forward: [ "goatcounter" ],
-            lib: "/vendor/partytown/",
-        };
-    </script>
-    <script nonce="{{ csp_nonce() }}">
-    {{!! File::get(public_path().'/vendor/partytown/partytown.js') !!}}
-    </script> --}}
-
     {{-- Main Javascript --}}
     @vite('resources/scripts/app.ts')
 

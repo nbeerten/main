@@ -1,21 +1,22 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 
+// @ts-ignore
 import postcssImport from 'postcss-import';
+// @ts-ignore
 import postcssImportExtGlob from 'postcss-import-ext-glob';
 import postcssNesting from 'postcss-nesting';
 import postcssCustomSelectors from 'postcss-custom-selectors';
 import postcssCustomMedia from 'postcss-custom-media';
+// @ts-ignore
 import postcssAdvancedVariables from 'postcss-advanced-variables';
+// @ts-ignore
 import postcssSortMediaQueries from 'postcss-sort-media-queries';
 import postcssPresetEnv from 'postcss-preset-env';
-import autoprefixer from 'autoprefixer';
 
-import path from 'path';
 import { Glob } from 'glob';
-import { partytownVite } from '@builder.io/partytown/utils';
 
-var scriptFiles = new Glob('resources/scripts/**/*.+(t|j)s', { sync: true }).found;
+const scriptFiles: string[] = new Glob('resources/scripts/**/*.+(t|j)s', { sync: true }).found;
 
 export default defineConfig({
     server: {
@@ -28,10 +29,7 @@ export default defineConfig({
         laravel([
             '/resources/css/app.css',
             ...scriptFiles
-        ]),
-        partytownVite({
-            dest: path.join(__dirname, 'public/vendor', 'partytown'),
-        }),
+        ])
     ],
     css: {
         devSourcemap: true,
@@ -46,7 +44,7 @@ export default defineConfig({
                 postcssSortMediaQueries,
                 postcssPresetEnv({
                     browsers: '> 1% and last 10 versions',
-                    enableClientSidePolyfills: false
+                    enableClientSidePolyfills: false,
                 })
             ],
         }
