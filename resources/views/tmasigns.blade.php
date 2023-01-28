@@ -61,8 +61,8 @@
                 <h4 class="card-title">The TMA Signpack</h4>
                 <p class="card-text">
                     <x-markdown :anchors="false" :highlight-code="false">
-                        The main signpack includes: arrow signs made by Juice, checkpoint numbers `1-25` for `6x1` signs, and common text
-                        such as: 'Start', 'Checkpoint', 'Multilap' and 'Finish'.
+                        The main signpack includes lots of arrow signs made by Juice, checkpoint numbers `1-25` for `6x1` signs, and common text
+                        such as 'Start', 'Checkpoint', 'Multilap' and 'Finish'.
                         **More information can be found in the TMA Discord Server**
                     </x-markdown>
                 </p>
