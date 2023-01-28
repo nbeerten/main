@@ -11,15 +11,13 @@ jobs:
     steps:
     - name: Deploy to server
       uses: appleboy/ssh-action@master
-      env:
-          SERVER_DIRECTORY: ~/new-main
       with:
         host: ${{ secrets.HOST }}
         USERNAME: ${{ secrets.USERNAME }}
         PORT: ${{ secrets.PORT }}
         KEY: ${{ secrets.SSHKEY }}
         script: |
-          cd "$SERVER_DIRECTORY"
+          cd ~/new-main
           ./ncm --env prod artisan down --no-interaction
           git pull
           ./ncm --env prod down
