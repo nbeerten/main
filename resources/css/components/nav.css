@@ -5,12 +5,8 @@
     right: 0px;
     z-index: 50;
     width: 100%;
-    background-color: var(--nav-bg);
-    &.--dark {
-        background-color: var(--accent-0);
-    }
-    box-shadow: inset 0 -1px var(--border-color), rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.8) 0px 25px 50px -12px;
-    backdrop-filter: blur(4px);
+    background-color: var(--accent-0);
+    border-bottom: 1px solid var(--accent-2);
 
     transition: background-color 0.2s ease-in-out;
 

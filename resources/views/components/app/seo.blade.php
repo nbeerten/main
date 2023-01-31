@@ -14,7 +14,7 @@
         @isset($seo->thumbnail)
             <meta property="og:image" content="{{ $seo->thumbnail }}">
         @else
-            <meta property="og:image" content="https://next.nilsbeerten.nl/api/og?title={{ rawurlencode($seo->title) }}&pagetype={{ rawurlencode($seo->type['type'] ?? "page") }}">
+            <meta property="og:image" content="https://next.nilsbeerten.nl/api/og?title={{ rawurlencode($seo->title) }}">
             <meta property="og:image:width" content="1200" />
             <meta property="og:image:height" content="600" />
             <meta property="og:image:alt" content="Preview of the page together with the page title and website logo" />
@@ -41,7 +41,7 @@
         @isset($seo->thumbnail)
             <meta property="twitter:image" content="{{ $seo->thumbnail }}">
         @else
-            <meta property="twitter:image" content="https://next.nilsbeerten.nl/api/og?title={{ rawurlencode($seo->title) }}&pagetype={{ rawurlencode($seo->type['type'] ?? "page") }}">
+            <meta property="twitter:image" content="https://next.nilsbeerten.nl/api/og?title={{ rawurlencode($seo->title) }}">
         @endisset
     @endif
     @if($seo->schema)

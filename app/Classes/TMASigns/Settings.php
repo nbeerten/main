@@ -2,91 +2,90 @@
 
 namespace App\Classes\TMASigns;
 
+use App\Classes\TMASigns\Config\Colors;
+
+define('BASE_PATH', base_path());
+
 /**
  * Settings for TMASigns
  */
 class Settings
 {
-    public function __get($property)
-    {
-        $fontsize = [
-            1 => [250, 250],
-            2 => [150, 150],
-            4 => [200, 200],
-            6 => [125, 90],
-        ];
+    public const FONT = BASE_PATH.'/assets/TMASigns/Montserrat-Black.ttf';
 
-        $subfontsize = [
-            1 => [50, 50],
-            2 => [50, 50],
-            4 => [80, 80],
-            6 => [70, 50],
-        ];
+    public const FONTSIZE = [
+        1 => [250, 250],
+        2 => [150, 150],
+        4 => [200, 200],
+        6 => [125, 90],
+    ];
 
-        $font = base_path('/assets/TMASigns/Montserrat-Black.ttf');
+    public const SUBFONTSIZE = [
+        1 => [50, 50],
+        2 => [50, 50],
+        4 => [80, 80],
+        6 => [70, 50],
+    ];
 
-        $colors = [
-            'green' => '#1c6f38',
-            'orange' => '#f47621',
-            'gold' => '#c9b12d',
-            'blueish' => '#c5e9f6',
-            'white' => '#ffffff',
-        ];
+    public const COLORS = [
+        'green' => Colors::Green,
+        'orange' => Colors::Orange,
+        'gold' => Colors::Gold,
+        'blueish' => Colors::Blueish,
+        'white' => Colors::White,
+    ];
 
-        $textcolor = $colors['orange'];
+    public const TEXTCOLOR = Colors::Orange;
 
-        $subtextcolor = $colors['white'];
+    public const SUBTEXTCOLOR = Colors::White;
 
-        $outlinewidth = [
-            1 => [5, 5],
-            2 => [6, 6],
-            4 => [8, 8],
-            6 => [6, 5],
-        ];
+    public const OUTLINEWIDTH = [
+        1 => [5, 5],
+        2 => [6, 6],
+        4 => [8, 8],
+        6 => [6, 5],
+    ];
 
-        $outlinecolor = '#ffffff';
+    public const OUTLINECOLOR = Colors::White;
 
-        $base = [
-            1 => base_path().'/assets/TMASigns/1x1.tga',
-            2 => base_path().'/assets/TMASigns/2x1.tga',
-            4 => base_path().'/assets/TMASigns/4x1.tga',
-            6 => base_path().'/assets/TMASigns/6x1.tga',
-        ];
+    public const BASE = [
+        1 => BASE_PATH.'/assets/TMASigns/1x1.tga',
+        2 => BASE_PATH.'/assets/TMASigns/2x1.tga',
+        4 => BASE_PATH.'/assets/TMASigns/4x1.tga',
+        6 => BASE_PATH.'/assets/TMASigns/6x1.tga',
+    ];
 
-        $margins = [
-            1 => 425,
-            2 => 900,
-            4 => 1900,
-            6 => 1200,
-        ];
+    public const MARGINS = [
+        1 => 425,
+        2 => 900,
+        4 => 1900,
+        6 => 1200,
+    ];
 
-        $offset = [
-            'bottom' => [
-                1 => [-40, 140],
-                2 => [-20, 100],
-                4 => [-50, 110],
-                6 => [-40, 50],
-            ],
-            'top' => [
-                1 => [10, -140],
-                2 => [10, -100],
-                4 => [30, -115],
-                6 => [20, -65],
-            ],
-        ];
+    public const OFFSET = [
+        'bottom' => [
+            1 => [-40, 140],
+            2 => [-20, 100],
+            4 => [-50, 110],
+            6 => [-40, 50],
+        ],
+        'top' => [
+            1 => [10, -140],
+            2 => [10, -100],
+            4 => [30, -115],
+            6 => [20, -65],
+        ],
+    ];
 
-        $allowedfiletypes = ['jpg', 'webp', 'tga'];
+    public const ALLOWEDFILETYPES = ['jpg', 'webp', 'tga'];
 
-        $allowedsizes = [1, 2, 4, 6];
+    public const ALLOWEDSIZES = [1, 2, 4, 6];
 
-        $skinjsonpath = base_path().'/assets/TMASigns/Skin.json';
+    public const SKINJSONPATH = BASE_PATH.'/assets/TMASigns/Skin.json';
 
-        $options = [
-            'subtextlocation' => 'bottom',
-            'offsetText' => '0',
-            'offsetSubtext' => '0',
-        ];
-
-        return ${$property};
-    }
+    public const OPTIONS = [
+        'subtextlocation' => 'bottom',
+        'offsetText' => '0',
+        'offsetSubtext' => '0',
+    ];
 }

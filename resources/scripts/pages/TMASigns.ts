@@ -1,11 +1,43 @@
-declare var TMASigns, Alpine, umami;
+import { Alpine as IAlpine } from 'alpinejs';
+
+declare var Alpine: IAlpine, umami: any;
+
+declare global {
+    interface Window {
+        TMASigns: TMASigns;
+    }
+}
+
+interface TMASigns {
+    updatePreview: Function,
+    startLoadingAnimation: Function,
+    downloadsign: Function,
+    downloadLocators: Function
+}
+
+interface AlpineData {
+    text: string, 
+    subtext: string, 
+    size: 1|2|4|6, 
+    subtextlocation: "bottom"|"top", 
+    offsetText: number, 
+    offsetSubtext: number, 
+    outlineModifier: number
+}
+
+interface ILocatorTool {
+    urls: Array<string>,
+    newUrl: string,
+    addUrl: Function,
+    deleteUrl: Function,
+}
 
 window.TMASigns = {
-    updatePreview: function({text, subtext, size, subtextlocation, offsetText, offsetSubtext, outlineModifier}) {
+    updatePreview: function({text, subtext, size, subtextlocation, offsetText, offsetSubtext, outlineModifier}: AlpineData): void {
         // MS for response
         const startTime = performance.now();
 
-        if(text == '' || size == '') return;
+        if(text == '' || size == null) return;
 
         const jsonDebugData = JSON.stringify({
             format: (size != 6 ? "tga" : "jpg"),
@@ -68,12 +100,14 @@ window.TMASigns = {
                         previewImageParent.setAttribute("data-status-message", data['message']);
                     });
 
-                    umami.trackEvent('tmasigns-preview-error', { type: 'api' });
+                    if(typeof umami !== 'undefined') {
+                        umami?.trackEvent('tmasigns-preview-error', { type: 'api' });
+                    }
                 }
             })
     },
 
-    startLoadingAnimation: function({text}) {
+    startLoadingAnimation: function({ text }: { text: string }) {
         if(text.length < 1) return;
         const previewImageParent = document.querySelector('#previewImage')?.parentElement;
             if(previewImageParent == null) return;
@@ -81,8 +115,8 @@ window.TMASigns = {
         if(previewImageParent.getAttribute("data-status") === "") previewImageParent.setAttribute("data-status", " ");
     },
 
-    downloadsign: function({text, subtext, size, subtextlocation, offsetText, offsetSubtext, outlineModifier}) {
-        if(text == '' || size == '') return;
+    downloadsign: function({text, subtext, size, subtextlocation, offsetText, offsetSubtext, outlineModifier}: AlpineData) {
+        if(text == '' || size == null) return;
 
         const downloadButton: HTMLElement = document.querySelector('#downloadButton') as HTMLElement;
             if(downloadButton === null) return;
@@ -120,15 +154,24 @@ window.TMASigns = {
                         URL.revokeObjectURL(objectURL);
                     });
 
-                umami.trackEvent('tmasigns-download', { type: 'api' });
-                } else downloadButton.setAttribute('href', " ");
+                    if(typeof umami !== 'undefined') {
+                        umami?.trackEvent('tmasigns-download', { type: 'api' });
+                    };
+
+                } else {
+                    downloadButton.setAttribute('href', " ");
+
+                    if(typeof umami !== 'undefined') {
+                        umami?.trackEvent('tmasigns-download-error', { type: 'api' });
+                    };
+                }
             });
     },
 
     downloadLocators: function() {
         const locatorToolDownloadButton = document.querySelector('#locatorToolDownloadButton') as HTMLElement;
 
-        const data = JSON.stringify(Alpine.store('locatorTool').urls);
+        const data = JSON.stringify((Alpine.store('locatorTool') as ILocatorTool).urls);
         const postData = `{ "urls": ${data} }`;
 
         const Headers = {
@@ -147,7 +190,9 @@ window.TMASigns = {
                     });
                 } else locatorToolDownloadButton.setAttribute('href', "");
 
-                umami.trackEvent('tmasigns-locators', { type: 'api' });
+                if(typeof umami !== 'undefined') {
+                    umami?.trackEvent('tmasigns-locators', { type: 'api' });
+                }
             });
     }
 };

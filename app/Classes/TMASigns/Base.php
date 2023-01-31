@@ -5,6 +5,8 @@ namespace App\Classes\TMASigns;
 use Imagick;
 use ImagickDraw;
 use ImagickPixel;
+use App\Classes\TMASigns\Settings;
+use App\Classes\TMASigns\Config\Colors;
 
 /**
  * Base methods for TMASigns
@@ -95,7 +97,6 @@ class Base
      */
     private function multiLine(): string
     {
-        $settings = new Settings;
         $this->baseCanvas = $this->baseCanvas();
         $this->textStyling = $this->text();
         $this->subTextStyling = $this->subText();
@@ -103,13 +104,13 @@ class Base
         $this->baseCanvas->annotateImage(
             $this->subTextStyling,
             0,
-            $settings->offset[$this->options['subtextlocation']][$this->size][1] + ($this->options['offsetSubtext'] ?? 0),
+            Settings::OFFSET[$this->options['subtextlocation']][$this->size][1] + ($this->options['offsetSubtext'] ?? 0),
             0,
             $this->subtext);
         $this->baseCanvas->annotateImage(
             $this->textStyling,
             0,
-            $settings->offset[$this->options['subtextlocation']][$this->size][0] + ($this->options['offsetText'] ?? 0),
+            Settings::OFFSET[$this->options['subtextlocation']][$this->size][0] + ($this->options['offsetText'] ?? 0),
             0,
             $this->text);
 
@@ -132,8 +133,7 @@ class Base
      */
     private function baseCanvas(): Imagick
     {
-        $settings = new Settings;
-        $canvas = new Imagick($settings->base[$this->size]);
+        $canvas = new Imagick(Settings::BASE[$this->size]);
         $canvas->flipImage();
 
         return $canvas;
@@ -146,23 +146,22 @@ class Base
      */
     private function text(): ImagickDraw
     {
-        $settings = new Settings;
         $draw = new ImagickDraw();
 
         $draw->setGravity(Imagick::GRAVITY_CENTER);
-        $draw->setFont($settings->font);
-        $draw->setFillColor(new ImagickPixel($settings->textcolor));
+        $draw->setFont(Settings::FONT);
+        $draw->setFillColor(Colors::Orange->ImagickPixel());
         $draw->setTextAntialias(true);
 
-        $strokeWidth = ($this->size === 1 && strlen($this->text) <= 4) ? $settings->outlinewidth[$this->size][$this->multiline] * 2 : $settings->outlinewidth[$this->size][$this->multiline];
+        $strokeWidth = ($this->size === 1 && strlen($this->text) <= 4) ? Settings::OUTLINEWIDTH[$this->size][$this->multiline] * 2 : Settings::OUTLINEWIDTH[$this->size][$this->multiline];
         $newStrokeWidth = round($strokeWidth + ($this->options['outlineModifier'] ?? 0), 3);
         $draw->setStrokeWidth($newStrokeWidth);
-        $draw->setStrokeColor(new Imagickpixel($settings->outlinecolor));
+        $draw->setStrokeColor(Colors::White->ImagickPixel());
         $draw->setStrokeAntialias(true);
 
         $metrics = $this->baseCanvas->queryFontMetrics($draw, $this->text, false);
-        $calculatedFontSize = floor($metrics['characterWidth'] * $settings->margins[$this->size] / $metrics['textWidth']);
-        $newFontSize = $calculatedFontSize < $settings->fontsize[$this->size][$this->multiline] ? $calculatedFontSize : $settings->fontsize[$this->size][$this->multiline];
+        $calculatedFontSize = floor($metrics['characterWidth'] * Settings::MARGINS[$this->size] / $metrics['textWidth']);
+        $newFontSize = $calculatedFontSize < Settings::FONTSIZE[$this->size][$this->multiline] ? $calculatedFontSize : Settings::FONTSIZE[$this->size][$this->multiline];
         $draw->setFontSize($newFontSize);
 
         return $draw;
@@ -175,17 +174,16 @@ class Base
      */
     private function subText(): ImagickDraw
     {
-        $settings = new Settings;
         $draw = new ImagickDraw();
 
         $draw->setGravity(Imagick::GRAVITY_CENTER);
-        $draw->setFont($settings->font);
-        $draw->setFillColor(new ImagickPixel($settings->subtextcolor));
+        $draw->setFont(Settings::FONT);
+        $draw->setFillColor(Colors::White->ImagickPixel());
         $draw->setTextAntialias(true);
 
         $metrics = $this->baseCanvas->queryFontMetrics($draw, $this->subtext, false);
-        $calculatedFontSize = floor($metrics['characterWidth'] * $settings->margins[$this->size] / $metrics['textWidth']);
-        $newFontSize = $calculatedFontSize < $settings->subfontsize[$this->size][$this->multiline] ? $calculatedFontSize : $settings->subfontsize[$this->size][$this->multiline];
+        $calculatedFontSize = floor($metrics['characterWidth'] * Settings::MARGINS[$this->size] / $metrics['textWidth']);
+        $newFontSize = $calculatedFontSize < Settings::SUBFONTSIZE[$this->size][$this->multiline] ? $calculatedFontSize : Settings::SUBFONTSIZE[$this->size][$this->multiline];
         $draw->setFontSize($newFontSize);
 
         return $draw;

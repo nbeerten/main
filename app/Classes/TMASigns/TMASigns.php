@@ -4,6 +4,7 @@ namespace App\Classes\TMASigns;
 
 use Exception;
 use ZipStream;
+use App\Classes\TMASigns\Settings;
 
 /**
  * Class for generating TMASigns
@@ -17,11 +18,10 @@ class TMASigns extends Base
         protected $text,
         protected $subtext
     ) {
-        $settings = new Settings;
-        if (! in_array($format, $settings->allowedfiletypes)) {
+        if (! in_array($format, Settings::ALLOWEDFILETYPES)) {
             throw new Exception("Invalid format: $format");
         }
-        if (! in_array($size, $settings->allowedsizes)) {
+        if (! in_array($size, Settings::ALLOWEDSIZES)) {
             throw new Exception("Invalid size: $size");
         }
 
@@ -38,7 +38,6 @@ class TMASigns extends Base
      */
     public function zipStream(bool $skinjson = true): mixed
     {
-        $settings = new Settings();
         $sign = Base::get();
 
         $tempStream = fopen('php://memory', 'r+');
@@ -54,7 +53,7 @@ class TMASigns extends Base
         $zip = new ZipStream\ZipStream($filename, $options);
         $zip->addFile("sign.$this->format", $sign);
         if ($skinjson) {
-            $zip->addFileFromPath('Skin.json', $settings->skinjsonpath);
+            $zip->addFileFromPath('Skin.json', Settings::SKINJSONPATH);
         }
 
         $zip->finish();

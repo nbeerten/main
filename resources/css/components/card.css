@@ -1,8 +1,22 @@
 .card {
-    display: flex;
-    max-width: 100%;
+    display: grid;
+    grid-template-columns: minmax(10rem, 100%) 1fr;
+    grid-template-rows: 1fr 1fr auto;
+    grid-template-areas: 
+        "img    img"
+        "body   body"
+        "footer footer";
+    
+    @nest &:not(&:has(.card-img)) {
+        grid-template-areas: 
+            "body   body"
+            "body   body"
+            "footer footer";
+    }
+
     gap: 1rem;
-    flex-direction: column;
+
+    max-width: 100%;
     
     border-radius: 0.375rem;
     border: 1px solid var(--accent-2);
@@ -11,24 +25,41 @@
     overflow: hidden;
     
     @media (--min-breakpoint-sm) {
-        flex-direction: row;
+        gap: 0.5rem 1rem;
+        grid-template-columns: minmax(10rem, auto) 1fr;
+        grid-template-rows: 1fr 1fr auto;
+        grid-template-areas: 
+            "img    body"
+            "img    body"
+            "footer footer";
+
+        @nest &:not(&:has(.card-img)) {
+            grid-template-areas: 
+                "body   body"
+                "body   body"
+                "footer footer";
+        }
     }
 
     @media (--min-breakpoint-lg) {
-        min-width: 35rem;
-        flex: 1 1 0px;
+        min-width: 30rem;
     }
 
     & .card-img {
+        grid-area: img;
+        
         --aspect-ratio: auto;
+        display: flex;
+        min-height: 0;
+        flex-grow: 1;
+
         aspect-ratio: var(--aspect-ratio);
+
         height: max-content;
         max-height: 10rem;
-        width: auto;
-        max-width: 100%;
+        width: 100%;
         align-self: center;
         object-fit: contain;
-        flex: 0 0;
 
         border-radius: 0.5rem;
 
@@ -50,6 +81,8 @@
     }
 
     & .card-body {
+        grid-area: body;
+
         display: flex;
         flex-direction: column;
         gap: 0.25rem;
@@ -58,9 +91,7 @@
         width: 100%;
         height: 100%;
 
-        @nest &:not(.card.card-top &, .card.post &) {
-            overflow: hidden;
-        }
+        overflow: hidden;
     
         & > hr {
             margin-top: -0.05rem;
@@ -74,7 +105,17 @@
     & .card-title {
         line-height: 1.3;
         font-size: 1.3em;
-        font-weight: 700
+        font-weight: 700;
+        
+    }
+
+    & a:has(> .card-title) {
+        color: initial;
+        all: unset;
+        &:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
     }
 
     & .card-text {
@@ -99,8 +140,10 @@
     }
 
     & .card-footer {
+        padding-top: 0.5rem;
+        grid-area: footer;
+
         border-top: 1px solid var(--accent-2);
-        padding-top: 0.75rem;
         display: flex;
         flex-wrap: wrap;
         flex-direction: row;
@@ -163,6 +206,44 @@
             inset-inline: 0;
             cursor: pointer;
             content: "";
+        }
+    }
+}
+
+.card.card-repo {
+    grid-template-areas: 
+        "img    img"
+        "body   body"
+        "body   body";
+
+    @media (--min-breakpoint-sm) {
+        grid-template-areas: 
+            "img    body"
+            "img    body"
+            "img    body";
+    }
+
+    & .card-repo-info {
+        display: flex;
+        flex-direction: column;
+        color: var(--accent-6);
+        & a {
+            width: max-content;
+            color: var(--accent-6);
+        }
+    }
+    
+    & .card-repo-lang {
+        padding: 0.4rem 0 0.1rem 0;
+        list-style: none;
+        display: flex;
+        gap: 1rem;
+        
+        & .card-repo-lang-item {
+            color: var(--accent-6);
+            & svg {
+                margin-bottom: 0.15em;
+            }
         }
     }
 }

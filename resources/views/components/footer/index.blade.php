@@ -1,12 +1,10 @@
 <footer>
-    <div class="footer-links">
+    {{-- <div class="footer-links">
         <x-footer.link-row title="Pages">
             <x-footer.link-item href="/">Homepage</x-footer.link-item>
-            <x-footer.link-item href="/posts">Posts</x-footer.link-item>
             <x-footer.link-item href="/contact">Contact</x-footer.link-item>
         </x-footer.link-row>
         <x-footer.link-row title="Miscellaneous">
-            <x-footer.link-item href="https://status.nilsbeerten.nl/">Status Page</x-footer.link-item>
             <x-footer.link-item href="https://trackmania.exchange/ms?authorid=41263"><x-heroicon-m-arrow-top-right-on-square /> Trackmania Maps</x-footer.link-item>
         </x-footer.link-row>
         <x-footer.link-row title="Info">
@@ -15,13 +13,13 @@
                 **Icons:** [heroicons](https://heroicons.com/), [simpleicons](https://simpleicons.org/).
             </x-md></p>
         </x-footer.link-row>
-        {{-- <x-footer.link-row title="Statistics">
+        <x-footer.link-row title="Statistics">
             <p class="visitor-count">
                 <span>Visitors of this page:</span>
-                <span><x-heroicon-s-eye style="font-size: 1.25rem;" /> <span id="goatcounterstats"></span></span>
+                <span><x-heroicon-s-eye style="font-size: 1.25rem;" /> </span>
             </p>
-        </x-footer.link-row> --}}
-    </div>
+        </x-footer.link-row>
+    </div> --}}
     <div class="footer-bottom">
         <div class="footer-copyright">
             <p><span class="year">{{ now()->format('Y') }}</span> <span class="name">Nils Beerten</span></p>

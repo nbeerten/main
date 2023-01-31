@@ -17,6 +17,10 @@
             display: none !important; 
         }
     </style>
+    
+    <style id="polyfill" nonce="{{ csp_nonce() }}">
+
+    </style>
 
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -43,7 +47,8 @@
         <script async defer 
             data-website-id="ad9a9ebf-feb9-4204-88ef-1c11b9834ee5" 
             src="https://analytics.nilsbeerten.nl/umami.js"
-            data-domains="nilsbeerten.nl">
+            data-domains="nilsbeerten.nl"
+            nonce="{{ csp_nonce() }}">
         </script>
     @endguest
 </head>

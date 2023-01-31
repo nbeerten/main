@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Classes\TMASigns\Settings;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use App\Classes\TMASigns\Settings;
 
 class TMASignsJsonAPIRequest extends FormRequest
 {
@@ -41,11 +41,11 @@ class TMASignsJsonAPIRequest extends FormRequest
      */
     public function rules(): array
     {
-        $settings = new Settings;
+        $settings = new Settings();
 
         return [
-            'format' => ['required', 'string', Rule::in($settings->allowedfiletypes)],
-            'size' => ['required', 'numeric', Rule::in($settings->allowedsizes)],
+            'format' => ['required', 'string', Rule::in(Settings::ALLOWEDFILETYPES)],
+            'size' => ['required', 'numeric', Rule::in(Settings::ALLOWEDSIZES)],
             'options' => ['sometimes', 'array'],
             'text' => ['bail', 'required', 'string', 'max:32'],
             'subtext' => ['sometimes', 'nullable', 'string', 'max:64'],

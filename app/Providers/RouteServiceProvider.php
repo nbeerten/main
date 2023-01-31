@@ -53,7 +53,7 @@ class RouteServiceProvider extends ServiceProvider
 
         RateLimiter::for('tmasigns', function (Request $request) {
             return [
-                Limit::perMinute(30)->by($request->ip()),
+                Limit::perMinute(120)->by($request->ip()),
             ];
         });
     }

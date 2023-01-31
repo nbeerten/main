@@ -22,14 +22,17 @@ export default defineConfig({
     server: {
         host: '0.0.0.0',
         hmr: {
-            host: 'localhost',
+            host: 'localhost'
         },
     },
     plugins: [
-        laravel([
-            '/resources/css/app.css',
-            ...scriptFiles
-        ])
+        laravel({
+            input: [
+                '/resources/css/app.css',
+                ...scriptFiles
+            ],
+            refresh: true
+        })
     ],
     css: {
         devSourcemap: true,

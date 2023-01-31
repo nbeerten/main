@@ -6,11 +6,6 @@
 
     --font-sans-stretch: 110%;
     --font-display-stretch: 110%;
-
-    /* JS CSS bridge (i.e. scrollheight properties) */
-    --scrollposition-y-px: 0px;
-    --scrollposition-y-p: 0%;
-    --scrollposition-y: 0;
 }
 
 @custom-media --min-breakpoint-sm (min-width: 640px);

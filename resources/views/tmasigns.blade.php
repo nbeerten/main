@@ -28,30 +28,30 @@
 
 <x-app>
     <section class="default-page tmasigns">
-        <h1 class="heading">TMA Signs</h1>
+        <h1 class="heading">
+            <svg aria-label="TMA" alt="TMA" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 290" nonce="{{ csp_nonce() }}">
+                <defs>
+                    <style nonce="{{ csp_nonce() }}">
+                        .cls-1 {
+                            fill: #fff;
+                            fill-rule: evenodd;
+                        }
+                    </style>
+                </defs>
+                <g id="A">
+                    <path class="cls-1" d="M585,280L720,10h80l135,270h-100l-20-40h-100l35-70h30l-20-40-75,150h-100Z"></path>
+                </g>
+                <g id="M">
+                    <path class="cls-1" d="M175,280h120l75-150,75,150h60l75-150,35,70,50-100-45-90h-80l-65,130L410,10h-80l-100,200h-20l-35,70Z">
+                    </path>
+                </g>
+                <g id="T">
+                    <path class="cls-1" d="M65,280L160,90H15L55,10H320l-40,80h-20l-95,190H65Z"></path>
+                </g>
+            </svg>
+            Signs
+        </h1>
 
-        {{-- <x-modal data-id="faq">
-            <x-slot:title>
-                <x-heroicon-m-question-mark-circle /> FAQ
-            </x-slot:title>
-            <x-accordion>
-                <x-slot:title>What do I do with the file?</x-slot:title>
-                <p>
-                    <x-md>
-                        After downloading the file you'll need to host it somewhere. This website intentionally never allows you to use it as hosting for the signs,
-                        because signs need to be hosted on servers that are able to handle thousands of requests at the same moment for events such as cup of the day.
-                        Currently the best option is to host signs on Discord:
-                        <br><br>
-                        Hosting a sign on Discord is relatively easy. The first step is to send the file(s) in a channel in **any** Discord server. All Discord
-                        servers are "public", so even your own server with a single member will work. After uploading the file(s), you have to copy the url to
-                        them. This is not the same as copying the URL of the message, so pay attention to that. The URL should end with `.tga` or `.zip`.
-                        <br><br>
-                        After copying the URL, you can go to the map editor and select the skinning tool (the bucket icon). Then click the "Custom URL" button and paste
-                        the URL to the sign there. Then click "OK", and if you did it correctly, it should now show up!
-                    </x-md>
-                </p>
-            </x-accordion>
-        </x-modal> --}}
         <x-accordion expanded>
             <x-slot:title>
                 <x-heroicon-s-archive-box /> TMA Signpack
@@ -84,18 +84,16 @@
             <x-slot:title id="generator">
                 <x-heroicon-s-beaker /> Sign Generator
             </x-slot:title>
-            <div class="two-col no-scrollbar" 
-                 x-data="{
-                    text: $persist('').using(sessionStorage),
-                    subtext: $persist('').using(sessionStorage),
-                    size: $persist('2').using(sessionStorage),
-                    subtextlocation: $persist('bottom').using(sessionStorage),
-                    offsetText: $persist('0').using(sessionStorage),
-                    offsetSubtext: $persist('0').using(sessionStorage),
-                    outlineModifier: $persist('0').using(sessionStorage) }" 
-                 x-init="TMASigns.updatePreview($data)" 
-                 x-on:input.debounce.500ms="TMASigns.updatePreview($data)"
-                 x-on:input="TMASigns.startLoadingAnimation($data)">
+            <div class="two-col no-scrollbar" x-data="{
+                text: $persist('').using(sessionStorage),
+                subtext: $persist('').using(sessionStorage),
+                size: $persist('2').using(sessionStorage),
+                subtextlocation: $persist('bottom').using(sessionStorage),
+                offsetText: $persist('0').using(sessionStorage),
+                offsetSubtext: $persist('0').using(sessionStorage),
+                outlineModifier: $persist('0').using(sessionStorage)
+            }" x-init="TMASigns.updatePreview($data)"
+                x-on:input.debounce.500ms="TMASigns.updatePreview($data)" x-on:input="TMASigns.startLoadingAnimation($data)">
                 <section class="left-col" role="form">
                     <div class="input">
                         <label for="text">Text</label>
@@ -148,7 +146,8 @@
 
                     <div class="wrapper-button-align-right">
                         <a class="button" id="downloadButton" href="" role="button"
-                            @@click.prevent.throttle.500ms="TMASigns.downloadsign($data)" download="tma-text-text-subtext_4x1-UG.zip">
+                            @@click.prevent.throttle.500ms="TMASigns.downloadsign($data)"
+                            download="tma-text-text-subtext_4x1-UG.zip">
                             <x-heroicon-m-arrow-down-tray /> Download
                         </a>
                     </div>
@@ -190,7 +189,8 @@
                         <h4 class="heading">Locator Tool</h4>
                         <p class="long-text">
                             <x-md>
-                                Will automatically create locator files for you. One URL per line. Must have filename and extension as the last part of the
+                                Will automatically create locator files for you. One URL per line. Must have filename and extension as the last part
+                                of the
                                 url. For example: `https://domain.example/filename.zip`. Invalid URLs will be skipped. Locator files will be in
                                 the `.zip` file.
                             </x-md>
@@ -198,8 +198,9 @@
                     </div>
                     <div class="input">
                         <div class="row">
-                            <input id="locatortool" type="url" @@keyup.enter.prevent="$store.locatorTool.addUrl($store.locatorTool.newUrl)"
-                                placeholder="URL" x-model="$store.locatorTool.newUrl">
+                            <input id="locatortool" type="url"
+                                @@keyup.enter.prevent="$store.locatorTool.addUrl($store.locatorTool.newUrl)" placeholder="URL"
+                                x-model="$store.locatorTool.newUrl">
                             <button class="action button" @@click.prevent="$store.locatorTool.addUrl($store.locatorTool.newUrl)">
                                 <x-heroicon-o-plus stroke-width="2.5" />
                             </button>
@@ -209,8 +210,8 @@
                         <template x-for="url, index in $store.locatorTool.urls">
                             <li><span x-bind:title="url" x-text="url"></span>
                                 <div class="deletebutton">
-                                    <svg @@click.throttle.500ms="$store.locatorTool.deleteUrl(url)" fill="none" stroke-width="3"
-                                        stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <svg @@click.throttle.500ms="$store.locatorTool.deleteUrl(url)" fill="none"
+                                        stroke-width="3" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
                                     </svg>
                                 </div>
@@ -219,8 +220,9 @@
                     </ul>
 
                     <div class="wrapper-button-align-right">
-                        <a class="button" id="locatorToolDownloadButton" href="" @@click.prevent.throttle.500ms="TMASigns.downloadLocators()"
-                            download="locators.zip">Download locators</a>
+                        <a class="button" id="locatorToolDownloadButton" href=""
+                            @@click.prevent.throttle.500ms="TMASigns.downloadLocators()" download="locators.zip">Download
+                            locators</a>
                     </div>
                 </section>
             </div>

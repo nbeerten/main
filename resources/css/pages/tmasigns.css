@@ -1,7 +1,19 @@
 .tmasigns {
+    & .heading {
+        /* background-color: red; */
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        & svg {
+            width: auto;
+            height: 1.8rem;
+            margin-bottom: 0.4rem;
+        }
+
+    }
     /* For now optimized for a single card */
     & .tmasigns__signpack-card {
-        max-width: 90ch;
+        max-width: 75ch;
 
         & .card-img {
             width: 100%;

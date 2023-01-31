@@ -9,6 +9,7 @@
     <section class="default-page dashboard">
         <h3 class="heading">Dashboard</h3>
         <x-card style="max-width: 40ch; min-width: 0; margin-bottom: 1rem;">
+            <x-slot:img src="https://github.com/{{ Auth::user()->github_username }}.png"></x-slot:img>
             <h4 class="card-title">Welcome</h4>
             <p class="card-text">Logged in as {{ Auth::user()->name }} ({{ Auth::user()->id }})</p>
             <p class="card-text">Email: {{ Auth::user()->email }}</p>
@@ -29,6 +30,7 @@
                     <div class="helper_row-wrap">
                         <a href="/telescope" target="_blank" class="button"><x-heroicon-m-sparkles/> Telescope</a>
                         <a href="/log-viewer" target="_blank" class="button"><x-heroicon-m-bars-4/> Log-Viewer</a>
+                        <a href="https://analytics.nilsbeerten.nl/websites/ad9a9ebf-feb9-4204-88ef-1c11b9834ee5" target="_blank" class="button"><x-heroicon-m-chart-bar /> Analytics</a>
                     </div>
                 </x-slot:footer>
             </x-card>
