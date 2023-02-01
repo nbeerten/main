@@ -2,6 +2,7 @@
 /node_modules
 /public/dist
 /public/build
+/public/vendor
 /public/hot
 /public/storage
 /public/**/*.map
