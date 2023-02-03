@@ -69,10 +69,7 @@
 
                 <x-slot:footer>
                     <a class="button" href="https://discord.gg/b8MfZsYFWg" role="button">
-                        <x-simpleicon-discord class="heroicons" /> TMA Discord Server
-                    </a>
-                    <a class="button" href="{{-- https://cdn.discordapp.com/attachments/1025895091782565898/1057230647502049351/TMA-signs-pack-v2.zip --}}" role="button" disabled>
-                        <x-heroicon-s-archive-box-arrow-down defer /> Download signpack
+                        <x-simpleicon-discord class="heroicons" /> Download from the TMA discord
                     </a>
                 </x-slot:footer>
             </x-card>
@@ -87,11 +84,11 @@
             <div class="two-col no-scrollbar" x-data="{
                 text: $persist('').using(sessionStorage),
                 subtext: $persist('').using(sessionStorage),
-                size: $persist('2').using(sessionStorage),
+                size: $persist(2).using(sessionStorage),
                 subtextlocation: $persist('bottom').using(sessionStorage),
-                offsetText: $persist('0').using(sessionStorage),
-                offsetSubtext: $persist('0').using(sessionStorage),
-                outlineModifier: $persist('0').using(sessionStorage)
+                offsetText: $persist(0).using(sessionStorage),
+                offsetSubtext: $persist(0).using(sessionStorage),
+                outlineModifier: $persist(0).using(sessionStorage)
             }" x-init="TMASigns.updatePreview($data)"
                 x-on:input.debounce.500ms="TMASigns.updatePreview($data)" x-on:input="TMASigns.startLoadingAnimation($data)">
                 <section class="left-col" role="form">
@@ -115,7 +112,7 @@
                         <label for="size">
                             Sign size
                         </label>
-                        <select id="size" style="font-family: var(--font-mono);" x-model="size">
+                        <select id="size" style="font-family: var(--font-mono);" x-model.number="size">
                             <option value="1">1x1</option>
                             <option value="2" selected>2x1</option>
                             <option value="4">4x1</option>
@@ -130,17 +127,17 @@
                         <div class="helper_row --between">
                             <div class="input">
                                 <label for="offsetText">Text offset</label>
-                                <input id="offsetText" type="number" max="200" min="-200" placeholder="0" x-model="offsetText">
+                                <input id="offsetText" type="number" max="200" min="-200" placeholder="0" x-model.number="offsetText">
                             </div>
 
                             <div class="input">
                                 <label for="offsetSubtext">Subtext offset</label>
-                                <input id="offsetSubtext" type="number" placeholder="0" x-model="offsetSubtext">
+                                <input id="offsetSubtext" type="number" placeholder="0" x-model.number="offsetSubtext">
                             </div>
                         </div>
                         <div class="input">
                             <label for="outlineModifier">Outline modifier</label>
-                            <input id="outlineModifier" type="number" placeholder="0" x-model="outlineModifier">
+                            <input id="outlineModifier" type="number" placeholder="0" x-model.number="outlineModifier">
                         </div>
                     </x-accordion.card>
 
@@ -161,6 +158,7 @@
                         <x-slot:title>
                             <x-heroicon-m-code-bracket />Debug information
                         </x-slot:title>
+                        <button x-on:click="sessionStorage.clear()" class="button">Clear session storage</button>
                         <pre><code class="language-json" id="jsondebug"></code></pre>
                     </x-accordion.card>
 

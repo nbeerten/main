@@ -17,10 +17,6 @@
             display: none !important; 
         }
     </style>
-    
-    <style id="polyfill" nonce="{{ csp_nonce() }}">
-
-    </style>
 
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">

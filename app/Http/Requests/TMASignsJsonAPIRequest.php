@@ -41,8 +41,6 @@ class TMASignsJsonAPIRequest extends FormRequest
      */
     public function rules(): array
     {
-        $settings = new Settings();
-
         return [
             'format' => ['required', 'string', Rule::in(Settings::ALLOWEDFILETYPES)],
             'size' => ['required', 'numeric', Rule::in(Settings::ALLOWEDSIZES)],

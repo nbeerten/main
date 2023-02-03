@@ -27,12 +27,12 @@ class TMASignsTest extends TestCase
     {
         $postdata = [
             'format' => 'tga',
-            'size' => '4',
+            'size' => 4,
             'options' => [
                 'subtextlocation' => 'bottom',
-                'offsetText' => '0',
-                'offsetSubtext' => '0',
-                'outlineModifier' => '0',
+                'offsetText' => 0,
+                'offsetSubtext' => 0,
+                'outlineModifier' => 0,
             ],
             'text' => 'Hello, world!',
             'subtext' => 'Subtext example',

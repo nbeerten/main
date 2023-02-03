@@ -109,12 +109,25 @@
         
     }
 
-    & a:has(> .card-title) {
-        color: initial;
-        all: unset;
-        &:hover {
-            text-decoration: underline;
-            cursor: pointer;
+    @supports not selector(p:has(> a)) {
+        & > .card-body > a {
+            color: initial;
+            all: unset;
+            &:hover {
+                text-decoration: underline;
+                cursor: pointer;
+            }
+        }
+    }
+
+    @supports selector(p:has(> a)) {
+        & a:has(> .card-title) {
+            color: initial;
+            all: unset;
+            &:hover {
+                text-decoration: underline;
+                cursor: pointer;
+            }
         }
     }
 

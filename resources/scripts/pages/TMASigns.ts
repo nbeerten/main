@@ -107,7 +107,7 @@ window.TMASigns = {
             })
     },
 
-    startLoadingAnimation: function({ text }: { text: string }) {
+    startLoadingAnimation: function({ text }: { text: string }): void {
         if(text.length < 1) return;
         const previewImageParent = document.querySelector('#previewImage')?.parentElement;
             if(previewImageParent == null) return;
@@ -115,7 +115,7 @@ window.TMASigns = {
         if(previewImageParent.getAttribute("data-status") === "") previewImageParent.setAttribute("data-status", " ");
     },
 
-    downloadsign: function({text, subtext, size, subtextlocation, offsetText, offsetSubtext, outlineModifier}: AlpineData) {
+    downloadsign: function({text, subtext, size, subtextlocation, offsetText, offsetSubtext, outlineModifier}: AlpineData): void {
         if(text == '' || size == null) return;
 
         const downloadButton: HTMLElement = document.querySelector('#downloadButton') as HTMLElement;
@@ -168,7 +168,7 @@ window.TMASigns = {
             });
     },
 
-    downloadLocators: function() {
+    downloadLocators: function(): void {
         const locatorToolDownloadButton = document.querySelector('#locatorToolDownloadButton') as HTMLElement;
 
         const data = JSON.stringify((Alpine.store('locatorTool') as ILocatorTool).urls);

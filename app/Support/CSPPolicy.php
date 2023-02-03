@@ -13,7 +13,8 @@ class CSPPolicy extends Basic
 {
     public function configure()
     {
-        $this->addDirective(Directive::OBJECT, Keyword::NONE)
+        $this->addDirective(Directive::BASE, Keyword::SELF)
+             ->addDirective(Directive::OBJECT, Keyword::NONE)
              ->addDirective(Directive::DEFAULT, [
                  Keyword::SELF,
                  Scheme::DATA,

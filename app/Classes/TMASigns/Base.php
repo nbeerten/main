@@ -4,9 +4,10 @@ namespace App\Classes\TMASigns;
 
 use Imagick;
 use ImagickDraw;
-use ImagickPixel;
 use App\Classes\TMASigns\Settings;
 use App\Classes\TMASigns\Config\Colors;
+use App\Classes\TMASigns\Config\Format;
+use App\Classes\TMASigns\Config\Size;
 
 /**
  * Base methods for TMASigns
@@ -18,21 +19,112 @@ class Base
      */
     protected int $multiline = 0;
 
-    protected string $format;
+    protected Format $format;
 
-    protected int $size;
+    protected Size $size;
 
-    protected $options;
+    protected array|null $options;
 
-    protected $text;
+    protected string $text;
 
-    protected $subtext;
+    protected string|null $subtext;
 
     private Imagick $baseCanvas;
 
     private ImagickDraw $textStyling;
 
-    private ImagickDraw $subTextStyling;
+    private ImagickDraw|null $subTextStyling;
+
+    public function get()
+    {
+        if (! empty($this->subtext)) {
+            return $this->create()->multiline()->toString();
+        } elseif (! empty($this->text) || $this->text === '0') {
+            return $this->create()->singleline()->toString();
+        } else {
+            return abort(422);
+        }
+    }
+
+    /**
+     * Base function to create a sign
+     *
+     * @return Imagick
+     */
+    private function create(): self
+    {
+        $this->baseCanvas = new Imagick(Settings::BASE[$this->size->value]);
+        $this->baseCanvas->flipImage();
+        
+        $this->textStyling = $this->text();
+        if($this->multiline) $this->subTextStyling = $this->subText();
+
+        return $this;
+    }
+    
+    /**
+     * Create singe-line style sign
+     *
+     * @return string Blob of single-line sign
+     */
+    private function singleline(): self
+    {
+        $this->baseCanvas->annotateImage(
+            $this->textStyling,
+            0,
+            0 + ($this->options['offsetText'] ?? 0),
+            0,
+            $this->text
+        );
+
+        return $this;
+    }
+
+    /**
+     * Create multi-line style sign
+     *
+     * @return string Blob of multi-line sign
+     */
+    private function multiline(): self
+    {
+        $this->baseCanvas->annotateImage(
+            $this->subTextStyling,
+            0,
+            Settings::OFFSET[$this->options['subtextlocation']][$this->size->value][1] + ($this->options['offsetSubtext'] ?? 0),
+            0,
+            $this->subtext
+        );
+        $this->baseCanvas->annotateImage(
+            $this->textStyling,
+            0,
+            Settings::OFFSET[$this->options['subtextlocation']][$this->size->value][0] + ($this->options['offsetText'] ?? 0),
+            0,
+            $this->text
+        );
+
+        return $this;
+    }
+    
+    /**
+     * Get blob of sign
+     *
+     * @return string Blob of sign
+     */
+    public function toString(): string
+    {
+        // Set all image-specific settings
+        $this->imageSettings();
+        
+        if($this->format === Format::TGA) $this->baseCanvas->flipImage();
+
+        $output = $this->baseCanvas->getImageBlob();
+
+        $this->baseCanvas->clear();
+        $this->textStyling->clear();
+        if($this->multiline) $this->subTextStyling->clear();
+
+        return $output;
+    }
 
     /**
      * Image settings like compression, bitdepth and format.
@@ -41,7 +133,7 @@ class Base
      */
     private function imageSettings(): void
     {
-        $this->baseCanvas->setImageFormat($this->format);
+        $this->baseCanvas->setImageFormat($this->format->value);
 
         // Specific settings for TGA files
         if ($this->format === 'tga') {
@@ -63,83 +155,6 @@ class Base
     }
 
     /**
-     * Create singe-line style sign
-     *
-     * @return string Blob of single-line sign
-     */
-    private function singleLine(): string
-    {
-        $this->baseCanvas = $this->baseCanvas();
-        $this->textStyling = $this->text();
-
-        $this->baseCanvas->annotateImage(
-            $this->textStyling,
-            0,
-            0 + ($this->options['offsetText'] ?? 0),
-            0,
-            $this->text);
-
-        // Set all image-specific settings
-        $this->imageSettings();
-
-        $sign = $this->baseCanvas->getImageBlob();
-
-        $this->baseCanvas->clear();
-        $this->textStyling->clear();
-
-        return $sign;
-    }
-
-    /**
-     * Create multi-line style sign
-     *
-     * @return string Blob of multi-line sign
-     */
-    private function multiLine(): string
-    {
-        $this->baseCanvas = $this->baseCanvas();
-        $this->textStyling = $this->text();
-        $this->subTextStyling = $this->subText();
-
-        $this->baseCanvas->annotateImage(
-            $this->subTextStyling,
-            0,
-            Settings::OFFSET[$this->options['subtextlocation']][$this->size][1] + ($this->options['offsetSubtext'] ?? 0),
-            0,
-            $this->subtext);
-        $this->baseCanvas->annotateImage(
-            $this->textStyling,
-            0,
-            Settings::OFFSET[$this->options['subtextlocation']][$this->size][0] + ($this->options['offsetText'] ?? 0),
-            0,
-            $this->text);
-
-        // Set all image-specific settings
-        $this->imageSettings();
-
-        $sign = $this->baseCanvas->getImageBlob();
-
-        $this->baseCanvas->clear();
-        $this->textStyling->clear();
-        $this->subTextStyling->clear();
-
-        return $sign;
-    }
-
-    /**
-     * Create base canvas. Sets the size of the canvas, and does a fixed for Imagick's reading of `.tga` files.
-     *
-     * @return Imagick
-     */
-    private function baseCanvas(): Imagick
-    {
-        $canvas = new Imagick(Settings::BASE[$this->size]);
-        $canvas->flipImage();
-
-        return $canvas;
-    }
-
-    /**
      * Sets ImagickDraw styling for big text
      *
      * @return ImagickDraw Styling
@@ -153,15 +168,15 @@ class Base
         $draw->setFillColor(Colors::Orange->ImagickPixel());
         $draw->setTextAntialias(true);
 
-        $strokeWidth = ($this->size === 1 && strlen($this->text) <= 4) ? Settings::OUTLINEWIDTH[$this->size][$this->multiline] * 2 : Settings::OUTLINEWIDTH[$this->size][$this->multiline];
+        $strokeWidth = ($this->size->value === 1 && strlen($this->text) <= 4) ? Settings::OUTLINEWIDTH[$this->size->value][$this->multiline] * 2 : Settings::OUTLINEWIDTH[$this->size->value][$this->multiline];
         $newStrokeWidth = round($strokeWidth + ($this->options['outlineModifier'] ?? 0), 3);
         $draw->setStrokeWidth($newStrokeWidth);
         $draw->setStrokeColor(Colors::White->ImagickPixel());
         $draw->setStrokeAntialias(true);
 
         $metrics = $this->baseCanvas->queryFontMetrics($draw, $this->text, false);
-        $calculatedFontSize = floor($metrics['characterWidth'] * Settings::MARGINS[$this->size] / $metrics['textWidth']);
-        $newFontSize = $calculatedFontSize < Settings::FONTSIZE[$this->size][$this->multiline] ? $calculatedFontSize : Settings::FONTSIZE[$this->size][$this->multiline];
+        $calculatedFontSize = floor($metrics['characterWidth'] * Settings::MARGINS[$this->size->value] / $metrics['textWidth']);
+        $newFontSize = $calculatedFontSize < Settings::FONTSIZE[$this->size->value][$this->multiline] ? $calculatedFontSize : Settings::FONTSIZE[$this->size->value][$this->multiline];
         $draw->setFontSize($newFontSize);
 
         return $draw;
@@ -182,21 +197,10 @@ class Base
         $draw->setTextAntialias(true);
 
         $metrics = $this->baseCanvas->queryFontMetrics($draw, $this->subtext, false);
-        $calculatedFontSize = floor($metrics['characterWidth'] * Settings::MARGINS[$this->size] / $metrics['textWidth']);
-        $newFontSize = $calculatedFontSize < Settings::SUBFONTSIZE[$this->size][$this->multiline] ? $calculatedFontSize : Settings::SUBFONTSIZE[$this->size][$this->multiline];
+        $calculatedFontSize = floor($metrics['characterWidth'] * Settings::MARGINS[$this->size->value] / $metrics['textWidth']);
+        $newFontSize = $calculatedFontSize < Settings::SUBFONTSIZE[$this->size->value][$this->multiline] ? $calculatedFontSize : Settings::SUBFONTSIZE[$this->size->value][$this->multiline];
         $draw->setFontSize($newFontSize);
 
         return $draw;
-    }
-
-    public function get()
-    {
-        if (! empty($this->subtext)) {
-            return $this->multiLine();
-        } elseif (! empty($this->text) || $this->text === '0') {
-            return $this->singleLine();
-        } else {
-            return abort(422);
-        }
     }
 }

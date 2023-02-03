@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Classes\TMASigns\BigBatch;
 use App\Classes\TMASigns\LocatorTool;
 use App\Classes\TMASigns\TMASigns;
+use App\Classes\TMASigns\Config\Format;
+use App\Classes\TMASigns\Config\Size;
 use App\Http\Requests\TMASignsJsonAPIRequest;
 use Illuminate\Http\Request;
 
@@ -21,27 +22,34 @@ class TMASignsController extends Controller
         $validated = $request->validated();
 
         $format = $validated['format'];
-        $size = $validated['size'];
+        $size = match ($validated['size']) {
+            1 => Size::x1,
+            2 => Size::x2,
+            4 => Size::x4,
+            6 => Size::x6
+        };
         $options = $validated['options'];
         $text = $validated['text'];
         $subtext = $validated['subtext'];
 
-        if ($format == 'tga' && $size != 6) {
+        if ($format == 'tga' && $size != Size::x6) 
+        {
             return $this->tgaZip($size, $options, $text, $subtext);
         }
-        if ($format == 'tga' && $size = 6) {
+
+        else if ($format == 'tga' && $size == Size::x6) 
+        {
             return $this->tgaRaw($size, $options, $text, $subtext);
         }
-        if ($format == 'webp') {
+
+        else if ($format == 'webp') 
+        {
             return $this->webp($size, $options, $text, $subtext);
-        } else {
+        } 
+        else 
+        {
             return $this->jpg($size, $options, $text, $subtext);
         }
-    }
-
-    public function bigbatch(Request $request)
-    {
-        return (new BigBatch)->get();
     }
 
     public function locatortool(Request $request)
@@ -53,21 +61,21 @@ class TMASignsController extends Controller
 
     protected function jpg($size, $options, $text, $subtext)
     {
-        $TMASigns = new TMASigns('jpg', $size, $options, $text, $subtext);
+        $TMASigns = new TMASigns(Format::JPG, $size, $options, $text, $subtext);
 
         return response($TMASigns->get())->header('Content-Type', 'image/jpg');
     }
 
     protected function webp($size, $options, $text, $subtext)
     {
-        $TMASigns = new TMASigns('webp', $size, $options, $text, $subtext);
+        $TMASigns = new TMASigns(Format::WEBP, $size, $options, $text, $subtext);
 
         return response($TMASigns->get())->header('Content-Type', 'image/webp');
     }
 
     protected function tgaZip($size, $options, $text, $subtext)
     {
-        $TMASigns = new TMASigns('tga', $size, $options, $text, $subtext);
+        $TMASigns = new TMASigns(Format::TGA, $size, $options, $text, $subtext);
         $resource = $TMASigns->zipStream();
         $fstats = fstat($resource);
 
@@ -77,7 +85,7 @@ class TMASignsController extends Controller
 
     protected function tgaRaw($size, $options, $text, $subtext)
     {
-        $TMASigns = new TMASigns('tga', $size, $options, $text, $subtext);
+        $TMASigns = new TMASigns(Format::TGA, $size, $options, $text, $subtext);
 
         return response($TMASigns->get())->header('Content-Type', 'image/tga');
     }

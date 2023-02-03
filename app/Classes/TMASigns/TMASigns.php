@@ -5,25 +5,21 @@ namespace App\Classes\TMASigns;
 use Exception;
 use ZipStream;
 use App\Classes\TMASigns\Settings;
+use App\Classes\TMASigns\Config\Format;
+use App\Classes\TMASigns\Config\Size;
 
 /**
  * Class for generating TMASigns
  */
 class TMASigns extends Base
 {
-    public function __construct(
-        protected string $format,
-        protected int $size,
-        protected $options,
-        protected $text,
-        protected $subtext
-    ) {
-        if (! in_array($format, Settings::ALLOWEDFILETYPES)) {
-            throw new Exception("Invalid format: $format");
-        }
-        if (! in_array($size, Settings::ALLOWEDSIZES)) {
-            throw new Exception("Invalid size: $size");
-        }
+    public function __construct(Format $format, Size $size, array|null $options, string $text, string|null $subtext) 
+    {
+        $this->format = $format;
+        $this->size = $size;
+        $this->options = $options;
+        $this->text = $text;
+        $this->subtext = $subtext;
 
         if (! empty($subtext) || $subtext === '0') {
             $this->multiline = 1;
@@ -47,11 +43,11 @@ class TMASigns extends Base
         $options->setOutputStream($tempStream);
 
         $filename = 'TMA2-text-';
-        $filename .= "{$this->size}x1-";
+        $filename .= "{$this->size->value}x1-";
         $filename .= strval(now()->unix());
 
         $zip = new ZipStream\ZipStream($filename, $options);
-        $zip->addFile("sign.$this->format", $sign);
+        $zip->addFile("sign.{$this->format->value}", $sign);
         if ($skinjson) {
             $zip->addFileFromPath('Skin.json', Settings::SKINJSONPATH);
         }
