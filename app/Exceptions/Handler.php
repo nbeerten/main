@@ -2,6 +2,9 @@
 
 namespace App\Exceptions;
 
+use App\Support\CSPPolicy;
+use Spatie\Csp\Keyword;
+use Spatie\Csp\Directive;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
@@ -44,7 +47,13 @@ class Handler extends ExceptionHandler
     public function register()
     {
         $this->reportable(function (Throwable $e) {
-            //
+            $this->container->singleton(CSPPolicy::class, static function ($app) {
+                return new CSPPolicy();
+            });
+            app(CSPPolicy::class)
+                ->addDirective(Directive::SCRIPT, Keyword::UNSAFE_INLINE)
+                ->reportOnly()
+                ->reportTo('');
         });
     }
 }

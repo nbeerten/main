@@ -1,4 +1,6 @@
-<meta name="robots" content="{{ $seo->noindex ? 'noindex' : '' }} {{ $seo->noimageindex ? 'noimageindex' : '' }}">
+{!! $seo->toHtml() !!}
+
+{{-- <meta name="robots" content="{{ $seo->noindex ? 'noindex' : '' }} {{ $seo->noimageindex ? 'noimageindex' : '' }}">
 <title>{{ $seo->title ?? Request::path() }} - {{ config('app.name') }}</title>
 
 @isset($seo)
@@ -47,4 +49,4 @@
     @if($seo->schema)
         {!! $seo->schema !!}
     @endif
-@endisset
+@endisset --}}

@@ -1,12 +1,5 @@
-@php
-    App\Classes\SEO\SEO::make(
-        title: "Reset password",
-        noindex: true
-    );
-@endphp
-
 @push('scripts')
-    @turnstileScripts()
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer nonce="{{ csp_nonce() }}"></script>
 @endpush
 
 <x-app>

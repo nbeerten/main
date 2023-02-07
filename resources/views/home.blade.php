@@ -76,6 +76,9 @@
                     
                     <ul class="card-repo-lang">
                         <li class="card-repo-lang-item">
+                            <x-feathericon-heart class="heroicons" fill="currentColor" /> Openplanet
+                        </li>
+                        <li class="card-repo-lang-item">
                             <x-heroicon-m-code-bracket /> Angelscript
                         </li>
                     </ul>

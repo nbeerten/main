@@ -1,10 +1,3 @@
-@php
-    App\Classes\SEO\SEO::make(
-        title: "Dashboard",
-        noindex: true
-    );
-@endphp
-
 <x-app title="Account Dashboard" noindex="true">
     <section class="default-page dashboard">
         <h3 class="heading">Dashboard</h3>

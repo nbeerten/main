@@ -73,11 +73,12 @@
             aspect-ratio: 1;
             width: 35vmax;
             
-            filter: blur(100px);
-            background-image: radial-gradient(circle, #ca8a04 0%, #854d0e 40%, #111111 100%);
+            filter: blur(calc(1/8 * 35vmax)) saturate(1.5);
+            background-image: radial-gradient(circle, #ffdf00 0%, transparent 100%);
         }
 
         & .logo {
+            filter: drop-shadow(0 0 1rem hsl(0 0% 0% / 0.2));
             display: none;
             @media (--min-breakpoint-sm) {
                 display: block;
@@ -90,7 +91,7 @@
             top: 50%;
             left: 50%;
             translate: -50% -50%;
-            color: var(--accent-8);
+            color: var(--accent-9);
 
         }
     }

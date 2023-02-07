@@ -1,5 +1,6 @@
 @php
-    App\Classes\SEO\SEO::make(
+    use App\Classes\SEO\SEOData;
+    new SEOData(
         title: $code,
         noindex: true
     );

@@ -1,5 +1,8 @@
 <?php
 
+use App\Classes\SEO\Robots;
+use App\Classes\SEO\SEOData;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\TMASignsController;
@@ -32,19 +35,23 @@ Route::middleware(Spatie\Csp\AddCspHeaders::class)->group(function () {
     Route::get('/tmasigns', [PageController::class, 'tmasigns'])
         ->name('tmasigns');
 
+    Route::get('/login', [AuthController::class, 'login'])
+        ->middleware('guest')->name('login');
+
+    Route::get('/forgot-password', [AuthController::class, 'forgotPassword'])
+        ->middleware('guest')->name('password.request');
+
+    Route::get('/reset-password/{token}', [AuthController::class, 'resetPassword'])
+        ->middleware('guest')->name('password.reset');
+
     Route::middleware('auth')->group(function () {
-        Route::get('/dashboard', function () {
-            return view('auth.dashboard');
-        })->name('auth.dashboard');
+        Route::get('/dashboard', [AuthController::class, 'dashboard'])
+            ->name('dashboard');
 
         Route::get('/logout', function () {
             Auth::logout();
 
             return redirect(route('login'));
-        })->name('auth.logout');
-
-        Route::get('tmasigns/bigbatch', [TMASignsController::class, 'bigbatch']);
-
-        Route::view('/background', 'background', ['aspectratio' => Request::query('aspectratio', '16 / 9')]);
+        })->name('logout');
     });
 });

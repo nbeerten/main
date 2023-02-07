@@ -6,14 +6,14 @@
         <x-nav.item route="home">
             Home
         </x-nav.item>
-        <x-nav.item route="contact">
-            Contact
-        </x-nav.item>
     @if(Request::routeIs('tmasigns'))
         <x-nav.item route="tmasigns">
             TMA Signs
         </x-nav.item>
     @endif
+        <x-nav.item route="contact">
+            Contact
+        </x-nav.item>
     @auth
         <div class="nav-account-mobile">
             <a href="/dashboard" class="nav-account-picture"><img src="https://github.com/{{ Auth::user()->github_username }}.png" alt="Profile picture of {{ Auth::user()->name }}" /></a>
