@@ -29,28 +29,32 @@
         & .nav-logo {
             display: flex;
             flex-shrink: 0;
-            align-items: center;
-            padding-right: 0.5rem;
+            padding-right: 1rem;
 
             & a {
-                --site-logo: url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHN0eWxlPSJjb2xvcjogd2hpdGU7Ij4NCiAgICA8ZGVmcz4NCiAgICAgICAgPG1hc2sgaWQ9Im1hc2siPg0KICAgICAgICAgICAgPHJlY3QgZmlsbD0id2hpdGUiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiLz4NCiAgICAgICAgICAgIDxwYXRoIGQ9Im0xMDQgNzQ1di00MTBhNTI3IDUyNyAwIDAgMSAyNC02cTIyLTUgNDktOWE1MzYgNTM2IDAgMCAxIDU2LTYgNjcwIDY3MCAwIDAgMSAzOS0xIDMwMSAzMDEgMCAwIDEgMzUgMnExOCAyIDMzIDZhMTQ4IDE0OCAwIDAgMSAxNiA2IDEzNyAxMzcgMCAwIDEgMzEgMTggMTE1IDExNSAwIDAgMSAyMSAyMSAxNTAgMTUwIDAgMCAxIDIyIDQxIDE4NiAxODYgMCAwIDEgNiAyMCAzMTggMzE4IDAgMCAxIDcgNDIgNDEwIDQxMCAwIDAgMSAyIDM2djIzOWgtMTExdi0yMjRhNDE1IDQxNSAwIDAgMC0xLTI5cS0zLTM3LTEzLTU2LTEzLTI2LTU1LTI2LTEzIDAtMjUgMWE0MTkgNDE5IDAgMCAwLTE3IDIgNDk0IDQ5NCAwIDAgMC04IDF2MzMyaC0xMTF6bTQ0OS0xM3YtNTkzbDExMS0xOXYyMTJhMjE1IDIxNSAwIDAgMSAyNS0xMCAxNjkgMTY5IDAgMCAxIDIwLTVxMjItNCA0My00IDQxIDAgNzMgMTYgMzIgMTYgNTMgNDVhMTk0IDE5NCAwIDAgMSAyMyA0MiAyNDYgMjQ2IDAgMCAxIDkgMjggMzEzIDMxMyAwIDAgMSA5IDQ4IDQwMyA0MDMgMCAwIDEgMiA0MiAzMjYgMzI2IDAgMCAxLTQgNTEgMjU3IDI1NyAwIDAgMS0xMCA0MCAyMDUgMjA1IDAgMCAxLTIxIDQ1IDE3NiAxNzYgMCAwIDEtMTggMjQgMTc2IDE3NiAwIDAgMS02MyA0NCAyMDMgMjAzIDAgMCAxLTEgMCAyMDEgMjAxIDAgMCAxLTQ5IDEzIDI2MyAyNjMgMCAwIDEtMzggM3EtNDMgMC04OC02LTQ1LTYtNzYtMTZ6bTExMS0zMDd2MjMwYTE3OSAxNzkgMCAwIDAgMjEgMyAyMDIgMjAyIDAgMCAwIDUgMCA1MTcgNTE3IDAgMCAwIDEwIDFxNSAwIDkgMGEyNTEgMjUxIDAgMCAwIDUgMCAxMDMgMTAzIDAgMCAwIDMxLTQgODEgODEgMCAwIDAgMzgtMjUgODMgODMgMCAwIDAgMTQtMjVxMTEtMjggMTEtNzVhMjkzIDI5MyAwIDAgMC0yLTM0cS00LTM1LTE4LTU3YTYyIDYyIDAgMCAwLTQ1LTMwIDg3IDg3IDAgMCAwLTE0LTFxLTE4IDAtMzYgNWExNjMgMTYzIDAgMCAwLTE0IDVxLTkgMy0xNiA3eiIgLz4NCiAgICAgICAgICAgIDxyZWN0IHg9IjEwJSIgeT0iODUuNSUiIHdpZHRoPSI4MCUiIGhlaWdodD0iNCUiIHJ4PSIyJSIgLz4NCiAgICAgICAgPC9tYXNrPg0KICAgIDwvZGVmcz4NCiAgICA8Zz4NCiAgICAgICAgPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgcng9IjEyLjUlIiBtYXNrPSJ1cmwoI21hc2spIiBmaWxsPSJjdXJyZW50Q29sb3IiIC8+DQogICAgPC9nPg0KPC9zdmc+);
-
-                height: 2rem;
-                width: 2rem;
+                display: flex;
+                gap: 0.75rem;
+                align-items: center;
+                justify-content: center;
+                max-height: 2rem;
                 user-select: none;
-                display: block;
-
-                background-color: white;
-                -webkit-mask: var(--site-logo) no-repeat center;
-                mask: var(--site-logo) no-repeat center;
-
-                transform: scale(1);
+                
                 transition: transform 0.2s ease-in-out;
 
                 &:hover {
-                    background-color: var(--brand-color);
-                    transform: scale(1.3);
                     text-decoration: unset;
+                }
+
+                & img {
+                    height: 2rem;
+                    width: 2rem;
+                }
+
+                & span {
+                    font-family: var(--font-display);
+                    font-stretch: 120%;
+                    font-weight: 600;
+                    color: var(--accent-9);
                 }
             }
         }
@@ -63,6 +67,7 @@
             height: 4rem;
             align-items: center;
             width: 100%;
+
             & .nav-item {
                 display: flex;
                 padding: 0rem 0.5rem;
@@ -76,35 +81,24 @@
                     padding-top: 0.5rem;
                     padding-bottom: 0.5rem;
                     font-size: 0.875rem;
-                    font-weight: 600;
-                    color: var(--text-color-secondary);
+                    font-weight: 500;
+                    color: var(--accent-6);
                     
                     transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
                 }
 
                 &.nav-item-active a {
-                    background-color: var(--button-background-active);
+                    /* background-color: var(--button-background-active); */
                     /* line-height: 1.25rem; */
                     font-weight: 600;
-                    color: var(--text-color-primary);
+                    color: var(--accent-9);
                 }
                 
                 &:hover a {
-                    background-color: var(--button-background);
-                    color: var(--text-color-primary);
+                    background-color: var(--accent-2);
+                    color: var(--accent-9);
                     text-decoration: unset;
                 }
-            }
-
-            /* Special hover effect */
-            pointer-events: none;
-            & > * {
-                pointer-events: auto;
-                transition: color 0.1s ease-in-out, background-color 0.1s ease-in-out, opacity 0.1s ease-in-out;
-            }
-
-            &:hover > *:not(:hover) {
-                opacity: 0.75;
             }
         }
 
@@ -135,27 +129,20 @@
                     flex-shrink: 0;
                     width: 100%;
                     padding: 0.5rem 0;
-                    font-size: 0.875rem;
-                    font-weight: 600;
-                    color: var(--text-color-secondary);
+                    font-size: 0.9125rem;
+                    font-weight: 500;
+                    color: var(--accent-7);
                     
                     transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+                }
+
+                &:hover a, &:focus a, &:active a {
+                    text-decoration: unset;
                 }
 
                 &:not(:last-child) a {
                     border-bottom: 1px solid var(--accent-2);
                 }
-            }
-
-            /* Special hover effect */
-            pointer-events: none;
-            & > * {
-                pointer-events: auto;
-                transition: color 0.1s ease-in-out, background-color 0.1s ease-in-out, opacity 0.1s ease-in-out;
-            }
-
-            &:hover > *:not(:hover) {
-                opacity: 0.75;
             }
 
             & .nav-account-mobile {

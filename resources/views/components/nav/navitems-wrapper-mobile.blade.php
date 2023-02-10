@@ -3,17 +3,7 @@
     x-on:click.outside="expanded = false"
     x-on:resize.window="mobile = window.matchMedia('(max-width: 767px)').matches"> 
     <div class="nav-mobile">
-        <x-nav.item route="home">
-            Home
-        </x-nav.item>
-    @if(Request::routeIs('tmasigns'))
-        <x-nav.item route="tmasigns">
-            TMA Signs
-        </x-nav.item>
-    @endif
-        <x-nav.item route="contact">
-            Contact
-        </x-nav.item>
+        {!! $slot !!}
     @auth
         <div class="nav-account-mobile">
             <a href="/dashboard" class="nav-account-picture"><img src="https://github.com/{{ Auth::user()->github_username }}.png" alt="Profile picture of {{ Auth::user()->name }}" /></a>

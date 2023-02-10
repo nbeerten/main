@@ -4,10 +4,17 @@
 }">
     <div class="nav-bar">
         <div class="nav-logo">
-            <a href="/" tabindex="-1" aria-hidden="true"></a>
+            <a href="/" tabindex="-1" aria-hidden="true">
+                <img src="/assets/logo_white.svg" />
+                <span>Nils Beerten</span>
+            </a>
         </div>
-        <x-nav.navitems-desktop />
-        <x-nav.navitems-mobile />
+        <x-nav.navitems-wrapper-desktop>
+            <x-nav.navitems />
+        </x-nav.navitems-wrapper-desktop>
+        <x-nav.navitems-wrapper-mobile>
+            <x-nav.navitems />
+        </x-nav.navitems-wrapper-mobile>
         <div class="helper_grow"></div>
         <div class="nav-toggle" x-show="mobile" x-cloak>
             <button x-on:click="expanded = !expanded">

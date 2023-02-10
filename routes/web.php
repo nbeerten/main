@@ -1,11 +1,8 @@
 <?php
 
-use App\Classes\SEO\Robots;
-use App\Classes\SEO\SEOData;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\PageController;
-use App\Http\Controllers\TMASignsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;

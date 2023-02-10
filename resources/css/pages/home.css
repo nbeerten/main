@@ -70,11 +70,12 @@
             translate: -50% -50%;
 
             border-radius: 50%;
-            aspect-ratio: 1;
             width: 35vmax;
+            height: 35vmax;
+            aspect-ratio: 1;
             
-            filter: blur(calc(1/8 * 35vmax)) saturate(1.5);
-            background-image: radial-gradient(circle, #ffdf00 0%, transparent 100%);
+            filter: blur(calc(1/15 * 35vmax));
+            background-image: radial-gradient(circle, #ca8a04 0%, #854d0e 40%, #111111 100%);
         }
 
         & .logo {

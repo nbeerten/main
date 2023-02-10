@@ -1,6 +1,6 @@
 import { Alpine as IAlpine } from 'alpinejs';
 
-declare var Alpine: IAlpine, umami: any;
+declare var Alpine: IAlpine;
 
 declare global {
     interface Window {
@@ -32,6 +32,19 @@ interface ILocatorTool {
     deleteUrl: Function,
 }
 
+interface IPostData {
+    format: "tga"|"jpg", 
+    size: 1|2|4|6,
+    options: {
+        subtextlocation: "bottom"|"top", 
+        offsetText: number, 
+        offsetSubtext: number, 
+        outlineModifier: number
+    },
+    text: string, 
+    subtext: string, 
+}
+
 window.TMASigns = {
     updatePreview: function({text, subtext, size, subtextlocation, offsetText, offsetSubtext, outlineModifier}: AlpineData): void {
         // MS for response
@@ -39,7 +52,7 @@ window.TMASigns = {
 
         if(text == '' || size == null) return;
 
-        const jsonDebugData = JSON.stringify({
+        const jsonDebugObject: IPostData = {
             format: (size != 6 ? "tga" : "jpg"),
             size: size,
             options: {
@@ -50,7 +63,9 @@ window.TMASigns = {
             },
             text: text,
             subtext: subtext
-        }, null, "  ");
+        };
+
+        const jsonDebugData = JSON.stringify(jsonDebugObject, null, "  ");
         const jsondebug = document.querySelector("#jsondebug") as HTMLElement;
             if(jsondebug == null) return;
         jsondebug.textContent = jsonDebugData;
@@ -65,7 +80,7 @@ window.TMASigns = {
             'Accept': 'application/json, image/jpg'
         };
 
-        const bodyData = JSON.stringify({
+        const postData: IPostData = {
             format: "jpg",
             size: size,
             options: {
@@ -76,7 +91,9 @@ window.TMASigns = {
             },
             text: text,
             subtext: subtext
-        });
+        }
+
+        const bodyData = JSON.stringify(postData);
 
         fetch('/api/tmasigns', {method: 'POST', headers: Headers, body: bodyData})
             .then((response) => {
@@ -99,10 +116,6 @@ window.TMASigns = {
                         previewImage.setAttribute('src', ' ');
                         previewImageParent.setAttribute("data-status-message", data['message']);
                     });
-
-                    if(typeof umami !== 'undefined') {
-                        umami?.trackEvent('tmasigns-preview-error', { type: 'api' });
-                    }
                 }
             })
     },
@@ -127,7 +140,7 @@ window.TMASigns = {
         if(size == 6) downloadButton.setAttribute('download', `${filename}.jpg`);
         else downloadButton.setAttribute('download', `${filename}.zip`);
 
-        const bodyData = JSON.stringify({
+        const postData: IPostData = {
             format: (size != 6 ? "tga" : "jpg"),
             size: size,
             options: {
@@ -138,12 +151,17 @@ window.TMASigns = {
             },
             text: text,
             subtext: subtext
-        });
-        const Headers = {
-            'Content-Type': 'application/json'
         };
 
-        fetch('/api/tmasigns', {method: 'POST', headers: Headers, body: bodyData})
+        const bodyData = JSON.stringify(postData);
+
+        fetch('/api/tmasigns', {
+            method: 'POST', 
+            headers: {
+                'Content-Type': 'application/json'
+            }, 
+            body: bodyData
+        })
             .then((response) => {
                 if(response.ok) {
                 response.blob()
@@ -154,16 +172,8 @@ window.TMASigns = {
                         URL.revokeObjectURL(objectURL);
                     });
 
-                    if(typeof umami !== 'undefined') {
-                        umami?.trackEvent('tmasigns-download', { type: 'api' });
-                    };
-
                 } else {
                     downloadButton.setAttribute('href', " ");
-
-                    if(typeof umami !== 'undefined') {
-                        umami?.trackEvent('tmasigns-download-error', { type: 'api' });
-                    };
                 }
             });
     },
@@ -189,10 +199,6 @@ window.TMASigns = {
                         URL.revokeObjectURL(objectURL);
                     });
                 } else locatorToolDownloadButton.setAttribute('href', "");
-
-                if(typeof umami !== 'undefined') {
-                    umami?.trackEvent('tmasigns-locators', { type: 'api' });
-                }
             });
     }
 };

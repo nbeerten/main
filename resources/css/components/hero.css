@@ -29,16 +29,16 @@
             z-index: -1;
             display: block;
             position: absolute;
-            top: 25%;
-            left: 50%;
-            translate: -50% -50%;
+            top: 40%;
+            left: -30%;
+            translate: 0% -50%;
 
             border-radius: 50%;
             aspect-ratio: 4;
             width: 50vmax;
             rotate: 10deg;
             
-            filter: blur(100px);
+            filter: blur(calc(1/15 * 35vw));
             background-image: radial-gradient(ellipse, #ca8a04 0%, #854d0e 40%, #111111 100%);
         }
     }
