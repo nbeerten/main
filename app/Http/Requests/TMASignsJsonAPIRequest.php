@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Classes\TMASigns\Settings;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
-use App\Classes\TMASigns\Settings;
 
 class TMASignsJsonAPIRequest extends FormRequest
 {

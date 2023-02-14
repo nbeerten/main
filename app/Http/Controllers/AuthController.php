@@ -2,18 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Classes\SEO\SEO;
-use App\Classes\SEO\SEOData;
 use App\Classes\SEO\Robots;
+use App\Classes\SEO\SEO;
 use Illuminate\Http\Request;
-use Spatie\SchemaOrg\Schema;
 
 class AuthController extends Controller
 {
     public function dashboard(Request $request)
     {
-        new SEOData(
-            title: "Dashboard",
+        SEO::share(
+            title: 'Dashboard',
             robots: [Robots::NONE]
         );
 
@@ -22,8 +20,8 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        new SEOData(
-            title: "Login",
+        SEO::share(
+            title: 'Login',
             robots: [Robots::NONE]
         );
 
@@ -32,18 +30,18 @@ class AuthController extends Controller
 
     public function forgotPassword(Request $request)
     {
-        new SEOData(
-            title: "Forgot password",
+        SEO::share(
+            title: 'Forgot password',
             robots: [Robots::NONE]
         );
 
         return view('auth.forgot-password');
     }
-    
+
     public function resetPassword(Request $request)
     {
-        new SEOData(
-            title: "Reset password",
+        SEO::share(
+            title: 'Reset password',
             robots: [Robots::NONE]
         );
 

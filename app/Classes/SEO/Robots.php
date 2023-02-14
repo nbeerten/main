@@ -2,7 +2,8 @@
 
 namespace App\Classes\SEO;
 
-readonly class Robots {
+readonly class Robots
+{
     /**
      * 	There are no restrictions for indexing or serving. This rule is the default value and has no effect if explicitly listed.
      */
@@ -49,8 +50,7 @@ readonly class Robots {
     public const NOTRANSLATE = 'notranslate';
 
     /**
-     * Do not index images on this page. 
+     * Do not index images on this page.
      */
     public const NOIMAGEINDEX = 'noimageindex';
-    
 }

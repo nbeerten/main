@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Classes\SEO\SEOData;
 use App\Classes\SEO\Robots;
+use App\Classes\SEO\SEO;
 use Illuminate\Http\Request;
 use Spatie\SchemaOrg\Schema;
 
@@ -11,7 +11,7 @@ class PageController extends Controller
 {
     public function home(Request $request)
     {
-        new SEOData(
+        SEO::share(
             title: 'Home',
             description: "Hai, I'm Nils. Projects include Refresh Leaderboard: a plugin for Openplanet and the rewrite of nilsbeerten.nl...",
             schema: Schema::organization()
@@ -24,7 +24,7 @@ class PageController extends Controller
 
     public function tmasigns(Request $request)
     {
-        new SEOData(
+        SEO::share(
             title: 'TMA Signs',
             description: 'A small web application to create signs with text defined by the user for Trackmania, styled to fit in with the TMA signpack.',
             robots: [Robots::NONE, Robots::NOIMAGEINDEX]
@@ -35,7 +35,7 @@ class PageController extends Controller
 
     public function contact(Request $request)
     {
-        new SEOData(
+        SEO::share(
             title: 'Contact',
             description: 'Contact me',
         );

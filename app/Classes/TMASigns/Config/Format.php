@@ -2,8 +2,9 @@
 
 namespace App\Classes\TMASigns\Config;
 
-enum Format: string {
+enum Format: string
+{
     case JPG = 'jpg';
-    case TGA = 'tga'; 
+    case TGA = 'tga';
     case WEBP = 'webp';
 }

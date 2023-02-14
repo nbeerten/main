@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Classes\TMASigns\LocatorTool;
-use App\Classes\TMASigns\TMASigns;
 use App\Classes\TMASigns\Config\Format;
 use App\Classes\TMASigns\Config\Size;
+use App\Classes\TMASigns\LocatorTool;
+use App\Classes\TMASigns\TMASigns;
 use App\Http\Requests\TMASignsJsonAPIRequest;
 use Illuminate\Http\Request;
 
@@ -14,7 +14,6 @@ class TMASignsController extends Controller
     /**
      * Handles Json API requests
      *
-     * @param  TMASignsJsonAPIRequest  $request
      * @return void
      */
     public function json(TMASignsJsonAPIRequest $request)
@@ -32,22 +31,13 @@ class TMASignsController extends Controller
         $text = $validated['text'];
         $subtext = $validated['subtext'];
 
-        if ($format == 'tga' && $size != Size::x6) 
-        {
+        if ($format == 'tga' && $size != Size::x6) {
             return $this->tgaZip($size, $options, $text, $subtext);
-        }
-
-        else if ($format == 'tga' && $size == Size::x6) 
-        {
+        } elseif ($format == 'tga' && $size == Size::x6) {
             return $this->tgaRaw($size, $options, $text, $subtext);
-        }
-
-        else if ($format == 'webp') 
-        {
+        } elseif ($format == 'webp') {
             return $this->webp($size, $options, $text, $subtext);
-        } 
-        else 
-        {
+        } else {
             return $this->jpg($size, $options, $text, $subtext);
         }
     }

@@ -1,7 +1,7 @@
 <?php
 
-use Opcodes\LogViewer\Level;
 use Illuminate\Support\Facades\Route;
+use Opcodes\LogViewer\Level;
 
 return [
 

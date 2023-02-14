@@ -29,5 +29,5 @@ return [
      * Filenames that should not be trimmed or deleted. This accepts wildcards.
      * E.g. '*.txt' will keep all text files from being trimmed or deleted.
      */
-    'exclude' => ["logcleaner.log"],
+    'exclude' => ['logcleaner.log'],
 ];

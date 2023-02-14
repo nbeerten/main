@@ -8,23 +8,19 @@ use Spatie\Html\Facades\Html;
 /**
  * Readonly class for retrieving data
  */
-class SEODataAble
+class SEOAble
 {
     /**
      * Properties from class
-     *
-     * @var array
      */
     private array $properties = [];
 
     /**
-     * Construct a SEOable object
+     * Construct a SEOAble object
      *
-     * @param  string $title
-     * @param  string|null  $description
      * @param  null|array<Robots>  $noindex
-     * @param  mixed $schema
-     * @return SEODataAble
+     * @param  mixed  $schema
+     * @return SEOAble
      */
     public function __construct(
         public readonly string $title,
@@ -34,9 +30,10 @@ class SEODataAble
         mixed ...$additional
 
     ) {
-        foreach($additional as $property => $value) {
+        foreach ($additional as $property => $value) {
             $this->properties[$property] = $value;
         }
+
         return $this;
     }
 
@@ -51,35 +48,33 @@ class SEODataAble
     }
 
     /**
-     * Render SEODataAble to HTML string
-     *
-     * @return string
+     * Render SEOAble to HTML string
      */
     public function toHtml(): string
-    {   
+    {
         $robots = '';
-        foreach($this->robots as $key => $rule) {
+        foreach ($this->robots as $key => $rule) {
             $robots .= $rule;
             if ($key !== array_key_last($this->robots)) {
                 $robots .= 'a';
             }
-        };
+        }
 
         $og_image = 'https://next.nilsbeerten.nl/api/og';
-        $og_image .= '?title=' . rawurlencode($this->title);
+        $og_image .= '?title='.rawurlencode($this->title);
 
         $properties = get_object_vars($this);
 
         $data = array_merge(
-            $properties, 
+            $properties,
             [
                 'robots' => $robots,
-                'og_image' => $og_image
+                'og_image' => $og_image,
             ]
         );
 
         return Blade::render(
-        <<<'BLADE'
+            <<<'BLADE'
             <title>{{ $title ?? Request::path() }} - {{ config('app.name') }}</title>
             <meta name="robots" content="{{ $robots }}">
             <meta name="author" content="Nils Beerten">
@@ -105,8 +100,8 @@ class SEODataAble
             @if($schema)
                 {!! $schema->toScript() !!}
             @endif
-        BLADE,
-        $data
+            BLADE,
+            $data
         );
     }
 }

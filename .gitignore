@@ -8,6 +8,7 @@
 /public/**/*.map
 /storage/*.key
 /vendor
+/packages
 .env
 .env.backup
 .env.prod

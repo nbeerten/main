@@ -11,7 +11,6 @@ class ContactFormController extends Controller
     /**
      * Send contact form email
      *
-     * @param  ContactFormRequest  $request
      * @return void
      */
     public function post(ContactFormRequest $request)

@@ -1,6 +1,6 @@
 @php
-    use App\Classes\SEO\SEOData;
-    new SEOData(
+    use App\Classes\SEO\SEO;
+    SEO::share(
         title: $code,
         noindex: true
     );

@@ -2,12 +2,11 @@
 
 namespace App\Classes\TMASigns;
 
-use Imagick;
-use ImagickDraw;
-use App\Classes\TMASigns\Settings;
 use App\Classes\TMASigns\Config\Colors;
 use App\Classes\TMASigns\Config\Format;
 use App\Classes\TMASigns\Config\Size;
+use Imagick;
+use ImagickDraw;
 
 /**
  * Base methods for TMASigns
@@ -55,13 +54,15 @@ class Base
     {
         $this->baseCanvas = new Imagick(Settings::BASE[$this->size->value]);
         $this->baseCanvas->flipImage();
-        
+
         $this->textStyling = $this->text();
-        if($this->multiline) $this->subTextStyling = $this->subText();
+        if ($this->multiline) {
+            $this->subTextStyling = $this->subText();
+        }
 
         return $this;
     }
-    
+
     /**
      * Create singe-line style sign
      *
@@ -104,7 +105,7 @@ class Base
 
         return $this;
     }
-    
+
     /**
      * Get blob of sign
      *
@@ -114,22 +115,24 @@ class Base
     {
         // Set all image-specific settings
         $this->imageSettings();
-        
-        if($this->format === Format::TGA) $this->baseCanvas->flipImage();
+
+        if ($this->format === Format::TGA) {
+            $this->baseCanvas->flipImage();
+        }
 
         $output = $this->baseCanvas->getImageBlob();
 
         $this->baseCanvas->clear();
         $this->textStyling->clear();
-        if($this->multiline) $this->subTextStyling->clear();
+        if ($this->multiline) {
+            $this->subTextStyling->clear();
+        }
 
         return $output;
     }
 
     /**
      * Image settings like compression, bitdepth and format.
-     *
-     * @return void
      */
     private function imageSettings(): void
     {

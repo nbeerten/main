@@ -25,7 +25,7 @@ class ViteServiceProvider extends ServiceProvider
     public function boot()
     {
         Vite::useScriptTagAttributes([
-            'nonce' => csp_nonce()
+            'nonce' => csp_nonce(),
         ]);
     }
 }

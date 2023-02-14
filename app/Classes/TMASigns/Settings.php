@@ -3,7 +3,6 @@
 namespace App\Classes\TMASigns;
 
 use App\Classes\TMASigns\Config\Colors;
-use App\Classes\TMASigns\Config\Size;
 
 define('BASE_PATH', base_path());
 

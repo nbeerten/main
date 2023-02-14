@@ -2,18 +2,17 @@
 
 namespace App\Classes\TMASigns;
 
-use Exception;
-use ZipStream;
-use App\Classes\TMASigns\Settings;
 use App\Classes\TMASigns\Config\Format;
 use App\Classes\TMASigns\Config\Size;
+use Exception;
+use ZipStream;
 
 /**
  * Class for generating TMASigns
  */
 class TMASigns extends Base
 {
-    public function __construct(Format $format, Size $size, array|null $options, string $text, string|null $subtext) 
+    public function __construct(Format $format, Size $size, array|null $options, string $text, string|null $subtext)
     {
         $this->format = $format;
         $this->size = $size;
@@ -66,8 +65,6 @@ class TMASigns extends Base
 
     /**
      * Returns the content in specified format
-     *
-     * @return mixed
      */
     public function get(): mixed
     {

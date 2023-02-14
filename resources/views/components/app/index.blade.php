@@ -6,8 +6,9 @@
 
     <link rel="preload" href="{{ Vite::asset('resources/fonts/Mona-Sans.woff2') }}" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="{{ Vite::asset('resources/fonts/Hubot-Sans.woff2') }}" as="font" type="font/woff2" crossorigin>
-    {{-- Main JS & CSS from the compiled files --}}
+    
     @vite('resources/css/app.css')
+
     <style nonce="{{ csp_nonce() }}">
         :root { 
             overflow-y: overlay;
@@ -25,7 +26,7 @@
 
     <meta name="theme-color" content="#171717">
 
-    <x-app.seo />
+    {!! $seo->toHtml() !!}
     
     @stack('style')
 
@@ -50,18 +51,15 @@
 </head>
 
 <body>
-    <div class="main-wrapper">
-        <x-nav />
-
+    <x-nav />
+    
+    <div class="app">
         @isset($hero)
-            @if($hero)
             {!! $hero !!}
-            @endif
         @else
             <x-hero />
         @endisset
 
-        {{-- Main content --}}
         <main>
             {{ $slot }}
         </main>
@@ -71,12 +69,12 @@
     <span class="footer-divider"></span>
     <x-footer />
 
-    <!-- SVG Stack -->
+    {{-- SVG Stack --}}
     <svg hidden style="display:none;visibility:hidden;">
         @stack('bladeicons')
     </svg>
 
-    <!-- Script Stack -->
+    {{-- Script Stack --}}
     @stack('footerscripts')
 </body>
 </html>

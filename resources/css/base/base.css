@@ -24,10 +24,11 @@ body {
 
     /* Fix for URL fragment scrolling */
     scroll-padding-top: 5rem; 
+ 
+}
 
-    & .main-wrapper {
-        min-height: 100vh;
-    }
+.app {
+    min-height: 100vh;
 }
 
 main {
@@ -117,6 +118,6 @@ code:where(:not([class*=language-], .no-standard)) {
 }
 
 hr:where(:not(.no-standard)) {
-    border-color: var(--border-color);
+    border-color: var(--accent-2);
     margin: 0.5rem 0rem;
 }

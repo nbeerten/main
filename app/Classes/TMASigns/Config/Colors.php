@@ -2,9 +2,10 @@
 
 namespace App\Classes\TMASigns\Config;
 
-use \ImagickPixel;
+use ImagickPixel;
 
-enum Colors: string {
+enum Colors: string
+{
     case Green = '#1c6f38';
     case Orange = '#f47621';
     case Gold = '#c9b12d';

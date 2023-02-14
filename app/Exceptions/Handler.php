@@ -3,9 +3,9 @@
 namespace App\Exceptions;
 
 use App\Support\CSPPolicy;
-use Spatie\Csp\Keyword;
-use Spatie\Csp\Directive;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Spatie\Csp\Directive;
+use Spatie\Csp\Keyword;
 use Throwable;
 
 class Handler extends ExceptionHandler

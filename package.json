@@ -16,7 +16,6 @@
         "postcss-custom-selectors": "^7.0.0",
         "postcss-import": "^15.0.0",
         "postcss-import-ext-glob": "^2.1.1",
-        "postcss-nested": "^6.0.0",
         "postcss-nesting": "^10.2.0",
         "postcss-preset-env": "^8.0.1",
         "postcss-sort-media-queries": "^4.3.0",
@@ -30,7 +29,9 @@
         "alpinejs": "^3.10.3",
         "feather-icons": "^4.29.0",
         "glob": "^8.0.3",
+        "html-react-parser": "^3.0.9",
         "npm": "^9.2.0",
+        "satori": "^0.3.1",
         "shiki": "^0.12.1",
         "typed.js": "^2.0.12"
     }

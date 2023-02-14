@@ -1,4 +1,4 @@
-{!! $seo->toHtml() !!}
+
 
 {{-- <meta name="robots" content="{{ $seo->noindex ? 'noindex' : '' }} {{ $seo->noimageindex ? 'noimageindex' : '' }}">
 <title>{{ $seo->title ?? Request::path() }} - {{ config('app.name') }}</title>
