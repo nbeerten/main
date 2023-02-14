@@ -11,7 +11,7 @@ use Spatie\Csp\Value;
 
 class CSPPolicy extends Basic
 {
-    public function configure()
+    public function configure(): void
     {
         $this->addDirective(Directive::BASE, Keyword::SELF)
              ->addDirective(Directive::OBJECT, Keyword::NONE)

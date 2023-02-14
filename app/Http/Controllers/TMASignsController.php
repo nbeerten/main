@@ -13,8 +13,6 @@ class TMASignsController extends Controller
 {
     /**
      * Handles Json API requests
-     *
-     * @return void
      */
     public function json(TMASignsJsonAPIRequest $request)
     {
@@ -25,7 +23,8 @@ class TMASignsController extends Controller
             1 => Size::x1,
             2 => Size::x2,
             4 => Size::x4,
-            6 => Size::x6
+            6 => Size::x6,
+            default => Size::x2
         };
         $options = $validated['options'];
         $text = $validated['text'];

@@ -47,8 +47,6 @@ class Base
 
     /**
      * Base function to create a sign
-     *
-     * @return Imagick
      */
     private function create(): self
     {
@@ -65,8 +63,6 @@ class Base
 
     /**
      * Create singe-line style sign
-     *
-     * @return string Blob of single-line sign
      */
     private function singleline(): self
     {
@@ -83,8 +79,6 @@ class Base
 
     /**
      * Create multi-line style sign
-     *
-     * @return string Blob of multi-line sign
      */
     private function multiline(): self
     {
@@ -139,7 +133,7 @@ class Base
         $this->baseCanvas->setImageFormat($this->format->value);
 
         // Specific settings for TGA files
-        if ($this->format === 'tga') {
+        if ($this->format === Format::TGA) {
             $this->baseCanvas->flipImage(); // Fix for weird behaviour where TGA's are flipped on export. Don't ask why, but this works (:
             $this->baseCanvas->setImageCompression(Imagick::COMPRESSION_RLE); // Seemingly the most efficient compression for TGA
             $this->baseCanvas->setImageDepth(24); // Pixel depth of 24 bits. Meaning, only RGB supported. No alpha channel.
@@ -147,11 +141,11 @@ class Base
 
             $this->baseCanvas->setImageCompressionQuality(100);
         }
-        if ($this->format === 'webp') {
+        if ($this->format === Format::WEBP) {
             $this->baseCanvas->setImageCompression(Imagick::COMPRESSION_ZIP);
             $this->baseCanvas->setImageCompressionQuality(100);
         }
-        if ($this->format === 'jpg') {
+        if ($this->format === Format::JPG) {
             $this->baseCanvas->setImageCompression(Imagick::COMPRESSION_JPEG);
             $this->baseCanvas->setImageCompressionQuality(95);
         }

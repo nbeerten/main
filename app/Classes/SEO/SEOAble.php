@@ -17,10 +17,6 @@ class SEOAble
 
     /**
      * Construct a SEOAble object
-     *
-     * @param  null|array<Robots>  $noindex
-     * @param  mixed  $schema
-     * @return SEOAble
      */
     public function __construct(
         public readonly string $title,
@@ -33,8 +29,6 @@ class SEOAble
         foreach ($additional as $property => $value) {
             $this->properties[$property] = $value;
         }
-
-        return $this;
     }
 
     public function __set(string $name, mixed $value): void

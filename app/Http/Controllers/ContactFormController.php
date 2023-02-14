@@ -10,8 +10,6 @@ class ContactFormController extends Controller
 {
     /**
      * Send contact form email
-     *
-     * @return void
      */
     public function post(ContactFormRequest $request)
     {

@@ -14,7 +14,7 @@ class ToC extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct($url = null)
+    public function __construct(string $url = null)
     {
         $this->url = $url ?? '';
     }
