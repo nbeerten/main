@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 use Str;
 
@@ -43,7 +44,7 @@ class PagesTest extends TestCase
         /**
          * @var \Illuminate\Contracts\Auth\Authenticatable $user
          */ 
-        $user = User::factory()->create();
+        $user = User::where('id', '=', 1)->exists() ? Auth::loginUsingId(1) : User::factory()->create();
 
         $response = $this->actingAs($user)
                          ->get('/dashboard');

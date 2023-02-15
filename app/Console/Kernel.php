@@ -14,11 +14,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule
-            ->command('logcleaner:run')
-            ->daily()
-            ->at('00:00');
-
         $schedule->command('auth:clear-resets')->everyFifteenMinutes();
     }
 

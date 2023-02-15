@@ -2,7 +2,6 @@
     "type": "project",
     "require": {
         "php": "^8.2",
-        "accentinteractive/laravel-logcleaner": "^1.1",
         "blade-ui-kit/blade-heroicons": "^2.1.0",
         "brunocfalcao/blade-feather-icons": "^2.1",
         "doctrine/dbal": "^3.6",
@@ -17,12 +16,11 @@
         "opcodesio/log-viewer": "^1.9.0",
         "ryangjchandler/laravel-cloudflare-turnstile": "^0.2.0",
         "spatie/laravel-csp": "^2.8.3",
-        "spatie/laravel-disable-floc": "^1.0.2",
         "spatie/laravel-html": "^3.2.1",
         "spatie/laravel-markdown": "^2.2.6",
         "spatie/schema-org": "^3.14",
         "torchlight/torchlight-laravel": "^0.5.13",
-        "ublabs/blade-simple-icons": "^0.60.0",
+        "ublabs/blade-simple-icons": "^0.62.0",
         "choowx/satori-php": "^0.2.1"
     },
     "require-dev": {

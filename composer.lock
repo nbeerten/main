@@ -4,71 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2de78e2b2cac1101d54a9d5b9c2750b9",
+    "content-hash": "80662a2e5d613c0acf0efe50a537d352",
     "packages": [
-        {
-            "name": "accentinteractive/laravel-logcleaner",
-            "version": "v1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/accentinteractive/laravel-logcleaner.git",
-                "reference": "ca1caa398a9a65d1cc60c3931925f4292523ab7e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/accentinteractive/laravel-logcleaner/zipball/ca1caa398a9a65d1cc60c3931925f4292523ab7e",
-                "reference": "ca1caa398a9a65d1cc60c3931925f4292523ab7e",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/console": "^6.0|^7.0|^8.0|^9.0",
-                "illuminate/filesystem": "^6.0|^7.0|^8.0|^9.0",
-                "illuminate/support": "^6.0|^7.0|^8.0|^9.0",
-                "php": "^7.3|^8.0"
-            },
-            "require-dev": {
-                "orchestra/testbench": "4.*|5.*|6.*|^7.0",
-                "phpunit/phpunit": "^8.4|^9.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Accentinteractive\\LaravelLogcleaner\\LaravelLogcleanerServiceProvider"
-                    ],
-                    "aliases": {
-                        "LaravelLogcleaner": "Accentinteractive\\LaravelLogcleaner\\LaravelLogcleanerFacade"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Accentinteractive\\LaravelLogcleaner\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Joost van Veen",
-                    "email": "joost@accentinteractive.nl",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Keep your laravel logs small and tidy.",
-            "homepage": "https://github.com/accentinteractive/laravel-logcleaner",
-            "keywords": [
-                "accentinteractive",
-                "laravel-logcleaner"
-            ],
-            "support": {
-                "issues": "https://github.com/accentinteractive/laravel-logcleaner/issues",
-                "source": "https://github.com/accentinteractive/laravel-logcleaner/tree/v1.1.0"
-            },
-            "time": "2022-02-10T07:42:22+00:00"
-        },
         {
             "name": "bacon/bacon-qr-code",
             "version": "2.0.8",
@@ -2284,16 +2221,16 @@
         },
         {
             "name": "league/commonmark",
-            "version": "2.3.8",
+            "version": "2.3.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/commonmark.git",
-                "reference": "c493585c130544c4e91d2e0e131e6d35cb0cbc47"
+                "reference": "c1e114f74e518daca2729ea8c4bf1167038fa4b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/c493585c130544c4e91d2e0e131e6d35cb0cbc47",
-                "reference": "c493585c130544c4e91d2e0e131e6d35cb0cbc47",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/c1e114f74e518daca2729ea8c4bf1167038fa4b5",
+                "reference": "c1e114f74e518daca2729ea8c4bf1167038fa4b5",
                 "shasum": ""
             },
             "require": {
@@ -2386,7 +2323,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-12-10T16:02:17+00:00"
+            "time": "2023-02-15T14:07:24+00:00"
         },
         {
             "name": "league/config",
@@ -4524,71 +4461,6 @@
                 }
             ],
             "time": "2023-02-01T12:22:53+00:00"
-        },
-        {
-            "name": "spatie/laravel-disable-floc",
-            "version": "1.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spatie/laravel-disable-floc.git",
-                "reference": "98801f76ad82a0ec57cf7ae84ef810f79fbfac36"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-disable-floc/zipball/98801f76ad82a0ec57cf7ae84ef810f79fbfac36",
-                "reference": "98801f76ad82a0ec57cf7ae84ef810f79fbfac36",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/contracts": "^7.30|^8.37|^9.0",
-                "php": "^7.3|^7.4|^8.0"
-            },
-            "require-dev": {
-                "orchestra/testbench": "^6.15|^7.0",
-                "phpunit/phpunit": "^9.3"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Spatie\\DisableFloc\\DisableFlocServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spatie\\DisableFloc\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Freek Van der Herten",
-                    "email": "freek@spatie.be",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Automatically disable Google's floc in Laravel apps",
-            "homepage": "https://github.com/spatie/laravel-disable-floc",
-            "keywords": [
-                "laravel",
-                "laravel-disable-floc",
-                "spatie"
-            ],
-            "support": {
-                "issues": "https://github.com/spatie/laravel-disable-floc/issues",
-                "source": "https://github.com/spatie/laravel-disable-floc/tree/1.0.2"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/spatie",
-                    "type": "github"
-                }
-            ],
-            "time": "2022-02-01T14:58:25+00:00"
         },
         {
             "name": "spatie/laravel-html",
@@ -7316,16 +7188,16 @@
         },
         {
             "name": "ublabs/blade-simple-icons",
-            "version": "0.60.0",
+            "version": "0.62.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ublabs/blade-simple-icons.git",
-                "reference": "b7b8ac1b36536746f1eb72bf35d1b0f980cb72c6"
+                "reference": "e1ecd731e6f3520656041831021377962810fed6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ublabs/blade-simple-icons/zipball/b7b8ac1b36536746f1eb72bf35d1b0f980cb72c6",
-                "reference": "b7b8ac1b36536746f1eb72bf35d1b0f980cb72c6",
+                "url": "https://api.github.com/repos/ublabs/blade-simple-icons/zipball/e1ecd731e6f3520656041831021377962810fed6",
+                "reference": "e1ecd731e6f3520656041831021377962810fed6",
                 "shasum": ""
             },
             "require": {
@@ -7369,7 +7241,7 @@
             ],
             "support": {
                 "issues": "https://github.com/ublabs/blade-simple-icons/issues",
-                "source": "https://github.com/ublabs/blade-simple-icons/tree/0.60.0"
+                "source": "https://github.com/ublabs/blade-simple-icons/tree/0.62.0"
             },
             "funding": [
                 {
@@ -7377,7 +7249,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-01-01T14:06:55+00:00"
+            "time": "2023-02-05T14:06:49+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

@@ -43,11 +43,5 @@ Route::middleware(Spatie\Csp\AddCspHeaders::class)->group(function () {
     Route::middleware('auth')->group(function () {
         Route::get('/dashboard', [AuthController::class, 'dashboard'])
             ->name('dashboard');
-
-        Route::get('/logout', function () {
-            Auth::logout();
-
-            return redirect(route('login'));
-        })->name('logout');
     });
 });
