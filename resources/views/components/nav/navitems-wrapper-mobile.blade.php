@@ -1,4 +1,4 @@
-<div class="nav-mobile-wrapper" 
+<div id="navMobileWrapper" class="nav-mobile-wrapper" 
     x-show="expanded" x-collapse x-cloak
     x-on:click.outside="expanded = false"
     x-on:resize.window="mobile = window.matchMedia('(max-width: 767px)').matches"> 

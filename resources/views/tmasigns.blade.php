@@ -67,7 +67,7 @@
 
                 <x-slot:footer>
                     <a class="button" href="https://discord.gg/b8MfZsYFWg" role="button">
-                        <x-simpleicon-discord class="heroicons" /> Download from the TMA discord
+                        <x-tabler-download class="heroicons" /> Download from the TMA discord
                     </a>
                 </x-slot:footer>
             </x-card>

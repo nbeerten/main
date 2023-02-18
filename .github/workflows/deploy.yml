@@ -20,6 +20,7 @@ jobs:
         script: |
           cd ~/main
           ./ncm --env prod artisan down --no-interaction
+          git reset --hard
           git pull
           ./ncm --env prod down
           ./ncm --env prod up --wait

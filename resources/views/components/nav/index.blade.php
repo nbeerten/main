@@ -16,8 +16,8 @@
             <x-nav.navitems />
         </x-nav.navitems-wrapper-mobile>
         <div class="helper_grow"></div>
-        <div class="nav-toggle" x-show="mobile" x-cloak>
-            <button x-on:click="expanded = !expanded">
+        <div class="nav-toggle" x-show="mobile" x-cloak x-bind:aria-hidden="!mobile">
+            <button x-on:click="expanded = !expanded" aria-controls="navMobileWrapper" aria-label="Expand or collapse menu" x-bind:aria-hidden="!mobile">
                 <x-heroicon-s-bars-3 />
             </button>
         </div>

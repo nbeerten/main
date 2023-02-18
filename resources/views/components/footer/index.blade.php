@@ -10,7 +10,7 @@
         <x-footer.link-row title="Info">
             <p><x-md>
                 **Fonts:** [Mona Sans & Hubot Sans](https://github.com/mona-sans), [Jetbrains Mono](https://www.jetbrains.com/lp/mono/). <br>
-                **Icons:** [heroicons](https://heroicons.com/), [simpleicons](https://simpleicons.org/).
+                **Icons:** [heroicons](https://heroicons.com/), [tabler](https://tabler-icons.io/).
             </x-md></p>
         </x-footer.link-row>
         <x-footer.link-row title="Statistics">
@@ -27,27 +27,27 @@
         <div class="footer-socials">
             <a rel="me" href="https://mastodon.social/@nbeerten" target="_blank" aria-label="mastodon: @nbeerten@mastodon.social">
                 <tool-tip role="tooltip" tip-position="block-start">@nbeerten@mastodon.social</tool-tip>
-                <x-simpleicon-mastodon />
+                <x-tabler-brand-mastodon />
             </a>
             <a rel="me" href="https://trackmania.social/@nbert" target="_blank" aria-label="mastodon: @nbert@trackmania.social">
                 <tool-tip role="tooltip" tip-position="block-start">@nbert@trackmania.social</tool-tip>
-                <x-simpleicon-mastodon />
+                <x-tabler-brand-mastodon />
             </a>
             <a href="https://twitter.com/nbertn" target="_blank" aria-label="twitter: @nbertn">
                 <tool-tip role="tooltip" tip-position="block-start">@nbertn</tool-tip>
-                <x-simpleicon-twitter />
+                <x-tabler-brand-twitter />
             </a>
             <a href="https://youtube.com/channel/UC-bj0JxjTzxnL2LSQMEx6MA" target="_blank" aria-label="youtube: nbert">
                 <tool-tip role="tooltip" tip-position="block-start">nbert</tool-tip>
-                <x-simpleicon-youtube />
+                <x-tabler-brand-youtube />
             </a>
             <a href="https://github.com/nbeerten" target="_blank" aria-label="github: nbeerten">
                 <tool-tip role="tooltip" tip-position="block-start">nbeerten</tool-tip>
-                <x-simpleicon-github />
+                <x-tabler-brand-github />
             </a>
             <a href="https://discord.com/invite/TdRSgYjJ7S" target="_blank" aria-label="discord: nbert#2620">
                 <tool-tip role="tooltip" tip-position="inline-start">nbert#2620</tool-tip>
-                <x-simpleicon-discord />
+                <x-tabler-brand-discord />
             </a>
         </div>
     </div>
