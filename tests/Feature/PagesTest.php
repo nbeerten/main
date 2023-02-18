@@ -2,11 +2,9 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-
-use Str;
+use Tests\TestCase;
 
 class PagesTest extends TestCase
 {
@@ -21,7 +19,7 @@ class PagesTest extends TestCase
 
         $response->assertStatus(200);
     }
-    
+
     /**
      * Contact test.
      *
@@ -33,7 +31,7 @@ class PagesTest extends TestCase
 
         $response->assertStatus(200);
     }
-    
+
     /**
      * Dashboard test.
      *
@@ -43,7 +41,7 @@ class PagesTest extends TestCase
     {
         /**
          * @var \Illuminate\Contracts\Auth\Authenticatable $user
-         */ 
+         */
         $user = User::where('id', '=', 1)->exists() ? Auth::loginUsingId(1) : User::factory()->create();
 
         $response = $this->actingAs($user)
@@ -51,7 +49,7 @@ class PagesTest extends TestCase
 
         $response->assertStatus(200);
     }
-    
+
     /**
      * 404 page test.
      *
@@ -59,7 +57,7 @@ class PagesTest extends TestCase
      */
     public function test_the_404_page_returns_a_404_page_not_found_response()
     {
-        $response = $this->get('/' . fake()->slug());
+        $response = $this->get('/'.fake()->slug());
 
         $response->assertStatus(404);
     }

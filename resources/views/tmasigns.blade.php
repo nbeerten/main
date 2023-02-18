@@ -57,7 +57,7 @@
                 <x-heroicon-s-archive-box /> TMA Signpack
             </x-slot:title>
             <x-card class="tmasigns__signpack-card">
-                <x-slot:img src="{{ asset('assets/tma_signpack_thumb.webp') }}" alt="Sign preview" height="160" width="500"></x-slot:img>
+                <x-slot:img><x-image class="card-img" src="tma_signpack_thumb.webp" alt="Sign preview" height="160" /></x-slot:img>
                 <h4 class="card-title">The TMA Signpack</h4>
                 <x-markdown class="card-text" style="--line-clamp: 10">
                         The main signpack includes lots of arrow signs made by Juice, checkpoint numbers `1-25` for `6x1` signs, and common text

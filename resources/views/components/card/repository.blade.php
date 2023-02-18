@@ -1,6 +1,10 @@
 <div {{ $attributes->merge(['class' => 'card card-repo']) }}>
-    @isset($img)
+    @isset($img->attributes['src'])
         <img class="card-img" loading="lazy" {{ $img->attributes }}>
+    @else 
+        @isset($img)
+            {!! $img !!}
+        @endisset
     @endisset
     <div class="card-body">
         {!! $slot !!}

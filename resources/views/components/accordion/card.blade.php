@@ -24,7 +24,8 @@
          aria-labelledby="accordion_{{ $uid }}"
          x-show="expanded" 
          x-collapse.duration.{{ $animationDuration }}
-         class="x-accordion-card__content">
+         class="x-accordion-card__content"
+         {{ $expanded == 'false' ? 'x-cloak' : '' }}>
         <div class="accordioncard-inner">
             {!! $slot !!}
         </div>

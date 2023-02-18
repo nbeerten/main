@@ -16,7 +16,7 @@ import postcssPresetEnv from 'postcss-preset-env';
 
 import { Glob } from 'glob';
 
-const scriptFiles: string[] = new Glob('resources/scripts/**/*.+(t|j)s', { sync: true }).found;
+const scriptFiles: string[] = new Glob('resources/scripts/**/*.+(ts|js)', { sync: true }).found;
 
 export default defineConfig({
     server: {

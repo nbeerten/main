@@ -62,7 +62,7 @@
         <h3 class="heading">Projects</h3>
         <div class="cards">
             <x-card.repository>
-                <x-slot:img src="{{ asset('assets/RefreshLeaderboard.webp') }}" alt="Logo of RefreshLeaderboard plugin" width="160" height="160"></x-slot:img>
+                <x-slot:img><x-image class="card-img" src="RefreshLeaderboard.webp" alt="Logo of RefreshLeaderboard plugin" height="160" width="160" /></x-slot:img>
                 <a href="https://openplanet.dev/plugin/refreshleaderboard">
                     <h4 class="card-title">Refresh Leaderboard</h4>
                 </a>
@@ -85,7 +85,7 @@
                 </x-slot:repoinfo>
             </x-card.repository>
             {{-- <x-card.repository>
-                <x-slot:img src="{{ asset('assets/tmasigns_1x1example.webp') }}" alt="Example of a one by one sized sign" width="160" height="160"></x-slot:img>
+                <x-slot:img><x-image class="card-img" src="tmasigns_1x1example.webp" alt="Example of a one by one sized sign" width="160" height="160" /></x-slot:img>
                 <a href="/tmasigns">
                     <h4 class="card-title">TMA Sign Generator</h4>
                 </a>
@@ -107,8 +107,7 @@
                 </x-slot:repoinfo>
             </x-card.repository> --}}
             <x-card.repository>
-                <x-slot:img src="{{ asset('assets/nextdotnilsbeerten_thumb.webp') }}" alt="Thumbnail for next.nilsbeerten.nl project" width="160" height="160">
-                </x-slot:img>
+                <x-slot:img><x-image class="card-img" src="nextdotnilsbeerten_thumb.webp" alt="Thumbnail for next.nilsbeerten.nl project" width="160" height="160" /></x-slot:img>
                 <h4 class="card-title">next.nilsbeerten.nl</h4>
                 <p class="card-text">
                     A <b>secondary</b> backend hosted on the edge using the
@@ -131,7 +130,7 @@
                 </x-slot:repoinfo>
             </x-card.repository>
             {{-- <x-card.repository>
-                <x-slot:img src="{{ asset('assets/favicon.svg') }}" alt="Example of a one by one sized sign"></x-slot:img>
+                <x-slot:img><x-image class="card-img" src="{{ asset('assets/favicon.svg') }}" alt="Logo of nilsbeerten.nl" width="160" height="160" /></x-slot:img>
                 <a href="/">
                     <h4 class="card-title">nbeerten/main</h4>
                 </a>
