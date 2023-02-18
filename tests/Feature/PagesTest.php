@@ -10,10 +10,8 @@ class PagesTest extends TestCase
 {
     /**
      * Homepage test.
-     *
-     * @return void
      */
-    public function test_the_homepage_returns_a_successful_response()
+    public function test_the_homepage_returns_a_successful_response(): void
     {
         $response = $this->get('/');
 
@@ -22,10 +20,8 @@ class PagesTest extends TestCase
 
     /**
      * Contact test.
-     *
-     * @return void
      */
-    public function test_the_contact_page_returns_a_successful_response()
+    public function test_the_contact_page_returns_a_successful_response(): void
     {
         $response = $this->get('/contact');
 
@@ -34,10 +30,8 @@ class PagesTest extends TestCase
 
     /**
      * Dashboard test.
-     *
-     * @return void
      */
-    public function test_the_dashboard_page_returns_a_successful_response()
+    public function test_the_dashboard_page_returns_a_successful_response(): void
     {
         /**
          * @var \Illuminate\Contracts\Auth\Authenticatable $user
@@ -52,10 +46,8 @@ class PagesTest extends TestCase
 
     /**
      * 404 page test.
-     *
-     * @return void
      */
-    public function test_the_404_page_returns_a_404_page_not_found_response()
+    public function test_the_404_page_returns_a_404_page_not_found_response(): void
     {
         $response = $this->get('/'.fake()->slug());
 

@@ -8,10 +8,8 @@ class TMASignsTest extends TestCase
 {
     /**
      * Test if TMASigns page returns successful response
-     *
-     * @return void
      */
-    public function test_the_tmasigns_page_returns_a_successful_response()
+    public function test_the_tmasigns_page_returns_a_successful_response(): void
     {
         $response = $this->get('/tmasigns');
 
@@ -20,10 +18,8 @@ class TMASignsTest extends TestCase
 
     /**
      * Test if TMASigns page returns successful response
-     *
-     * @return void
      */
-    public function test_the_tmasigns_api_returns_a_successful_response()
+    public function test_the_tmasigns_api_returns_a_successful_response(): void
     {
         $postdata = [
             'format' => 'tga',
