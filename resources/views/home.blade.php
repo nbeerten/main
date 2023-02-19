@@ -72,14 +72,14 @@
                 </p>
 
                 <x-slot:repoinfo>
-                    <a href="https://github.com/nbeerten/tm-refresh-leaderboard" target="_blank"><x-tabler-brand-github class="heroicons" /> nbeerten/tm-refresh-leaderboard</a>
+                    <a href="https://github.com/nbeerten/tm-refresh-leaderboard" target="_blank"><x-tabler-brand-github /> nbeerten/tm-refresh-leaderboard</a>
                     
                     <ul class="card-repo-lang">
                         <li class="card-repo-lang-item">
-                            <x-tabler-heart class="heroicons" /> Openplanet
+                            <x-tabler-heart /> Openplanet
                         </li>
                         <li class="card-repo-lang-item">
-                            <x-tabler-braces class="heroicons" /> Angelscript
+                            <x-tabler-braces /> Angelscript
                         </li>
                     </ul>
                 </x-slot:repoinfo>
@@ -94,14 +94,14 @@
                 </p>
 
                 <x-slot:repoinfo>
-                    <a href="https://github.com/nbeerten/main" target="_blank"><x-tabler-brand-github class="heroicons" /> nbeerten/main</a>
+                    <a href="https://github.com/nbeerten/main" target="_blank"><x-tabler-brand-github /> nbeerten/main</a>
 
                     <ul class="card-repo-lang">
                         <li class="card-repo-lang-item">
-                            <x-tabler-brand-php class="heroicons" stroke-width="1.75" /> PHP
+                            <x-tabler-brand-php stroke-width="1.75" /> PHP
                         </li>
                         <li class="card-repo-lang-item">
-                            <x-heroicon-m-photo /> Imagick
+                            <x-tabler-photo /> Imagick
                         </li>
                     </ul>
                 </x-slot:repoinfo>
@@ -117,14 +117,14 @@
                 </p>
                 
                 <x-slot:repoinfo>
-                    <a href="https://github.com/nbeerten/nb-next-api" target="_blank"><x-tabler-brand-github class="heroicons" /> nbeerten/nb-next-api</a>
+                    <a href="https://github.com/nbeerten/nb-next-api" target="_blank"><x-tabler-brand-github /> nbeerten/nb-next-api</a>
 
                     <ul class="card-repo-lang">
                         <li class="card-repo-lang-item">
-                            <x-tabler-brand-nextjs class="heroicons" /> Next.js
+                            <x-tabler-brand-nextjs /> Next.js
                         </li>
                         <li class="card-repo-lang-item">
-                            <x-tabler-brand-typescript class="heroicons" /> TypeScript
+                            <x-tabler-brand-typescript /> TypeScript
                         </li>
                     </ul>
                 </x-slot:repoinfo>
@@ -139,17 +139,17 @@
                 </p>
                 
                 <x-slot:repoinfo>
-                    <a href="https://github.com/nbeerten/main" target="_blank"><x-tabler-brand-github class="heroicons" /> nbeerten/main</a>
+                    <a href="https://github.com/nbeerten/main" target="_blank"><x-tabler-brand-github /> nbeerten/main</a>
 
                     <ul class="card-repo-lang">
                         <li class="card-repo-lang-item">
-                            <x-tabler-brand-laravel class="heroicons" stroke-width="1.5"/> Laravel
+                            <x-tabler-brand-laravel stroke-width="1.5"/> Laravel
                         </li>
                         <li class="card-repo-lang-item">
-                            <x-tabler-brand-typescript class="heroicons" /> TypeScript
+                            <x-tabler-brand-typescript /> TypeScript
                         </li>
                         <li class="card-repo-lang-item">
-                            <x-tabler-brand-css3 class="heroicons" /> CSS
+                            <x-tabler-brand-css3 /> CSS
                         </li>
                     </ul>
                 </x-slot:repoinfo>

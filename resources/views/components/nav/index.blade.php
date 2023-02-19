@@ -18,7 +18,7 @@
         <div class="helper_grow"></div>
         <div class="nav-toggle" x-show="mobile" x-cloak x-bind:aria-hidden="!mobile">
             <button x-on:click="expanded = !expanded" aria-controls="navMobileWrapper" aria-label="Expand or collapse menu" x-bind:aria-hidden="!mobile">
-                <x-heroicon-s-bars-3 />
+                <x-tabler-menu-2 />
             </button>
         </div>
     </div>

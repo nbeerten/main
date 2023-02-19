@@ -2,7 +2,9 @@
 
 namespace App\View\Components;
 
+use Closure;
 use Exception;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Request;
 use Illuminate\View\Component;
 use Spatie\Url\Url;
@@ -32,8 +34,6 @@ class Image extends Component
 
     /**
      * Create a new image instance.
-     *
-     * @return void
      */
     public function __construct(string $src, string $alt, bool $useExperimental = false, ?int $width = null, ?int $height = null)
     {
@@ -51,8 +51,8 @@ class Image extends Component
 
             [$imagewidth, $imageheight] = getimagesize(resource_path("images/{$this->src}"));
 
-            $this->width = $width ?? $imagewidth;
-            $this->height = $height ?? $imageheight;
+            $this->width = $imagewidth;
+            $this->height = $imageheight;
             $this->widthFromArg = $width ?? false;
             $this->heightFromArg = $height ?? false;
         } else {
@@ -69,24 +69,43 @@ class Image extends Component
     public function generateSrcSet(): string
     {
         $URLs = [];
-        $sizes = [256, 512, 1024, 1280, 1440, 1920, 2560];
-        $sizes[] = $this->width;
-        sort($sizes, SORT_NUMERIC);
-        foreach ($sizes as $key => $size) {
-            if ($size > $this->width) {
-                unset($sizes[$key]);
-            }
-        }
+
+        $min = 128;
+        $max = 3840;
+        $amount = 4;
+
         // Multiply with width
         $ratio = $this->height / $this->width;
 
-        for ($i = 0; $i < count($sizes); $i++) {
-            $URLs[] = (new Url())::fromString('/image')->withQueryParameters([
-                'src' => (string) $this->src,
-                'w' => (int) $sizes[$i],
-                'h' => (int) round($sizes[$i] * $ratio),
-            ]).' '.($i + 1).'x';
+        for ($i = 0; $i <= $amount; $i++) {
+            static $skipped = 0;
+
+            $x = ($i + 1) - $skipped;
+
+            $factor = fn ($i) => 1 / $amount * ($i + 1);
+            $width = $this->width * $factor($i);
+
+            if ($this->widthFromArg &&
+               ($width < $this->widthFromArg) &&
+               ($this->widthFromArg < ($this->width * $factor($i + 1)))) {
+                $URLs[] = Url::fromString('/image')->withQueryParameters([
+                    'src' => (string) $this->src,
+                    'w' => $this->widthFromArg,
+                    'h' => $this->widthFromArg * $ratio,
+                ])." {$x}x";
+            } elseif ($min > $width) {
+                $skipped++;
+            } elseif (min([$this->width, $max]) < $width) {
+                break;
+            } else {
+                $URLs[] = Url::fromString('/image')->withQueryParameters([
+                    'src' => (string) $this->src,
+                    'w' => $width,
+                    'h' => $width * $ratio,
+                ])." {$x}x";
+            }
         }
+
         $output = '';
         foreach ($URLs as $key => $url) {
             $output .= "{$url}";
@@ -100,10 +119,8 @@ class Image extends Component
 
     /**
      * Get the view / contents that represent the component.
-     *
-     * @return \Illuminate\Contracts\View\View|\Closure|string
      */
-    public function render()
+    public function render(): View|Closure|string
     {
         if (! $this->external) {
             $src = Url::fromString(route('image', absolute: false))
@@ -123,8 +140,8 @@ class Image extends Component
         }
 
         $data = collect([
-            'width' => $this->width,
-            'height' => $this->height,
+            'width' => $this->widthFromArg ?: $this->width,
+            'height' => $this->heightFromArg ?: $this->height,
             'src' => (string) $src,
         ]);
 

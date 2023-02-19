@@ -54,7 +54,7 @@
 
         <x-accordion expanded>
             <x-slot:title>
-                <x-heroicon-s-archive-box /> TMA Signpack
+                <x-tabler-packages /> TMA Signpack
             </x-slot:title>
             <x-card class="tmasigns__signpack-card">
                 <x-slot:img><x-image class="card-img" src="tma_signpack_thumb.webp" alt="Sign preview" height="160" /></x-slot:img>
@@ -67,7 +67,7 @@
 
                 <x-slot:footer>
                     <a class="button" href="https://discord.gg/b8MfZsYFWg" role="button">
-                        <x-tabler-download class="heroicons" /> Download from the TMA discord
+                        <x-tabler-download /> Download from the TMA discord
                     </a>
                 </x-slot:footer>
             </x-card>
@@ -77,7 +77,7 @@
 
         <x-accordion expanded>
             <x-slot:title id="generator">
-                <x-heroicon-s-beaker /> Sign Generator
+                <x-tabler-photo-edit /> Sign Generator
             </x-slot:title>
             <div class="two-col no-scrollbar" x-data="{
                 text: $persist('').using(sessionStorage),
@@ -143,7 +143,7 @@
                         <a class="button" id="downloadButton" href="" role="button"
                             @@click.prevent.throttle.500ms="TMASigns.downloadsign($data)"
                             download="tma-text-text-subtext_4x1-UG.zip">
-                            <x-heroicon-m-arrow-down-tray /> Download
+                            <x-tabler-file-download /> Download
                         </a>
                     </div>
                 </section>
@@ -154,7 +154,7 @@
 
                     <x-accordion.card class="json-debug">
                         <x-slot:title>
-                            <x-heroicon-m-code-bracket />Debug information
+                            <x-tabler-code />Debug information
                         </x-slot:title>
                         <button x-on:click="sessionStorage.clear()" class="button">Clear session storage</button>
                         <pre><code class="language-json" id="jsondebug"></code></pre>
@@ -177,7 +177,7 @@
 
         <x-accordion>
             <x-slot:title id="tools">
-                <x-heroicon-s-wrench /> Tools
+                <x-tabler-tools /> Tools
             </x-slot:title>
             <div class="card-row locatortool">
                 <section class="locatortoolcard" x-data="{ input: '', data: ['A'] }">
@@ -198,7 +198,7 @@
                                 @@keyup.enter.prevent="$store.locatorTool.addUrl($store.locatorTool.newUrl)" placeholder="URL"
                                 x-model="$store.locatorTool.newUrl">
                             <button class="action button" @@click.prevent="$store.locatorTool.addUrl($store.locatorTool.newUrl)">
-                                <x-heroicon-o-plus stroke-width="2.5" />
+                                <x-tabler-plus stroke-width="2.5" />
                             </button>
                         </div>
                     </div>

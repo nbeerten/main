@@ -3,7 +3,7 @@
         @isset($icon)
         {!! $icon !!}
         @else
-        <x-heroicon-s-information-circle/>
+        <x-tabler-info-circle-filled />
         @endisset
     </div>
     <div class="content">

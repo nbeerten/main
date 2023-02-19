@@ -14,3 +14,20 @@
         gap: 0.5em;
     }
 }
+
+.iconography {
+    aspect-ratio: 1;
+    height: 1.25em;
+    width: 1.25em;
+    display: block;
+    align-self: center;
+    justify-self: center;
+}
+
+@supports selector(:has(> .iconography)) {
+    :has(>.iconography) {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5em;
+    }
+}

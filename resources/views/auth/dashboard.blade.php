@@ -21,9 +21,9 @@
                 <h4 class="card-title">Apps</h4>
                 <x-slot:footer>
                     <div class="helper_row-wrap">
-                        <a href="/telescope" target="_blank" class="button"><x-heroicon-m-sparkles/> Telescope</a>
-                        <a href="/log-viewer" target="_blank" class="button"><x-heroicon-m-bars-4/> Log-Viewer</a>
-                        <a href="https://analytics.nilsbeerten.nl/websites/ad9a9ebf-feb9-4204-88ef-1c11b9834ee5" target="_blank" class="button"><x-heroicon-m-chart-bar /> Analytics</a>
+                        <a href="/telescope" target="_blank" class="button"><x-tabler-sparkles /> Telescope</a>
+                        <a href="/log-viewer" target="_blank" class="button"><x-tabler-file-text /> Log-Viewer</a>
+                        <a href="https://analytics.nilsbeerten.nl/websites/ad9a9ebf-feb9-4204-88ef-1c11b9834ee5" target="_blank" class="button"><x-tabler-graph /> Analytics</a>
                     </div>
                 </x-slot:footer>
             </x-card>

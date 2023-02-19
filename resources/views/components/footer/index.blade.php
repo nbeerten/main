@@ -5,18 +5,18 @@
             <x-footer.link-item href="/contact">Contact</x-footer.link-item>
         </x-footer.link-row>
         <x-footer.link-row title="Miscellaneous">
-            <x-footer.link-item href="https://trackmania.exchange/ms?authorid=41263"><x-heroicon-m-arrow-top-right-on-square /> Trackmania Maps</x-footer.link-item>
+            <x-footer.link-item href="https://trackmania.exchange/ms?authorid=41263"><x-tabler-external-link /> Trackmania Maps</x-footer.link-item>
         </x-footer.link-row>
         <x-footer.link-row title="Info">
             <p><x-md>
                 **Fonts:** [Mona Sans & Hubot Sans](https://github.com/mona-sans), [Jetbrains Mono](https://www.jetbrains.com/lp/mono/). <br>
-                **Icons:** [heroicons](https://heroicons.com/), [tabler](https://tabler-icons.io/).
+                **Icons:** [tabler](https://tabler-icons.io/).
             </x-md></p>
         </x-footer.link-row>
         <x-footer.link-row title="Statistics">
             <p class="visitor-count">
                 <span>Visitors of this page:</span>
-                <span><x-heroicon-s-eye style="font-size: 1.25rem;" /> </span>
+                <span><x-tabler-eye style="font-size: 1.25rem;" /> </span>
             </p>
         </x-footer.link-row>
     </div> --}}

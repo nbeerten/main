@@ -9,7 +9,7 @@
         
             @if($errors->any())
                 <x-information-card accent="var(--color-error)">
-                    <x-slot:icon><x-heroicon-s-exclamation-circle/></x-slot:icon>
+                    <x-slot:icon><x-tabler-exclamation-circle/></x-slot:icon>
                     <x-md>
                         Login failed
                     </x-md>
@@ -50,7 +50,7 @@
                         {{-- Cloudflare Turnstile Captcha --}}
                         <x-turnstile data-action="login" data-theme="dark" />
                     </div>
-                    <button type="submit" class="button"><x-heroicon-s-lock-closed/>Log in</button>
+                    <button type="submit" class="button"><x-tabler-send />Log in</button>
                 </div>
 
                 <div class="bottom">

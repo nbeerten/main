@@ -15,7 +15,7 @@
     margin: 0.5rem 0;
 
     & > .icon svg {
-        fill: var(--accent-color);
+        color: var(--accent-color);
         align-self: flex-start;
     }
     

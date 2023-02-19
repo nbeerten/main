@@ -2,8 +2,6 @@
     "type": "project",
     "require": {
         "php": "^8.2",
-        "blade-ui-kit/blade-heroicons": "^2.1.0",
-        "brunocfalcao/blade-feather-icons": "^3.0",
         "choowx/satori-php": "^0.2.1",
         "doctrine/dbal": "^3.6",
         "guzzlehttp/guzzle": "^7.5",
@@ -26,6 +24,7 @@
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.13",
+        "brianium/paratest": "^7.0",
         "fakerphp/faker": "^1.21",
         "laravel/pint": "^1.5",
         "mockery/mockery": "^1.5.1",

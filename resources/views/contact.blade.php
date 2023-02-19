@@ -12,7 +12,7 @@
                 @if (session()->has('success'))
                     <x-information-card accent="var(--color-success)">
                         <x-slot:icon>
-                            <x-heroicon-s-check />
+                            <x-tabler-checks />
                         </x-slot:icon>
                         <x-md>
                             {{ session()->get('success', "Successfully send the message!"); }}
@@ -22,7 +22,7 @@
                 @if($errors->any())
                     <x-information-card accent="var(--color-error)">
                         <x-slot:icon>
-                            <x-heroicon-s-exclamation-circle />
+                            <x-tabler-exclamation-circle />
                         </x-slot:icon>
                         <x-md>
                             Error!
@@ -64,7 +64,7 @@
                             <x-turnstile data-action="contact" data-theme="dark" />
                         </div>
                         <button type="submit" class="button">
-                            <x-heroicon-s-paper-airplane />Submit
+                            <x-tabler-send />Submit
                         </button>
                     </div>
                 </div>

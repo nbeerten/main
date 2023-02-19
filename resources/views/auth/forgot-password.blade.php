@@ -9,7 +9,7 @@
         
             @if (session('status'))
                 <x-information-card accent="var(--color-success)">
-                    <x-slot:icon><x-heroicon-s-check/></x-slot:icon>
+                    <x-slot:icon><x-tabler-checks /></x-slot:icon>
                     <x-md>
                         Successfully send the reset link
                     </x-md>
@@ -17,7 +17,7 @@
             @endif
             @if($errors->any())
                 <x-information-card accent="var(--color-error)">
-                    <x-slot:icon><x-heroicon-s-exclamation-circle/></x-slot:icon>
+                    <x-slot:icon><x-tabler-exclamation-circle /></x-slot:icon>
                     <x-md>
                         An error occurred
                     </x-md>
@@ -44,7 +44,7 @@
                         {{-- Cloudflare Turnstile Captcha --}}
                         <x-turnstile data-action="forgot-password" data-theme="dark" />
                     </div>
-                    <button type="submit" class="button"><x-heroicon-s-paper-airplane/> Submit</button>
+                    <button type="submit" class="button"><x-tabler-send /> Submit</button>
                 </div>
             </form>
         </div>
