@@ -8,7 +8,7 @@ addEventListener('DOMContentLoaded', () => polyfill());
  * @returns Promise resolving to void.
  */
 async function polyfill(): Promise<void> {
-    if (!CSS.supports('selector(:has(*))')) {
+    if (!CSS.supports('selector(:has(.class))')) {
 
         document.querySelectorAll('tool-tip').forEach(tooltip => {
             tooltip = tooltip.parentElement as HTMLElement;
@@ -16,10 +16,10 @@ async function polyfill(): Promise<void> {
             tooltip.classList.add('has_tool-tip')
         });
 
-        document.querySelectorAll('.heroicons').forEach(heroicons => {
-            heroicons = heroicons.parentElement as HTMLElement;
-                if(heroicons == null) return;
-            heroicons.classList.add('has_heroicons');
+        document.querySelectorAll('.iconography').forEach(iconography => {
+            iconography = iconography.parentElement as HTMLElement;
+                if(iconography == null) return;
+            iconography.classList.add('has_heroicons');
         });
 
         const StyleSheet = new CSSStyleSheet();
