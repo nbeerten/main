@@ -24,13 +24,13 @@
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.13",
-        "brianium/paratest": "^7.0",
+        "brianium/paratest": "^7.0.6",
         "fakerphp/faker": "^1.21",
         "laravel/pint": "^1.5",
         "mockery/mockery": "^1.5.1",
         "nunomaduro/collision": "^7.0.4",
         "nunomaduro/larastan": "^2.4.1",
-        "phpunit/phpunit": "^10.0.7",
+        "phpunit/phpunit": "^10.0.9",
         "spatie/laravel-ignition": "^2.0"
     },
     "autoload": {
