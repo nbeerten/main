@@ -15,9 +15,9 @@ class Image extends Component
 
     public ?int $height = null;
 
-    protected false|int $widthFromArg = false;
+    protected ?int $widthFromArg = null;
 
-    protected false|int $heightFromArg = false;
+    protected ?int $heightFromArg = null;
 
     public Url $src;
 
@@ -25,6 +25,9 @@ class Image extends Component
 
     public string $alt;
 
+    /**
+     * @var string[]
+     */
     public $except = ['src', 'width', 'height'];
 
     /**
@@ -51,15 +54,18 @@ class Image extends Component
 
             [$imagewidth, $imageheight] = getimagesize(resource_path("images/{$this->src}"));
 
+            $heightratio = $imageheight / $imagewidth;
+            $widthratio = $imagewidth / $imageheight;
+
             $this->width = $imagewidth;
             $this->height = $imageheight;
-            $this->widthFromArg = $width ?? false;
-            $this->heightFromArg = $height ?? false;
+            $this->widthFromArg = $width ?? $imagewidth * $heightratio;
+            $this->heightFromArg = $height ?? $imageheight * $widthratio;
         } else {
             $this->width = $width ?? null;
             $this->height = $height ?? null;
-            $this->widthFromArg = $width ?? false;
-            $this->heightFromArg = $height ?? false;
+            $this->widthFromArg = $width ?? null;
+            $this->heightFromArg = $height ?? null;
         }
     }
 
@@ -88,21 +94,25 @@ class Image extends Component
             if ($this->widthFromArg &&
                ($width < $this->widthFromArg) &&
                ($this->widthFromArg < ($this->width * $factor($i + 1)))) {
-                $URLs[] = Url::fromString('/image')->withQueryParameters([
-                    'src' => (string) $this->src,
-                    'w' => $this->widthFromArg,
-                    'h' => $this->widthFromArg * $ratio,
-                ])." {$x}x";
+                $URLs[] = route('image', [
+                    'src' => $this->urlFilename(
+                        (string) $this->src, 
+                        $this->widthFromArg,
+                        $this->widthFromArg * $ratio
+                    )
+                ], absolute: false)." {$x}x";
             } elseif ($min > $width) {
                 $skipped++;
             } elseif (min([$this->width, $max]) < $width) {
                 break;
             } else {
-                $URLs[] = Url::fromString('/image')->withQueryParameters([
-                    'src' => (string) $this->src,
-                    'w' => $width,
-                    'h' => $width * $ratio,
-                ])." {$x}x";
+                $URLs[] = route('image', [
+                    'src' => $this->urlFilename(
+                        (string) $this->src, 
+                        intval($width),
+                        intval($width * $ratio)
+                    )
+                ], absolute: false)." {$x}x";
             }
         }
 
@@ -123,15 +133,13 @@ class Image extends Component
     public function render(): View|Closure|string
     {
         if (! $this->external) {
-            $src = Url::fromString(route('image', absolute: false))
-            ->withQueryParameter('src', $this->src);
-
-            if ($this->widthFromArg) {
-                $src = $src->withQueryParameter('w', strval($this->widthFromArg));
-            }
-            if ($this->heightFromArg) {
-                $src = $src->withQueryParameter('h', strval($this->heightFromArg));
-            }
+            $src = route('image', [
+                'src' => $this->urlFilename(
+                    (string) $this->src, 
+                    $this->widthFromArg,
+                    $this->heightFromArg
+                )
+            ], absolute: false);
         } else {
             $src = Url::fromString($this->src);
             if (Request::isSecure()) {
@@ -142,7 +150,7 @@ class Image extends Component
         $data = collect([
             'width' => $this->widthFromArg ?: $this->width,
             'height' => $this->heightFromArg ?: $this->height,
-            'src' => (string) $src,
+            'src' => $src,
         ]);
 
         if (! $this->external && $this->useExperimental) {
@@ -150,5 +158,21 @@ class Image extends Component
         }
 
         return view('components.image.index', $data);
+    }    
+    
+    public function urlFilename(string $filename, ?int $w = null, ?int $h = null): string {
+        if((!empty($w) && empty($h)) || (!empty($h) && empty($w)))
+            throw new Exception('Please specify both width and height or neither.');
+        
+        $withoutWidthAndHeight = false;
+        if(empty($w) && empty($h)) $withoutWidthAndHeight = true;
+        
+        preg_match('/^(.*)(\..{1,16})$/i', $filename, $filenameWithExt);
+        array_splice($filenameWithExt, 0, 1);
+        [$partFilename, $partExt] = $filenameWithExt;
+        if($withoutWidthAndHeight) $finalFilename = $partFilename . $partExt;
+        elseif(! $withoutWidthAndHeight) $finalFilename = "{$partFilename}_{$w}x{$h}{$partExt}";
+        
+        return $finalFilename;
     }
 }

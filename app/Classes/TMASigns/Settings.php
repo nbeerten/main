@@ -83,6 +83,9 @@ class Settings
 
     public const SKINJSONPATH = BASE_PATH.'/assets/TMASigns/Skin.json';
 
+    /**
+     * @deprecated 2023-02-20
+     */
     public const OPTIONS = [
         'subtextlocation' => 'bottom',
         'offsetText' => '0',

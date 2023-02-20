@@ -6,7 +6,8 @@ parameters:
         - app/
 
     # Level 9 is the highest level
-    level: 5
+    level: 6
+    checkGenericClassInNonGenericObjectType: false
 
 #    ignoreErrors:
 #        - '#PHPDoc tag @var#'

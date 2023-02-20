@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactFormController;
-use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
@@ -44,7 +43,4 @@ Route::middleware(Spatie\Csp\AddCspHeaders::class)->group(function () {
         Route::get('/dashboard', [AuthController::class, 'dashboard'])
             ->name('dashboard');
     });
-
-    Route::get('/image', ImageController::class)
-       ->name('image');
 });

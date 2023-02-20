@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
 use App\Classes\SEO\Robots;
 use App\Classes\SEO\SEO;
 use Illuminate\Http\Request;
@@ -9,7 +10,7 @@ use Spatie\SchemaOrg\Schema;
 
 class PageController extends Controller
 {
-    public function home(Request $request)
+    public function home(Request $request): View
     {
         SEO::share(
             title: 'Home',
@@ -22,7 +23,7 @@ class PageController extends Controller
         return view('home');
     }
 
-    public function tmasigns(Request $request)
+    public function tmasigns(Request $request): View
     {
         SEO::share(
             title: 'TMA Signs',
@@ -33,7 +34,7 @@ class PageController extends Controller
         return view('tmasigns');
     }
 
-    public function contact(Request $request)
+    public function contact(Request $request): View
     {
         SEO::share(
             title: 'Contact',

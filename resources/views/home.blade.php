@@ -85,7 +85,7 @@
                 </x-slot:repoinfo>
             </x-card.repository>
             {{-- <x-card.repository>
-                <x-slot:img><x-image class="card-img" src="tmasigns_1x1example.webp" alt="Example of a one by one sized sign" width="160" height="160" /></x-slot:img>
+                <x-slot:img><x-image class="card-img" src="tmasigns_1x1example.webp"  useExperimental="true"  alt="Example of a one by one sized sign" width="160" height="160" /></x-slot:img>
                 <a href="/tmasigns">
                     <h4 class="card-title">TMA Sign Generator</h4>
                 </a>

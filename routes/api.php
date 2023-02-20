@@ -3,6 +3,7 @@
 use App\Http\Controllers\TMASignsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,6 @@ Route::middleware(['throttle:tmasigns'])->group(function () {
     Route::post('/tmasigns', [TMASignsController::class, 'json']);
     Route::post('/tmasigns/locatortool', [TMASignsController::class, 'locatortool']);
 });
+
+Route::get('/image/{src?}', ImageController::class)
+    ->name('image');

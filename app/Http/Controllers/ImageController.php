@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
@@ -16,14 +18,35 @@ class ImageController extends Controller
      *
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function __invoke(Request $request)
+    public function __invoke(Request $request, ?string $src = null): Response|RedirectResponse
     {
-        // Require "src" parameter
-        if (empty($request->query('src'))) {
-            return abort(404, "Missing 'src' query parameter");
+        // Somehow the result of `preg_match` is usable within the if block.
+        if(empty($request->query('src')) && !empty($src) &&
+            preg_match('/^(.*)(?:_(?:([0-9]+)x([0-9]+))(\..{1,16}))$/i', $src, $matches)
+        ) {
+            array_splice($matches, 0, 1);
+            [$filename, $w, $h, $ext] = $matches;
+
+            $src = Url::fromString($filename . $ext);
+        } elseif(empty($request->query('src')) && !empty($src) &&
+            preg_match('/^(.*)(\..{1,16})$/i', $src, $matches)
+        ) {
+            array_splice($matches, 0, 1);
+            [$filename, $ext] = $matches;
+
+            $src = Url::fromString($filename . $ext);
+            $w = null;
+            $h = null;
+        } else {
+            $src = Url::fromString($request->query('src') ?? '');
+            $w = $request->query('w');
+            $h = $request->query('h');
         }
 
-        $src = Url::fromString($request->query('src'));
+        // Require "src" parameter
+        if (empty((string) $src)) {
+            return abort(404, "Missing 'src' query parameter");
+        }
 
         if (! empty($src->getScheme()) && ! empty($src->getHost())) {
             return redirect($src, secure: true);
@@ -37,9 +60,6 @@ class ImageController extends Controller
             return abort(404, 'Illegal URL used.');
         }
 
-        $w = $request->query('w');
-        $h = $request->query('h');
-
         // Generate a hash from the input (src, w, h)
         $cacheable = json_encode([
             'src' => (string) $src,
@@ -51,6 +71,9 @@ class ImageController extends Controller
         // Either grab the cached file, or generate a new file.
         $output = Cache::get($cacheable,
             function () use ($cacheable, $src, $w, $h): string {
+                // How long to store in cache: currently for 7 days.
+                $secondsToStore = 60 * 60 * 24 * 7;
+                
                 // Check if height and width are empty, if so, just grab the original file.
                 if (empty($w) && empty($h)) {
                     return File::get(resource_path("images/{$src}"));
@@ -67,9 +90,12 @@ class ImageController extends Controller
                     $h = $imageheight;
                 }
 
-                // If it still seems that the set width and height are equal to the original, still grab the original file.
-                if ($imagewidth === $w && $imageheight === $h) {
-                    return File::get(resource_path("images/{$src}"));
+                // If it still seems that the set width and height are equal to the original, still grab the original file and store in cache.
+                if ($imagewidth === intval($w) && $imageheight === intval($h)) {
+                    $fileContents = File::get(resource_path("images/{$src}"));
+                    Cache::add($cacheable, $fileContents, $secondsToStore);
+
+                    return $fileContents;
                 }
 
                 // If it seems that the size is actually different, create an Imagick object, and start resizing.
@@ -95,8 +121,7 @@ class ImageController extends Controller
                 $image->setOption('webp:target-size', strval($w * 50));
                 $image->resizeImage($w, $h, Imagick::FILTER_LANCZOS, 1);
 
-                // Cache for 7 days.
-                $secondsToStore = 60 * 60 * 24 * 7;
+                // Add to cache
                 Cache::add($cacheable, $image->getImageBlob(), $secondsToStore);
 
                 return $image->getImageBlob();

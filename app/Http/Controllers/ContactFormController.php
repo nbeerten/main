@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\ContactFormRequest;
 use App\Mail\ContactForm;
 use Illuminate\Support\Facades\Mail;
@@ -11,7 +12,7 @@ class ContactFormController extends Controller
     /**
      * Send contact form email
      */
-    public function post(ContactFormRequest $request)
+    public function post(ContactFormRequest $request): RedirectResponse
     {
         $validated = $request->safe()->except('cf-turnstile-response');
 
