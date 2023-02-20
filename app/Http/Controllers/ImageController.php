@@ -60,6 +60,12 @@ class ImageController extends Controller
             return abort(404, 'Illegal URL used.');
         }
 
+        // Check if width or height aren't above max limit
+        $max = 7680;
+        if($w > $max || $h > $max) {
+            return abort(400, "Width or height exceeds maximum of {$max}");
+        }
+
         // Generate a hash from the input (src, w, h)
         $cacheable = json_encode([
             'src' => (string) $src,
@@ -89,6 +95,10 @@ class ImageController extends Controller
                 if (empty($h)) {
                     $h = $imageheight;
                 }
+
+                // Don't accept that the given $w or $h is bigger then the image itself (no upscaling)
+                if($w > $imagewidth) $w = $imagewidth;
+                if($h > $imageheight) $h = $imageheight;
 
                 // If it still seems that the set width and height are equal to the original, still grab the original file and store in cache.
                 if ($imagewidth === intval($w) && $imageheight === intval($h)) {
