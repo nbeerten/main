@@ -32,7 +32,7 @@ RUN apk update; \
 RUN apk add nodejs
 RUN ln -s /usr/bin/node /usr/local/bin/node
 
-COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
+COPY --from=composer/composer:latest-bin /composer /usr/bin/composer
 
 # MacOS staff group's gid is 20, so is the dialout group in alpine linux. We're not using it, let's just remove it.
 RUN delgroup dialout
@@ -46,7 +46,7 @@ RUN echo "php_admin_flag[log_errors] = on" >> /usr/local/etc/php-fpm.d/www.conf
 
 
 # Install PHP extensions
-RUN docker-php-ext-install pdo_mysql zip exif pcntl bcmath gd
+RUN docker-php-ext-install pdo_mysql zip exif pcntl bcmath gd opcache
 RUN pecl install redis imagick \
 	&& docker-php-ext-enable redis imagick
     
