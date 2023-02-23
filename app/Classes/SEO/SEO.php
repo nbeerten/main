@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\View;
  */
 class SEO
 {
+    /**
+     * @param  Robots[]|null  $robots
+     * @param  mixed  $schema
+     */
     public static function share(
         ?string $key = 'seo',
         ?string $title = '',

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Response;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
@@ -15,32 +15,32 @@ class ImageController extends Controller
 {
     /**
      * Handle the incoming request.
-     *
-     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
     public function __invoke(Request $request, ?string $src = null): Response|RedirectResponse
     {
         // Somehow the result of `preg_match` is usable within the if block.
-        if(empty($request->query('src')) && !empty($src) &&
+        if (empty($request->query('src')) && ! empty($src) &&
             preg_match('/^(.*)(?:_(?:([0-9]+)x([0-9]+))(\..{1,16}))$/i', $src, $matches)
         ) {
             array_splice($matches, 0, 1);
             [$filename, $w, $h, $ext] = $matches;
+            $w = intval($w);
+            $h = intval($h);
 
-            $src = Url::fromString($filename . $ext);
-        } elseif(empty($request->query('src')) && !empty($src) &&
+            $src = Url::fromString($filename.$ext);
+        } elseif (empty($request->query('src')) && ! empty($src) &&
             preg_match('/^(.*)(\..{1,16})$/i', $src, $matches)
         ) {
             array_splice($matches, 0, 1);
             [$filename, $ext] = $matches;
 
-            $src = Url::fromString($filename . $ext);
+            $src = Url::fromString($filename.$ext);
             $w = null;
             $h = null;
         } else {
             $src = Url::fromString($request->query('src') ?? '');
-            $w = $request->query('w');
-            $h = $request->query('h');
+            $w = intval($request->query('w'));
+            $h = intval($request->query('h'));
         }
 
         // Require "src" parameter
@@ -62,7 +62,7 @@ class ImageController extends Controller
 
         // Check if width or height aren't above max limit
         $max = 7680;
-        if($w > $max || $h > $max) {
+        if (($w > $max || $h > $max)) {
             return abort(400, "Width or height exceeds maximum of {$max}");
         }
 
@@ -79,7 +79,7 @@ class ImageController extends Controller
             function () use ($cacheable, $src, $w, $h): string {
                 // How long to store in cache: currently for 7 days.
                 $secondsToStore = 60 * 60 * 24 * 7;
-                
+
                 // Check if height and width are empty, if so, just grab the original file.
                 if (empty($w) && empty($h)) {
                     return File::get(resource_path("images/{$src}"));
@@ -97,8 +97,12 @@ class ImageController extends Controller
                 }
 
                 // Don't accept that the given $w or $h is bigger then the image itself (no upscaling)
-                if($w > $imagewidth) $w = $imagewidth;
-                if($h > $imageheight) $h = $imageheight;
+                if ($w > $imagewidth) {
+                    $w = $imagewidth;
+                }
+                if ($h > $imageheight) {
+                    $h = $imageheight;
+                }
 
                 // If it still seems that the set width and height are equal to the original, still grab the original file and store in cache.
                 if ($imagewidth === intval($w) && $imageheight === intval($h)) {

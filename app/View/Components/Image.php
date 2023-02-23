@@ -15,10 +15,6 @@ class Image extends Component
 
     public ?int $height = null;
 
-    protected ?int $widthFromArg = null;
-
-    protected ?int $heightFromArg = null;
-
     public Url $src;
 
     public bool $external = false;
@@ -47,30 +43,42 @@ class Image extends Component
             $this->external = true;
         }
 
-        if (! $this->external) {
-            if (! file_exists(resource_path("images/{$this->src}"))) {
-                throw new Exception('Image not found: '.resource_path("images/{$this->src}"));
+        if ($this->external) {
+            if (is_null($width) || is_null($height)) {
+                throw new Exception("External image provided, please specify both width and height. Image source: {$this->src}");
+            } else {
+                $this->width = $width;
+                $this->height = $height;
             }
-
-            [$imagewidth, $imageheight] = getimagesize(resource_path("images/{$this->src}"));
-
-            $heightratio = $imageheight / $imagewidth;
-            $widthratio = $imagewidth / $imageheight;
-
-            $this->width = $imagewidth;
-            $this->height = $imageheight;
-            $this->widthFromArg = $width ?? $imagewidth * $heightratio;
-            $this->heightFromArg = $height ?? $imageheight * $widthratio;
         } else {
-            $this->width = $width ?? null;
-            $this->height = $height ?? null;
-            $this->widthFromArg = $width ?? null;
-            $this->heightFromArg = $height ?? null;
+            [$imageWidth, $imageHeight] = getimagesize(resource_path("images/{$this->src}"));
+
+            $widthRatio = $imageHeight / $imageWidth;
+            $heightRatio = $imageWidth / $imageHeight;
+
+            if ($width && $height) {
+                if ($width / $height === $imageWidth / $imageHeight) {
+                    $this->width = $width;
+                    $this->height = $height;
+                } else {
+                    $this->width = $width;
+                    $this->height = $width / $heightRatio;
+                }
+            } elseif ($width && is_null($height)) {
+                $this->width = $width;
+                $this->height = $width / $heightRatio;
+            } elseif (is_null($width) && $height) {
+                $this->width = $height / $widthRatio;
+                $this->height = $height;
+            } elseif (is_null($width) && is_null($height)) {
+                $this->width = $imageWidth;
+                $this->height = $imageHeight;
+            }
         }
     }
 
     /**
-     * Create a new component instance.
+     * Generate the srcset attribute.
      */
     public function generateSrcSet(): string
     {
@@ -79,6 +87,8 @@ class Image extends Component
         $min = 128;
         $max = 3840;
         $amount = 4;
+
+        [$imageWidth, $imageHeight] = getimagesize(resource_path("images/{$this->src}"));
 
         // Multiply with width
         $ratio = $this->height / $this->width;
@@ -89,29 +99,29 @@ class Image extends Component
             $x = ($i + 1) - $skipped;
 
             $factor = fn ($i) => 1 / $amount * ($i + 1);
-            $width = $this->width * $factor($i);
+            $width = $imageWidth * $factor($i);
 
-            if ($this->widthFromArg &&
-               ($width < $this->widthFromArg) &&
-               ($this->widthFromArg < ($this->width * $factor($i + 1)))) {
+            if ($this->width &&
+               ($width < $imageWidth) &&
+               ($imageWidth < ($imageWidth * $factor($i + 1)))) {
                 $URLs[] = route('image', [
                     'src' => $this->urlFilename(
-                        (string) $this->src, 
-                        $this->widthFromArg,
-                        $this->widthFromArg * $ratio
-                    )
+                        (string) $this->src,
+                        $this->width,
+                        $this->width * $ratio
+                    ),
                 ], absolute: false)." {$x}x";
             } elseif ($min > $width) {
                 $skipped++;
-            } elseif (min([$this->width, $max]) < $width) {
+            } elseif (min([$imageWidth, $max]) < $width) {
                 break;
             } else {
                 $URLs[] = route('image', [
                     'src' => $this->urlFilename(
-                        (string) $this->src, 
+                        (string) $this->src,
                         intval($width),
                         intval($width * $ratio)
-                    )
+                    ),
                 ], absolute: false)." {$x}x";
             }
         }
@@ -132,15 +142,19 @@ class Image extends Component
      */
     public function render(): View|Closure|string
     {
+        // Assign source if source isn't external
         if (! $this->external) {
-            $src = route('image', [
-                'src' => $this->urlFilename(
-                    (string) $this->src, 
-                    $this->widthFromArg,
-                    $this->heightFromArg
-                )
-            ], absolute: false);
-        } else {
+            $src = route('image',
+                [
+                    'src' => $this->urlFilename(
+                        (string) $this->src,
+                        $this->width,
+                        $this->height
+                    ),
+                ], absolute: false);
+        }
+        // Assign source if source is external
+        else {
             $src = Url::fromString($this->src);
             if (Request::isSecure()) {
                 $src->withScheme('https');
@@ -148,31 +162,38 @@ class Image extends Component
         }
 
         $data = collect([
-            'width' => $this->widthFromArg ?: $this->width,
-            'height' => $this->heightFromArg ?: $this->height,
             'src' => $src,
+            'width' => $this->width,
+            'height' => $this->height,
         ]);
 
-        if (! $this->external && $this->useExperimental) {
-            $data->put('srcset', $this->generateSrcSet());
-        }
+        // if (! $this->external && $this->useExperimental) {
+        //     $data->put('srcset', $this->generateSrcSet());
+        // }
 
         return view('components.image.index', $data);
-    }    
-    
-    public function urlFilename(string $filename, ?int $w = null, ?int $h = null): string {
-        if((!empty($w) && empty($h)) || (!empty($h) && empty($w)))
+    }
+
+    public function urlFilename(string $filename, ?int $w = null, ?int $h = null): string
+    {
+        if ((! empty($w) && empty($h)) || (! empty($h) && empty($w))) {
             throw new Exception('Please specify both width and height or neither.');
-        
+        }
+
         $withoutWidthAndHeight = false;
-        if(empty($w) && empty($h)) $withoutWidthAndHeight = true;
-        
+        if (empty($w) && empty($h)) {
+            $withoutWidthAndHeight = true;
+        }
+
         preg_match('/^(.*)(\..{1,16})$/i', $filename, $filenameWithExt);
         array_splice($filenameWithExt, 0, 1);
         [$partFilename, $partExt] = $filenameWithExt;
-        if($withoutWidthAndHeight) $finalFilename = $partFilename . $partExt;
-        elseif(! $withoutWidthAndHeight) $finalFilename = "{$partFilename}_{$w}x{$h}{$partExt}";
-        
+        if ($withoutWidthAndHeight) {
+            $finalFilename = $partFilename.$partExt;
+        } elseif (! $withoutWidthAndHeight) {
+            $finalFilename = "{$partFilename}_{$w}x{$h}{$partExt}";
+        }
+
         return $finalFilename;
     }
 }

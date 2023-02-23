@@ -22,6 +22,9 @@ class Base
 
     protected Size $size;
 
+    /**
+     * @var array<array<string|int>|string|int>|null
+     */
     protected array|null $options;
 
     protected string $text;
@@ -34,21 +37,10 @@ class Base
 
     private ImagickDraw|null $subTextStyling;
 
-    public function get()
-    {
-        if (! empty($this->subtext)) {
-            return $this->create()->multiline()->toString();
-        } elseif (! empty($this->text) || $this->text === '0') {
-            return $this->create()->singleline()->toString();
-        } else {
-            return abort(422);
-        }
-    }
-
     /**
      * Base function to create a sign
      */
-    private function create(): self
+    protected function create(): self
     {
         $this->baseCanvas = new Imagick(Settings::BASE[$this->size->value]);
         $this->baseCanvas->flipImage();
@@ -64,7 +56,7 @@ class Base
     /**
      * Create singe-line style sign
      */
-    private function singleline(): self
+    protected function singleline(): self
     {
         $this->baseCanvas->annotateImage(
             $this->textStyling,
@@ -80,7 +72,7 @@ class Base
     /**
      * Create multi-line style sign
      */
-    private function multiline(): self
+    protected function multiline(): self
     {
         $this->baseCanvas->annotateImage(
             $this->subTextStyling,
@@ -102,17 +94,11 @@ class Base
 
     /**
      * Get blob of sign
-     *
-     * @return string Blob of sign
      */
-    public function toString(): string
+    protected function toString(): string
     {
         // Set all image-specific settings
         $this->imageSettings();
-
-        if ($this->format === Format::TGA) {
-            $this->baseCanvas->flipImage();
-        }
 
         $output = $this->baseCanvas->getImageBlob();
 
@@ -162,13 +148,13 @@ class Base
 
         $draw->setGravity(Imagick::GRAVITY_CENTER);
         $draw->setFont(Settings::FONT);
-        $draw->setFillColor(Colors::Orange->ImagickPixel());
+        $draw->setFillColor(Colors::Orange->toImagickPixel());
         $draw->setTextAntialias(true);
 
         $strokeWidth = ($this->size->value === 1 && strlen($this->text) <= 4) ? Settings::OUTLINEWIDTH[$this->size->value][$this->multiline] * 2 : Settings::OUTLINEWIDTH[$this->size->value][$this->multiline];
         $newStrokeWidth = round($strokeWidth + ($this->options['outlineModifier'] ?? 0), 3);
         $draw->setStrokeWidth($newStrokeWidth);
-        $draw->setStrokeColor(Colors::White->ImagickPixel());
+        $draw->setStrokeColor(Colors::White->toImagickPixel());
         $draw->setStrokeAntialias(true);
 
         $metrics = $this->baseCanvas->queryFontMetrics($draw, $this->text, false);
@@ -190,7 +176,7 @@ class Base
 
         $draw->setGravity(Imagick::GRAVITY_CENTER);
         $draw->setFont(Settings::FONT);
-        $draw->setFillColor(Colors::White->ImagickPixel());
+        $draw->setFillColor(Colors::White->toImagickPixel());
         $draw->setTextAntialias(true);
 
         $metrics = $this->baseCanvas->queryFontMetrics($draw, $this->subtext, false);

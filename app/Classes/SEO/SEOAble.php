@@ -12,11 +12,16 @@ class SEOAble
 {
     /**
      * Properties from class
+     *
+     * @var array<string|int>
      */
     private array $properties = [];
 
     /**
      * Construct a SEOAble object
+     *
+     * @param  Robots[]|null  $robots
+     * @param  mixed  $schema
      */
     public function __construct(
         public readonly string $title,
@@ -48,7 +53,7 @@ class SEOAble
     {
         $robots = '';
         foreach ($this->robots as $key => $rule) {
-            $robots .= $rule;
+            $robots .= $rule->value;
             if ($key !== array_key_last($this->robots)) {
                 $robots .= 'a';
             }

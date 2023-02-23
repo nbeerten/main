@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
 use App\Classes\SEO\Robots;
 use App\Classes\SEO\SEO;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use Spatie\SchemaOrg\Schema;
 
 class PageController extends Controller

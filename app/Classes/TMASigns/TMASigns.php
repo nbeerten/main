@@ -12,6 +12,9 @@ use ZipStream;
  */
 class TMASigns extends Base
 {
+    /**
+     * @param  array<array<string|int>|string|int>|null  $options
+     */
     public function __construct(Format $format, Size $size, array|null $options, string $text, string|null $subtext)
     {
         $this->format = $format;
@@ -25,6 +28,17 @@ class TMASigns extends Base
         }
     }
 
+    public function get(): string
+    {
+        if (! empty($this->subtext)) {
+            return $this->create()->multiline()->toString();
+        } elseif (! empty($this->text) || $this->text === '0') {
+            return $this->create()->singleline()->toString();
+        } else {
+            throw new Exception('Neither text nor subtext provided.');
+        }
+    }
+
     /**
      * Create stream for the sign
      *
@@ -33,7 +47,7 @@ class TMASigns extends Base
      */
     public function zipStream(bool $skinjson = true): mixed
     {
-        $sign = Base::get();
+        $sign = $this->get();
 
         $tempStream = fopen('php://memory', 'r+');
 
@@ -61,13 +75,5 @@ class TMASigns extends Base
         }
 
         return $tempStream;
-    }
-
-    /**
-     * Returns the content in specified format
-     */
-    public function get(): mixed
-    {
-        return Base::get();
     }
 }

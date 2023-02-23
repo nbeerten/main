@@ -12,7 +12,7 @@ enum Colors: string
     case Blueish = '#c5e9f6';
     case White = '#ffffff';
 
-    public function ImagickPixel(): ImagickPixel
+    public function toImagickPixel(): ImagickPixel
     {
         return new ImagickPixel($this->value);
     }
