@@ -31,7 +31,7 @@ export default defineConfig({
                 '/resources/css/app.css',
                 ...scriptFiles
             ],
-            refresh: true
+            refresh: true,
         })
     ],
     css: {
@@ -47,7 +47,7 @@ export default defineConfig({
                 postcssSortMediaQueries,
                 postcssPresetEnv({
                     browsers: '> 1% and last 10 versions',
-                    enableClientSidePolyfills: false,
+                    enableClientSidePolyfills: true,
                 })
             ],
         }

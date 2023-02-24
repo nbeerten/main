@@ -140,16 +140,15 @@
                     </x-accordion.card>
 
                     <div class="wrapper-button-align-right">
-                        <a class="button" id="downloadButton" href="" role="button"
-                            @@click.prevent.throttle.500ms="TMASigns.downloadsign($data)"
-                            download="tma-text-text-subtext_4x1-UG.zip">
+                        <a class="button" id="downloadButton" role="button"
+                            @@click.prevent.throttle.500ms="TMASigns.downloadsign($data)">
                             <x-tabler-file-download /> Download
                         </a>
                     </div>
                 </section>
                 <section class="right-col">
                     <div class="preview-image" data-status-message="" data-status="">
-                        <img id="previewImage" src="{{ asset('assets/default_sign.jpg') }}" draggable="false" onclick="preventDefault()">
+                        <x-image id="previewImage" alt="Example sign" src="default_sign.webp" draggable="false" onclick="preventDefault()" />
                     </div>
 
                     <x-accordion.card class="json-debug">

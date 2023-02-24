@@ -2,7 +2,6 @@
     "type": "project",
     "require": {
         "php": "^8.2",
-        "choowx/satori-php": "^0.2.1",
         "doctrine/dbal": "^3.6",
         "guzzlehttp/guzzle": "^7.5",
         "laravel/fortify": "^1.16.0",

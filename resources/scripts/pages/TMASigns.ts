@@ -4,15 +4,13 @@ declare var Alpine: IAlpine;
 
 declare global {
     interface Window {
-        TMASigns: TMASigns;
+        TMASigns: {
+            updatePreview: Function,
+            startLoadingAnimation: Function,
+            downloadsign: Function,
+            downloadLocators: Function
+        };
     }
-}
-
-interface TMASigns {
-    updatePreview: Function,
-    startLoadingAnimation: Function,
-    downloadsign: Function,
-    downloadLocators: Function
 }
 
 interface AlpineData {
@@ -132,10 +130,15 @@ window.TMASigns = {
     },
 
     downloadsign: function({text, subtext, size, subtextlocation, offsetText, offsetSubtext, outlineModifier}: AlpineData): void {
-        if(text == '' || size == null) return;
-
-        const downloadButton: HTMLElement = document.querySelector('#downloadButton') as HTMLElement;
+        const downloadButton: HTMLAnchorElement|null = document.querySelector('#downloadButton');
             if(downloadButton === null) return;
+        
+        if(text == '' || size == null) {
+            downloadButton.removeAttribute('href');
+            downloadButton.removeAttribute('download');
+            return;
+        }
+
         const fnText = text.replace(/ /g, '').toLowerCase();
         const fnSubtext = subtext ? subtext.replace(/ /g, '').toLowerCase() + '_' : '';
         const filename = `TMA2-text-${fnText}-${fnSubtext}${size}x1-UG`;
@@ -174,10 +177,13 @@ window.TMASigns = {
                         downloadButton.setAttribute('href', objectURL);
                         downloadButton.click();
                         URL.revokeObjectURL(objectURL);
+                        downloadButton.removeAttribute('href');
+                        downloadButton.removeAttribute('download');
                     });
 
                 } else {
-                    downloadButton.setAttribute('href', " ");
+                    downloadButton.removeAttribute('href');
+                    downloadButton.removeAttribute('download');
                 }
             });
     },
