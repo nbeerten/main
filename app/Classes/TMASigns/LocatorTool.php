@@ -14,7 +14,7 @@ class LocatorTool
     ) {
     }
 
-    public function get(): ?mixed
+    public function get(): mixed
     {
         $zip = new ZipStream\ZipStream('locators.zip');
 
