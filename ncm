@@ -74,6 +74,20 @@ elif [ "$1" == "pint" ]; then
     ARGS+=(exec php)
     ARGS+=(php vendor/bin/pint "$@")
 
+# Proxy the "test" command to "php artisan test"...
+elif [ "$1" == "test" ]; then
+    shift 1
+
+    ARGS+=(exec php)
+    ARGS+=(php artisan test)
+
+# Proxy the "test" command to "./vendor/bin/phpstan analyse --memory-limit=2G"...
+elif [ "$1" == "phpstan" ]; then
+    shift 1
+
+    ARGS+=(exec php)
+    ARGS+=(./vendor/bin/phpstan analyse --memory-limit=2G)
+
 # Initiate a Bash shell within the application container...
 elif [ "$1" == "bash" ]; then
     shift 1

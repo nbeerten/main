@@ -33,7 +33,8 @@ interface ILocatorTool {
 }
 
 interface IPostData {
-    format: "tga"|"jpg", 
+    format: "jpg"|"tga"|"webp",
+    shouldOutputZip: boolean,
     size: 1|2|4|6,
     options: {
         subtextlocation: "bottom"|"top", 
@@ -54,6 +55,7 @@ window.TMASigns = {
 
         const jsonDebugObject: IPostData = {
             format: (size != 6 ? "tga" : "jpg"),
+            shouldOutputZip: (size != 6),
             size: size,
             options: {
                 subtextlocation: subtextlocation,
@@ -82,6 +84,7 @@ window.TMASigns = {
 
         const postData: IPostData = {
             format: "jpg",
+            shouldOutputZip: false,
             size: size,
             options: {
                 subtextlocation: subtextlocation,
@@ -142,6 +145,7 @@ window.TMASigns = {
 
         const postData: IPostData = {
             format: (size != 6 ? "tga" : "jpg"),
+            shouldOutputZip: (size != 6),
             size: size,
             options: {
                 subtextlocation: subtextlocation,

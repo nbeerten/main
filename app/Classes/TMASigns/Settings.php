@@ -4,14 +4,12 @@ namespace App\Classes\TMASigns;
 
 use App\Classes\TMASigns\Config\Colors;
 
-define('BASE_PATH', base_path());
-
 /**
  * Settings for TMASigns
  */
 class Settings
 {
-    public const FONT = BASE_PATH.'/assets/TMASigns/Montserrat-Black.ttf';
+    public const FONT = __DIR__.'/../../../assets/TMASigns/Montserrat-Black.ttf';
 
     public const FONTSIZE = [
         1 => [250, 250],
@@ -49,10 +47,10 @@ class Settings
     public const OUTLINECOLOR = Colors::White;
 
     public const BASE = [
-        1 => BASE_PATH.'/assets/TMASigns/1x1.tga',
-        2 => BASE_PATH.'/assets/TMASigns/2x1.tga',
-        4 => BASE_PATH.'/assets/TMASigns/4x1.tga',
-        6 => BASE_PATH.'/assets/TMASigns/6x1.tga',
+        1 => __DIR__.'/../../../assets/TMASigns/1x1.tga',
+        2 => __DIR__.'/../../../assets/TMASigns/2x1.tga',
+        4 => __DIR__.'/../../../assets/TMASigns/4x1.tga',
+        6 => __DIR__.'/../../../assets/TMASigns/6x1.tga',
     ];
 
     public const MARGINS = [
@@ -80,15 +78,4 @@ class Settings
     public const ALLOWEDFILETYPES = ['jpg', 'webp', 'tga'];
 
     public const ALLOWEDSIZES = [1, 2, 4, 6];
-
-    public const SKINJSONPATH = BASE_PATH.'/assets/TMASigns/Skin.json';
-
-    /**
-     * @deprecated 2023-02-20
-     */
-    public const OPTIONS = [
-        'subtextlocation' => 'bottom',
-        'offsetText' => '0',
-        'offsetSubtext' => '0',
-    ];
 }

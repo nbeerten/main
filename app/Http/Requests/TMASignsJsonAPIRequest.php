@@ -27,6 +27,7 @@ class TMASignsJsonAPIRequest extends FormRequest
     {
         $this->merge([
             'format' => $this->get('format') ?? 'tga',
+            'shouldOutputZip' => $this->get('shouldOutputZip') ?? false,
             'size' => $this->get('size') ?? 2,
             'options' => $this->get('options') ?? [],
             'text' => $this->get('text') ?? 'Hello world!',
@@ -43,6 +44,7 @@ class TMASignsJsonAPIRequest extends FormRequest
     {
         return [
             'format' => ['required', 'string', Rule::in(Settings::ALLOWEDFILETYPES)],
+            'shouldOutputZip' => ['sometimes', 'boolean'],
             'size' => ['required', 'numeric', Rule::in(Settings::ALLOWEDSIZES)],
             'options' => ['sometimes', 'array'],
             'text' => ['bail', 'required', 'string', 'max:32'],

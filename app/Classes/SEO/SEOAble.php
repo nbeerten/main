@@ -3,26 +3,14 @@
 namespace App\Classes\SEO;
 
 use Blade;
-use Spatie\Html\Facades\Html;
 
 /**
  * Readonly class for retrieving data
  */
 class SEOAble
 {
-    /**
-     * Properties from class
-     *
-     * @var array<string|int>
-     */
     private array $properties = [];
 
-    /**
-     * Construct a SEOAble object
-     *
-     * @param  Robots[]|null  $robots
-     * @param  mixed  $schema
-     */
     public function __construct(
         public readonly string $title,
         public readonly ?string $description = null,

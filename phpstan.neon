@@ -4,15 +4,10 @@ includes:
 parameters:
     paths:
         - app/
+    excludePaths:
+        - app/Actions/Fortify/*
 
     # Level 9 is the highest level
-    level: 6
+    level: 7
     checkGenericClassInNonGenericObjectType: false
-
-#    ignoreErrors:
-#        - '#PHPDoc tag @var#'
-#
-#    excludePaths:
-#        - ./*/*/FileToBeExcluded.php
-#
-#    checkMissingIterableValueType: false
+    checkMissingIterableValueType: false

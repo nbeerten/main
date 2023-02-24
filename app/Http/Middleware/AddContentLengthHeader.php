@@ -16,9 +16,9 @@ class AddContentLengthHeader
     public function handle(Request $request, Closure $next): Response
     {
         $response = $next($request);
- 
-        $response->header('Content-Length', strlen($response->getContent()));
- 
+
+        $response->headers->set('Content-Length', strval(strlen($response->getContent())));
+
         return $response;
     }
 }

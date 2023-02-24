@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -56,7 +57,8 @@ class ImageController extends Controller
         if (! file_exists(resource_path("images/{$src}"))) {
             return abort(404, 'Image not found');
         }
-        if (strncmp(realpath(resource_path("images/{$src}")), resource_path('images'), strlen(resource_path('images'))) !== 0) {
+        $realpath = realpath(resource_path("images/{$src}")) ?: abort(400, 'Realpath failed.');
+        if (strncmp($realpath, resource_path('images'), strlen(resource_path('images'))) !== 0) {
             return abort(404, 'Illegal URL used.');
         }
 
@@ -86,8 +88,7 @@ class ImageController extends Controller
                 }
 
                 // A way more performant way of grabbing image size compared to using Imagick.
-                [$imagewidth, $imageheight] = getimagesize(resource_path("images/{$src}"));
-
+                [$imagewidth, $imageheight] = getimagesize(resource_path("images/{$src}")) ?: throw new Exception('getimagesize() failed.');
                 // If either width or height weren't set/known *yet*, get the correct width/height from the imagick object.
                 if (empty($w)) {
                     $w = $imagewidth;

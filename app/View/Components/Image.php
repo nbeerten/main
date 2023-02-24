@@ -51,8 +51,7 @@ class Image extends Component
                 $this->height = $height;
             }
         } else {
-            [$imageWidth, $imageHeight] = getimagesize(resource_path("images/{$this->src}"));
-
+            [$imageWidth, $imageHeight] = getimagesize(resource_path("images/{$this->src}")) ?: throw new Exception('getimagesize() failed.');
             $widthRatio = $imageHeight / $imageWidth;
             $heightRatio = $imageWidth / $imageHeight;
 
@@ -88,8 +87,7 @@ class Image extends Component
         $max = 3840;
         $amount = 4;
 
-        [$imageWidth, $imageHeight] = getimagesize(resource_path("images/{$this->src}"));
-
+        [$imageWidth, $imageHeight] = getimagesize(resource_path("images/{$this->src}")) ?: throw new Exception('getimagesize() failed.');
         // Multiply with width
         $ratio = $this->height / $this->width;
 

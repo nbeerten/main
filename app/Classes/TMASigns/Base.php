@@ -16,15 +16,14 @@ class Base
     /**
      *  Easy-access variable to check if sign is multiline
      */
-    protected int $multiline = 0;
+    protected int $isMultiline = 0;
 
     protected Format $format;
 
+    protected bool $shouldOutputZip = false;
+
     protected Size $size;
 
-    /**
-     * @var array<array<string|int>|string|int>|null
-     */
     protected array|null $options;
 
     protected string $text;
@@ -46,7 +45,7 @@ class Base
         $this->baseCanvas->flipImage();
 
         $this->textStyling = $this->text();
-        if ($this->multiline) {
+        if ($this->isMultiline) {
             $this->subTextStyling = $this->subText();
         }
 
@@ -104,7 +103,7 @@ class Base
 
         $this->baseCanvas->clear();
         $this->textStyling->clear();
-        if ($this->multiline) {
+        if ($this->isMultiline) {
             $this->subTextStyling->clear();
         }
 
@@ -151,7 +150,7 @@ class Base
         $draw->setFillColor(Colors::Orange->toImagickPixel());
         $draw->setTextAntialias(true);
 
-        $strokeWidth = ($this->size->value === 1 && strlen($this->text) <= 4) ? Settings::OUTLINEWIDTH[$this->size->value][$this->multiline] * 2 : Settings::OUTLINEWIDTH[$this->size->value][$this->multiline];
+        $strokeWidth = ($this->size->value === 1 && strlen($this->text) <= 4) ? Settings::OUTLINEWIDTH[$this->size->value][$this->isMultiline] * 2 : Settings::OUTLINEWIDTH[$this->size->value][$this->isMultiline];
         $newStrokeWidth = round($strokeWidth + ($this->options['outlineModifier'] ?? 0), 3);
         $draw->setStrokeWidth($newStrokeWidth);
         $draw->setStrokeColor(Colors::White->toImagickPixel());
@@ -159,7 +158,7 @@ class Base
 
         $metrics = $this->baseCanvas->queryFontMetrics($draw, $this->text, false);
         $calculatedFontSize = floor($metrics['characterWidth'] * Settings::MARGINS[$this->size->value] / $metrics['textWidth']);
-        $newFontSize = $calculatedFontSize < Settings::FONTSIZE[$this->size->value][$this->multiline] ? $calculatedFontSize : Settings::FONTSIZE[$this->size->value][$this->multiline];
+        $newFontSize = $calculatedFontSize < Settings::FONTSIZE[$this->size->value][$this->isMultiline] ? $calculatedFontSize : Settings::FONTSIZE[$this->size->value][$this->isMultiline];
         $draw->setFontSize($newFontSize);
 
         return $draw;
@@ -181,7 +180,7 @@ class Base
 
         $metrics = $this->baseCanvas->queryFontMetrics($draw, $this->subtext, false);
         $calculatedFontSize = floor($metrics['characterWidth'] * Settings::MARGINS[$this->size->value] / $metrics['textWidth']);
-        $newFontSize = $calculatedFontSize < Settings::SUBFONTSIZE[$this->size->value][$this->multiline] ? $calculatedFontSize : Settings::SUBFONTSIZE[$this->size->value][$this->multiline];
+        $newFontSize = $calculatedFontSize < Settings::SUBFONTSIZE[$this->size->value][$this->isMultiline] ? $calculatedFontSize : Settings::SUBFONTSIZE[$this->size->value][$this->isMultiline];
         $draw->setFontSize($newFontSize);
 
         return $draw;

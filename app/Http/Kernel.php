@@ -44,11 +44,11 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\ThrottleRequests::class.':api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
-        
+
         // Custom middleware group for stuff like images served by PHP
         'resource' => [
             \App\Http\Middleware\AddContentLengthHeader::class,
-            \Illuminate\Routing\Middleware\SubstituteBindings::class
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
     ];
 

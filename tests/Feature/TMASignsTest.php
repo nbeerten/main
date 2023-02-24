@@ -23,6 +23,7 @@ class TMASignsTest extends TestCase
     {
         $postdata = [
             'format' => 'tga',
+            'shouldOutputZip' => true,
             'size' => 4,
             'options' => [
                 'subtextlocation' => 'bottom',

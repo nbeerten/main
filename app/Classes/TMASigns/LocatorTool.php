@@ -14,7 +14,7 @@ class LocatorTool
     ) {
     }
 
-    public function get()
+    public function get(): ?mixed
     {
         $zip = new ZipStream\ZipStream('locators.zip');
 
@@ -34,7 +34,9 @@ class LocatorTool
         }
 
         if ($succesfulcount > 0) {
-            return $zip->finish();
+            $zip->finish();
+
+            return;
         } else {
             return abort(400);
         }
