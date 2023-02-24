@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\ImageController;
 use App\Http\Controllers\TMASignsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +23,3 @@ Route::middleware(['throttle:tmasigns'])->group(function () {
     Route::post('/tmasigns', [TMASignsController::class, 'json']);
     Route::post('/tmasigns/locatortool', [TMASignsController::class, 'locatortool']);
 });
-
-Route::get('/image/{src?}', ImageController::class)
-    ->name('image');
