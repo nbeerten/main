@@ -33,4 +33,5 @@ jobs:
           ./ncm --env prod artisan route:cache --no-interaction
           ./ncm --env prod artisan view:cache --no-interaction
           ./ncm --env prod artisan icons:cache --no-interaction
+          ./ncm --env prod restart php
           ./ncm --env prod artisan up --no-interaction
