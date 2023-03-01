@@ -39,7 +39,10 @@ class ImageController extends Controller
             $w = null;
             $h = null;
         } else {
-            $src = Url::fromString($request->query('src') ?? '');
+            if(!is_string($request->query('src'))) {
+                return abort(404, "Invalid 'src' query parameter");
+            }
+            $src = Url::fromString($request->query('src'));
             $w = intval($request->query('w'));
             $h = intval($request->query('h'));
         }
@@ -73,7 +76,7 @@ class ImageController extends Controller
             'src' => (string) $src,
             'w' => (int) $w,
             'h' => (int) $h,
-        ]);
+        ]) ?: abort(500);
         $cacheable = Str::of($cacheable)->pipe('md5')->prepend('image:');
 
         // Either grab the cached file, or generate a new file.

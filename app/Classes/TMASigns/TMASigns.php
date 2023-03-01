@@ -46,7 +46,8 @@ class TMASigns extends Base
 
             if ($fstat = fstat($resource)) {
                 $size = $fstat['size'];
-            } else {
+            }
+            if(!isset($size) || !is_int($size) || $size < 0) {
                 return throw new Exception('Unable to read zip from ZipStream resource.');
             }
 

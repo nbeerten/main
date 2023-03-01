@@ -14,7 +14,7 @@ class LocatorTool
     ) {
     }
 
-    public function get()
+    public function get(): void
     {
         $zip = new ZipStream\ZipStream('locators.zip');
 
@@ -38,7 +38,7 @@ class LocatorTool
 
             return;
         } else {
-            return abort(400);
+            abort(400);
         }
     }
 }

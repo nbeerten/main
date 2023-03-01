@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Http\Client\HttpClientException;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -17,7 +18,10 @@ class AddContentLengthHeader
     {
         $response = $next($request);
 
-        $response->headers->set('Content-Length', strval(strlen($response->getContent())));
+        $responsecontent = $response->getContent();
+        if($responsecontent) {
+            $response->headers->set('Content-Length', strval(strlen($responsecontent)));
+        };
 
         return $response;
     }

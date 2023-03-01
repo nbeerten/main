@@ -86,7 +86,7 @@ elif [ "$1" == "phpstan" ]; then
     shift 1
 
     ARGS+=(exec php)
-    ARGS+=(./vendor/bin/phpstan analyse --memory-limit=2G)
+    ARGS+=(./vendor/bin/phpstan analyse --memory-limit=1G)
 
 # Initiate a Bash shell within the application container...
 elif [ "$1" == "bash" ]; then

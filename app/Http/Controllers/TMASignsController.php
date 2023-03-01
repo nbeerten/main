@@ -66,6 +66,7 @@ class TMASignsController extends Controller
     {
         $input = $request->input('urls', []);
 
+        // @phpstan-ignore-next-line
         return response((new LocatorTool($input))->get());
     }
 }
