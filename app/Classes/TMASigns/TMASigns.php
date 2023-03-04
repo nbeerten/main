@@ -5,7 +5,7 @@ namespace App\Classes\TMASigns;
 use App\Classes\TMASigns\Config\Format;
 use App\Classes\TMASigns\Config\Size;
 use Exception;
-use ZipStream;
+use ZipStream\ZipStream;
 
 /**
  * Class for generating TMASigns
@@ -17,7 +17,7 @@ class TMASigns extends Base
         $this->format = $format;
         $this->shouldOutputZip = $shouldOutputZip;
         $this->size = $size;
-        $this->options = $options;
+        $this->options = $options ?? [];
         $this->text = $text;
         $this->subtext = $subtext;
 
@@ -47,7 +47,7 @@ class TMASigns extends Base
             if ($fstat = fstat($resource)) {
                 $size = $fstat['size'];
             }
-            if(!isset($size) || !is_int($size) || $size < 0) {
+            if (! isset($size) || ! is_int($size) || $size < 0) {
                 return throw new Exception('Unable to read zip from ZipStream resource.');
             }
 
@@ -89,16 +89,13 @@ class TMASigns extends Base
             throw new Exception('Creation of stream failed.');
         }
 
-        $options = new ZipStream\Option\Archive();
-        $options->setZeroHeader(true);
-        $options->setOutputStream($tempStream);
+        $zip = new ZipStream(
+            outputStream: $tempStream,
+            sendHttpHeaders: false
+        );
 
-        $filename = 'TMA2-text-';
-        $filename .= "{$this->size->value}x1-";
-        $filename .= strval(now()->unix());
-
-        $zip = new ZipStream\ZipStream($filename, $options);
         $zip->addFile("sign.{$this->format->value}", $image);
+
         if ($skinjson) {
             $zip->addFile('Skin.json', <<<TXT
             {

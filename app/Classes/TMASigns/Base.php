@@ -5,6 +5,7 @@ namespace App\Classes\TMASigns;
 use App\Classes\TMASigns\Config\Colors;
 use App\Classes\TMASigns\Config\Format;
 use App\Classes\TMASigns\Config\Size;
+use Exception;
 use Imagick;
 use ImagickDraw;
 
@@ -24,17 +25,13 @@ class Base
 
     protected Size $size;
 
-    protected array|null $options;
+    protected array $options;
 
     protected string $text;
 
     protected string|null $subtext;
 
     private Imagick $baseCanvas;
-
-    private ImagickDraw $textStyling;
-
-    private ImagickDraw|null $subTextStyling;
 
     /**
      * Base function to create a sign
@@ -43,11 +40,6 @@ class Base
     {
         $this->baseCanvas = new Imagick(Settings::BASE[$this->size->value]);
         $this->baseCanvas->flipImage();
-
-        $this->textStyling = $this->text();
-        if ($this->isMultiline) {
-            $this->subTextStyling = $this->subText();
-        }
 
         return $this;
     }
@@ -58,7 +50,7 @@ class Base
     protected function singleline(): self
     {
         $this->baseCanvas->annotateImage(
-            $this->textStyling,
+            $this->text(),
             0,
             0 + ($this->options['offsetText'] ?? 0),
             0,
@@ -73,15 +65,19 @@ class Base
      */
     protected function multiline(): self
     {
+        if (is_null($this->subtext)) {
+            throw new Exception("Cannot use TMASigns\Base::multiline() method if property subtext is null");
+        }
+
         $this->baseCanvas->annotateImage(
-            $this->subTextStyling,
+            $this->subText(),
             0,
             Settings::OFFSET[$this->options['subtextlocation']][$this->size->value][1] + ($this->options['offsetSubtext'] ?? 0),
             0,
             $this->subtext
         );
         $this->baseCanvas->annotateImage(
-            $this->textStyling,
+            $this->text(),
             0,
             Settings::OFFSET[$this->options['subtextlocation']][$this->size->value][0] + ($this->options['offsetText'] ?? 0),
             0,
@@ -102,10 +98,6 @@ class Base
         $output = $this->baseCanvas->getImageBlob();
 
         $this->baseCanvas->clear();
-        $this->textStyling->clear();
-        if ($this->isMultiline) {
-            $this->subTextStyling->clear();
-        }
 
         return $output;
     }
@@ -171,6 +163,10 @@ class Base
      */
     private function subText(): ImagickDraw
     {
+        if (is_null($this->subtext)) {
+            throw new Exception("Cannot use TMASigns\Base::subtext() method if property subtext is null");
+        }
+
         $draw = new ImagickDraw();
 
         $draw->setGravity(Imagick::GRAVITY_CENTER);

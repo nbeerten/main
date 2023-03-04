@@ -1,11 +1,7 @@
-@charset "utf-8";
-@import 'font';
-
-@import 'reset';
-
-@import 'settings';
-
-@import 'torchlight';
+@import-glob 'font.css';
+@import-glob 'reset.css';
+@import-glob 'settings.css';
+@import-glob 'torchlight.css';
 
 @import-glob 'base/**/*.css';
 @import-glob 'misc/**/*.css';

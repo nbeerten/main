@@ -16,7 +16,9 @@ class LocatorTool
 
     public function get(): void
     {
-        $zip = new ZipStream\ZipStream('locators.zip');
+        $zip = new ZipStream\ZipStream(
+            outputName: 'locators.zip',
+        );
 
         $succesfulcount = 0;
         foreach ($this->input as $url) {

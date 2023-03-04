@@ -10,10 +10,10 @@ use Illuminate\Support\Facades\View;
 class SEO
 {
     public static function share(
-        ?string $key = 'seo',
-        ?string $title = '',
+        string $key = 'seo',
+        string $title = '',
         ?string $description = null,
-        ?array $robots = [Robots::NOIMAGEINDEX],
+        array $robots = [Robots::NOIMAGEINDEX],
         mixed $schema = null,
         mixed ...$additional
     ): SEOAble {

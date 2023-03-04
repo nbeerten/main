@@ -14,7 +14,7 @@ class SEOAble
     public function __construct(
         public readonly string $title,
         public readonly ?string $description = null,
-        public readonly ?array $robots = null,
+        public readonly array $robots = [],
         public readonly mixed $schema = null,
         mixed ...$additional
 
@@ -63,7 +63,9 @@ class SEOAble
         return Blade::render(
             <<<'BLADE'
             <title>{{ $title ?? Request::path() }} - {{ config('app.name') }}</title>
-            <meta name="robots" content="{{ $robots }}">
+            @if(strlen($robots) > 0)
+                <meta name="robots" content="{{ $robots }}">
+            @endif
             <meta name="author" content="Nils Beerten">
 
             @if($seo->description && $seo->title)

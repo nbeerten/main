@@ -9,7 +9,7 @@ use App\Classes\TMASigns\Config\Colors;
  */
 class Settings
 {
-    public const FONT = __DIR__.'/../../../assets/TMASigns/Montserrat-Black.ttf';
+    public const FONT = __DIR__.'/../../../resources/assets/TMASigns/Montserrat-Black.ttf';
 
     public const FONTSIZE = [
         1 => [250, 250],
@@ -47,10 +47,10 @@ class Settings
     public const OUTLINECOLOR = Colors::White;
 
     public const BASE = [
-        1 => __DIR__.'/../../../assets/TMASigns/1x1.tga',
-        2 => __DIR__.'/../../../assets/TMASigns/2x1.tga',
-        4 => __DIR__.'/../../../assets/TMASigns/4x1.tga',
-        6 => __DIR__.'/../../../assets/TMASigns/6x1.tga',
+        1 => __DIR__.'/../../../resources/assets/TMASigns/1x1.tga',
+        2 => __DIR__.'/../../../resources/assets/TMASigns/2x1.tga',
+        4 => __DIR__.'/../../../resources/assets/TMASigns/4x1.tga',
+        6 => __DIR__.'/../../../resources/assets/TMASigns/6x1.tga',
     ];
 
     public const MARGINS = [

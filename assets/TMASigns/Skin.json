@@ -1,7 +1,0 @@
-{
-    "ClassId": "Parallax",
-    "Layers" =
-    [
-        { Name="sign.tga", Depth="0" },
-    ]
-}

@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use Exception;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
@@ -31,6 +32,10 @@ class ToC extends Component
     {
         // Remove code blocks which might contain headers.
         $markdown = preg_replace('(```[a-z]*\n[\s\S]*?\n```)', '', $markdown);
+
+        if (is_null($markdown)) {
+            throw new Exception('preg_replace() on $markdown returns null.');
+        }
 
         return collect(explode(PHP_EOL, $markdown))
             ->reject(function (string $line) {

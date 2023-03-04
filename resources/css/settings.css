@@ -19,6 +19,8 @@
 @custom-media --max-breakpoint-xl (max-width: 1279px);
 @custom-media --max-breakpoint-2xl (max-width: 1535px);
 
+@custom-selector :--heading h1, h2, h3, h4, h5, h6;
+
 
 /*
 /* Colors

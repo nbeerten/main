@@ -39,7 +39,7 @@ class ImageController extends Controller
             $w = null;
             $h = null;
         } else {
-            if(!is_string($request->query('src'))) {
+            if (! is_string($request->query('src'))) {
                 return abort(404, "Invalid 'src' query parameter");
             }
             $src = Url::fromString($request->query('src'));

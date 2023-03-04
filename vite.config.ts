@@ -14,9 +14,9 @@ import postcssAdvancedVariables from 'postcss-advanced-variables';
 import postcssSortMediaQueries from 'postcss-sort-media-queries';
 import postcssPresetEnv from 'postcss-preset-env';
 
-import { Glob } from 'glob';
+import { globSync } from 'glob';
 
-const scriptFiles: string[] = new Glob('resources/scripts/**/*.+(ts|js)', { sync: true }).found;
+const scriptFiles: string[] = globSync('resources/scripts/**/*.+(ts|js)');
 
 export default defineConfig({
     server: {
@@ -36,18 +36,20 @@ export default defineConfig({
     ],
     css: {
         devSourcemap: true,
+        preprocessorOptions: {
+            "postcss": false
+        },
         postcss: {
             plugins: [
-                postcssImport,
                 postcssImportExtGlob,
-                postcssAdvancedVariables,
-                postcssNesting,
-                postcssCustomSelectors,
-                postcssCustomMedia,
-                postcssSortMediaQueries,
+                postcssImport,
+                // postcssAdvancedVariables,
+                // postcssNesting,
+                // postcssCustomSelectors,
+                // postcssCustomMedia,
                 postcssPresetEnv({
-                    browsers: '> 1% and last 10 versions',
-                    enableClientSidePolyfills: true,
+                    stage: 0,
+                    enableClientSidePolyfills: false
                 })
             ],
         }
