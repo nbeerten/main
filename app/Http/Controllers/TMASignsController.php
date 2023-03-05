@@ -13,15 +13,10 @@ use Illuminate\Http\Response;
 class TMASignsController extends Controller
 {
     protected Format $format;
-
     protected bool $shouldOutputZip = false;
-
     protected Size $size;
-
     protected ?array $options;
-
     protected ?string $text;
-
     protected ?string $subtext;
 
     /**

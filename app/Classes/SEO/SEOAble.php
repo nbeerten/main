@@ -3,6 +3,7 @@
 namespace App\Classes\SEO;
 
 use Blade;
+use Spatie\Url\Url;
 
 /**
  * Readonly class for retrieving data
@@ -49,16 +50,18 @@ class SEOAble
 
         $og_image = 'https://next.nilsbeerten.nl/api/og';
         $og_image .= '?title='.rawurlencode($this->title);
+        $og_image = Url::fromString('https://next.nilsbeerten.nl/api/og')
+            ->withQueryParameters([
+                'title' => $this->title,
+            ]);
 
         $properties = get_object_vars($this);
 
-        $data = array_merge(
-            $properties,
-            [
-                'robots' => $robots,
-                'og_image' => $og_image,
-            ]
-        );
+        $data = [
+            ...$properties,
+            'robots' => $robots,
+            'og_image' => $og_image,
+        ];
 
         return Blade::render(
             <<<'BLADE'

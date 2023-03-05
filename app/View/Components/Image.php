@@ -12,13 +12,9 @@ use Spatie\Url\Url;
 class Image extends Component
 {
     public ?int $width = null;
-
     public ?int $height = null;
-
     public Url $src;
-
     public bool $external = false;
-
     public string $alt;
 
     /**

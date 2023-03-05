@@ -20,17 +20,11 @@ class Base
     protected int $isMultiline = 0;
 
     protected Format $format;
-
     protected bool $shouldOutputZip = false;
-
     protected Size $size;
-
-    protected array $options;
-
+    protected OptionsStruct $options;
     protected string $text;
-
     protected string|null $subtext;
-
     private Imagick $baseCanvas;
 
     /**

@@ -2,22 +2,31 @@
 
 namespace App\Classes\TMASigns;
 
+use App\Classes\Struct\Struct;
 use App\Classes\TMASigns\Config\Format;
 use App\Classes\TMASigns\Config\Size;
 use Exception;
 use ZipStream\ZipStream;
+
+class OptionsStruct extends Struct
+{
+    public string $subtextlocation;
+    public int $offsetText;
+    public int $offsetSubtext;
+    public int $outlineModifier;
+}
 
 /**
  * Class for generating TMASigns
  */
 class TMASigns extends Base
 {
-    public function __construct(Format $format, bool $shouldOutputZip, Size $size, array|null $options, string $text, string|null $subtext)
+    public function __construct(Format $format, bool $shouldOutputZip, Size $size, array $options, string $text, string|null $subtext)
     {
         $this->format = $format;
         $this->shouldOutputZip = $shouldOutputZip;
         $this->size = $size;
-        $this->options = $options ?? [];
+        $this->options = OptionsStruct::fromArray($options);
         $this->text = $text;
         $this->subtext = $subtext;
 
