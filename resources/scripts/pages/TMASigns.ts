@@ -65,7 +65,7 @@ window.TMASigns = {
             subtext: subtext
         };
 
-        const jsonDebugData = JSON.stringify(jsonDebugObject, null, "  ");
+        const jsonDebugData = JSON.stringify(jsonDebugObject, null, "	");
         const jsondebug = document.querySelector("#jsondebug") as HTMLElement;
             if(jsondebug == null) return;
         jsondebug.textContent = jsonDebugData;

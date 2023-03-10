@@ -14,7 +14,7 @@ class PageController extends Controller
     {
         SEO::share(
             title: 'Home',
-            description: "Hai, I'm Nils. Projects include Refresh Leaderboard: a plugin for Openplanet and the rewrite of nilsbeerten.nl...",
+            description: "Hai, I'm Nils. Coding projects I work on include the Refresh Leaderboard Openplanet plugin and the TMA sign generator tool.",
             schema: Schema::organization()
                     ->url('https://nilsbeerten.nl/')
                     ->logo('https://nilsbeerten.nl/icon-512.png')
@@ -27,8 +27,7 @@ class PageController extends Controller
     {
         SEO::share(
             title: 'TMA Signs',
-            description: 'A small web application to create signs with text defined by the user for Trackmania, styled to fit in with the TMA signpack.',
-            robots: [Robots::NONE, Robots::NOIMAGEINDEX]
+            description: 'Create Trackmania signs with any text you want, styled to fit in with the new TMA signpack.'
         );
 
         return view('tmasigns');

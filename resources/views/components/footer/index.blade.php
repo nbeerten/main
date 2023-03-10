@@ -25,10 +25,6 @@
             <p><span class="year">{{ now()->format('Y') }}</span> <span class="name">Nils Beerten</span></p>
         </div>
         <div class="footer-socials">
-            <a rel="me" href="https://mastodon.social/@nbeerten" target="_blank" aria-label="mastodon: @nbeerten@mastodon.social">
-                <tool-tip role="tooltip" tip-position="block-start">@nbeerten@mastodon.social</tool-tip>
-                <x-tabler-brand-mastodon />
-            </a>
             <a rel="me" href="https://trackmania.social/@nbert" target="_blank" aria-label="mastodon: @nbert@trackmania.social">
                 <tool-tip role="tooltip" tip-position="block-start">@nbert@trackmania.social</tool-tip>
                 <x-tabler-brand-mastodon />
