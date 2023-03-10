@@ -8,7 +8,7 @@ import Typed from "typed.js";
  *
  * @see http://stackoverflow.com/questions/118241/calculate-text-width-with-javascript/21015393#21015393
  */
-function getTextWidth(text: string, font: string) {
+function getTextWidth(text: string, font: string): number {
     // if given, use cached canvas for better performance
     // else, create new canvas
     var canvas: HTMLCanvasElement =
@@ -20,7 +20,7 @@ function getTextWidth(text: string, font: string) {
     return metrics.width;
 }
 
-function startTypingAnimation() {
+function startTypingAnimation(): void {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     const textWidth = getTextWidth(
         "Hai, I'm nbeerten. |",
@@ -34,13 +34,17 @@ function startTypingAnimation() {
     if (!mediaQuery || mediaQuery.matches) {
         return;
     } else {
-        const typing: Typed = new Typed("#typewriter-text", {
-            strings: ["Nils.", "Nils.", "nbert.", "nbeerten."],
+        const typing = new Typed("#typewriter-text", {
+            strings: ["Nils.", "Nils.", "nbert.", "nbeerten.", "Nils."],
             typeSpeed: 100,
             backSpeed: 75,
             backDelay: 3000,
-            loop: true,
+            loopCount: 1,
             autoInsertCss: false,
+            onComplete: () => {
+                const cursor = document.querySelector('.typed-cursor') as HTMLSpanElement;
+                cursor.remove();
+            },
         });
     }
 }

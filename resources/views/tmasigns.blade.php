@@ -52,26 +52,21 @@
             Signs
         </h1>
 
-        <x-accordion expanded>
-            <x-slot:title>
-                <x-tabler-packages /> TMA Signpack
-            </x-slot:title>
-            <x-card class="tmasigns__signpack-card">
-                <x-slot:img><x-image class="card-img" src="tma_signpack_thumb.webp" alt="Sign preview" height="160" /></x-slot:img>
-                <h4 class="card-title">The TMA Signpack</h4>
-                <x-markdown class="card-text" style="--line-clamp: 10">
-                        The main signpack includes lots of arrow signs made by Juice, checkpoint numbers `1-25` for `6x1` signs, and common text
-                        such as 'Start', 'Checkpoint', 'Multilap' and 'Finish'.
-                        **More information can be found in the TMA Discord Server**
-                </x-markdown>
+        <x-card class="tmasigns__signpack-card">
+            <x-slot:img><x-image class="card-img" src="tma_signpack_thumb.webp" alt="Sign preview" height="160" /></x-slot:img>
+            <h4 class="card-title">TMA Signpack V2</h4>
+            <x-markdown class="card-text" style="--line-clamp: 10">
+                    The main signpack includes lots of arrow signs made by Juice, checkpoint numbers `1-25` for `6x1` signs, and common text
+                    such as 'Start', 'Checkpoint', 'Multilap' and 'Finish'.
+                    **More information can be found in the TMA Discord Server**
+            </x-markdown>
 
-                <x-slot:footer>
-                    <a class="button" href="https://discord.gg/b8MfZsYFWg" role="button">
-                        <x-tabler-download /> Download from the TMA discord
-                    </a>
-                </x-slot:footer>
-            </x-card>
-        </x-accordion>
+            <x-slot:footer>
+                <a class="button" href="https://discord.gg/7ZJDGAFDJv" role="button">
+                    <x-tabler-download /> Download from the TMA discord
+                </a>
+            </x-slot:footer>
+        </x-card>
 
         <hr>
 
@@ -79,15 +74,7 @@
             <x-slot:title id="generator">
                 <x-tabler-photo-edit /> Sign Generator
             </x-slot:title>
-            <div class="two-col no-scrollbar" x-data="{
-                text: $persist('').using(sessionStorage),
-                subtext: $persist('').using(sessionStorage),
-                size: $persist(2).using(sessionStorage),
-                subtextlocation: $persist('bottom').using(sessionStorage),
-                offsetText: $persist(0).using(sessionStorage),
-                offsetSubtext: $persist(0).using(sessionStorage),
-                outlineModifier: $persist(0).using(sessionStorage)
-            }" x-init="TMASigns.updatePreview($data)"
+            <div class="two-col no-scrollbar" x-data="TMASignsData" x-init="TMASigns.updatePreview($data)"
                 x-on:input.debounce.500ms="TMASigns.updatePreview($data)" x-on:input="TMASigns.startLoadingAnimation($data)">
                 <section class="left-col" role="form">
                     <div class="input">

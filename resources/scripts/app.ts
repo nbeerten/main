@@ -7,7 +7,7 @@ addEventListener('DOMContentLoaded', () => polyfill());
  * 
  * @returns Promise resolving to void.
  */
-async function polyfill(): Promise<void> {
+function polyfill(): void {
     if (!CSS.supports('selector(:has(.class))')) {
 
         document.querySelectorAll('tool-tip').forEach(tooltip => {

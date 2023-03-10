@@ -5,10 +5,12 @@
             "DOM",
             "DOM.Iterable",
             "ESNext"
-          ],
-          "target": "ES5",
-          "module": "ESNext",
-          "moduleResolution": "node",
-          "strict": true
+        ],
+        "target": "ES5",
+        "module": "ESNext",
+        "moduleResolution": "node",
+        "strict": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true
     }
 }

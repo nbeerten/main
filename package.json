@@ -22,7 +22,6 @@
     },
     "dependencies": {
         "@alpinejs/collapse": "latest",
-        "@alpinejs/intersect": "latest",
         "@alpinejs/persist": "latest",
         "alpinejs": "latest",
         "glob": "latest",

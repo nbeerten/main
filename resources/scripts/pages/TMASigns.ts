@@ -13,24 +13,24 @@ declare global {
     }
 }
 
-interface AlpineData {
+export interface TMASignsData {
     text: string, 
     subtext: string, 
-    size: 1|2|4|6, 
-    subtextlocation: "bottom"|"top", 
-    offsetText: number, 
-    offsetSubtext: number, 
-    outlineModifier: number
+    size: 1|2|4|6|null,
+    subtextlocation: "bottom"|"top",
+    offsetText: number|null, 
+    offsetSubtext: number|null, 
+    outlineModifier: number|null
 }
 
-interface ILocatorTool {
+export interface ILocatorTool {
     urls: Array<string>,
     newUrl: string,
     addUrl: Function,
     deleteUrl: Function,
 }
 
-interface IPostData {
+export interface IPostData {
     format: "jpg"|"tga"|"webp",
     shouldOutputZip: boolean,
     size: 1|2|4|6,
@@ -45,7 +45,7 @@ interface IPostData {
 }
 
 window.TMASigns = {
-    updatePreview: function({text, subtext, size, subtextlocation, offsetText, offsetSubtext, outlineModifier}: AlpineData): void {
+    updatePreview: function({text, subtext, size, subtextlocation, offsetText, offsetSubtext, outlineModifier}: TMASignsData): void {
         // MS for response
         const startTime = performance.now();
 
@@ -57,9 +57,9 @@ window.TMASigns = {
             size: size,
             options: {
                 subtextlocation: subtextlocation,
-                offsetText: offsetText,
-                offsetSubtext: offsetSubtext,
-                outlineModifier: outlineModifier
+                offsetText: offsetText ?? 0,
+                offsetSubtext: offsetSubtext ?? 0,
+                outlineModifier: outlineModifier ?? 0
             },
             text: text,
             subtext: subtext
@@ -83,12 +83,12 @@ window.TMASigns = {
         const postData: IPostData = {
             format: "jpg",
             shouldOutputZip: false,
-            size: size,
+            size: size ?? 2,
             options: {
-                subtextlocation: subtextlocation,
-                offsetText: offsetText,
-                offsetSubtext: offsetSubtext,
-                outlineModifier: outlineModifier,
+                subtextlocation: subtextlocation ?? "bottom",
+                offsetText: offsetText ?? 0,
+                offsetSubtext: offsetSubtext ?? 0,
+                outlineModifier: outlineModifier ?? 0,
             },
             text: text,
             subtext: subtext
@@ -129,7 +129,7 @@ window.TMASigns = {
         if(previewImageParent.getAttribute("data-status") === "") previewImageParent.setAttribute("data-status", " ");
     },
 
-    downloadsign: function({text, subtext, size, subtextlocation, offsetText, offsetSubtext, outlineModifier}: AlpineData): void {
+    downloadsign: function({text, subtext, size, subtextlocation, offsetText, offsetSubtext, outlineModifier}: TMASignsData): void {
         const downloadButton: HTMLAnchorElement|null = document.querySelector('#downloadButton');
             if(downloadButton === null) return;
         
@@ -149,12 +149,12 @@ window.TMASigns = {
         const postData: IPostData = {
             format: (size != 6 ? "tga" : "jpg"),
             shouldOutputZip: (size != 6),
-            size: size,
+            size: size ?? 2,
             options: {
-                subtextlocation: subtextlocation,
-                offsetText: offsetText,
-                offsetSubtext: offsetSubtext,
-                outlineModifier: outlineModifier
+                subtextlocation: subtextlocation ?? "bottom",
+                offsetText: offsetText ?? 0,
+                offsetSubtext: offsetSubtext ?? 0,
+                outlineModifier: outlineModifier ?? 0
             },
             text: text,
             subtext: subtext

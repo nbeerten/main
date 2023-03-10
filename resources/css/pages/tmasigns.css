@@ -160,6 +160,8 @@
 
                 & > img {
                     max-height: 24rem;
+                    object-fit: contain;
+                    object-position: center;
                     cursor: not-allowed;
                     overflow: clip;
                     user-select: none;
