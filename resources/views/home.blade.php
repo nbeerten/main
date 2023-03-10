@@ -129,14 +129,14 @@
                     </ul>
                 </x-slot:repoinfo>
             </x-card.repository>
-            {{-- <x-card.repository>
+            <x-card.repository>
                 <x-slot:img><x-image class="card-img" src="{{ asset('assets/favicon.svg') }}" alt="Logo of nilsbeerten.nl" width="160" height="160" /></x-slot:img>
                 <a href="/">
                     <h4 class="card-title">nbeerten/main</h4>
                 </a>
-                <p class="card-text">
-                    Github repository for this website, nilsbeerten.nl. This website is built using Laravel, Alpine.js, CSS and TypeScript.
-                </p>
+                <x-md class="card-text">
+                    Github repository for this website, which is built using Laravel, CSS, Alpine.js and TypeScript.
+                </x-md>
                 
                 <x-slot:repoinfo>
                     <a href="https://github.com/nbeerten/main" target="_blank"><x-tabler-brand-github /> nbeerten/main</a>
@@ -153,7 +153,7 @@
                         </li>
                     </ul>
                 </x-slot:repoinfo>
-            </x-card.repository> --}}
+            </x-card.repository>
         </div>
     </section>
 </x-app>

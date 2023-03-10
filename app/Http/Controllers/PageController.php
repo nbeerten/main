@@ -27,7 +27,7 @@ class PageController extends Controller
     {
         SEO::share(
             title: 'TMA Signs',
-            description: 'Create Trackmania signs with any text you want, styled to fit in with the new TMA signpack.'
+            description: 'A tool that enables Trackmania mappers to create signs with customizable text that fit in with the TMA signpack.'
         );
 
         return view('tmasigns');
