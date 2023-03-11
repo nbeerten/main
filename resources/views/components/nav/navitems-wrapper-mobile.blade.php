@@ -10,7 +10,7 @@
             <a href="/dashboard"><x-tabler-user-circle /></a>
             <a href="/telescope" target="_blank"><x-tabler-sparkles /></a>
             <a href="/log-viewer" target="_blank"><x-tabler-file-text /></a>
-            <a href="https://analytics.nilsbeerten.nl/websites/ad9a9ebf-feb9-4204-88ef-1c11b9834ee5" target="_blank"><x-tabler-graph /></a>
+            <a href="https://nilsbeerten.piwik.pro/analytics/" target="_blank"><x-tabler-graph /></a>
             <x-logout><x-tabler-logout /></x-logout>
         </div>
     @endauth

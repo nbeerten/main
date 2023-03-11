@@ -38,19 +38,32 @@
 
     {{-- Always load last to prevent errors of undefined functions --}}
     @vite('resources/scripts/alpine.ts')
-
-    <!-- Umami Analytics -->
-    @guest
-        <script async defer 
-            data-website-id="ad9a9ebf-feb9-4204-88ef-1c11b9834ee5" 
-            src="https://analytics.nilsbeerten.nl/umami.js"
-            data-domains="nilsbeerten.nl"
-            nonce="{{ csp_nonce() }}">
-        </script>
-    @endguest
 </head>
 
 <body>
+    @guest
+        <script type="text/javascript" nonce="{{ csp_nonce() }}">
+            var _paq = _paq || [];
+            _paq.push(["trackPageView"]);
+            _paq.push(["enableLinkTracking"]);
+            _paq.push(["disableCookies"]);
+            _paq.push(["setSessionIdStrictPrivacyMode", true]);
+            (function() {
+                var u = "https://nilsbeerten.piwik.pro/";
+                _paq.push(["setTrackerUrl", u + "ppms.php"]);
+                _paq.push(["setSiteId", "bd110934-c4ad-401a-8b2c-4628ff327201"]);
+                var d = document,
+                    g = d.createElement("script"),
+                    s = d.getElementsByTagName("script")[0];
+                g.type = "text/javascript";
+                g.async = true;
+                g.defer = true;
+                g.src = u + "ppms.js";
+                s.parentNode.insertBefore(g, s);
+            })();
+        </script>
+    @endguest
+
     <x-nav />
     
     <div class="app">

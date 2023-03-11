@@ -24,7 +24,7 @@
                             <a href="/log-viewer" target="_blank" class="item">
                                 <x-tabler-file-text />
                             </a>
-                            <a href="https://analytics.nilsbeerten.nl/websites/ad9a9ebf-feb9-4204-88ef-1c11b9834ee5" target="_blank" class="item">
+                            <a href="https://nilsbeerten.piwik.pro/analytics/" target="_blank" class="item">
                                 <x-tabler-graph />
                             </a>
                             <x-logout class="item">

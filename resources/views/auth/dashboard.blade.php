@@ -23,7 +23,7 @@
                     <div class="helper_row-wrap">
                         <a href="/telescope" target="_blank" class="button"><x-tabler-sparkles /> Telescope</a>
                         <a href="/log-viewer" target="_blank" class="button"><x-tabler-file-text /> Log-Viewer</a>
-                        <a href="https://analytics.nilsbeerten.nl/websites/ad9a9ebf-feb9-4204-88ef-1c11b9834ee5" target="_blank" class="button"><x-tabler-graph /> Analytics</a>
+                        <a href="https://nilsbeerten.piwik.pro/analytics/" target="_blank" class="button"><x-tabler-graph /> Analytics</a>
                     </div>
                 </x-slot:footer>
             </x-card>

@@ -27,7 +27,8 @@ class CSPPolicy extends Basic
              ])
              ->addDirective(Directive::CONNECT, [
                  Keyword::SELF,
-                 'https://analytics.nilsbeerten.nl',
+                 'https://nilsbeerten.piwik.pro',
+                 'https://nilsbeerten.containers.piwik.pro',
                  ! App::environment('local') ? Value::NO_VALUE : 'http://localhost:5173',
                  ! App::environment('local') ? Value::NO_VALUE : 'ws://localhost:5173',
              ])
@@ -46,6 +47,8 @@ class CSPPolicy extends Basic
                  Scheme::DATA,
                  Scheme::BLOB,
                  Scheme::HTTPS,
+                 'https://nilsbeerten.containers.piwik.pro',
+                 'https://nilsbeerten.piwik.pro',
                  ! App::environment('local') ? Value::NO_VALUE : 'http://localhost:5173',
              ])
              ->addDirective(Directive::FONT, '*')

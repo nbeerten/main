@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Classes\SEO\Robots;
 use App\Classes\SEO\SEO;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
