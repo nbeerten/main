@@ -52,21 +52,30 @@
             Signs
         </h1>
 
-        <x-card class="tmasigns__signpack-card">
-            <x-slot:img><x-image class="card-img" src="tma_signpack_thumb.webp" alt="Sign preview" height="160" /></x-slot:img>
-            <h4 class="card-title">TMA Signpack V2</h4>
-            <x-markdown class="card-text" style="--line-clamp: 10">
-                    The main signpack includes lots of arrow signs made by Juice, checkpoint numbers `1-25` for `6x1` signs, and common text
-                    such as 'Start', 'Checkpoint', 'Multilap' and 'Finish'.
-                    **More information can be found in the TMA Discord Server**
-            </x-markdown>
+        <section class="tmasigns-top-cards">
+            <x-card class="tmasigns__signpack-card">
+                <x-slot:img><x-image class="card-img" src="tma_signpack_thumb.webp" alt="Sign preview" :useExperimental="true" /></x-slot:img>
+                <h4 class="card-title">TMA Signpack V2</h4>
+                <x-markdown class="card-text" style="--line-clamp: 10">
+                        The main signpack includes lots of arrow signs made by Juice, checkpoint numbers `1-25` for `6x1` signs, and common text
+                        such as 'Start', 'Checkpoint', 'Multilap' and 'Finish'.
+                        **More information can be found in the TMA Discord Server**
+                </x-markdown>
 
-            <x-slot:footer>
-                <a class="button" href="https://discord.gg/7ZJDGAFDJv" role="button">
-                    <x-tabler-download /> Download from the TMA discord
-                </a>
-            </x-slot:footer>
-        </x-card>
+                <x-slot:footer>
+                    <a class="button" href="https://discord.gg/7ZJDGAFDJv" role="button">
+                        <x-tabler-download /> Download from the TMA discord
+                    </a>
+                </x-slot:footer>
+            </x-card>
+
+            <x-information-card>
+                <x-md>Did you find a bug, need help or have feedback?</x-md>
+                <x-slot:more>
+                    Feel free to report, ask or share it with me by sending me a DM on discord (nbert#2620) or by creating an issue on <a href="https://github.com/nbeerten/main/issues" target="_blank">GitHub</a>.
+                </x-slot:more>
+            </x-information-card>
+        </section>
 
         <hr>
 
@@ -135,7 +144,7 @@
                 </section>
                 <section class="right-col">
                     <div class="preview-image" data-status-message="" data-status="">
-                        <x-image id="previewImage" alt="Example sign" src="default_sign.webp" draggable="false" onclick="preventDefault()" />
+                        <x-image id="previewImage" alt="Example sign" src="default_sign.webp" draggable="false" />
                     </div>
 
                     <x-accordion.card class="json-debug">
@@ -146,7 +155,7 @@
                         <pre><code class="language-json" id="jsondebug"></code></pre>
                     </x-accordion.card>
 
-                    <div class="tmasigns__information-card">
+                    {{-- <div class="tmasigns__information-card">
                         <x-information-card>
                             <x-md>Did you find a bug, need help or have feedback?</x-md>
                             <x-slot:more>
@@ -154,7 +163,7 @@
                                 In case you need a large amount of signs with e.g. incremental numbers feel free to contact me as well.
                             </x-slot:more>
                         </x-information-card>
-                    </div>
+                    </div> --}}
                 </section>
             </div>
         </x-accordion>

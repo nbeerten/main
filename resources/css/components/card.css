@@ -3,13 +3,13 @@
     grid-template-columns: minmax(10rem, 100%) 1fr;
     grid-template-rows: auto 1fr auto;
     grid-template-areas:
-        "body   body"
+        "img    img"
         "body   body"
         "footer footer";
 
-    &:has(> .card-img, > img) {
+    &:not(:has(> .card-img, > img)) {
         grid-template-areas:
-            "img    img"
+            "body   body"
             "body   body"
             "footer footer";
     }
@@ -29,14 +29,14 @@
         grid-template-columns: minmax(10rem, auto) 1fr;
         grid-template-rows: 1fr 1fr auto;
         grid-template-areas:
-            "body   body"
-            "body   body"
-            "footer footer";
+            "img    body"
+            "img    body"
+            "footer    footer";
 
-        &:has(> .card-img, > img) {
+        &:not(:has(> .card-img, > img)) {
             grid-template-areas:
-                "img    body"
-                "img    body"
+                "body   body"
+                "body   body"
                 "footer footer";
         }
     }

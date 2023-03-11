@@ -11,9 +11,7 @@
     border-width: 1px;
     background-color: var(--bg-cards);
     padding: 1rem;
-
-    margin: 0.5rem 0;
-
+    
     & > .icon svg {
         color: var(--accent-color);
         align-self: flex-start;

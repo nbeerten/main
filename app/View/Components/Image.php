@@ -161,9 +161,9 @@ class Image extends Component
             'height' => $this->height,
         ]);
 
-        // if (! $this->external && $this->useExperimental) {
-        //     $data->put('srcset', $this->generateSrcSet());
-        // }
+        if (! $this->external && $this->useExperimental) {
+            $data->put('srcset', $this->generateSrcSet());
+        }
 
         return view('components.image.index', $data);
     }
